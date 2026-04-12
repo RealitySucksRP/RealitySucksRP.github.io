@@ -3,842 +3,425 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Reality Sucks RP — Scripts & Resources</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+<title>Reality Sucks RP -- Scripts & Servers</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --black: #080808;
-    --dark: #111111;
-    --card: #141414;
-    --border: #1e1e1e;
-    --red: #c0000a;
-    --red-bright: #e8000d;
-    --red-dim: #6b0005;
-    --red-glow: rgba(192,0,10,0.15);
-    --white: #f0ece6;
-    --muted: #5a5550;
-    --mono: 'DM Mono', monospace;
-    --display: 'Bebas Neue', sans-serif;
-    --serif: 'Playfair Display', serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: var(--mono);
-    font-size: 14px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* ── NOISE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.4;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 48px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(8,8,8,0.92);
-    backdrop-filter: blur(12px);
-  }
-
-  .wordmark {
-    font-family: var(--display);
-    font-size: 22px;
-    letter-spacing: 0.08em;
-    color: var(--white);
-    text-decoration: none;
-  }
-
-  .wordmark span {
-    color: var(--red);
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 36px;
-  }
-
-  nav ul a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  nav ul a:hover { color: var(--white); }
-
-  .nav-cta {
-    background: var(--red);
-    color: var(--white) !important;
-    padding: 8px 18px;
-    letter-spacing: 0.12em !important;
-    transition: background 0.2s !important;
-  }
-
-  .nav-cta:hover { background: var(--red-bright) !important; color: var(--white) !important; }
-
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 48px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(192,0,10,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(192,0,10,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
-  }
-
-  .hero-scanline {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--red), transparent);
-    animation: scan 4s ease-in-out infinite;
-    opacity: 0.6;
-  }
-
-  @keyframes scan {
-    0% { top: 0%; opacity: 0; }
-    10% { opacity: 0.6; }
-    90% { opacity: 0.6; }
-    100% { top: 100%; opacity: 0; }
-  }
-
-  .hero-tag {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--red);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.3s forwards;
-  }
-
-  .hero-title {
-    font-family: var(--display);
-    font-size: clamp(72px, 12vw, 160px);
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-    color: var(--white);
-    opacity: 0;
-    animation: fadeUp 0.8s 0.5s forwards;
-  }
-
-  .hero-title .accent {
-    color: var(--red);
-    font-style: italic;
-    font-family: var(--serif);
-    font-size: 0.55em;
-    vertical-align: middle;
-    display: inline-block;
-    transform: translateY(-8px);
-  }
-
-  .hero-sub {
-    margin-top: 28px;
-    max-width: 520px;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.8;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.7s forwards;
-  }
-
-  .hero-sub strong { color: var(--white); font-weight: 500; }
-
-  .hero-actions {
-    margin-top: 40px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.9s forwards;
-  }
-
-  .btn-primary {
-    display: inline-block;
-    background: var(--red);
-    color: var(--white);
-    text-decoration: none;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    transition: background 0.2s, box-shadow 0.2s;
-  }
-
-  .btn-primary:hover {
-    background: var(--red-bright);
-    box-shadow: 0 0 32px rgba(192,0,10,0.4);
-  }
-
-  .btn-ghost {
-    display: inline-block;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    text-decoration: none;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .btn-ghost:hover { border-color: var(--muted); color: var(--white); }
-
-  .hero-stat-bar {
-    position: absolute;
-    right: 48px;
-    bottom: 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    text-align: right;
-    opacity: 0;
-    animation: fadeIn 1s 1.2s forwards;
-  }
-
-  .stat-num {
-    font-family: var(--display);
-    font-size: 36px;
-    color: var(--red);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* ── SECTION BASE ── */
-  section {
-    padding: 100px 48px;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-family: var(--display);
-    font-size: clamp(36px, 6vw, 72px);
-    line-height: 1;
-    letter-spacing: 0.03em;
-    margin-bottom: 48px;
-  }
-
-  /* ── PAID SCRIPTS ── */
-  .scripts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1px;
-    background: var(--border);
-  }
-
-  .script-card {
-    background: var(--card);
-    padding: 32px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-    cursor: pointer;
-  }
-
-  .script-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--red);
-    transform: scaleX(0);
-    transition: transform 0.3s;
-    transform-origin: left;
-  }
-
-  .script-card:hover { background: #181818; }
-  .script-card:hover::before { transform: scaleX(1); }
-
-  .card-badge {
-    display: inline-block;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border: 1px solid var(--red-dim);
-    color: var(--red);
-    margin-bottom: 20px;
-  }
-
-  .card-badge.free {
-    border-color: #1a3a1a;
-    color: #4a9a4a;
-  }
-
-  .card-name {
-    font-family: var(--display);
-    font-size: 28px;
-    letter-spacing: 0.04em;
-    margin-bottom: 10px;
-  }
-
-  .card-desc {
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.7;
-    margin-bottom: 24px;
-  }
-
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 28px;
-  }
-
-  .tag {
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 3px 8px;
-  }
-
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .card-price {
-    font-family: var(--display);
-    font-size: 32px;
-    color: var(--white);
-    letter-spacing: 0.04em;
-  }
-
-  .card-price .cents {
-    font-size: 18px;
-    color: var(--muted);
-  }
-
-  .card-btn {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--red);
-    text-decoration: none;
-    border-bottom: 1px solid var(--red-dim);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .card-btn:hover { color: var(--red-bright); border-color: var(--red-bright); }
-
-  /* ── FREE RELEASES ── */
-  #free { background: var(--dark); }
-
-  .free-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: var(--border);
-  }
-
-  .free-item {
-    background: var(--card);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 24px;
-    padding: 28px 32px;
-    transition: background 0.2s;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .free-item:hover { background: #181818; }
-
-  .free-item-left { display: flex; flex-direction: column; gap: 6px; }
-
-  .free-name {
-    font-family: var(--display);
-    font-size: 22px;
-    letter-spacing: 0.04em;
-    color: var(--white);
-  }
-
-  .free-desc { color: var(--muted); font-size: 12px; }
-
-  .free-meta {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .free-download {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #4a9a4a;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .free-download::before {
-    content: '↓';
-    font-size: 14px;
-  }
-
-  /* ── ABOUT ── */
-  #about {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .about-quote {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(28px, 4vw, 48px);
-    line-height: 1.3;
-    color: var(--white);
-    position: relative;
-    padding-left: 32px;
-  }
-
-  .about-quote::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 8px;
-    bottom: 8px;
-    width: 3px;
-    background: var(--red);
-  }
-
-  .about-body { color: var(--muted); line-height: 1.9; }
-  .about-body p + p { margin-top: 16px; }
-  .about-body strong { color: var(--white); font-weight: 500; }
-
-  .about-values {
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .value-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .value-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--red);
-    flex-shrink: 0;
-  }
-
-  /* ── DISCORD CTA ── */
-  #discord {
-    text-align: center;
-    background: linear-gradient(180deg, var(--black) 0%, #0d0003 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  #discord::before {
-    content: 'REALITY SUCKS RP';
-    position: absolute;
-    font-family: var(--display);
-    font-size: clamp(80px, 18vw, 220px);
-    color: rgba(192,0,10,0.04);
-    white-space: nowrap;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    letter-spacing: 0.05em;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .discord-inner {
-    position: relative;
-    z-index: 1;
-  }
-
-  .discord-title {
-    font-family: var(--display);
-    font-size: clamp(48px, 8vw, 96px);
-    letter-spacing: 0.03em;
-    margin-bottom: 16px;
-  }
-
-  .discord-sub {
-    color: var(--muted);
-    max-width: 480px;
-    margin: 0 auto 40px;
-    line-height: 1.8;
-    font-size: 13px;
-  }
-
-  .discord-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: #5865F2;
-    color: white;
-    text-decoration: none;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 16px 36px;
-    transition: background 0.2s, box-shadow 0.2s;
-  }
-
-  .discord-btn:hover {
-    background: #4752C4;
-    box-shadow: 0 0 40px rgba(88,101,242,0.3);
-  }
-
-  .discord-icon {
-    width: 20px;
-    height: 20px;
-    fill: white;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 28px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--black);
-  }
-
-  footer .wordmark { font-size: 16px; }
-
-  .footer-note {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-  }
-
-  /* ── SCROLL REVEAL ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    nav ul { display: none; }
-    section { padding: 70px 20px; }
-    #hero { padding: 0 20px 60px; }
-    .hero-stat-bar { display: none; }
-    #about { grid-template-columns: 1fr; gap: 40px; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
-  }
+:root {
+  --navy: #0d1117;
+  --navy2: #131920;
+  --navy3: #1a2332;
+  --navy4: #1e2a3a;
+  --card: #ffffff;
+  --card-border: #e2e8f0;
+  --red: #c0000a;
+  --red-bright: #e8000d;
+  --red-light: #fff0f0;
+  --accent: #c0000a;
+  --white: #ffffff;
+  --text: #1a202c;
+  --text2: #4a5568;
+  --text3: #718096;
+  --muted: #a0aec0;
+  --display: 'Bebas Neue', sans-serif;
+  --body: 'Barlow', sans-serif;
+  --cond: 'Barlow Condensed', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--white);font-family:var(--body);font-size:15px;line-height:1.6;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,0.06);}
+.wordmark{font-family:var(--display);font-size:22px;letter-spacing:0.08em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:2px;}
+.wordmark em{color:var(--red);font-style:normal;}
+nav ul{list-style:none;display:flex;gap:8px;align-items:center;}
+nav ul a{text-decoration:none;color:rgba(255,255,255,0.6);font-size:13px;font-weight:500;padding:6px 12px;border-radius:6px;transition:all 0.2s;}
+nav ul a:hover{color:var(--white);background:rgba(255,255,255,0.06);}
+.nav-discord{background:var(--red)!important;color:var(--white)!important;padding:8px 18px!important;border-radius:6px!important;}
+.nav-discord:hover{background:var(--red-bright)!important;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 48px 80px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(192,0,10,0.08) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 80% 80%,rgba(30,42,58,0.8) 0%,transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(192,0,10,0.12);border:1px solid rgba(192,0,10,0.3);color:var(--red);font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:28px;opacity:0;animation:fadeUp 0.6s 0.2s forwards;}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero-title{font-family:var(--display);font-size:clamp(56px,9vw,130px);line-height:0.9;letter-spacing:0.03em;margin-bottom:24px;opacity:0;animation:fadeUp 0.8s 0.4s forwards;}
+.hero-title .red{color:var(--red);}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,0.6);max-width:580px;line-height:1.7;margin-bottom:40px;font-weight:400;opacity:0;animation:fadeUp 0.8s 0.6s forwards;}
+.hero-sub strong{color:var(--white);font-weight:600;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s 0.8s forwards;}
+.btn-primary{display:inline-block;background:var(--red);color:var(--white);text-decoration:none;font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.05em;padding:14px 28px;border-radius:8px;transition:all 0.2s;}
+.btn-primary:hover{background:var(--red-bright);transform:translateY(-1px);box-shadow:0 8px 24px rgba(192,0,10,0.35);}
+.btn-secondary{display:inline-block;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.8);text-decoration:none;font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.05em;padding:14px 28px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);transition:all 0.2s;}
+.btn-secondary:hover{background:rgba(255,255,255,0.1);color:var(--white);}
+.hero-stats{display:flex;gap:48px;justify-content:center;margin-top:64px;opacity:0;animation:fadeIn 1s 1s forwards;}
+.stat{text-align:center;}
+.stat-num{font-family:var(--display);font-size:44px;color:var(--white);line-height:1;letter-spacing:0.03em;}
+.stat-num em{color:var(--red);font-style:normal;}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px;}
+.stat-divider{width:1px;background:rgba(255,255,255,0.08);align-self:stretch;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* SECTION BASE */
+.section{padding:80px 48px;}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;}
+.section-label{font-family:var(--cond);font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:0.03em;color:var(--white);}
+.section-link{font-size:13px;color:var(--red);text-decoration:none;font-weight:600;transition:color 0.2s;}
+.section-link:hover{color:var(--red-bright);}
+
+/* WHY US */
+#why{background:var(--navy2);}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.why-card{background:var(--navy3);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:28px;transition:border-color 0.2s;}
+.why-card:hover{border-color:rgba(192,0,10,0.3);}
+.why-icon{font-size:28px;margin-bottom:14px;}
+.why-title{font-family:var(--cond);font-size:18px;font-weight:700;letter-spacing:0.04em;color:var(--white);margin-bottom:8px;}
+.why-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;}
+
+/* SCRIPT CARDS */
+.scripts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+.script-card{background:var(--card);border-radius:12px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;}
+.script-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.3);}
+.script-thumb{width:100%;height:160px;background:linear-gradient(135deg,var(--navy3),var(--navy4));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.script-thumb-label{font-family:var(--display);font-size:32px;color:rgba(255,255,255,0.15);letter-spacing:0.05em;}
+.script-thumb-badge{position:absolute;top:12px;left:12px;background:var(--red);color:white;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px;}
+.script-thumb-free{background:#16a34a;}
+.script-body{padding:18px 20px 20px;}
+.script-name{font-family:var(--cond);font-size:18px;font-weight:700;color:var(--text);letter-spacing:0.03em;margin-bottom:6px;}
+.script-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px;}
+.script-footer{display:flex;align-items:center;justify-content:space-between;}
+.script-price{font-family:var(--cond);font-size:22px;font-weight:700;color:var(--text);}
+.script-price.free{color:#16a34a;}
+.script-btn{font-size:12px;font-weight:600;color:var(--red);text-decoration:none;border:1px solid var(--red);padding:6px 14px;border-radius:6px;transition:all 0.2s;}
+.script-btn:hover{background:var(--red);color:white;}
+.script-btn.free-btn{color:#16a34a;border-color:#16a34a;}
+.script-btn.free-btn:hover{background:#16a34a;color:white;}
+.script-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+.stag{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:#f1f5f9;color:#64748b;}
+
+/* PACKAGES */
+#packages{background:var(--navy2);}
+.pkg-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.pkg-card{background:var(--card);border-radius:16px;padding:40px;position:relative;overflow:hidden;}
+.pkg-card.featured::before{content:'MOST POPULAR';position:absolute;top:20px;right:-28px;background:var(--red);color:white;font-size:10px;font-weight:700;letter-spacing:0.12em;padding:6px 40px;transform:rotate(45deg);}
+.pkg-type{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
+.pkg-type.gold{color:#b45309;}
+.pkg-name{font-family:var(--cond);font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--text);letter-spacing:0.03em;line-height:1.1;margin-bottom:8px;}
+.pkg-price-row{display:flex;align-items:baseline;gap:4px;margin-bottom:20px;}
+.pkg-price{font-family:var(--display);font-size:56px;color:var(--text);line-height:1;letter-spacing:0.02em;}
+.pkg-price-cents{font-size:20px;color:var(--text2);}
+.pkg-divider{height:1px;background:var(--card-border);margin:20px 0;}
+.pkg-desc{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:24px;}
+.pkg-desc strong{color:var(--text);font-weight:600;}
+.pkg-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;}
+.pkg-feat{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text2);}
+.pkg-feat::before{content:'';width:16px;height:16px;background:var(--red);border-radius:50%;flex-shrink:0;margin-top:2px;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23c0000a'/%3E%3Cpath d='M4.5 8L7 10.5L11.5 6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");}
+.pkg-feat strong{color:var(--text);font-weight:600;}
+.pkg-cta{display:block;background:var(--red);color:white;text-decoration:none;font-family:var(--body);font-size:14px;font-weight:600;text-align:center;padding:15px;border-radius:8px;transition:all 0.2s;margin-bottom:12px;}
+.pkg-cta:hover{background:var(--red-bright);box-shadow:0 8px 24px rgba(192,0,10,0.3);}
+.pkg-tos-toggle{font-size:11px;color:var(--text3);text-align:center;cursor:pointer;text-decoration:underline;}
+.pkg-tos-toggle:hover{color:var(--text2);}
+.pkg-tos{display:none;margin-top:16px;padding:16px;background:#f8fafc;border-radius:8px;border-left:3px solid var(--red);}
+.pkg-tos.open{display:block;}
+.pkg-tos p{font-size:11px;color:var(--text3);line-height:1.8;margin-bottom:4px;}
+.pkg-tos p:last-child{margin:0;}
+.pkg-tos strong{color:var(--text2);font-weight:600;}
+
+/* RECENTLY UPDATED */
+#updated{background:var(--navy);}
+.updated-list{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.04);border-radius:12px;overflow:hidden;}
+.updated-item{background:var(--navy2);display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;padding:20px 28px;text-decoration:none;color:inherit;transition:background 0.2s;}
+.updated-item:hover{background:var(--navy3);}
+.updated-left{display:flex;flex-direction:column;gap:4px;}
+.updated-name{font-family:var(--cond);font-size:18px;font-weight:700;color:var(--white);letter-spacing:0.03em;}
+.updated-desc{font-size:13px;color:rgba(255,255,255,0.45);}
+.updated-right{display:flex;align-items:center;gap:16px;}
+.updated-version{font-size:11px;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.3);}
+.updated-badge{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px;}
+.updated-badge.free{background:rgba(22,163,74,0.15);color:#4ade80;}
+.updated-badge.new{background:rgba(192,0,10,0.15);color:#f87171;}
+.updated-arrow{color:rgba(255,255,255,0.2);font-size:18px;}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);padding:40px 48px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:rgba(255,255,255,0.8);}
+.footer-note{font-size:12px;color:rgba(255,255,255,0.25);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  nav ul{display:none;}
+  .section{padding:60px 20px;}
+  #hero{padding:100px 20px 60px;}
+  .hero-stats{gap:28px;}
+  .stat-divider{display:none;}
+  .pkg-grid{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;gap:16px;text-align:center;}
+  .footer-links{flex-wrap:wrap;justify-content:center;}
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="wordmark">REALITY<span>SUCKS</span>RP</a>
+  <a href="#hero" class="wordmark">REALITY<em>SUCKS</em>RP</a>
   <ul>
     <li><a href="#scripts">Scripts</a></li>
-    <li><a href="#free">Free</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#discord" class="nav-cta">Discord</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="https://discord.gg/qmtUpxqJjj" class="nav-discord" target="_blank">Discord</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-  <div class="hero-scanline"></div>
-
-  <div class="hero-tag">// FiveM QBCore Resources</div>
-
-  <h1 class="hero-title">
-    NO PAY-<br>
-    TO-WIN.<br>
-    <span class="accent">just quality.</span>
-  </h1>
-
-  <p class="hero-sub">
-    Scripts built by a server owner who was <strong>tired of the bullshit</strong>.
-    Premium resources that don't bleed your players dry —
-    and community releases because the scene deserves better.
-  </p>
-
-  <div class="hero-actions">
-    <a href="#scripts" class="btn-primary">Browse Scripts</a>
-    <a href="#free" class="btn-ghost">Free Releases →</a>
-  </div>
-
-  <div class="hero-stat-bar">
-    <div>
-      <div class="stat-num">321+</div>
-      <div class="stat-label">Resources Tested</div>
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;">
+    <div class="hero-badge">QBCore Native -- Free & Premium Scripts</div>
+    <h1 class="hero-title">REALITY<br><span class="red">SUCKS</span> RP</h1>
+    <p class="hero-sub">
+      Not a dev shop. Not a studio. <strong>A player</strong> who spent months tearing apart over <strong>321 scripts</strong>, fixing what was broken, and building something worth playing on. Now those same scripts are yours.
+    </p>
+    <div class="hero-btns">
+      <a href="#scripts" class="btn-primary">Browse Scripts</a>
+      <a href="#packages" class="btn-secondary">Get a Package</a>
     </div>
-    <div>
-      <div class="stat-num">100%</div>
-      <div class="stat-label">QBCore Native</div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">321<em>+</em></div><div class="stat-label">Scripts Tested</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">100<em>%</em></div><div class="stat-label">QBCore Native</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><div class="stat-num">$0</div><div class="stat-label">Pay to Win</div></div>
     </div>
   </div>
 </section>
 
-<!-- PAID SCRIPTS -->
-<section id="scripts">
-  <div class="section-label reveal">// 01 — Premium</div>
-  <h2 class="section-title reveal">Scripts <br>for Sale</h2>
+<!-- WHY -->
+<section id="why" class="section">
+  <div class="section-header reveal">
+    <div class="section-label">Why Reality Sucks RP?</div>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <div class="why-icon">🔥</div>
+      <div class="why-title">Battle-Tested</div>
+      <div class="why-desc">Every script runs on a live QBCore server before it ships. No mystery errors, no blind wait timers, no broken dependencies.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🚫</div>
+      <div class="why-title">Zero Pay-to-Win</div>
+      <div class="why-desc">Built by someone who was tired of servers treating players like a revenue stream. No cash shops. No shortcuts. Ever.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🛠️</div>
+      <div class="why-title">Dev Friendly</div>
+      <div class="why-desc">Clean code, real documentation, and config files that actually explain what each setting does. Built for devs who want to understand what they're running.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎁</div>
+      <div class="why-title">Gives Back</div>
+      <div class="why-desc">Free scripts released without strings. Every paid package funds more free community releases. The scene gave first -- so do we.</div>
+    </div>
+  </div>
+</section>
 
+<!-- FEATURED SCRIPTS -->
+<section id="scripts" class="section" style="background:var(--navy);">
+  <div class="section-header reveal">
+    <div class="section-label">Featured Scripts</div>
+    <a href="https://github.com/RealitySucksRP" class="section-link" target="_blank">See all on GitHub</a>
+  </div>
   <div class="scripts-grid reveal">
 
     <div class="script-card">
-      <div class="card-badge">QBCore</div>
-      <div class="card-name">NPC Street Racer</div>
-      <p class="card-desc">Fully scripted NPC racers with preset vehicle classes, race zones, death detection, and high-beam activation. No canned sequences — actual reactive logic.</p>
-      <div class="card-tags">
-        <span class="tag">Lua</span>
-        <span class="tag">Client</span>
-        <span class="tag">NPC AI</span>
-        <span class="tag">Racing</span>
+      <div class="script-thumb">
+        <div class="script-thumb-label">HUD</div>
+        <div class="script-thumb-badge script-thumb-free">FREE</div>
       </div>
-      <div class="card-footer">
-        <div class="card-price">$14<span class="cents">.99</span></div>
-        <a href="#" class="card-btn">Get It →</a>
-      </div>
-    </div>
-
-    <div class="script-card">
-      <div class="card-badge">QBCore</div>
-      <div class="card-name">Advanced Seatbelt</div>
-      <p class="card-desc">Realistic ejection thresholds at genuine high speeds. Removes QBCore's conflicting default — no double-trigger, clean integration with smallresources.</p>
-      <div class="card-tags">
-        <span class="tag">Lua</span>
-        <span class="tag">Client</span>
-        <span class="tag">Vehicle</span>
-        <span class="tag">Safety</span>
-      </div>
-      <div class="card-footer">
-        <div class="card-price">$7<span class="cents">.99</span></div>
-        <a href="#" class="card-btn">Get It →</a>
+      <div class="script-body">
+        <div class="script-tags"><span class="stag">QBCore</span><span class="stag">NUI</span><span class="stag">Security</span></div>
+        <div class="script-name">RealitySucks-HUD</div>
+        <div class="script-desc">Player ID, cash, bank and job HUD with a built-in security engine. Discord logging, 3-strike watchdog, event rate limiter.</div>
+        <div class="script-footer">
+          <div class="script-price free">Free</div>
+          <a href="https://github.com/RealitySucksRP/RealitySucks-HUD" class="script-btn free-btn" target="_blank">GitHub</a>
+        </div>
       </div>
     </div>
 
     <div class="script-card">
-      <div class="card-badge">QBCore</div>
-      <div class="card-name">AI Ped Life Sim</div>
-      <p class="card-desc">Autonomous peds with unique personality profiles, survival drives, forward-thinking decision engines, and dynamic moral systems. Phase 1 framework included.</p>
-      <div class="card-tags">
-        <span class="tag">Lua</span>
-        <span class="tag">Server</span>
-        <span class="tag">AI</span>
-        <span class="tag">Simulation</span>
+      <div class="script-thumb">
+        <div class="script-thumb-label">DRIFT</div>
+        <div class="script-thumb-badge script-thumb-free">FREE</div>
       </div>
-      <div class="card-footer">
-        <div class="card-price">$24<span class="cents">.99</span></div>
-        <a href="#" class="card-btn">Get It →</a>
+      <div class="script-body">
+        <div class="script-tags"><span class="stag">QBCore</span><span class="stag">Vehicle</span><span class="stag">Item</span></div>
+        <div class="script-name">RealitySucks-TunerChip</div>
+        <div class="script-desc">Universal drift chip with 5 profiles -- Balanced, Takeover, Pursuit, JDM, Muscle. Useable item. Persists across sessions.</div>
+        <div class="script-footer">
+          <div class="script-price free">Free</div>
+          <a href="https://github.com/RealitySucksRP/RealitySucks-TunerChip" class="script-btn free-btn" target="_blank">GitHub</a>
+        </div>
       </div>
     </div>
 
     <div class="script-card">
-      <div class="card-badge">QBCore</div>
-      <div class="card-name">Fuel Unit Patch</div>
-      <p class="card-desc">Converts lc_fuel NUI display from Liters to Gallons across all UI files. Includes conversion logic, gauge recalibration, and a clean config toggle.</p>
-      <div class="card-tags">
-        <span class="tag">Lua</span>
-        <span class="tag">NUI</span>
-        <span class="tag">QOL</span>
-        <span class="tag">lc_fuel</span>
+      <div class="script-thumb">
+        <div class="script-thumb-label">PROGRESS</div>
+        <div class="script-thumb-badge script-thumb-free">FREE</div>
       </div>
-      <div class="card-footer">
-        <div class="card-price">$4<span class="cents">.99</span></div>
-        <a href="#" class="card-btn">Get It →</a>
+      <div class="script-body">
+        <div class="script-tags"><span class="stag">QBCore</span><span class="stag">NUI</span><span class="stag">ox_lib</span></div>
+        <div class="script-name">rsgta-progressbar</div>
+        <div class="script-desc">Dual style GTA V progress bar. Stock look or fully branded with your logo and colors. Drop-in replacement for progressbar and esx_progressbar.</div>
+        <div class="script-footer">
+          <div class="script-price free">Free</div>
+          <a href="https://github.com/RealitySucksRP/rsgta-progressbar" class="script-btn free-btn" target="_blank">GitHub</a>
+        </div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- FREE RELEASES -->
-<section id="free">
-  <div class="section-label reveal">// 02 — Community</div>
-  <h2 class="section-title reveal">Free<br>Releases</h2>
-
-  <div class="free-list reveal">
-
-    <a href="#" class="free-item">
-      <div class="free-item-left">
-        <div class="free-name">NUI Load Guard</div>
-        <div class="free-desc">Replaces blind Citizen.Wait timers in es_weaponshop & es_customs with proper citizenid player-loaded guards. Stops NUI flashing on load screens.</div>
-        <div class="card-tags" style="margin:0;">
-          <span class="tag">NUI</span><span class="tag">QBCore</span><span class="tag">Bug Fix</span>
-        </div>
+<!-- RECENTLY UPDATED -->
+<section id="updated" class="section">
+  <div class="section-header reveal">
+    <div class="section-label">Recently Updated</div>
+  </div>
+  <div class="updated-list reveal">
+    <a href="https://github.com/RealitySucksRP/RealitySucks-TunerChip" class="updated-item" target="_blank">
+      <div class="updated-left">
+        <div class="updated-name">RealitySucks-TunerChip</div>
+        <div class="updated-desc">5 drift profiles, useable item, persistent metadata state</div>
       </div>
-      <div class="free-download">GitHub</div>
-    </a>
-
-    <a href="#" class="free-item">
-      <div class="free-item-left">
-        <div class="free-name">MariaDB Stash Fix</div>
-        <div class="free-desc">Corrects the #1064 syntax error on unique_stashes. Adds require_code, job columns, and modifies the code column — drop-in SQL patch.</div>
-        <div class="card-tags" style="margin:0;">
-          <span class="tag">SQL</span><span class="tag">MariaDB</span><span class="tag">Patch</span>
-        </div>
+      <div class="updated-right">
+        <div class="updated-version">v2.0.0</div>
+        <div class="updated-badge free">Free</div>
+        <div class="updated-arrow">›</div>
       </div>
-      <div class="free-download">GitHub</div>
     </a>
-
-    <a href="#" class="free-item">
-      <div class="free-item-left">
-        <div class="free-name">Streetracer Zone Pack</div>
-        <div class="free-desc">Del Perro Strip and LSIA Freight Loop race zones for npc_streetracer. Includes vector coords, NPC spawn points, and config entries.</div>
-        <div class="card-tags" style="margin:0;">
-          <span class="tag">Lua</span><span class="tag">Config</span><span class="tag">Racing</span>
-        </div>
+    <a href="https://github.com/RealitySucksRP/RealitySucks-HUD" class="updated-item" target="_blank">
+      <div class="updated-left">
+        <div class="updated-name">RealitySucks-HUD</div>
+        <div class="updated-desc">NUI HUD + security engine with Discord webhook logging</div>
       </div>
-      <div class="free-download">GitHub</div>
+      <div class="updated-right">
+        <div class="updated-version">v1.0.0</div>
+        <div class="updated-badge free">Free</div>
+        <div class="updated-arrow">›</div>
+      </div>
     </a>
-
+    <a href="https://github.com/RealitySucksRP/rsgta-progressbar" class="updated-item" target="_blank">
+      <div class="updated-left">
+        <div class="updated-name">rsgta-progressbar</div>
+        <div class="updated-desc">Dual style progress bar -- stock GTA or branded with your server logo</div>
+      </div>
+      <div class="updated-right">
+        <div class="updated-version">v3.0.0</div>
+        <div class="updated-badge new">New</div>
+        <div class="updated-arrow">›</div>
+      </div>
+    </a>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-quote reveal">
-    "Built by someone who plays the damn game."
+<!-- PACKAGES -->
+<section id="packages" class="section" style="background:var(--navy2);">
+  <div class="section-header reveal">
+    <div class="section-label">Server Packages</div>
   </div>
-  <div class="about-body reveal">
-    <p>
-      <strong>Reality Sucks RP</strong> is a QBCore FiveM server built from the ground up with one goal — a server that doesn't treat its players like a revenue stream.
-    </p>
-    <p>
-      After tuning over 321 resources, fixing broken scripts, and reverse-engineering half the FiveM ecosystem, the logical next step was to start making and releasing our own.
-    </p>
-    <p>
-      Everything sold here is <strong>actually tested on a live server</strong>. Everything free is given back because the community gave first.
-    </p>
+  <div class="pkg-grid reveal">
 
-    <div class="about-values">
-      <div class="value-row"><div class="value-dot"></div>No pay-to-win mechanics. Ever.</div>
-      <div class="value-row"><div class="value-dot"></div>QBCore-native, not ported garbage.</div>
-      <div class="value-row"><div class="value-dot"></div>Free scripts released without strings.</div>
-      <div class="value-row"><div class="value-dot"></div>Built for server owners, not shareholders.</div>
+    <div class="pkg-card">
+      <div class="pkg-type">For Developers</div>
+      <div class="pkg-name">DEV SPECIAL<br>QBCORE SHELL</div>
+      <div class="pkg-price-row">
+        <div class="pkg-price">$350</div>
+        <div class="pkg-price-cents">.00</div>
+      </div>
+      <div class="pkg-divider"></div>
+      <p class="pkg-desc">You know what you want to build. You just don't want to spend the first three months untangling someone else's broken scripts. <strong>This is your shortcut.</strong> A clean, conflict-free QBCore shell with 321+ resources already tested, patched, and ready to customize -- from day one.</p>
+      <div class="pkg-feats">
+        <div class="pkg-feat"><strong>321+ scripts</strong> tested on a live QBCore server</div>
+        <div class="pkg-feat"><strong>Conflict-free</strong> -- duplicates removed, load order sorted</div>
+        <div class="pkg-feat"><strong>Bug fixes included</strong> -- broken resources patched</div>
+        <div class="pkg-feat"><strong>Full CFX access</strong> -- scripts granted to your account</div>
+        <div class="pkg-feat">Community funded -- every purchase sends free scripts back</div>
+      </div>
+      <a href="https://discord.gg/qmtUpxqJjj" class="pkg-cta" target="_blank">Open a Ticket to Purchase</a>
+      <div class="pkg-tos-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Terms of Sale</div>
+      <div class="pkg-tos">
+        <p><strong>All sales are final.</strong> No refunds on digital goods.</p>
+        <p>You are purchasing 321+ pre-configured QBCore resources delivered via CFX account grant within 24-48 hours of confirmed payment.</p>
+        <p>A valid CFX.re account is required. Scripts may not be resold or redistributed.</p>
+        <p>30 days Discord support included for setup questions only.</p>
+        <p><strong>How to purchase:</strong> Click the button above to join our Discord. Open a ticket in #open-a-ticket. Provide your CFX.re username and PayPal email. We will send a PayPal invoice within a few hours. Delivery begins after payment is confirmed.</p>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- DISCORD -->
-<section id="discord">
-  <div class="discord-inner">
-    <div class="section-label" style="margin-bottom:20px;">// 03 — Community</div>
-    <h2 class="discord-title reveal">JOIN THE<br>SERVER</h2>
-    <p class="discord-sub reveal">Script support, release announcements, dev talk, and a community that actually knows FiveM. No gatekeeping.</p>
-    <a href="https://discord.gg/YOUR_INVITE" class="discord-btn reveal" target="_blank">
-      <svg class="discord-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.031.056a19.9 19.9 0 0 0 5.993 3.031.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-      </svg>
-      Join Discord
-    </a>
+    <div class="pkg-card featured">
+      <div class="pkg-type gold">For Server Owners</div>
+      <div class="pkg-name">SERVER OWNER<br>SPECIAL</div>
+      <div class="pkg-price-row">
+        <div class="pkg-price">$500</div>
+        <div class="pkg-price-cents">.00</div>
+      </div>
+      <div class="pkg-divider"></div>
+      <p class="pkg-desc"><strong>You're not getting a template.</strong> You're getting the same foundation that powers a real running server -- built over months of late nights. Street racing. Gang territory. Drug economy. Custom jobs. Custom HUD. Every conflict resolved. Every broken script fixed. <strong>Skip the months of pain. Open the doors faster.</strong></p>
+      <div class="pkg-feats">
+        <div class="pkg-feat"><strong>Fully ready server</strong> -- street racing, gangs, economy, jobs</div>
+        <div class="pkg-feat"><strong>Custom HUD and UI</strong> -- built in-house</div>
+        <div class="pkg-feat"><strong>No pay-to-win</strong> -- not now, not ever</div>
+        <div class="pkg-feat"><strong>Full CFX access</strong> -- scripts granted to your account</div>
+        <div class="pkg-feat">Community funded -- every purchase sends free scripts back</div>
+      </div>
+      <a href="https://discord.gg/qmtUpxqJjj" class="pkg-cta" target="_blank">Open a Ticket to Purchase</a>
+      <div class="pkg-tos-toggle" onclick="this.nextElementSibling.classList.toggle('open')">Terms of Sale</div>
+      <div class="pkg-tos">
+        <p><strong>All sales are final.</strong> No refunds on digital goods or services.</p>
+        <p>You are purchasing a fully configured QBCore FiveM server package. Delivery includes server files and CFX script grants within 24-48 hours of confirmed payment.</p>
+        <p>A valid CFX.re account and active FiveM server host required. ZAP-Hosting recommended. Server files may not be resold or redistributed.</p>
+        <p>30 days Discord support included for setup questions only. Custom development not included.</p>
+        <p><strong>How to purchase:</strong> Click the button above to join our Discord. Open a ticket in #open-a-ticket. Provide your CFX.re username, server host details, and PayPal email. We will send a PayPal invoice within a few hours. Delivery begins after payment is confirmed.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <a href="#hero" class="wordmark">REALITY<span>SUCKS</span>RP</a>
-  <div class="footer-note">© 2025 Reality Sucks RP — All scripts tested on live QBCore servers.</div>
+  <div class="footer-inner">
+    <a href="#hero" class="wordmark" style="font-size:18px;">REALITY<em>SUCKS</em>RP</a>
+    <div class="footer-links">
+      <a href="https://github.com/RealitySucksRP" target="_blank">GitHub</a>
+      <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a>
+      <a href="#packages">Packages</a>
+      <a href="#scripts">Scripts</a>
+    </div>
+    <div class="footer-note">© 2026 Reality Sucks RP -- All scripts tested on live QBCore servers. No pay-to-win. Ever.</div>
+  </div>
 </footer>
 
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.06});
+reveals.forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>
