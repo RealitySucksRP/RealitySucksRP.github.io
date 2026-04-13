@@ -1,122 +1,117 @@
 🚀 RealitySucksRP FiveM Server Packages
 
-Welcome to RealitySucksRP — a collection of fully built FiveM server packages designed for both new owners and experienced developers.
+Welcome to RealitySucksRP — where we took all the headache outta building a FiveM server and turned it into something you can actually run without losing your mind.
 
 🌐 Website: https://realitysucksrp.github.io/
 
-🧠 About This Project
+🧠 What This Is
 
-This project represents months of development, testing, rebuilding, and refinement — with countless hours spent designing a system that is:
+Real talk… most FiveM servers out here?
 
-Easy for beginners to run
-Flexible for developers to expand
-Stable under real server load
-Structured like a professional production server
+They messy. Broken. Random files everywhere. Nothing makes sense.
 
-Every file, resource order, and configuration has been built with one goal:
+This ain’t that.
 
-Make starting a FiveM server actually simple.
+This is a clean, structured, fully built server setup that actually works how it’s supposed to.
 
-⚙️ Two Ways to Use This
-🟢 Plug & Play (Server Owners)
+And yeah… this didn’t come overnight.
 
-Perfect if you just want to:
+This took months of grinding, testing, breaking stuff, fixing it, and doing it again till it was right.
 
-Start a server quickly
-Avoid complex setup
-Get a fully working QB-Core foundation
-Focus on roleplay, not configuration
+⚙️ How You Can Use It
+🟢 Just Wanna Run a Server? (Plug & Play)
 
-Just:
+If you tryna just get your server up and running without all the tech stress:
 
-Insert your license key
+Drop in your license key
 Add your database password
 Start the server
 
-Done.
+That’s it.
 
-🛠️ Developer Shell (Advanced Users)
+No extra nonsense.
 
-Perfect if you want full control:
+🛠️ You a Builder? (Dev Mode)
 
-Modify core systems
-Add or remove resources
-Rebuild gameplay loops
-Customize economy, jobs, UI, and mechanics
+If you the type that likes to tweak everything:
 
-This setup is structured like a clean development base, not a messy leaked pack.
+Change systems
+Add scripts
+Build your own economy
+Flip the whole server your way
 
-📦 What’s Included
+This gives you a clean base to build off, not some junkyard pack.
 
-Each package is built with a full QB-Core foundation:
+📦 What You Getting
 
-Core framework setup (QB-Core)
-Optimized resource ordering
-Inventory, housing, jobs, phone systems
-Police, EMS, trucking, taxi frameworks
-Banking, shops, and economy systems
-Voice (pma-voice) integration
-UI systems (HUD, menus, targeting)
-Pre-configured database connection
-Clean server.cfg structure
-🧩 Philosophy Behind This Project
+You basically getting a full setup:
 
-Most FiveM server setups online are:
+QB-Core foundation (the heart of everything)
+Jobs (police, EMS, trucking, taxi, etc.)
+Inventory + weapons system
+Housing + apartments
+Banking + shops + economy
+Phone system
+Voice chat (pma-voice)
+UI stuff (menus, HUD, targeting)
+Clean server.cfg that actually makes sense
 
-messy
-outdated
-poorly ordered
-hard for beginners
-missing dependencies
+Everything lined up how it’s supposed to be.
 
-This project was built to fix that.
+🧩 Why This Different
 
-Everything here follows a strict structure:
+Most packs out there got you like:
+
+“why this not working?”
+“why my server crashing?”
+“where this even go??”
+
+This setup follows a real structure:
 
 Core → Systems → Jobs → Economy → Extras
 
-This ensures:
+So everything loads right, runs smooth, and doesn’t bug out for no reason.
 
-faster startup times
-fewer errors
-easier debugging
-predictable behavior
-⏱️ Development Effort
+⏱️ The Work Behind This
 
-This project is the result of:
+No shortcuts taken.
 
-Months of continuous development
-Constant testing and rebuild cycles
-Real server simulation and debugging
-Optimization for both performance and usability
+This came from:
 
-It was not rushed — it was engineered.
+Months of building
+Testing over and over
+Fixing random issues
+Making it beginner-friendly without dumbing it down
 
-🎯 Who This Is For
-New FiveM server owners
-Roleplay community founders
-Developers wanting a clean base
-Tebex server sellers
-People tired of broken leaked packs
-⚠️ Important Note
+This ain’t no quick flip project.
 
-This is not a “drag and forget” leak pack.
+🎯 Who This For
+People tryna start their first server
+Anyone tired of broken packs
+Devs who want a clean base
+Server owners who wanna move serious
+⚠️ Real Talk
 
-It is a structured server foundation.
+This ain’t some “click once and you a dev now” type thing.
 
-You still have freedom to:
+You still gotta learn.
 
-Customize everything
-Add your own scripts
-Build your own identity
-🌐 Learn More / Purchase / Browse
+But this setup?
+
+It makes that learning way easier and way less stressful.
+
+🌐 Tap In
 
 👉 https://realitysucksrp.github.io/
 
-💬 Final Message
+💬 Final Word
 
-If you’re new to FiveM development — don’t worry.
+If you new… yeah it might feel confusing at first.
 
-Every expert started with a confusing server.cfg.
+That’s normal.
 
-This project exists to shorten that learning curve and give you a real foundation instead of chaos.
+But once it clicks?
+
+You gon realize how powerful this setup really is.
+PS:
+100% lore friendly. No guessing if your gonna get banned. Nah homie not with this. Everything here is build from the ground up. All the resources that are paid for, you will be the owner also. I will make sure you get all the rights to all the scripts. No brand names, no brand cars and no sneakers that can get you banned. You can add all that yourself when you purchase the server. Once is in your hands is yours to manipulate however you want it. My scripts are all free or paid for and you will have them too because when you purchase your package I will use that money towards your scripts. Is not a transfer is a bought and paid for scripts that will be yours inside CFX portal granted assets. You need that for updates dont be fooled by others selling servers. I will do it right. Make sure you have a fivem and cfx account. Please send me a message in discord for any questions. 
