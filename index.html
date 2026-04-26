@@ -3,383 +3,626 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reality Sucks RP -- QBCore Servers & Scripts</title>
+  <title>Reality Sucks RP -- Own Your Server</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:      #08080f;
-      --surface: #0f0f1a;
-      --border:  #1c1c2e;
+      --black:   #060608;
+      --dark:    #0c0c12;
+      --surface: #111118;
+      --border:  #1e1e2c;
       --accent:  #00f8b9;
-      --text:    #e2e2e8;
+      --gold:    #c9a84c;
+      --red:     #cc2200;
+      --text:    #e8e8f0;
       --muted:   #5a5a72;
-      --card:    #10101c;
+      --dim:     #2a2a3a;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-    /* NAV */
+    /* ============ NAV ============ */
     nav {
-      position: sticky; top: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 7vw; height: 58px;
-      background: rgba(8,8,15,0.97);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
+      padding: 0 6vw; height: 64px;
+      background: linear-gradient(180deg, rgba(6,6,8,0.98) 0%, rgba(6,6,8,0) 100%);
+      backdrop-filter: blur(2px);
     }
-    .nav-logo { font-size: 0.8rem; font-weight: 800; letter-spacing: 4px; color: var(--accent); text-decoration: none; text-transform: uppercase; }
-    .nav-logo em { color: var(--text); font-style: normal; }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; font-weight: 800; letter-spacing: 6px;
+      color: var(--accent); text-decoration: none; text-transform: uppercase;
+    }
+    .nav-logo em { color: rgba(255,255,255,0.3); font-style: normal; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.45); text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase;
+      font-weight: 600; transition: color 0.2s;
+    }
     .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 8px 20px; border: 1px solid var(--accent); color: var(--accent);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); color: #000; }
 
-    /* HERO */
+    /* ============ HERO ============ */
     #hero {
-      min-height: 88vh;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      text-align: center; padding: 80px 7vw;
-      background:
-        radial-gradient(ellipse at 15% 60%, rgba(0,248,185,0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 85% 30%, rgba(124,58,237,0.06) 0%, transparent 50%);
-    }
-    .eyebrow {
-      font-size: 0.68rem; letter-spacing: 5px; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 22px; opacity: 0.8;
-    }
-    h1 { font-size: clamp(2.6rem, 5.5vw, 4.8rem); font-weight: 900; line-height: 1.08; letter-spacing: -2px; margin-bottom: 24px; }
-    h1 em { color: var(--accent); font-style: normal; }
-    .hero-lead {
-      max-width: 560px; color: var(--muted); font-size: 1.05rem; line-height: 1.75;
-      margin-bottom: 42px;
-    }
-    .hero-lead strong { color: var(--text); font-weight: 500; }
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-    .btn {
-      display: inline-block; padding: 13px 30px;
-      font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-      text-decoration: none; border-radius: 3px; transition: all 0.18s;
-    }
-    .btn-fill { background: var(--accent); color: #000; }
-    .btn-fill:hover { background: #00d9a2; }
-    .btn-line { border: 1px solid #2a2a40; color: var(--muted); }
-    .btn-line:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* STATS BAR */
-    .stats-bar {
-      margin-top: 72px;
-      display: flex; gap: 70px; flex-wrap: wrap; justify-content: center;
-      border-top: 1px solid var(--border); padding-top: 48px; width: 100%; max-width: 700px;
-    }
-    .stat { text-align: center; }
-    .stat-n { font-size: 2.6rem; font-weight: 900; color: var(--accent); letter-spacing: -1px; line-height: 1; }
-    .stat-l { font-size: 0.65rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
-
-    /* SECTION */
-    section { padding: 90px 7vw; }
-    .sec-label { font-size: 0.66rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; opacity: 0.85; }
-    .sec-title { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; margin-bottom: 14px; letter-spacing: -0.5px; }
-    .sec-sub { color: var(--muted); max-width: 540px; line-height: 1.75; margin-bottom: 56px; font-size: 0.95rem; }
-
-    /* WHY GRID */
-    #why { background: var(--surface); }
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .why-cell { background: var(--surface); padding: 36px 28px; }
-    .why-icon { font-size: 1.6rem; margin-bottom: 16px; }
-    .why-cell h3 { font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; color: var(--text); }
-    .why-cell p { color: var(--muted); font-size: 0.88rem; line-height: 1.65; }
-
-    /* PACKAGES */
-    #packages { background: var(--bg); }
-    .pkg-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border);
-    }
-    .pkg {
-      background: var(--card);
-      padding: 36px 30px;
+      position: relative; min-height: 100vh;
       display: flex; flex-direction: column;
-      position: relative;
+      justify-content: flex-end; padding: 0 6vw 10vh;
+      overflow: hidden;
     }
-    .pkg-zombie { background: linear-gradient(170deg, #0f0f1c 0%, #160606 100%); }
-    .pkg-badge {
-      display: inline-block; margin-bottom: 20px;
-      font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-      padding: 4px 10px; border-radius: 2px;
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80');
+      background-size: cover; background-position: center 40%;
+      filter: brightness(0.35) saturate(0.6);
     }
-    .badge-dev   { background: rgba(124,58,237,0.15); color: #a78bfa; }
-    .badge-z     { background: rgba(139,0,0,0.2); color: #ff7070; border: 1px solid rgba(139,0,0,0.35); }
-    .badge-owner { background: rgba(0,248,185,0.08); color: var(--accent); }
-    .pkg-sub { font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-    .pkg h2 { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px; }
-    .pkg-zombie h2 { color: #ff8888; }
-    .pkg-price { font-size: 2.6rem; font-weight: 900; letter-spacing: -1px; margin: 20px 0 18px; }
-    .pkg-price sup { font-size: 1rem; vertical-align: super; font-weight: 700; }
-    .pkg-price sub { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
-    .pkg-zombie .pkg-price { color: #ff6a6a; }
-    .pkg-short { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 24px; }
-    .pkg-short strong { color: var(--text); font-weight: 500; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(6,6,8,0.2) 0%,
+        rgba(6,6,8,0.1) 30%,
+        rgba(6,6,8,0.6) 65%,
+        rgba(6,6,8,1) 100%
+      );
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 900px; }
+    .hero-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; letter-spacing: 6px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px; opacity: 0.9;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-tag::before {
+      content: ''; display: inline-block;
+      width: 32px; height: 1px; background: var(--accent);
+    }
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 900; line-height: 0.95;
+      letter-spacing: -1px; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    h1 .accent { color: var(--accent); }
+    h1 .dim { color: rgba(255,255,255,0.2); }
+    .hero-sub {
+      max-width: 520px; color: rgba(255,255,255,0.55);
+      font-size: 1.05rem; line-height: 1.75; margin-bottom: 44px;
+      font-weight: 300;
+    }
+    .hero-sub strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+    .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .btn-primary {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      padding: 15px 36px; background: var(--accent); color: #000;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-primary:hover { background: #00d9a2; }
+    .btn-ghost {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      padding: 15px 36px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.55);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: var(--text); }
+    .hero-stats {
+      position: absolute; right: 6vw; bottom: 10vh; z-index: 2;
+      display: flex; flex-direction: column; gap: 28px; text-align: right;
+    }
+    .hero-stat-n {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.4rem; font-weight: 900; color: var(--accent);
+      line-height: 1; letter-spacing: -1px;
+    }
+    .hero-stat-l {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--muted); margin-top: 4px;
+    }
 
-    /* expand toggle */
-    .pkg-toggle {
-      background: none; border: 1px solid var(--border);
-      color: var(--muted); font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 9px 16px; cursor: pointer; margin-bottom: 22px;
-      transition: all 0.18s; text-align: left; width: fit-content;
+    /* ============ TRUST BAR ============ */
+    .trust-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 6vw;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px; background: var(--border);
     }
-    .pkg-toggle:hover { border-color: var(--accent); color: var(--accent); }
-    .pkg-zombie .pkg-toggle:hover { border-color: #ff6a6a; color: #ff6a6a; }
-    .pkg-details { display: none; margin-bottom: 24px; }
-    .pkg-details.open { display: block; }
-    .pkg-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-    .pkg-features li { font-size: 0.84rem; color: var(--muted); display: flex; gap: 10px; align-items: flex-start; }
+    .trust-item {
+      background: var(--surface);
+      padding: 28px 32px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .trust-icon {
+      font-size: 1.4rem; flex-shrink: 0; margin-top: 3px;
+    }
+    .trust-item h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--text); margin-bottom: 5px; font-weight: 700;
+    }
+    .trust-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+    /* ============ PACKAGES ============ */
+    #packages { padding: 100px 6vw; background: var(--black); }
+    .pkg-header { margin-bottom: 64px; }
+    .section-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px; opacity: 0.85;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px;
+      margin-bottom: 16px; line-height: 1;
+    }
+    .section-sub { color: var(--muted); font-size: 0.95rem; max-width: 500px; line-height: 1.7; }
+
+    /* delivery notice */
+    .delivery-notice {
+      background: rgba(0,248,185,0.03);
+      border-left: 2px solid var(--accent);
+      padding: 20px 24px; margin-bottom: 64px;
+      max-width: 860px;
+    }
+    .delivery-notice p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.75; }
+    .delivery-notice strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+    .delivery-notice a { color: var(--accent); text-decoration: none; }
+
+    /* cards */
+    .pkg-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2px; background: var(--border); }
+    .pkg-card { background: var(--dark); display: flex; flex-direction: column; }
+    .pkg-img {
+      width: 100%; height: 220px;
+      object-fit: cover; display: block;
+      filter: brightness(0.6) saturate(0.7);
+      transition: filter 0.4s ease;
+    }
+    .pkg-card:hover .pkg-img { filter: brightness(0.75) saturate(0.85); }
+    .pkg-img-wrap { position: relative; overflow: hidden; }
+    .pkg-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 30%, var(--dark) 100%);
+    }
+    .pkg-img-badge {
+      position: absolute; top: 16px; left: 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+      padding: 5px 12px;
+    }
+    .badge-dev   { background: rgba(124,58,237,0.85); color: #fff; }
+    .badge-z     { background: rgba(139,0,0,0.9); color: #ffaaaa; border: 1px solid rgba(200,0,0,0.5); }
+    .badge-owner { background: rgba(0,248,185,0.15); color: var(--accent); border: 1px solid rgba(0,248,185,0.3); }
+    .pkg-img-price {
+      position: absolute; bottom: 20px; right: 20px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem; font-weight: 900; color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+    }
+    .pkg-img-price sup { font-size: 1rem; vertical-align: super; }
+
+    .pkg-body { padding: 28px 28px 0; flex: 1; }
+    .pkg-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 6px;
+    }
+    .pkg-card h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.8rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 14px; line-height: 1;
+    }
+    .pkg-card-dev   h2 { color: #c4b5fd; }
+    .pkg-card-z     h2 { color: #ff8888; }
+    .pkg-card-owner h2 { color: var(--accent); }
+    .pkg-desc {
+      font-size: 0.88rem; color: rgba(255,255,255,0.45);
+      line-height: 1.7; margin-bottom: 22px;
+    }
+    .pkg-desc strong { color: rgba(255,255,255,0.75); font-weight: 500; }
+
+    /* expand */
+    .pkg-expand-btn {
+      background: none; border: none; border-top: 1px solid var(--border);
+      width: 100%; padding: 14px 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; color: var(--muted); transition: color 0.18s;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
+    }
+    .pkg-expand-btn:hover { color: var(--text); }
+    .pkg-expand-btn .chevron { transition: transform 0.25s; font-size: 1rem; }
+    .pkg-expand-btn.open .chevron { transform: rotate(180deg); }
+    .pkg-expand-content { display: none; padding: 0 28px 24px; }
+    .pkg-expand-content.open { display: block; }
+    .pkg-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 20px; }
+    .pkg-features li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
     .pkg-features li::before {
-      content: ''; width: 5px; height: 5px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0; margin-top: 8px;
+      content: ''; width: 4px; height: 4px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 9px;
     }
-    .pkg-zombie .pkg-features li::before { background: #8b0000; }
-    .pkg-features li strong { color: var(--text); font-weight: 500; }
-    .pkg-terms-block { border-top: 1px solid var(--border); padding-top: 18px; }
-    .pkg-terms-block h4 { font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-    .pkg-terms-block p { font-size: 0.78rem; color: var(--muted); line-height: 1.65; margin-bottom: 7px; }
-    .pkg-terms-block strong { color: var(--text); }
-    .pkg-terms-block a { color: var(--accent); text-decoration: none; }
-    .pkg-terms-block a:hover { text-decoration: underline; }
+    .pkg-card-dev   .pkg-features li::before { background: #a78bfa; }
+    .pkg-card-z     .pkg-features li::before { background: var(--red); }
+    .pkg-card-owner .pkg-features li::before { background: var(--accent); }
+    .pkg-features li strong { color: rgba(255,255,255,0.78); font-weight: 500; }
+    .pkg-features li a { color: var(--accent); text-decoration: none; }
+    .pkg-terms {
+      border-top: 1px solid var(--border); padding-top: 16px; margin-top: 4px;
+    }
+    .pkg-terms h5 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.6rem; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 10px; font-weight: 700;
+    }
+    .pkg-terms p { font-size: 0.76rem; color: var(--muted); line-height: 1.65; margin-bottom: 6px; }
+    .pkg-terms strong { color: rgba(255,255,255,0.6); }
+    .pkg-terms a { color: var(--accent); text-decoration: none; }
 
+    .pkg-footer { padding: 20px 28px 28px; }
     .pkg-cta {
-      display: block; text-align: center; margin-top: auto;
-      padding: 13px 20px; font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase;
-      text-decoration: none; border-radius: 3px; transition: all 0.18s;
+      display: block; text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      padding: 14px 24px; text-decoration: none; transition: all 0.2s;
     }
-    .cta-dev   { background: #a78bfa; color: #08080f; }
-    .cta-dev:hover { background: #c4b5fd; }
-    .cta-z     { border: 1px solid rgba(139,0,0,0.6); color: #ff6a6a; background: transparent; }
-    .cta-z:hover { background: rgba(139,0,0,0.15); border-color: #cc0000; }
+    .cta-dev   { background: #7c3aed; color: #fff; }
+    .cta-dev:hover { background: #6d28d9; }
+    .cta-z     { background: var(--red); color: #fff; }
+    .cta-z:hover { background: #aa1800; }
     .cta-owner { background: var(--accent); color: #000; }
     .cta-owner:hover { background: #00d9a2; }
 
-    /* NOTICE BAR */
-    .notice {
-      background: rgba(0,248,185,0.04);
-      border: 1px solid rgba(0,248,185,0.1);
-      border-radius: 3px; padding: 20px 24px;
-      margin-bottom: 56px; max-width: 860px;
+    /* ============ CINEMATIC DIVIDER ============ */
+    .cinematic-strip {
+      position: relative; height: 380px; overflow: hidden;
+      display: flex; align-items: center;
     }
-    .notice p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
-    .notice p strong { color: var(--text); font-weight: 500; }
-    .notice p a { color: var(--accent); text-decoration: none; }
-    .notice p a:hover { text-decoration: underline; }
+    .cinematic-strip-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1920&q=80');
+      background-size: cover; background-position: center;
+      filter: brightness(0.25) saturate(0.5);
+    }
+    .cinematic-strip-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, var(--black) 0%, transparent 40%, transparent 60%, var(--black) 100%),
+                  linear-gradient(180deg, var(--black) 0%, transparent 20%, transparent 80%, var(--black) 100%);
+    }
+    .cinematic-strip-content {
+      position: relative; z-index: 2; padding: 0 6vw; max-width: 700px;
+    }
+    .cinematic-strip-content h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900; text-transform: uppercase; line-height: 1.05;
+      margin-bottom: 18px; letter-spacing: -0.5px;
+    }
+    .cinematic-strip-content h2 em { color: var(--accent); font-style: normal; }
+    .cinematic-strip-content p { color: rgba(255,255,255,0.45); font-size: 0.92rem; line-height: 1.7; max-width: 440px; }
 
-    /* FOOTER */
+    /* ============ FOOTER ============ */
     footer {
+      background: var(--dark);
       border-top: 1px solid var(--border);
-      padding: 44px 7vw;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 20px;
+      padding: 56px 6vw 40px;
+      display: grid; grid-template-columns: 1fr auto; gap: 40px;
     }
-    .footer-logo { color: var(--accent); font-weight: 800; font-size: 0.78rem; letter-spacing: 3px; text-decoration: none; text-transform: uppercase; }
-    .footer-links { display: flex; gap: 28px; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; transition: color 0.18s; }
+    .footer-brand { max-width: 360px; }
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase;
+      color: var(--accent); text-decoration: none; display: block; margin-bottom: 14px;
+    }
+    .footer-brand p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; font-weight: 600; transition: color 0.18s;
+    }
     .footer-links a:hover { color: var(--accent); }
-    .footer-copy { color: var(--muted); font-size: 0.74rem; width: 100%; }
+    .footer-copy {
+      grid-column: 1 / -1; border-top: 1px solid var(--border);
+      padding-top: 28px; margin-top: 12px;
+      font-size: 0.74rem; color: var(--muted);
+    }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .hero-stats { display: none; }
       nav { padding: 0 5vw; }
       .nav-links { gap: 18px; }
-      section { padding: 64px 5vw; }
-      .stats-bar { gap: 36px; }
-      footer { flex-direction: column; }
+      .nav-cta { display: none; }
+      #packages { padding: 72px 5vw; }
+      .pkg-cards { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; }
+      .footer-links { align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a class="nav-logo" href="#hero">REALITY<em>*</em>SUCKS<em>*</em>RP</a>
   <ul class="nav-links">
     <li><a href="#packages">Packages</a></li>
-    <li><a href="#why">About</a></li>
+    <li><a href="#trust">Why Us</a></li>
     <li><a href="https://github.com/RealitySucksRP" target="_blank">GitHub</a></li>
     <li><a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a></li>
   </ul>
+  <a class="nav-cta" href="https://discord.gg/qmtUpxqJjj" target="_blank">Get Started</a>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
-  <p class="eyebrow">QBCore Servers &amp; Free Scripts</p>
-  <h1>REALITY <em>SUCKS</em> RP</h1>
-  <p class="hero-lead">
-    Not a template mill. Not a reseller.
-    <strong>A real server built from the ground up</strong> -- tested, patched, and ready to run.
-    Own your server. Own your experience. We handle the setup so you can open the doors.
-  </p>
-  <div class="hero-btns">
-    <a class="btn btn-fill" href="#packages">View Packages</a>
-    <a class="btn btn-line" href="https://discord.gg/qmtUpxqJjj" target="_blank">Join Discord</a>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-tag">QBCore Servers &amp; Free Scripts</p>
+    <h1>
+      OWN YOUR<br>
+      <span class="accent">SERVER.</span><br>
+      <span class="dim">OWN YOUR WORLD.</span>
+    </h1>
+    <p class="hero-sub">
+      Not a template mill. Not a reseller.
+      <strong>Real servers built from the ground up</strong>, tested on live hardware, and delivered directly to your CFX account.
+      The same quality you see on the biggest servers in the scene. Yours to run, yours to rule.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#packages">View Packages</a>
+      <a class="btn-ghost" href="https://discord.gg/qmtUpxqJjj" target="_blank">Join Discord</a>
+    </div>
   </div>
-  <div class="stats-bar">
-    <div class="stat"><div class="stat-n">321<span style="font-size:1.2rem;color:var(--muted)">+</span></div><div class="stat-l">Scripts Tested</div></div>
-    <div class="stat"><div class="stat-n">100<span style="font-size:1.2rem;color:var(--muted)">%</span></div><div class="stat-l">QBCore Native</div></div>
-    <div class="stat"><div class="stat-n">3</div><div class="stat-l">Server Packages</div></div>
-    <div class="stat"><div class="stat-n">24<span style="font-size:1.2rem;color:var(--muted)">h</span></div><div class="stat-l">Delivery</div></div>
-  </div>
-</section>
-
-<section id="why">
-  <p class="sec-label">Why Reality Sucks RP?</p>
-  <h2 class="sec-title">Built by a player. Tested on a real server.</h2>
-  <p class="sec-sub">
-    Every resource in these packages has been individually tested on a live QBCore server.
-    Conflicts resolved. Load order sorted. Broken scripts patched. You get what we actually run.
-  </p>
-  <div class="why-grid">
-    <div class="why-cell">
-      <div class="why-icon">&#9881;</div>
-      <h3>Fully Yours</h3>
-      <p>Every script is granted directly to your CFX account. Nothing cloned. Nothing pirated. Free scripts are free. Any paid scripts included in a package -- we purchase them ourselves and add them to your grant.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-n">321+</div>
+      <div class="hero-stat-l">Scripts Tested</div>
     </div>
-    <div class="why-cell">
-      <div class="why-icon">&#128275;</div>
-      <h3>Real Freedom</h3>
-      <p>You own the server. You set the rules. No middleman, no monthly fees to us, no restrictions on how you run it. Host it on ZAP, your own machine, or anywhere you want -- even your home PC and invite friends for free.</p>
+    <div class="hero-stat">
+      <div class="hero-stat-n">24h</div>
+      <div class="hero-stat-l">Delivery</div>
     </div>
-    <div class="why-cell">
-      <div class="why-icon">&#9889;</div>
-      <h3>Actually Works</h3>
-      <p>These are the same quality scripts you see on the big fancy servers. Same results. Every resource goes through a live test server before it ships. No mystery errors. No broken dependencies on day one.</p>
-    </div>
-    <div class="why-cell">
-      <div class="why-icon">&#127381;</div>
-      <h3>Community First</h3>
-      <p>Free scripts released to the community with no strings attached. Every paid package funds more free releases. The FiveM scene gave to us -- we give back.</p>
+    <div class="hero-stat">
+      <div class="hero-stat-n">100%</div>
+      <div class="hero-stat-l">CFX Granted</div>
     </div>
   </div>
 </section>
 
+<!-- TRUST BAR -->
+<div id="trust" class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">&#128737;</div>
+    <div>
+      <h4>Fully Yours</h4>
+      <p>Every script granted directly to your CFX account. Nothing cloned. Nothing pirated. Free scripts ship free. Paid scripts -- we buy them personally and add them to your grant.</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">&#9889;</div>
+    <div>
+      <h4>Live-Tested</h4>
+      <p>Every resource runs through a live QBCore test server before delivery. Conflicts resolved. Load order sorted. No mystery errors on day one.</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">&#127759;</div>
+    <div>
+      <h4>Host Anywhere</h4>
+      <p>ZAP-Hosting, a VPS, or your own home PC -- invite friends and play for free. You own it. You control it. No restrictions. No monthly fees to us.</p>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">&#127881;</div>
+    <div>
+      <h4>Community Funded</h4>
+      <p>Every package purchase funds more free script releases to the FiveM community. The scene gave to us first -- we give back.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PACKAGES -->
 <section id="packages">
-  <p class="sec-label">Server Packages</p>
-  <h2 class="sec-title">Pick your server. Open the doors.</h2>
+  <div class="pkg-header">
+    <p class="section-tag">Server Packages</p>
+    <h2 class="section-title">Pick Your World.<br>Open The Doors.</h2>
+    <p class="section-sub">Three complete packages. Delivered to your CFX account in 24-48 hours. The same scripts you see on the biggest servers in the scene.</p>
+  </div>
 
-  <div class="notice">
+  <div class="delivery-notice">
     <p>
-      <strong>How delivery works:</strong> After purchase, all scripts are granted directly to your CFX.re account -- nothing is cloned or copied. Free scripts are included at no cost. Any paid scripts in the package are purchased by us personally and added to your grant.
-      You can run your server on any hosting provider, a VPS, or even your own home PC and invite friends to play for free -- no server required.
-      These are <strong>fully functioning FiveM servers</strong> with the same quality scripts you see on the largest servers in the scene.
+      <strong>How it works:</strong> After payment, all scripts are granted directly to your CFX.re account. Free scripts ship at no cost. Any paid scripts in the package are purchased by us personally and added to your grant -- nothing is cloned or copied. You can run your server on ZAP-Hosting, any VPS, or your own home PC. No server required to play with friends.
     </p>
   </div>
 
-  <div class="pkg-grid">
+  <div class="pkg-cards">
 
     <!-- DEV SHELL -->
-    <div class="pkg">
-      <span class="pkg-badge badge-dev">For Developers</span>
-      <p class="pkg-sub">Dev Special</p>
-      <h2>QBCORE SHELL</h2>
-      <div class="pkg-price"><sup>$</sup>350<sub>.00</sub></div>
-      <p class="pkg-short">
-        A clean, conflict-free QBCore shell with <strong>321+ resources</strong> already tested, patched, and sorted.
-        You know what you want to build -- this gets you there without spending three months fixing someone else's mess.
-      </p>
-      <button class="pkg-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Show less &#8593;':'What\'s included &#8595;'">What's included &#8595;</button>
-      <div class="pkg-details">
+    <div class="pkg pkg-card pkg-card-dev">
+      <div class="pkg-img-wrap">
+        <img class="pkg-img" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80" alt="Development environment dark code"/>
+        <div class="pkg-img-overlay"></div>
+        <span class="pkg-img-badge badge-dev">For Developers</span>
+        <div class="pkg-img-price"><sup>$</sup>350</div>
+      </div>
+      <div class="pkg-body">
+        <p class="pkg-eyebrow">Dev Special</p>
+        <h2>QBCore Shell</h2>
+        <p class="pkg-desc">
+          A clean, conflict-free shell with <strong>321+ resources</strong> already tested, patched, and sorted. You know what you want to build. This gets you there without spending three months untangling someone else's mess.
+        </p>
+      </div>
+      <button class="pkg-expand-btn" onclick="togglePkg(this)">
+        <span>What's Included</span>
+        <span class="chevron">&#8964;</span>
+      </button>
+      <div class="pkg-expand-content">
         <ul class="pkg-features">
           <li><strong>321+ scripts</strong> tested on a live QBCore server before delivery</li>
-          <li><strong>Conflict-free</strong> -- duplicate resources removed, load order sorted</li>
+          <li><strong>Conflict-free</strong> -- duplicates removed, load order sorted</li>
           <li><strong>Bug fixes included</strong> -- broken resources identified and patched</li>
           <li><strong>Full CFX access</strong> -- all scripts granted to your CFX.re account</li>
-          <li>Free scripts included free. Paid scripts purchased by us and added to your grant</li>
+          <li>Free scripts ship free. Paid scripts purchased by us and added to your grant</li>
           <li>30 days Discord support for setup questions</li>
         </ul>
-        <div class="pkg-terms-block">
-          <h4>Terms of Sale</h4>
+        <div class="pkg-terms">
+          <h5>Terms of Sale</h5>
           <p><strong>All sales are final.</strong> No refunds on digital goods.</p>
           <p>Delivered via CFX account grant within 24-48 hours of confirmed payment. A valid CFX.re account is required. Scripts may not be resold or redistributed.</p>
-          <p><strong>To purchase:</strong> Join our <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a> and open a ticket. Provide your CFX.re username and PayPal email. Invoice sent within a few hours.</p>
+          <p><strong>To purchase:</strong> Join our <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a> and open a ticket in #open-a-ticket.</p>
         </div>
       </div>
-      <a class="pkg-cta cta-dev" href="https://discord.gg/qmtUpxqJjj" target="_blank">Open a Ticket to Purchase</a>
+      <div class="pkg-footer">
+        <a class="pkg-cta cta-dev" href="https://discord.gg/qmtUpxqJjj" target="_blank">Open a Ticket</a>
+      </div>
     </div>
 
     <!-- ZOMBIE SERVER -->
-    <div class="pkg pkg-zombie">
-      <span class="pkg-badge badge-z">&#9760; Zombie Survival</span>
-      <p class="pkg-sub">Ready to Launch</p>
-      <h2>DEAD ZONE SERVER</h2>
-      <div class="pkg-price"><sup>$</sup>350<sub>.00</sub></div>
-      <p class="pkg-short">
-        The city fell. The lights went out. Now survival is everything.
-        <strong>A complete zombie survival server</strong> -- three fortified safe zones, a cash-only economy, full vehicle and weapon shops, and a horror-themed inventory UI. Drop it on your host and open the doors tonight.
-      </p>
-      <button class="pkg-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Show less &#8593;':'What\'s included &#8595;'">What's included &#8595;</button>
-      <div class="pkg-details">
+    <div class="pkg pkg-card pkg-card-z">
+      <div class="pkg-img-wrap">
+        <img class="pkg-img" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80" alt="Dark post-apocalyptic city night"/>
+        <div class="pkg-img-overlay"></div>
+        <span class="pkg-img-badge badge-z">&#9760; Zombie Survival</span>
+        <div class="pkg-img-price"><sup>$</sup>350</div>
+      </div>
+      <div class="pkg-body">
+        <p class="pkg-eyebrow">Ready to Launch</p>
+        <h2>Dead Zone Server</h2>
+        <p class="pkg-desc">
+          The city fell. The lights went out. Now survival is everything. <strong>A complete zombie server</strong> -- three fortified safe zones, cash-only economy, full vehicle and weapon shops, horror-themed UI. Drop it on your host and open the doors tonight.
+        </p>
+      </div>
+      <button class="pkg-expand-btn" onclick="togglePkg(this)">
+        <span>What's Included</span>
+        <span class="chevron">&#8964;</span>
+      </button>
+      <div class="pkg-expand-content">
         <ul class="pkg-features">
-          <li><strong>3 Hub Safe Zones</strong> -- Southern Outpost, Highland Base, Northern Outpost. Each with supply, weapons, and vehicle shops fully configured</li>
-          <li><strong>Full vehicle roster</strong> -- cars, trucks, muscle, military, bikes, specialty, boats, aircraft. Working shop UI with categories</li>
-          <li><strong>All weapons and ammo</strong> -- pistols, SMGs, shotguns, rifles, snipers, every ammo type. Purchasable at hub arms dealers</li>
-          <li><strong>Cash-only economy</strong> -- earn cash killing zombies, lose it all when you die. Pure survivor tension, no shortcuts</li>
-          <li><strong>CoD-style kill points</strong> -- floating popups on every kill. Boss kills pay double. Fully configurable</li>
-          <li><strong>Custom zombie inventory UI</strong> -- horror-themed qb-inventory with skeletal mascot and crimson slot theme</li>
+          <li><strong>3 Hub Safe Zones</strong> -- Southern Outpost, Highland Base, Northern Outpost. Supply, weapons, and vehicle shops at each</li>
+          <li><strong>Full vehicle roster</strong> -- cars, trucks, muscle, military, bikes, specialty, boats, aircraft</li>
+          <li><strong>All weapons and ammo</strong> -- pistols, SMGs, shotguns, rifles, snipers, every ammo type</li>
+          <li><strong>Cash-only economy</strong> -- earn cash killing zombies, lose it all on death. Pure survivor tension</li>
+          <li><strong>CoD-style kill points</strong> -- floating screen popups on every kill. Boss kills pay double</li>
+          <li><strong>Custom zombie inventory UI</strong> -- horror-themed with skeletal mascot and crimson slot theme</li>
           <li><strong>Starter cash</strong> -- new survivors get a one-time gear-up drop</li>
-          <li><strong>In-game prop placer</strong> -- build out hubs with barricades, crates, and military props</li>
-          <li><strong>Full CFX access</strong> -- all scripts granted to your CFX.re account. Paid scripts purchased by us personally</li>
-          <li>30 days Discord support for setup questions</li>
+          <li><strong>In-game prop placer</strong> -- build out hubs with barricades, crates, military props</li>
+          <li><strong>Full CFX access</strong> -- all scripts granted to your account. Paid scripts purchased by us</li>
+          <li>30 days Discord support</li>
         </ul>
-        <div class="pkg-terms-block">
-          <h4>Terms of Sale</h4>
+        <div class="pkg-terms">
+          <h5>Terms of Sale</h5>
           <p><strong>All sales are final.</strong> No refunds on digital goods or services.</p>
-          <p>Delivered via CFX account grant within 24-48 hours. Requires a valid CFX.re account and a FiveM server host or home PC. Server files may not be resold or redistributed.</p>
-          <p><strong>To purchase:</strong> Join our <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a> and open a ticket. Provide your CFX.re username, server host details, and PayPal email.</p>
+          <p>Delivered via CFX account grant within 24-48 hours. Requires a valid CFX.re account and a FiveM host or home PC. Files may not be resold or redistributed.</p>
+          <p><strong>To purchase:</strong> Join our <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a> and open a ticket in #open-a-ticket.</p>
         </div>
       </div>
-      <a class="pkg-cta cta-z" href="https://discord.gg/qmtUpxqJjj" target="_blank">Open a Ticket to Purchase</a>
+      <div class="pkg-footer">
+        <a class="pkg-cta cta-z" href="https://discord.gg/qmtUpxqJjj" target="_blank">Open a Ticket</a>
+      </div>
     </div>
 
     <!-- FULL RP SERVER -->
-    <div class="pkg">
-      <span class="pkg-badge badge-owner">For Server Owners</span>
-      <p class="pkg-sub">Server Owner Special</p>
-      <h2>FULL RP SERVER</h2>
-      <div class="pkg-price"><sup>$</sup>500<sub>.00</sub></div>
-      <p class="pkg-short">
-        <strong>Not a template.</strong> The same foundation that powers a real running server -- street racing, gangs, drug economy, custom jobs, custom HUD. Built over months. Every conflict resolved. Every broken script fixed.
-        Skip the grind and open the doors faster.
-      </p>
-      <button class="pkg-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.textContent=this.nextElementSibling.classList.contains('open')?'Show less &#8593;':'What\'s included &#8595;'">What's included &#8595;</button>
-      <div class="pkg-details">
+    <div class="pkg pkg-card pkg-card-owner">
+      <div class="pkg-img-wrap">
+        <img class="pkg-img" src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80" alt="City skyline at night cinematic"/>
+        <div class="pkg-img-overlay"></div>
+        <span class="pkg-img-badge badge-owner">For Server Owners</span>
+        <div class="pkg-img-price"><sup>$</sup>500</div>
+      </div>
+      <div class="pkg-body">
+        <p class="pkg-eyebrow">Server Owner Special</p>
+        <h2>Full RP Server</h2>
+        <p class="pkg-desc">
+          <strong>Not a template.</strong> The same foundation powering a real live server -- street racing, gangs, drug economy, custom jobs, custom HUD. Built over months. Every conflict resolved. Open the doors faster.
+        </p>
+      </div>
+      <button class="pkg-expand-btn" onclick="togglePkg(this)">
+        <span>What's Included</span>
+        <span class="chevron">&#8964;</span>
+      </button>
+      <div class="pkg-expand-content">
         <ul class="pkg-features">
-          <li><strong>Full running server</strong> -- street racing, gang territory, drug economy, custom jobs and more</li>
+          <li><strong>Full live server</strong> -- street racing, gang territory, drug economy, custom jobs</li>
           <li><strong>Custom HUD and UI</strong> -- built in-house, not a reskin</li>
           <li><strong>Full CFX access</strong> -- all scripts granted to your account. Paid scripts purchased by us personally</li>
-          <li><strong>One month of config support</strong> -- we help you set up and customize the server to your vision</li>
-          <li><strong>ZAP-Hosting setup assistance</strong> -- if you choose ZAP we will walk you through getting online. <a href="https://zap-hosting.com/a/494af1ee250e61ce70869a1022204a8d60c6ff0c?voucher=willishere82-a-5797" target="_blank">Get ZAP Hosting here</a></li>
-          <li>Host on ZAP, a VPS, or your own PC -- you have complete freedom</li>
+          <li><strong>One month config support</strong> -- we help you customize and set up the server your way</li>
+          <li><strong>ZAP-Hosting setup included</strong> -- choose ZAP and we walk you through getting online. <a href="https://zap-hosting.com/a/494af1ee250e61ce70869a1022204a8d60c6ff0c?voucher=willishere82-a-5797" target="_blank">Get ZAP Hosting</a></li>
+          <li>Host on ZAP, a VPS, or your own PC -- complete freedom</li>
           <li>30 days Discord support included</li>
         </ul>
-        <div class="pkg-terms-block">
-          <h4>Terms of Sale</h4>
+        <div class="pkg-terms">
+          <h5>Terms of Sale</h5>
           <p><strong>All sales are final.</strong> No refunds on digital goods or services.</p>
-          <p>Delivered via CFX account grant within 24-48 hours. Requires a valid CFX.re account and a FiveM server host or home PC. Server files may not be resold or redistributed.</p>
-          <p>One month config support is included. Additional custom development is not included.</p>
-          <p><strong>To purchase:</strong> Join our <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a> and open a ticket. Provide your CFX.re username, server host details, and PayPal email.</p>
+          <p>Delivered via CFX account grant within 24-48 hours. Requires a valid CFX.re account and a FiveM host or home PC. One month config support included. Custom development not included.</p>
+          <p><strong>To purchase:</strong> Join our <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a> and open a ticket in #open-a-ticket.</p>
         </div>
       </div>
-      <a class="pkg-cta cta-owner" href="https://discord.gg/qmtUpxqJjj" target="_blank">Open a Ticket to Purchase</a>
+      <div class="pkg-footer">
+        <a class="pkg-cta cta-owner" href="https://discord.gg/qmtUpxqJjj" target="_blank">Open a Ticket</a>
+      </div>
     </div>
 
   </div>
 </section>
 
+<!-- CINEMATIC STRIP -->
+<div class="cinematic-strip">
+  <div class="cinematic-strip-bg"></div>
+  <div class="cinematic-strip-overlay"></div>
+  <div class="cinematic-strip-content">
+    <h2>The Same Scripts.<br><em>The Real Experience.</em></h2>
+    <p>What you see on the biggest, most polished FiveM servers -- that's what you get. No watered-down versions. No missing features. The actual thing, granted to your account, ready to run.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <a class="footer-logo" href="#hero">REALITY*SUCKS*RP</a>
+  <div class="footer-brand">
+    <a class="footer-logo" href="#hero">REALITY*SUCKS*RP</a>
+    <p>QBCore servers and free scripts built on a live server, tested by a real player. Every script granted directly to your CFX account. Community funded. Always.</p>
+  </div>
   <div class="footer-links">
     <a href="https://github.com/RealitySucksRP" target="_blank">GitHub</a>
     <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a>
     <a href="#packages">Packages</a>
-    <a href="#why">About</a>
+    <a href="#trust">Why Us</a>
   </div>
-  <p class="footer-copy">&copy; 2026 Reality Sucks RP -- QBCore servers tested on live hardware. All scripts granted to your CFX account.</p>
+  <p class="footer-copy">&copy; 2026 Reality Sucks RP &mdash; All scripts tested on live QBCore hardware. CFX grants delivered within 24-48 hours.</p>
 </footer>
+
+<script>
+  function togglePkg(btn) {
+    const content = btn.nextElementSibling;
+    const isOpen = content.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.querySelector('span:first-child').textContent = isOpen ? "Show Less" : "What's Included";
+  }
+</script>
 
 </body>
 </html>
