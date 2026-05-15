@@ -1,645 +1,233 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reality Sucks RP -- Own Your Server</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --black:   #060608;
-      --dark:    #0c0c12;
-      --surface: #111118;
-      --border:  #1e1e2c;
-      --accent:  #00f8b9;
-      --gold:    #c9a84c;
-      --red:     #cc2200;
-      --text:    #e8e8f0;
-      --muted:   #5a5a72;
-      --dim:     #2a2a3a;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--black);
-      color: var(--text);
-      font-family: 'Barlow', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ============ NAV ============ */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0 6vw; height: 64px;
-      background: linear-gradient(180deg, rgba(6,6,8,0.98) 0%, rgba(6,6,8,0) 100%);
-      backdrop-filter: blur(2px);
-    }
-    .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.1rem; font-weight: 800; letter-spacing: 6px;
-      color: var(--accent); text-decoration: none; text-transform: uppercase;
-    }
-    .nav-logo em { color: rgba(255,255,255,0.3); font-style: normal; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      color: rgba(255,255,255,0.45); text-decoration: none;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase;
-      font-weight: 600; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-cta {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-      padding: 8px 20px; border: 1px solid var(--accent); color: var(--accent);
-      text-decoration: none; transition: all 0.2s;
-    }
-    .nav-cta:hover { background: var(--accent); color: #000; }
-
-    /* ============ HERO ============ */
-    #hero {
-      position: relative; min-height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: flex-end; padding: 0 6vw 10vh;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80');
-      background-size: cover; background-position: center 40%;
-      filter: brightness(0.35) saturate(0.6);
-    }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(6,6,8,0.2) 0%,
-        rgba(6,6,8,0.1) 30%,
-        rgba(6,6,8,0.6) 65%,
-        rgba(6,6,8,1) 100%
-      );
-    }
-    .hero-content { position: relative; z-index: 2; max-width: 900px; }
-    .hero-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem; letter-spacing: 6px; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 20px; opacity: 0.9;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .hero-tag::before {
-      content: ''; display: inline-block;
-      width: 32px; height: 1px; background: var(--accent);
-    }
-    h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(3.5rem, 9vw, 8rem);
-      font-weight: 900; line-height: 0.95;
-      letter-spacing: -1px; text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-    h1 .accent { color: var(--accent); }
-    h1 .dim { color: rgba(255,255,255,0.2); }
-    .hero-sub {
-      max-width: 520px; color: rgba(255,255,255,0.55);
-      font-size: 1.05rem; line-height: 1.75; margin-bottom: 44px;
-      font-weight: 300;
-    }
-    .hero-sub strong { color: rgba(255,255,255,0.85); font-weight: 500; }
-    .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .btn-primary {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.82rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-      padding: 15px 36px; background: var(--accent); color: #000;
-      text-decoration: none; transition: all 0.2s;
-    }
-    .btn-primary:hover { background: #00d9a2; }
-    .btn-ghost {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.82rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
-      padding: 15px 36px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.55);
-      text-decoration: none; transition: all 0.2s;
-    }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: var(--text); }
-    .hero-stats {
-      position: absolute; right: 6vw; bottom: 10vh; z-index: 2;
-      display: flex; flex-direction: column; gap: 28px; text-align: right;
-    }
-    .hero-stat-n {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 2.4rem; font-weight: 900; color: var(--accent);
-      line-height: 1; letter-spacing: -1px;
-    }
-    .hero-stat-l {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--muted); margin-top: 4px;
-    }
-
-    /* ============ TRUST BAR ============ */
-    .trust-bar {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 28px 6vw;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1px; background: var(--border);
-    }
-    .trust-item {
-      background: var(--surface);
-      padding: 28px 32px;
-      display: flex; align-items: flex-start; gap: 16px;
-    }
-    .trust-icon {
-      font-size: 1.4rem; flex-shrink: 0; margin-top: 3px;
-    }
-    .trust-item h4 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--text); margin-bottom: 5px; font-weight: 700;
-    }
-    .trust-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
-
-    /* ============ PACKAGES ============ */
-    #packages { padding: 100px 6vw; background: var(--black); }
-    .pkg-header { margin-bottom: 64px; }
-    .section-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 14px; opacity: 0.85;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
-    .section-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.2rem, 4vw, 3.8rem);
-      font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px;
-      margin-bottom: 16px; line-height: 1;
-    }
-    .section-sub { color: var(--muted); font-size: 0.95rem; max-width: 500px; line-height: 1.7; }
-
-    /* delivery notice */
-    .delivery-notice {
-      background: rgba(0,248,185,0.03);
-      border-left: 2px solid var(--accent);
-      padding: 20px 24px; margin-bottom: 64px;
-      max-width: 860px;
-    }
-    .delivery-notice p { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.75; }
-    .delivery-notice strong { color: rgba(255,255,255,0.8); font-weight: 500; }
-    .delivery-notice a { color: var(--accent); text-decoration: none; }
-
-    /* cards */
-    .pkg-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2px; background: var(--border); }
-    .pkg-card { background: var(--dark); display: flex; flex-direction: column; }
-    .pkg-img {
-      width: 100%; height: 220px;
-      object-fit: cover; display: block;
-      filter: brightness(0.6) saturate(0.7);
-      transition: filter 0.4s ease;
-    }
-    .pkg-card:hover .pkg-img { filter: brightness(0.75) saturate(0.85); }
-    .pkg-img-wrap { position: relative; overflow: hidden; }
-    .pkg-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, transparent 30%, var(--dark) 100%);
-    }
-    .pkg-img-badge {
-      position: absolute; top: 16px; left: 16px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.6rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
-      padding: 5px 12px;
-    }
-    .badge-dev   { background: rgba(124,58,237,0.85); color: #fff; }
-    .badge-z     { background: rgba(139,0,0,0.9); color: #ffaaaa; border: 1px solid rgba(200,0,0,0.5); }
-    .badge-owner { background: rgba(0,248,185,0.15); color: var(--accent); border: 1px solid rgba(0,248,185,0.3); }
-    .pkg-img-price {
-      position: absolute; bottom: 20px; right: 20px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 2rem; font-weight: 900; color: #fff;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.8);
-    }
-    .pkg-img-price sup { font-size: 1rem; vertical-align: super; }
-
-    .pkg-body { padding: 28px 28px 0; flex: 1; }
-    .pkg-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 6px;
-    }
-    .pkg-card h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.8rem; font-weight: 900; text-transform: uppercase;
-      letter-spacing: 1px; margin-bottom: 14px; line-height: 1;
-    }
-    .pkg-card-dev   h2 { color: #c4b5fd; }
-    .pkg-card-z     h2 { color: #ff8888; }
-    .pkg-card-owner h2 { color: var(--accent); }
-    .pkg-desc {
-      font-size: 0.88rem; color: rgba(255,255,255,0.45);
-      line-height: 1.7; margin-bottom: 22px;
-    }
-    .pkg-desc strong { color: rgba(255,255,255,0.75); font-weight: 500; }
-
-    /* expand */
-    .pkg-expand-btn {
-      background: none; border: none; border-top: 1px solid var(--border);
-      width: 100%; padding: 14px 28px;
-      display: flex; justify-content: space-between; align-items: center;
-      cursor: pointer; color: var(--muted); transition: color 0.18s;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
-    }
-    .pkg-expand-btn:hover { color: var(--text); }
-    .pkg-expand-btn .chevron { transition: transform 0.25s; font-size: 1rem; }
-    .pkg-expand-btn.open .chevron { transform: rotate(180deg); }
-    .pkg-expand-content { display: none; padding: 0 28px 24px; }
-    .pkg-expand-content.open { display: block; }
-    .pkg-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 20px; }
-    .pkg-features li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
-    .pkg-features li::before {
-      content: ''; width: 4px; height: 4px; border-radius: 50%;
-      flex-shrink: 0; margin-top: 9px;
-    }
-    .pkg-card-dev   .pkg-features li::before { background: #a78bfa; }
-    .pkg-card-z     .pkg-features li::before { background: var(--red); }
-    .pkg-card-owner .pkg-features li::before { background: var(--accent); }
-    .pkg-features li strong { color: rgba(255,255,255,0.78); font-weight: 500; }
-    .pkg-features li a { color: var(--accent); text-decoration: none; }
-    .pkg-terms {
-      border-top: 1px solid var(--border); padding-top: 16px; margin-top: 4px;
-    }
-    .pkg-terms h5 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.6rem; letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 10px; font-weight: 700;
-    }
-    .pkg-terms p { font-size: 0.76rem; color: var(--muted); line-height: 1.65; margin-bottom: 6px; }
-    .pkg-terms strong { color: rgba(255,255,255,0.6); }
-    .pkg-terms a { color: var(--accent); text-decoration: none; }
-
-    .pkg-footer { padding: 20px 28px 28px; }
-    .pkg-cta {
-      display: block; text-align: center;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-      padding: 14px 24px; text-decoration: none; transition: all 0.2s;
-    }
-    .cta-dev   { background: #7c3aed; color: #fff; }
-    .cta-dev:hover { background: #6d28d9; }
-    .cta-z     { background: var(--red); color: #fff; }
-    .cta-z:hover { background: #aa1800; }
-    .cta-owner { background: var(--accent); color: #000; }
-    .cta-owner:hover { background: #00d9a2; }
-
-    /* ============ CINEMATIC DIVIDER ============ */
-    .cinematic-strip {
-      position: relative; height: 380px; overflow: hidden;
-      display: flex; align-items: center;
-    }
-    .cinematic-strip-bg {
-      position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1920&q=80');
-      background-size: cover; background-position: center;
-      filter: brightness(0.25) saturate(0.5);
-    }
-    .cinematic-strip-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(90deg, var(--black) 0%, transparent 40%, transparent 60%, var(--black) 100%),
-                  linear-gradient(180deg, var(--black) 0%, transparent 20%, transparent 80%, var(--black) 100%);
-    }
-    .cinematic-strip-content {
-      position: relative; z-index: 2; padding: 0 6vw; max-width: 700px;
-    }
-    .cinematic-strip-content h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 900; text-transform: uppercase; line-height: 1.05;
-      margin-bottom: 18px; letter-spacing: -0.5px;
-    }
-    .cinematic-strip-content h2 em { color: var(--accent); font-style: normal; }
-    .cinematic-strip-content p { color: rgba(255,255,255,0.45); font-size: 0.92rem; line-height: 1.7; max-width: 440px; }
-
-    /* ============ FOOTER ============ */
-    footer {
-      background: var(--dark);
-      border-top: 1px solid var(--border);
-      padding: 56px 6vw 40px;
-      display: grid; grid-template-columns: 1fr auto; gap: 40px;
-    }
-    .footer-brand { max-width: 360px; }
-    .footer-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase;
-      color: var(--accent); text-decoration: none; display: block; margin-bottom: 14px;
-    }
-    .footer-brand p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
-    .footer-links { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
-    .footer-links a {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem; letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--muted); text-decoration: none; font-weight: 600; transition: color 0.18s;
-    }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-copy {
-      grid-column: 1 / -1; border-top: 1px solid var(--border);
-      padding-top: 28px; margin-top: 12px;
-      font-size: 0.74rem; color: var(--muted);
-    }
-
-    @media (max-width: 768px) {
-      .hero-stats { display: none; }
-      nav { padding: 0 5vw; }
-      .nav-links { gap: 18px; }
-      .nav-cta { display: none; }
-      #packages { padding: 72px 5vw; }
-      .pkg-cards { grid-template-columns: 1fr; }
-      footer { grid-template-columns: 1fr; }
-      .footer-links { align-items: flex-start; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reality Sucks RP — Premium FiveM Servers</title>
+  <link rel="stylesheet" href="rs-storefront.css" />
 </head>
 <body>
+  <nav class="topbar">
+    <a class="brand" href="#top">
+      <span>Reality</span>
+      <strong>Sucks</strong>
+      <em>RP</em>
+    </a>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#hero">REALITY<em>*</em>SUCKS<em>*</em>RP</a>
-  <ul class="nav-links">
-    <li><a href="#packages">Packages</a></li>
-    <li><a href="#trust">Why Us</a></li>
-    <li><a href="https://github.com/RealitySucksRP" target="_blank">GitHub</a></li>
-    <li><a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a>
-      <a href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" class="tebex-nav">Tebex Store</a></li>
-  </ul>
-  <a class="nav-cta" href="https://discord.gg/qmtUpxqJjj" target="_blank">Get Started</a>
-</nav>
+    <div class="nav-links">
+      <a href="#packages">Packages</a>
+      <a href="#why-us">Why Us</a>
+      <a href="https://github.com/RealitySucksRP" target="_blank">GitHub</a>
+      <a href="https://discord.gg/" target="_blank">Discord</a>
+      <a class="store-link" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank">Tebex Store</a>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-tag">QBCore Servers &amp; Free Scripts</p>
-    <h1>
-      OWN YOUR<br>
-      <span class="accent">SERVER.</span><br>
-      <span class="dim">OWN YOUR WORLD.</span>
-    </h1>
-    <p class="hero-sub">
-      Not a template mill. Not a reseller.
-      <strong>Real servers built from the ground up</strong>, tested on live hardware, and delivered directly to your CFX account.
-      The same quality you see on the biggest servers in the scene. Yours to run, yours to rule.
-    </p>
-    <div class="hero-actions">
-      <a class="btn-primary" href="#packages">View Packages</a>
-      <a class="btn-ghost" href="https://discord.gg/qmtUpxqJjj" target="_blank">Join Discord</a>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-n">321+</div>
-      <div class="hero-stat-l">Scripts Tested</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-n">24h</div>
-      <div class="hero-stat-l">Delivery</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-n">100%</div>
-      <div class="hero-stat-l">CFX Granted</div>
-    </div>
-  </div>
-</section>
+  <header id="top" class="hero">
+    <div class="hero-left">
+      <p class="eyebrow">Premium FiveM Servers • QBCore • Ready To Launch</p>
+      <h1>Own Your Server.<br><span>Own Your World.</span></h1>
+      <p class="hero-copy">
+        Not a template mill. Not a reseller. Real servers built from the ground up,
+        tested on live hardware, and delivered directly to your CFX account.
+      </p>
 
-<!-- TRUST BAR -->
-<div id="trust" class="trust-bar">
-  <div class="trust-item">
-    <div class="trust-icon">&#128737;</div>
-    <div>
-      <h4>Fully Yours</h4>
-      <p>Every script granted directly to your CFX account. Nothing cloned. Nothing pirated. Free scripts ship free. Paid scripts -- we buy them personally and add them to your grant.</p>
+      <div class="hero-buttons">
+        <a class="btn primary" href="#packages">View Packages</a>
+        <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank">Visit Tebex Store</a>
+      </div>
+
+      <div class="hero-badges">
+        <span>Plug & Play Setup</span>
+        <span>Secure & Optimized</span>
+        <span>Built For Communities</span>
+      </div>
     </div>
-  </div>
-  <div class="trust-item">
-    <div class="trust-icon">&#9889;</div>
-    <div>
-      <h4>Live-Tested</h4>
+
+    <div class="hero-right">
+      <div class="neon-card">
+        <p>Reality Sucks RP</p>
+        <strong>Build. Survive. Dominate.</strong>
+        <span>High quality FiveM servers, scripts & systems.</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="why-us" class="why-grid">
+    <article>
+      <strong>321+</strong>
+      <span>Scripts Tested</span>
+    </article>
+    <article>
+      <strong>24-48h</strong>
+      <span>CFX Delivery</span>
+    </article>
+    <article>
+      <strong>100%</strong>
+      <span>CFX Granted</span>
+    </article>
+    <article>
+      <strong>30 Days</strong>
+      <span>Discord Support</span>
+    </article>
+  </section>
+
+  <section class="features">
+    <article>
+      <div class="feature-icon">🛡</div>
+      <h3>Fully Yours</h3>
+      <p>Every script granted directly to your CFX account. Nothing cloned. Nothing pirated. Free scripts ship free. Paid scripts are purchased and added to your grant.</p>
+    </article>
+
+    <article>
+      <div class="feature-icon">⚡</div>
+      <h3>Live-Tested</h3>
       <p>Every resource runs through a live QBCore test server before delivery. Conflicts resolved. Load order sorted. No mystery errors on day one.</p>
+    </article>
+
+    <article>
+      <div class="feature-icon">🌴</div>
+      <h3>Host Anywhere</h3>
+      <p>ZAP-Hosting, a VPS, or your own home PC. Invite friends and play for free. You own it. You control it. No monthly fees to us.</p>
+    </article>
+
+    <article>
+      <div class="feature-icon">🎉</div>
+      <h3>Community Funded</h3>
+      <p>Every package purchase funds more free script releases to the FiveM community. The scene gave to us first — we give back.</p>
+    </article>
+  </section>
+
+  <section id="packages" class="packages">
+    <div class="section-heading">
+      <p>Our Packages</p>
+      <h2>Pick Your World.</h2>
+      <span>Three complete packages. Delivered to your CFX account in 24-48 hours.</span>
     </div>
-  </div>
-  <div class="trust-item">
-    <div class="trust-icon">&#127759;</div>
-    <div>
-      <h4>Host Anywhere</h4>
-      <p>ZAP-Hosting, a VPS, or your own home PC -- invite friends and play for free. You own it. You control it. No restrictions. No monthly fees to us.</p>
-    </div>
-  </div>
-  <div class="trust-item">
-    <div class="trust-icon">&#127881;</div>
-    <div>
-      <h4>Community Funded</h4>
-      <p>Every package purchase funds more free script releases to the FiveM community. The scene gave to us first -- we give back.</p>
-    </div>
-  </div>
-</div>
 
-<!-- PACKAGES -->
-<section id="packages">
-  <div class="pkg-header">
-    <p class="section-tag">Server Packages</p>
-    <h2 class="section-title">Pick Your World.<br>Open The Doors.</h2>
-    <p class="section-sub">Three complete packages. Delivered to your CFX account in 24-48 hours. The same scripts you see on the biggest servers in the scene.</p>
-  </div>
+    <div class="package-grid">
 
-  <div class="delivery-notice">
-    <p>
-      <strong>How it works:</strong> After payment, all scripts are granted directly to your CFX.re account. Free scripts ship at no cost. Any paid scripts in the package are purchased by us personally and added to your grant -- nothing is cloned or copied. You can run your server on ZAP-Hosting, any VPS, or your own home PC. No server required to play with friends.
-    </p>
-  </div>
+      <article class="package-card dev">
+        <div class="package-art">
+          <img src="images/qbcoreshell.png" alt="QBCore Shell package image">
+        </div>
 
-  <div class="pkg-cards">
+        <div class="package-top">
+          <span class="label">For Developers</span>
+          <strong class="price">$350</strong>
+        </div>
 
-    <!-- DEV SHELL -->
-    <div class="pkg pkg-card pkg-card-dev">
-      <div class="pkg-img-wrap">
-        <img class="pkg-img" src="images/qbcoreshell.png" alt="Development environment dark code"/>
-        <div class="pkg-img-overlay"></div>
-        <span class="pkg-img-badge badge-dev">For Developers</span>
-        <div class="pkg-img-price"><sup>$</sup>350</div>
-      </div>
-      <div class="pkg-body">
-        <p class="pkg-eyebrow">Dev Special</p>
-        <h2>QBCore Shell</h2>
-        <p class="pkg-desc">
-          A clean, conflict-free shell with <strong>321+ resources</strong> already tested, patched, and sorted. You know what you want to build. This gets you there without spending three months untangling someone else's mess.
+        <p class="special">Dev Special</p>
+        <h3>QBCore Shell</h3>
+        <p class="desc">
+          A clean, conflict-free shell with 321+ resources already tested, patched, and sorted.
+          You know what you want to build. This gets you there without spending three months
+          untangling someone else's mess.
         </p>
-      </div>
-      <button class="pkg-expand-btn" onclick="togglePkg(this)">
-        <span>What's Included</span>
-        <span class="chevron">&#8964;</span>
-      </button>
-      <div class="pkg-expand-content">
-        <ul class="pkg-features">
-          <li><strong>321+ scripts</strong> tested on a live QBCore server before delivery</li>
-          <li><strong>Conflict-free</strong> -- duplicates removed, load order sorted</li>
-          <li><strong>Bug fixes included</strong> -- broken resources identified and patched</li>
-          <li><strong>Full CFX access</strong> -- all scripts granted to your CFX.re account</li>
+
+        <ul>
+          <li>321+ scripts tested on a live QBCore server before delivery</li>
+          <li>Conflict-free — duplicates removed, load order sorted</li>
+          <li>Bug fixes included — broken resources identified and patched</li>
+          <li>Full CFX access — all scripts granted to your CFX.re account</li>
           <li>Free scripts ship free. Paid scripts purchased by us and added to your grant</li>
           <li>30 days Discord support for setup questions</li>
         </ul>
-        <div class="pkg-terms">
-          <h5>Terms of Sale</h5>
-          <p><strong>All sales are final.</strong> No refunds on digital goods.</p>
-          <p>Delivered via CFX account grant within 24-48 hours of confirmed payment. A valid CFX.re account is required. Scripts may not be resold or redistributed.</p>
-          <p><strong>To purchase:</strong> Join our <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a>
-      <a href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" class="tebex-nav">Tebex Store</a> and open a ticket in #open-a-ticket.</p>
-        </div>
-      </div>
-      <div class="pkg-footer">
-        <a class="pkg-cta cta-dev" href="https://discord.gg/qmtUpxqJjj" target="_blank">Open a Ticket</a>
-      </div>
-    </div>
 
-    <!-- ZOMBIE SERVER -->
-    <div class="pkg pkg-card pkg-card-z">
-      <div class="pkg-img-wrap">
-        <img class="pkg-img" src="images/zombierp.png" alt="Dark post-apocalyptic city night"/>
-        <div class="pkg-img-overlay"></div>
-        <span class="pkg-img-badge badge-z">&#9760; Zombie Survival</span>
-        <div class="pkg-img-price"><sup>$</sup>350</div>
-      </div>
-      <div class="pkg-body">
-        <p class="pkg-eyebrow">Ready to Launch</p>
-        <h2>Dead Zone Server</h2>
-        <p class="pkg-desc">
-          The city fell. The lights went out. Now survival is everything. <strong>A complete zombie server</strong> -- three fortified safe zones, cash-only economy, full vehicle and weapon shops, horror-themed UI. Drop it on your host and open the doors tonight.
+        <a class="card-btn" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank">View On Tebex</a>
+      </article>
+
+      <article class="package-card zombie">
+        <div class="package-art">
+          <img src="images/zombierp.png" alt="Dead Zone Server package image">
+        </div>
+
+        <div class="package-top">
+          <span class="label">Zombie Survival</span>
+          <strong class="price">$350</strong>
+        </div>
+
+        <p class="special">Ready To Launch</p>
+        <h3>Dead Zone Server</h3>
+        <p class="desc">
+          The city fell. The lights went out. Now survival is everything. A plug-and-play
+          zombie survival server with fortified safe zones, banking, full shops, big wheels,
+          airplanes, 4x4 vehicles, zombie exterminations, and horror-themed UI.
         </p>
-      </div>
-      <button class="pkg-expand-btn" onclick="togglePkg(this)">
-        <span>What's Included</span>
-        <span class="chevron">&#8964;</span>
-      </button>
-      <div class="pkg-expand-content">
-        <ul class="pkg-features">
-          <li><strong>3 Hub Safe Zones</strong> -- Southern Outpost, Highland Base, Northern Outpost. Supply, weapons, and vehicle shops at each</li>
-          <li><strong>Full vehicle roster</strong> -- cars, trucks, muscle, military, bikes, specialty, boats, aircraft</li>
-          <li><strong>Banking system</strong> -- survivors can store and manage money through an in-game economy</li>
-          <li><strong>Big wheels, aircraft, and 4x4 access</strong> -- drive, fly, and crawl through the apocalypse your way</li>
-          <li><strong>Zombie exterminations</strong> -- clear infected areas and fight back against the outbreak</li>
-          <li><strong>Survive solo or with friends</strong> -- play alone, invite friends, or grow into a full community</li>
-          <li><strong>Host it on your PC</strong> -- no dedicated server required to start playing with friends</li>
-          <li><strong>Plug and play setup</strong> -- drop it in, configure your basics, and start surviving</li>
-          <li><strong>Banking system</strong> -- survivors can store and manage money through an in-game economy</li>
-          <li><strong>Big wheels, aircraft, and 4x4 access</strong> -- drive, fly, and crawl through the apocalypse your way</li>
-          <li><strong>Zombie exterminations</strong> -- clear infected areas and fight back against the outbreak</li>
-          <li><strong>Survive solo or with friends</strong> -- play alone, invite friends, or grow into a full community</li>
-          <li><strong>Host it on your PC</strong> -- no dedicated server required to start playing with friends</li>
-          <li><strong>Plug and play setup</strong> -- drop it in, configure your basics, and start surviving</li>
-          <li><strong>All weapons and ammo</strong> -- pistols, SMGs, shotguns, rifles, snipers, every ammo type</li>
-          
-          
-          <li><strong>Custom zombie inventory UI</strong> -- horror-themed with skeletal mascot and crimson slot theme</li>
-          
-          <li><strong>In-game prop placer</strong> -- build out hubs with barricades, crates, military props</li>
-          <li><strong>Full CFX access</strong> -- all scripts granted to your account. Paid scripts purchased by us</li>
+
+        <ul>
+          <li>3 Hub Safe Zones — Southern Outpost, Highland Base, Northern Outpost</li>
+          <li>Supply, weapons, and vehicle shops at each safe zone</li>
+          <li>Full vehicle roster — cars, trucks, muscle, military, bikes, specialty, boats, aircraft</li>
+          <li>Big wheels, airplanes, and 4x4 access</li>
+          <li>All weapons and ammo — pistols, SMGs, shotguns, rifles, snipers, every ammo type</li>
+          <li>Banking system for survivor economy</li>
+          <li>Zombie exterminations and infected zone gameplay</li>
+          <li>Custom zombie inventory UI — horror-themed with skeletal mascot and crimson slot theme</li>
+          <li>Survive alone or with your friends</li>
+          <li>Host it on your PC — no paid server required to start</li>
+          <li>Plug and play setup</li>
+          <li>Full CFX access — all scripts granted to your account. Paid scripts purchased by us</li>
           <li>30 days Discord support</li>
         </ul>
-        <div class="pkg-terms">
-          <h5>Terms of Sale</h5>
-          <p><strong>All sales are final.</strong> No refunds on digital goods or services.</p>
-          <p>Delivered via CFX account grant within 24-48 hours. Requires a valid CFX.re account and a FiveM host or home PC. Files may not be resold or redistributed.</p>
-          <p><strong>To purchase:</strong> Join our <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a>
-      <a href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" class="tebex-nav">Tebex Store</a> and open a ticket in #open-a-ticket.</p>
-        </div>
-      </div>
-      <div class="pkg-footer">
-        <a class="pkg-cta cta-z" href="https://discord.gg/qmtUpxqJjj" target="_blank">Open a Ticket</a>
-      </div>
-    </div>
 
-    <!-- FULL RP SERVER -->
-    <div class="pkg pkg-card pkg-card-owner">
-      <div class="pkg-img-wrap">
-        <img class="pkg-img" src="images/full_server.png" alt="City skyline at night cinematic"/>
-        <div class="pkg-img-overlay"></div>
-        <span class="pkg-img-badge badge-owner">For Server Owners</span>
-        <div class="pkg-img-price"><sup>$</sup>500</div>
-      </div>
-      <div class="pkg-body">
-        <p class="pkg-eyebrow">Server Owner Special</p>
-        <h2>Full RP Server</h2>
-        <p class="pkg-desc">
-          <strong>Not a template.</strong> The same foundation powering a real live server -- street racing, gangs, drug economy, custom jobs, custom HUD. Built over months. Every conflict resolved. Open the doors faster.
+        <a class="card-btn" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank">View On Tebex</a>
+      </article>
+
+      <article class="package-card owner">
+        <div class="package-art">
+          <img src="images/full_server.png" alt="Full RP Server package image">
+        </div>
+
+        <div class="package-top">
+          <span class="label">For Server Owners</span>
+          <strong class="price">$500</strong>
+        </div>
+
+        <p class="special">Server Owner Special</p>
+        <h3>Full RP Server</h3>
+        <p class="desc">
+          Not a template. The same foundation powering a real live server — street racing,
+          gangs, drug economy, custom jobs, custom HUD. Built over months. Every conflict
+          resolved. Open the doors faster.
         </p>
-      </div>
-      <button class="pkg-expand-btn" onclick="togglePkg(this)">
-        <span>What's Included</span>
-        <span class="chevron">&#8964;</span>
-      </button>
-      <div class="pkg-expand-content">
-        <ul class="pkg-features">
-          <li><strong>Full live server</strong> -- street racing, gang territory, drug economy, custom jobs</li>
-          <li><strong>Custom HUD and UI</strong> -- built in-house, not a reskin</li>
-          <li><strong>Full CFX access</strong> -- all scripts granted to your account. Paid scripts purchased by us personally</li>
-          <li><strong>One month config support</strong> -- we help you customize and set up the server your way</li>
-          <li><strong>ZAP-Hosting setup included</strong> -- choose ZAP and we walk you through getting online. <a href="https://zap-hosting.com/a/494af1ee250e61ce70869a1022204a8d60c6ff0c?voucher=willishere82-a-5797" target="_blank">Get ZAP Hosting</a></li>
-          <li>Host on ZAP, a VPS, or your own PC -- complete freedom</li>
+
+        <ul>
+          <li>Full live server — street racing, gang territory, drug economy, custom jobs</li>
+          <li>Custom HUD and UI — built in-house, not a reskin</li>
+          <li>Full CFX access — all scripts granted to your account. Paid scripts purchased by us personally</li>
+          <li>One month config support — we help you customize and set up the server your way</li>
+          <li>ZAP-Hosting setup included — choose ZAP and we walk you through getting online</li>
+          <li>Host on ZAP, a VPS, or your own PC — complete freedom</li>
           <li>30 days Discord support included</li>
         </ul>
-        <div class="pkg-terms">
-          <h5>Terms of Sale</h5>
-          <p><strong>All sales are final.</strong> No refunds on digital goods or services.</p>
-          <p>Delivered via CFX account grant within 24-48 hours. Requires a valid CFX.re account and a FiveM host or home PC. One month config support included. Custom development not included.</p>
-          <p><strong>To purchase:</strong> Join our <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a>
-      <a href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" class="tebex-nav">Tebex Store</a> and open a ticket in #open-a-ticket.</p>
-        </div>
-      </div>
-      <div class="pkg-footer">
-        <a class="pkg-cta cta-owner" href="https://discord.gg/qmtUpxqJjj" target="_blank">Open a Ticket</a>
-      </div>
+
+        <a class="card-btn" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank">View On Tebex</a>
+      </article>
+
     </div>
+  </section>
 
-  </div>
-</section>
+  <section class="final-cta">
+    <div>
+      <p class="eyebrow">The Same Scripts. The Real Experience.</p>
+      <h2>Ready To Build Your Dream Server?</h2>
+      <p>
+        What you see on the biggest, most polished FiveM servers — that's what you get.
+        No watered-down versions. No missing features. The actual thing, granted to your account.
+      </p>
+    </div>
+    <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank">Shop Tebex Store</a>
+  </section>
 
-<!-- CINEMATIC STRIP -->
-<div class="cinematic-strip">
-  <div class="cinematic-strip-bg"></div>
-  <div class="cinematic-strip-overlay"></div>
-  <div class="cinematic-strip-content">
-    <h2>The Same Scripts.<br><em>The Real Experience.</em></h2>
-    <p>What you see on the biggest, most polished FiveM servers -- that's what you get. No watered-down versions. No missing features. The actual thing, granted to your account, ready to run.</p>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">
-    <a class="footer-logo" href="#hero">REALITY*SUCKS*RP</a>
-    <p>QBCore servers and free scripts built on a live server, tested by a real player. Every script granted directly to your CFX account. Community funded. Always.</p>
-  </div>
-  <div class="footer-links">
-    <a href="https://github.com/RealitySucksRP" target="_blank">GitHub</a>
-    <a href="https://discord.gg/qmtUpxqJjj" target="_blank">Discord</a>
-      <a href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" class="tebex-nav">Tebex Store</a>
-    <a href="#packages">Packages</a>
-    <a href="#trust">Why Us</a>
-  </div>
-  <p class="footer-copy">&copy; 2026 Reality Sucks RP &mdash; All scripts tested on live QBCore hardware. CFX grants delivered within 24-48 hours.</p>
-</footer>
-
-<script>
-  function togglePkg(btn) {
-    const content = btn.nextElementSibling;
-    const isOpen = content.classList.toggle('open');
-    btn.classList.toggle('open', isOpen);
-    btn.querySelector('span:first-child').textContent = isOpen ? "Show Less" : "What's Included";
-  }
-</script>
-
+  <footer>
+    <div class="footer-logo">Reality <strong>Sucks</strong> RP</div>
+    <p>QBCore servers and free scripts built on a live server, tested by a real player.</p>
+    <div class="footer-links">
+      <a href="https://github.com/RealitySucksRP" target="_blank">GitHub</a>
+      <a href="https://discord.gg/" target="_blank">Discord</a>
+      <a href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank">Tebex Store</a>
+    </div>
+  </footer>
 </body>
 </html>
