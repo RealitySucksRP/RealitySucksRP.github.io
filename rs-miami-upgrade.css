@@ -1,0 +1,182 @@
+﻿/* RealitySucksRP Miami Vice / GTA Storefront Upgrade */
+
+:root {
+  --rs-bg: #050510;
+  --rs-panel: rgba(8, 10, 22, .78);
+  --rs-pink: #ff2fb3;
+  --rs-cyan: #00eaff;
+  --rs-orange: #ff9b25;
+  --rs-purple: #8b5cff;
+  --rs-text: #ffffff;
+  --rs-muted: #cfd8ff;
+}
+
+body {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 47, 179, .32), transparent 30%),
+    radial-gradient(circle at 78% 8%, rgba(0, 234, 255, .24), transparent 32%),
+    radial-gradient(circle at 50% 100%, rgba(255, 155, 37, .18), transparent 40%),
+    linear-gradient(rgba(3, 5, 16, .66), rgba(3, 5, 16, .96)),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80") center top / cover fixed no-repeat !important;
+  color: var(--rs-text) !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 72%);
+  z-index: -1;
+}
+
+/* Main hero: make it feel like a poster */
+.hero, header + section, .hero-section {
+  position: relative;
+  border-radius: 34px;
+  margin-top: 18px;
+  background:
+    linear-gradient(135deg, rgba(255,47,179,.18), rgba(0,234,255,.10)),
+    rgba(5, 8, 20, .70) !important;
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 30px 90px rgba(0,0,0,.45), 0 0 60px rgba(255,47,179,.18);
+  backdrop-filter: blur(16px);
+}
+
+/* Big title glow */
+h1, .hero h1 {
+  text-shadow:
+    0 0 18px rgba(255,47,179,.65),
+    0 0 36px rgba(0,234,255,.28);
+  letter-spacing: -1px;
+}
+
+h2 {
+  text-shadow: 0 0 22px rgba(0,234,255,.25);
+}
+
+/* Package cards: neon product boxes */
+.package-card,
+.pkg-card,
+.card,
+article {
+  background:
+    linear-gradient(145deg, rgba(255,47,179,.13), rgba(0,234,255,.07) 42%, rgba(255,155,37,.10)),
+    rgba(7, 9, 22, .82) !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  border-radius: 26px !important;
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.48),
+    inset 0 0 0 1px rgba(255,255,255,.05),
+    0 0 34px rgba(255,47,179,.12) !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(14px);
+}
+
+.package-card:hover,
+.pkg-card:hover,
+.card:hover,
+article:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.58),
+    0 0 42px rgba(0,234,255,.18),
+    0 0 38px rgba(255,47,179,.16) !important;
+}
+
+/* Poster images: smaller, readable, no overlay */
+.pkg-img,
+.package-card img,
+.pkg-card img,
+.card img,
+article img {
+  width: 100% !important;
+  height: 230px !important;
+  max-height: 230px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block !important;
+  padding: 12px !important;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,47,179,.18), transparent 35%),
+    linear-gradient(135deg, #050713, #11071b) !important;
+  border-radius: 22px !important;
+  margin-bottom: 18px !important;
+}
+
+/* Keep category text below image */
+.package-card img + *,
+.pkg-card img + *,
+.card img + *,
+article img + * {
+  position: relative !important;
+  margin-top: 14px !important;
+  z-index: 2 !important;
+}
+
+/* Prices and tags pop more */
+.price,
+[class*="price"] {
+  color: var(--rs-orange) !important;
+  text-shadow: 0 0 18px rgba(255,155,37,.45);
+}
+
+.badge,
+.tag,
+.pkg-tag,
+.package-tag {
+  background: linear-gradient(90deg, var(--rs-pink), var(--rs-purple)) !important;
+  color: white !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  box-shadow: 0 0 22px rgba(255,47,179,.35);
+}
+
+/* Buttons: more Tebex/GTA */
+a[href*="discord"],
+button,
+.btn,
+.cta {
+  background: linear-gradient(90deg, var(--rs-pink), var(--rs-orange)) !important;
+  color: white !important;
+  border: 0 !important;
+  box-shadow: 0 0 26px rgba(255,47,179,.30);
+  text-shadow: 0 1px 2px rgba(0,0,0,.45);
+}
+
+/* Lists inside cards */
+li {
+  color: var(--rs-muted) !important;
+  line-height: 1.55;
+}
+
+li strong {
+  color: #fff !important;
+}
+
+/* Hide Terms of Sale sections on the landing page */
+h5,
+h5 + p,
+h5 + p + p,
+h5 + p + p + p {
+  display: none !important;
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+  .pkg-img,
+  .package-card img,
+  .pkg-card img,
+  .card img,
+  article img {
+    height: 200px !important;
+    max-height: 200px !important;
+  }
+
+  h1 {
+    font-size: 2.6rem !important;
+  }
+}
