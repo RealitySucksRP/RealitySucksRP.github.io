@@ -638,3 +638,17 @@ footer p {
     font-size: 40px;
   }
 }
+/* Lore-friendly trust notice */
+.safe-line {
+  display: block;
+  margin-top: 12px;
+  color: #7dff2f;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 14px rgba(125, 255, 47, .55);
+}
+
+.hero-badges span {
+  white-space: nowrap;
+}
