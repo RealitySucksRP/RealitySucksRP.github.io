@@ -31,3 +31,53 @@
   position: relative !important;
   z-index: 2;
 }
+
+/* =========================================================
+   RealitySucksRP package poster + Miami background patch
+   Added to stop poster images from overpowering card text
+   ========================================================= */
+
+body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 58, 170, 0.24), transparent 32%),
+    radial-gradient(circle at 85% 20%, rgba(0, 225, 255, 0.20), transparent 34%),
+    linear-gradient(rgba(2, 5, 14, 0.72), rgba(2, 5, 14, 0.94)),
+    url("https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?auto=format&fit=crop&w=1800&q=80") center top / cover fixed no-repeat !important;
+}
+
+/* Keep the Tebex poster images readable and not giant */
+.pkg-img {
+  width: 100% !important;
+  height: 260px !important;
+  max-height: 260px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  padding: 10px !important;
+  background: linear-gradient(135deg, rgba(5, 8, 18, 0.95), rgba(17, 10, 28, 0.95)) !important;
+  border-radius: 18px !important;
+}
+
+/* Stop labels like For Developers / Zombie Survival / For Server Owners from sitting on top of images */
+.package-card img + *,
+.pkg-img + *,
+.card img + * {
+  position: relative !important;
+  z-index: 2 !important;
+  margin-top: 16px !important;
+}
+
+.package-card,
+.pkg-card,
+.card {
+  overflow: hidden !important;
+}
+
+/* Mobile: make posters even shorter */
+@media (max-width: 768px) {
+  .pkg-img {
+    height: 220px !important;
+    max-height: 220px !important;
+  }
+}
+
