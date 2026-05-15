@@ -1,0 +1,33 @@
+
+/* --- Poster image fix: keeps Tebex graphics readable --- */
+.pkg-img {
+  width: 100%;
+  height: 360px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #050505;
+  padding: 10px;
+  border-radius: 18px;
+}
+
+/* Prevent package labels/text from sitting over the poster image */
+.package-card,
+.pkg-card,
+.card {
+  overflow: visible;
+}
+
+.pkg-tag,
+.package-tag,
+.badge,
+.ribbon {
+  z-index: 5;
+}
+
+/* If any card heading is absolute over the image, force it back into normal flow */
+.package-card h3,
+.pkg-card h3,
+.card h3 {
+  position: relative !important;
+  z-index: 2;
+}
