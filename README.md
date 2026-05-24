@@ -10,11 +10,11 @@ Real talk… most FiveM servers out here?
 
 They messy. Broken. Random files everywhere. Nothing makes sense.
 
-This ain’t that.
+This ain't that.
 
-This is a clean, structured, fully built server setup that actually works how it’s supposed to.
+This is a clean, structured, fully built server setup that actually works how it's supposed to.
 
-And yeah… this didn’t come overnight.
+And yeah… this didn't come overnight.
 
 This took months of grinding, testing, breaking stuff, fixing it, and doing it again till it was right.
 
@@ -27,7 +27,7 @@ Drop in your license key
 Add your database password
 Start the server
 
-That’s it.
+That's it.
 
 No extra nonsense.
 
@@ -56,21 +56,21 @@ Voice chat (pma-voice)
 UI stuff (menus, HUD, targeting)
 Clean server.cfg that actually makes sense
 
-Everything lined up how it’s supposed to be.
+Everything lined up how it's supposed to be.
 
 🧩 Why This Different
 
 Most packs out there got you like:
 
-“why this not working?”
-“why my server crashing?”
-“where this even go??”
+"why this not working?"
+"why my server crashing?"
+"where this even go??"
 
 This setup follows a real structure:
 
 Core → Systems → Jobs → Economy → Extras
 
-So everything loads right, runs smooth, and doesn’t bug out for no reason.
+So everything loads right, runs smooth, and doesn't bug out for no reason.
 
 ⏱️ The Work Behind This
 
@@ -83,7 +83,7 @@ Testing over and over
 Fixing random issues
 Making it beginner-friendly without dumbing it down
 
-This ain’t no quick flip project.
+This ain't no quick flip project.
 
 🎯 Who This For
 People tryna start their first server
@@ -92,7 +92,7 @@ Devs who want a clean base
 Server owners who wanna move serious
 ⚠️ Real Talk
 
-This ain’t some “click once and you a dev now” type thing.
+This ain't some "click once and you a dev now" type thing.
 
 You still gotta learn.
 
@@ -108,10 +108,16 @@ It makes that learning way easier and way less stressful.
 
 If you new… yeah it might feel confusing at first.
 
-That’s normal.
+That's normal.
 
 But once it clicks?
 
 You gon realize how powerful this setup really is.
 PS:
-100% lore friendly. No guessing if your gonna get banned. Nah homie not with this. Everything here is build from the ground up. All the resources that are paid for, you will be the owner also. I will make sure you get all the rights to all the scripts. No brand names, no brand cars and no sneakers that can get you banned. You can add all that yourself when you purchase the server. Once is in your hands is yours to manipulate however you want it. My scripts are all free or paid for and you will have them too because when you purchase your package I will use that money towards your scripts. Is not a transfer is a bought and paid for scripts that will be yours inside CFX portal granted assets. You need that for updates dont be fooled by others selling servers. I will do it right. Make sure you have a fivem and cfx account. Please send me a message in discord for any questions. 
+100% lore friendly. No guessing if your gonna get banned. Nah homie not with this. Everything here is build from the ground up. All the resources that are paid for, you will be the owner also. I got tired of this shit too homie we good.
+
+---
+
+## Support This Project
+
+<a href='https://ko-fi.com/R6R51XYJ6N' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
