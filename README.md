@@ -1,7 +1,9 @@
 # RealitySucksRP FiveM Server Packages
 
-RealitySucksRP builds and supports QBCore FiveM servers, original gameplay
-resources, zombie systems, and complete RP foundations.
+RealitySucksRP builds and supports multi-framework FiveM servers, original
+gameplay resources, zombie systems, and complete RP foundations. Our packages
+and original resources support QBCore, Qbox, ESX, and Standalone through the
+RealitySucksRP bridge system.
 
 **Website:** https://realitysucksrp.github.io/
 **Tebex:** https://reality-sucks-rp-webstore.tebex.io/
@@ -27,24 +29,47 @@ Because Enhanced support is still evolving, migration work is scoped around the
 actual resources in each server. Third-party encrypted, escrowed, abandoned, or
 technically incompatible resources may require replacement or separate work.
 
+## Framework Support
+
+RealitySucksRP is not limited to one framework. Our packages and maintained
+resources are designed to work with:
+
+- QBCore
+- Qbox
+- ESX
+- Standalone
+
+Our bridge architecture separates gameplay logic from framework-specific
+functions. Depending on the resource, configurable adapters can connect
+framework identity and player data, inventories, jobs, banking, notifications,
+targeting, keys, fuel, housing, voice, and other common server systems.
+
+QBCore remains the included default configuration for the QBCore Shell package,
+but RealitySucksRP resources are built so server owners can use the same systems
+on Qbox, ESX, or Standalone servers through the available bridges.
+
 ## Current Packages
 
 ### QBCore Shell — $450
 
-A clean QBCore foundation with 321+ resources reviewed, organized, patched, and
-prepared as a serious starting point for developers and server owners.
+A clean QBCore foundation with 321+ resources reviewed, organized, patched,
+and prepared as a serious starting point for developers and server owners.
+QBCore is the included shell, while RealitySucksRP resources use bridge support
+for QBCore, Qbox, ESX, and Standalone.
 
 ### Zombie Server — $500
 
 A complete zombie-survival server with survivor hubs, infected gameplay,
 vehicles, weapons, shops, custom UI, OneSync-focused systems, and original
-RealitySucksRP outbreak resources.
+RealitySucksRP outbreak resources. The package can be configured for QBCore,
+Qbox, ESX, or Standalone through the RealitySucksRP bridges.
 
 ### Full RP Server — $650
 
-A complete QBCore roleplay foundation with jobs, economy, gangs, racing,
-vehicles, housing, custom UI, setup assistance, and room for continued
-development.
+A complete roleplay foundation with jobs, economy, gangs, racing, vehicles,
+housing, custom UI, setup assistance, and room for continued development. The
+server and original RealitySucksRP resources support QBCore, Qbox, ESX, and
+Standalone through maintained bridges.
 
 ## Delivery and Ownership
 
