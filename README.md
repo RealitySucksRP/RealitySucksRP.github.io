@@ -1,123 +1,67 @@
-🚀 RealitySucksRP FiveM Server Packages
+# RealitySucksRP FiveM Server Packages
 
-Welcome to RealitySucksRP — where we took all the headache outta building a FiveM server and turned it into something you can actually run without losing your mind.
+RealitySucksRP builds and supports QBCore FiveM servers, original gameplay
+resources, zombie systems, and complete RP foundations.
 
-🌐 Website: https://realitysucksrp.github.io/
+**Website:** https://realitysucksrp.github.io/
+**Tebex:** https://reality-sucks-rp-webstore.tebex.io/
+**GitHub:** https://github.com/RealitySucksRP
 
-🧠 What This Is
+## GTA V Enhanced Ready
 
-Real talk… most FiveM servers out here?
+FiveM for GTA V Enhanced is now available in early access. RealitySucksRP is
+preparing new server builds for the Enhanced generation while continuing to
+support practical Legacy-to-Enhanced migration work.
 
-They messy. Broken. Random files everywhere. Nothing makes sense.
+Migration and setup assistance may include:
 
-This ain't that.
+- Reviewing an existing server and its resource inventory
+- Identifying Legacy-only or incompatible assets
+- Assisting with supported Alchemist asset conversion
+- Updating Cfx server artifacts and configuration
+- Replacing incompatible resources when practical
+- Testing startup, dependencies, maps, vehicles, clothing, and gameplay systems
+- Helping server owners set up on ZAP-Hosting, a VPS, or a local PC
 
-This is a clean, structured, fully built server setup that actually works how it's supposed to.
+Because Enhanced support is still evolving, migration work is scoped around the
+actual resources in each server. Third-party encrypted, escrowed, abandoned, or
+technically incompatible resources may require replacement or separate work.
 
-And yeah… this didn't come overnight.
+## Current Packages
 
-This took months of grinding, testing, breaking stuff, fixing it, and doing it again till it was right.
+### QBCore Shell — $450
 
-⚙️ How You Can Use It
-🟢 Just Wanna Run a Server? (Plug & Play)
+A clean QBCore foundation with 321+ resources reviewed, organized, patched, and
+prepared as a serious starting point for developers and server owners.
 
-If you tryna just get your server up and running without all the tech stress:
+### Zombie Server — $500
 
-Drop in your license key
-Add your database password
-Start the server
+A complete zombie-survival server with survivor hubs, infected gameplay,
+vehicles, weapons, shops, custom UI, OneSync-focused systems, and original
+RealitySucksRP outbreak resources.
 
-That's it.
+### Full RP Server — $650
 
-No extra nonsense.
+A complete QBCore roleplay foundation with jobs, economy, gangs, racing,
+vehicles, housing, custom UI, setup assistance, and room for continued
+development.
 
-🛠️ You a Builder? (Dev Mode)
+## Delivery and Ownership
 
-If you the type that likes to tweak everything:
+Included resources are delivered through the customer's CFX account whenever
+the CFX grant system applies. Free resources are included at no additional
+resource cost. Paid resources are purchased and granted to the customer's
+account rather than copied or redistributed.
 
-Change systems
-Add scripts
-Build your own economy
-Flip the whole server your way
+Package delivery, custom configuration, and migration timelines depend on the
+scope of the server and the compatibility of third-party resources.
 
-This gives you a clean base to build off, not some junkyard pack.
+## Support
 
-📦 What You Getting
+Each package includes the support period listed on the website. Migration,
+large custom changes, and third-party asset conversion are reviewed separately
+unless explicitly included in writing.
 
-You basically getting a full setup:
+To discuss a package or request a GTA V Enhanced migration review, open a ticket:
 
-QB-Core foundation (the heart of everything)
-Jobs (police, EMS, trucking, taxi, etc.)
-Inventory + weapons system
-Housing + apartments
-Banking + shops + economy
-Phone system
-Voice chat (pma-voice)
-UI stuff (menus, HUD, targeting)
-Clean server.cfg that actually makes sense
-
-Everything lined up how it's supposed to be.
-
-🧩 Why This Different
-
-Most packs out there got you like:
-
-"why this not working?"
-"why my server crashing?"
-"where this even go??"
-
-This setup follows a real structure:
-
-Core → Systems → Jobs → Economy → Extras
-
-So everything loads right, runs smooth, and doesn't bug out for no reason.
-
-⏱️ The Work Behind This
-
-No shortcuts taken.
-
-This came from:
-
-Months of building
-Testing over and over
-Fixing random issues
-Making it beginner-friendly without dumbing it down
-
-This ain't no quick flip project.
-
-🎯 Who This For
-People tryna start their first server
-Anyone tired of broken packs
-Devs who want a clean base
-Server owners who wanna move serious
-⚠️ Real Talk
-
-This ain't some "click once and you a dev now" type thing.
-
-You still gotta learn.
-
-But this setup?
-
-It makes that learning way easier and way less stressful.
-
-🌐 Tap In
-
-👉 https://realitysucksrp.github.io/
-
-💬 Final Word
-
-If you new… yeah it might feel confusing at first.
-
-That's normal.
-
-But once it clicks?
-
-You gon realize how powerful this setup really is.
-PS:
-100% lore friendly. No guessing if your gonna get banned. Nah homie not with this. Everything here is build from the ground up. All the resources that are paid for, you will be the owner also. I got tired of this shit too homie we good.
-
----
-
-## Support This Project
-
-<a href='https://ko-fi.com/R6R51XYJ6N' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+https://discord.com/channels/1391247306522628127/1490860253892317236
