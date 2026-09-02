@@ -5,9 +5,9 @@ gameplay resources, zombie systems, and complete RP foundations. Our packages
 and original resources support QBCore, Qbox, ESX, and Standalone through the
 RealitySucksRP bridge system.
 
-**Website:** https://realitysucksrp.github.io/
+**Website:** https://realitysucksrp.github.io/ AND 
 **Tebex:** https://reality-sucks-rp-webstore.tebex.io/
-**GitHub:** https://github.com/RealitySucksRP
+
 
 ## GTA V Enhanced Ready
 
