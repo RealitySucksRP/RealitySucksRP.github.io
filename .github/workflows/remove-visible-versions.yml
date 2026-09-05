@@ -1,0 +1,80 @@
+name: Remove visible versions
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/remove-visible-versions.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-storefront:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update only visible storefront labels
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          replacement = '''    <div class="hero-right">
+      <div class="neon-card">
+        <p>RealitySucksRP Tebex Store</p>
+        <strong>Built By Me. Ready For Your Server.</strong>
+        <span>Shop my FiveM systems for zombie survival, vehicles, racing, weapons, shops, phones, custom UI, Phantom encounters, warfare and more.</span>
+        <div class="signal-list">
+          <div><b>Zombie + Survival</b><span>Explore</span></div>
+          <div><b>Vehicles + Racing</b><span>Explore</span></div>
+          <div><b>Weapons + Shops</b><span>Explore</span></div>
+          <div><b>Phantom + Warfare</b><span>Explore</span></div>
+          <div><b>Phones + UI</b><span>Explore</span></div>
+        </div>
+        <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer" style="margin-top:18px;">Browse The Full Store</a>
+      </div>
+    </div>
+  </header>'''
+
+          pattern = r'    <div class="hero-right">.*?    </div>\n  </header>'
+          s, count = re.subn(pattern, replacement, s, count=1, flags=re.S)
+          if count != 1:
+              raise SystemExit('Hero-right storefront block was not found exactly once.')
+
+          # Remove visible semantic-version style labels while leaving prices and normal text alone.
+          s = re.sub(r'\bv\d+(?:\.\d+){1,3}(?:[-A-Za-z0-9._]+)?\b', '', s)
+          s = re.sub(r'<span class="version">\s*</span>', '', s)
+          s = s.replace('Free • rs_bridge ', 'Free')
+          s = s.replace('Free • rs_bridge', 'Free')
+          s = re.sub(r'\s+([<])', lambda m: m.group(0), s)
+
+          # Proof gate: no visible v1.2 / v2.3.4 style strings may remain in the HTML.
+          leftovers = re.findall(r'\bv\d+(?:\.\d+){1,3}(?:[-A-Za-z0-9._]+)?\b', s)
+          if leftovers:
+              raise SystemExit('Version labels remain: ' + ', '.join(sorted(set(leftovers))))
+
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Commit clean storefront change
+        shell: bash
+        run: |
+          git config user.name "RealitySucksRP Update Bot"
+          git config user.email "actions@users.noreply.github.com"
+          rm -f .github/workflows/remove-visible-versions.yml
+          git add index.html .github/workflows/remove-visible-versions.yml
+          git diff --cached --quiet && exit 0
+          git commit -m "Replace release signal with Tebex storefront promo"
+          git push origin main
