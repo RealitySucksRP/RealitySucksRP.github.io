@@ -1,0 +1,97 @@
+name: Apply storefront priority
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/storefront-priority.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Make packages and Tebex primary
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          # Remove GitHub from the primary navigation.
+          s = s.replace('      <a href="https://github.com/RealitySucksRP" target="_blank" rel="noopener noreferrer">GitHub</a>\n', '')
+
+          # Make the server packages visually and structurally primary.
+          start = s.index('  <section id="packages"')
+          end = s.index('  <section id="about"', start)
+          packages = s[start:end]
+          packages = packages.replace('<section id="packages" class="packages">', '<section id="packages" class="packages priority-packages">', 1)
+          packages = packages.replace('<p>Complete FiveM Server Packages</p>', '<p>Start Here • Complete FiveM Server Packages</p>', 1)
+          packages = packages.replace(
+              '<span>Three fixed server-package options with organized resources, setup guidance and 30 days of Discord support. Paid third-party resources are handled through proper purchase/CFX grant paths instead of copied into a package.</span>',
+              '<span>Three fixed server-package options with organized resources, setup guidance and 30 days of Discord support. Choose the foundation that fits your server, then use the Tebex catalog below to expand it with additional RealitySucksRP systems.</span>\n      <div class="package-heading-actions">\n        <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">Browse Tebex Store</a>\n        <a class="btn ghost" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Ask About A Package</a>\n      </div>',
+              1
+          )
+
+          # Remove original package location and place immediately below hero.
+          s = s[:start] + s[end:]
+          hero_end = s.index('  </header>') + len('  </header>')
+          s = s[:hero_end] + '\n\n' + packages.rstrip() + '\n' + s[hero_end:]
+
+          # Demote GitHub inside the shopping experience.
+          replacements = {
+              '<a class="btn ghost" href="https://github.com/RealitySucksRP?tab=repositories" target="_blank" rel="noopener noreferrer">All Public Repositories</a>': '<a class="micro-link" href="https://github.com/RealitySucksRP?tab=repositories" target="_blank" rel="noopener noreferrer">Public source on GitHub</a>',
+              '<a class="btn ghost" href="https://github.com/RealitySucksRP/rs_bridge" target="_blank" rel="noopener noreferrer">View Source</a>': '<a class="micro-link" href="https://github.com/RealitySucksRP/rs_bridge" target="_blank" rel="noopener noreferrer">Source</a>',
+              '<a href="https://github.com/RealitySucksRP/qb-inventory-reworked-images-in-menu" target="_blank" rel="noopener noreferrer">GitHub</a>': '',
+              '<a href="https://github.com/RealitySucksRP/qb-inventory-Zombie-Menu-UI" target="_blank" rel="noopener noreferrer">GitHub</a>': '',
+          }
+          for old, new in replacements.items():
+              s = s.replace(old, new)
+
+          # Free/open-source cards: Tebex remains the main action. Keep only one tiny GitHub link for source discovery.
+          s = s.replace(
+              '<article class="resource-card bridge-card"><div class="resource-meta"><span class="tag free">Free</span><span class="version">v2.4.0</span></div><h3>RS Bridge</h3><p>Universal framework and provider compatibility layer.</p><div class="card-actions"><a href="https://github.com/RealitySucksRP/rs_bridge" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>',
+              '<article class="resource-card bridge-card"><div class="resource-meta"><span class="tag free">Free</span><span class="version">v2.4.0</span></div><h3>RS Bridge</h3><p>Universal framework and provider compatibility layer.</p><div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7628375" target="_blank" rel="noopener noreferrer">Get Free on Tebex</a></div></article>'
+          )
+          s = s.replace(
+              '<article class="resource-card punk-card"><div class="resource-meta"><span class="tag free">Free</span><span class="version">v3.0.3</span></div><h3>Punk Inventory</h3><p>Hardened QBCore inventory with custom art, physical cash and dependable drop/state handling.</p><div class="card-actions"></div></article>',
+              '<article class="resource-card punk-card"><div class="resource-meta"><span class="tag free">Free</span><span class="version">v3.0.3</span></div><h3>Punk Inventory</h3><p>Hardened QBCore inventory with custom art, physical cash and dependable drop/state handling.</p><div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7449247" target="_blank" rel="noopener noreferrer">Get Free on Tebex</a></div></article>'
+          )
+          s = s.replace(
+              '<article class="resource-card zombie-card"><div class="resource-meta"><span class="tag free">Free</span><span class="version">v3.0.2</span></div><h3>Zombie Inventory</h3><p>Dedicated apocalypse inventory edition with its own artwork and survival identity.</p><div class="card-actions"></div></article>',
+              '<article class="resource-card zombie-card"><div class="resource-meta"><span class="tag free">Free</span><span class="version">v3.0.2</span></div><h3>Zombie Inventory</h3><p>Dedicated apocalypse inventory edition with its own artwork and survival identity.</p><div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7540906" target="_blank" rel="noopener noreferrer">Get Free on Tebex</a></div></article>'
+          )
+
+          # Final CTA should lead with the storefront, not GitHub.
+          s = s.replace(
+              '<a class="btn primary" href="https://github.com/RealitySucksRP" target="_blank" rel="noopener noreferrer">Browse GitHub</a>\n      ',
+              ''
+          )
+
+          p.write_text(s, encoding='utf-8')
+
+          css = Path('rs-storefront.css')
+          c = css.read_text(encoding='utf-8')
+          c += '''\n\n/* Storefront priority — Sept 2026 */\n.priority-packages {\n  max-width: 1600px;\n  margin-top: 34px;\n  margin-bottom: 72px;\n  padding: 34px 28px 42px;\n  border-radius: 32px;\n  background:\n    radial-gradient(circle at 50% 0%, rgba(255,47,179,.15), transparent 34%),\n    linear-gradient(180deg, rgba(12,14,31,.96), rgba(5,7,17,.94));\n  border: 1px solid rgba(255,255,255,.18);\n  box-shadow: 0 38px 110px rgba(0,0,0,.52), 0 0 55px rgba(255,47,179,.10);\n}\n.priority-packages .section-heading {\n  margin-bottom: 28px;\n}\n.priority-packages .section-heading h2 {\n  font-size: clamp(52px, 6vw, 90px);\n}\n.priority-packages .package-card {\n  min-height: 100%;\n  border-color: rgba(255,255,255,.22);\n  box-shadow: 0 32px 90px rgba(0,0,0,.50);\n}\n.priority-packages .price {\n  font-size: 48px;\n}\n.package-heading-actions {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  gap: 12px;\n}\n.micro-link {\n  display: inline-flex;\n  align-items: center;\n  width: fit-content;\n  color: var(--muted-2);\n  font-size: 11px;\n  font-weight: 700;\n  text-decoration: none;\n  letter-spacing: .3px;\n  opacity: .72;\n}\n.micro-link:hover {\n  color: var(--cyan);\n  opacity: 1;\n}\n@media (max-width: 760px) {\n  .priority-packages { padding: 24px 14px 30px; }\n  .priority-packages .price { font-size: 40px; }\n}\n'''
+          css.write_text(c, encoding='utf-8')
+          PY
+
+      - name: Commit storefront hierarchy and remove temporary workflow
+        shell: bash
+        run: |
+          git config user.name "RealitySucksRP Update Bot"
+          git config user.email "actions@users.noreply.github.com"
+          rm -f .github/workflows/storefront-priority.yml
+          git add index.html rs-storefront.css .github/workflows/storefront-priority.yml
+          git commit -m "Make Tebex and server packages primary storefront"
+          git push origin main
