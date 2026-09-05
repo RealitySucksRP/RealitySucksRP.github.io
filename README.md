@@ -1,92 +1,99 @@
-# RealitySucksRP FiveM Server Packages
+# RealitySucksRP Website
 
-RealitySucksRP builds and supports multi-framework FiveM servers, original
-gameplay resources, zombie systems, and complete RP foundations. Our packages
-and original resources support QBCore, Qbox, ESX, and Standalone through the
-RealitySucksRP bridge system.
+Public website for **RealitySucksRP**, a FiveM resource and server-development project by William Brito.
 
-**Website:** https://realitysucksrp.github.io/ AND 
-**Tebex:** https://reality-sucks-rp-webstore.tebex.io/
+**Website:** https://realitysucksrp.github.io/  
+**GitHub:** https://github.com/RealitySucksRP  
+**Tebex:** https://reality-sucks-rp-webstore.tebex.io/  
+**Discord:** https://discord.gg/qmtUpxqJjj  
+**YouTube:** https://youtube.com/@realitysucksrp
 
+## What RealitySucksRP Builds
 
-## GTA V Enhanced Ready
+RealitySucksRP focuses on gameplay systems players can actually see and use:
 
-FiveM for GTA V Enhanced is now available in early access. RealitySucksRP is
-preparing new server builds for the Enhanced generation while continuing to
-support practical Legacy-to-Enhanced migration work.
+- Zombie, survival and horror systems
+- Vehicle gameplay, customization, racing and driving systems
+- Custom UI/NUI and inventory interfaces
+- Framework bridges and interoperability tools
+- Roleplay jobs, utilities and progression systems
+- Free and open-source community releases
+- Premium FiveM resources
+- Complete server foundations and migration/setup assistance
 
-Migration and setup assistance may include:
+## Framework Direction
 
-- Reviewing an existing server and its resource inventory
-- Identifying Legacy-only or incompatible assets
-- Assisting with supported Alchemist asset conversion
-- Updating Cfx server artifacts and configuration
-- Replacing incompatible resources when practical
-- Testing startup, dependencies, maps, vehicles, clothing, and gameplay systems
-- Helping server owners set up on ZAP-Hosting, a VPS, or a local PC
+Current development targets:
 
-Because Enhanced support is still evolving, migration work is scoped around the
-actual resources in each server. Third-party encrypted, escrowed, abandoned, or
-technically incompatible resources may require replacement or separate work.
-
-## Framework Support
-
-RealitySucksRP is not limited to one framework. Our packages and maintained
-resources are designed to work with:
-
-- QBCore
 - Qbox
-- ESX
-- Standalone
+- QBCore
+- ESX where supported
+- Standalone where practical
 
-Our bridge architecture separates gameplay logic from framework-specific
-functions. Depending on the resource, configurable adapters can connect
-framework identity and player data, inventories, jobs, banking, notifications,
-targeting, keys, fuel, housing, voice, and other common server systems.
+Framework support varies by resource. `rs_bridge` is the public integration layer used to separate gameplay logic from framework-specific systems such as player data, money, inventory, banking, callbacks, targeting, fuel, vehicles and medical integrations.
 
-QBCore remains the included default configuration for the QBCore Shell package,
-but RealitySucksRP resources are built so server owners can use the same systems
-on Qbox, ESX, or Standalone servers through the available bridges.
+## Current Public Release Highlights
 
-## Current Packages
+### rs_bridge — v2.4.0
 
-### QBCore Shell — $450
+Public all-in-one framework bridge with expanded framework, inventory, banking, cash, vehicle, medical, callback, target, minigame, webhook and audit support.
 
-A clean QBCore foundation with 321+ resources reviewed, organized, patched,
-and prepared as a serious starting point for developers and server owners.
-QBCore is the included shell, while RealitySucksRP resources use bridge support
-for QBCore, Qbox, ESX, and Standalone.
+https://github.com/RealitySucksRP/rs_bridge
 
-### Zombie Server — $500
+### QB Inventory — Punk Edition — v3.0.3
 
-A complete zombie-survival server with survivor hubs, infected gameplay,
-vehicles, weapons, shops, custom UI, OneSync-focused systems, and original
-RealitySucksRP outbreak resources. The package can be configured for QBCore,
-Qbox, ESX, or Standalone through the RealitySucksRP bridges.
+Custom Punk inventory edition with server-authoritative inventory sessions, hardened transfers, cash-as-item support, drops, weapon attachments and HUD compatibility.
 
-### Full RP Server — $650
+https://github.com/RealitySucksRP/qb-inventory-reworked-images-in-menu
 
-A complete roleplay foundation with jobs, economy, gangs, racing, vehicles,
-housing, custom UI, setup assistance, and room for continued development. The
-server and original RealitySucksRP resources support QBCore, Qbox, ESX, and
-Standalone through maintained bridges.
+### QB Inventory — Zombie Edition — v3.0.2
 
-## Delivery and Ownership
+Dedicated Zombie inventory edition with the hardened inventory/session system and apocalypse interface preserved as its own release line.
 
-Included resources are delivered through the customer's CFX account whenever
-the CFX grant system applies. Free resources are included at no additional
-resource cost. Paid resources are purchased and granted to the customer's
-account rather than copied or redistributed.
+https://github.com/RealitySucksRP/qb-inventory-Zombie-Menu-UI
 
-Package delivery, custom configuration, and migration timelines depend on the
-scope of the server and the compatibility of third-party resources.
+### Other Public Projects
 
-## Support
+- `rsgta-progressbar` — v3.0.0
+- `RealitySucks-TunerChip` — v2.0.0
+- `rs-outcomebets` — v2.4.1
+- `rs-streetdice-street-craps` — v0.3.19-test
+- `RealitySucks-HUD` — v1.0.0
 
-Each package includes the support period listed on the website. Migration,
-large custom changes, and third-party asset conversion are reviewed separately
-unless explicitly included in writing.
+See all public repositories:
 
-To discuss a package or request a GTA V Enhanced migration review, open a ticket:
+https://github.com/RealitySucksRP?tab=repositories
 
-https://discord.com/channels/1391247306522628127/1490860253892317236
+## Free and Premium Releases
+
+The RealitySucksRP catalog includes both free/open-source resources and premium gameplay systems.
+
+Free releases:
+
+https://reality-sucks-rp-webstore.tebex.io/category/free-scripts
+
+Zombie and survival ecosystem:
+
+https://reality-sucks-rp-webstore.tebex.io/category/zombie-core
+
+Enhanced-tested resources where listed:
+
+https://reality-sucks-rp-webstore.tebex.io/category/enhanced
+
+## Server Foundations
+
+The website also presents three complete server-foundation options:
+
+- QBCore Shell — $450
+- Zombie Server — $500
+- Full RP Server — $650
+
+Compatibility, migration scope and GTA V Enhanced readiness are reviewed against the actual resources included in each build rather than treated as a blanket guarantee.
+
+## Site Files
+
+- `index.html` — primary website content
+- `rs-storefront.css` — current responsive storefront/resource-hub styling
+- `images/` — local server-package artwork
+
+The older CSS files remain in the repository for historical/previous-layout reference but the public page currently loads `rs-storefront.css`.
