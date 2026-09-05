@@ -1,99 +1,85 @@
 # RealitySucksRP Website
 
-Public website for **RealitySucksRP**, a FiveM resource and server-development project by William Brito.
+Official public site for RealitySucksRP FiveM resources, gameplay systems, open-source releases, premium Tebex packages, and custom server work.
 
-**Website:** https://realitysucksrp.github.io/  
-**GitHub:** https://github.com/RealitySucksRP  
-**Tebex:** https://reality-sucks-rp-webstore.tebex.io/  
-**Discord:** https://discord.gg/qmtUpxqJjj  
-**YouTube:** https://youtube.com/@realitysucksrp
+## Public Links
+
+- Website: https://realitysucksrp.github.io/
+- Tebex: https://reality-sucks-rp-webstore.tebex.io/
+- GitHub: https://github.com/RealitySucksRP
+- Discord: https://discord.gg/e9V3rPHySx
+- YouTube: https://www.youtube.com/@RealitySucksRP
 
 ## What RealitySucksRP Builds
 
-RealitySucksRP focuses on gameplay systems players can actually see and use:
+RealitySucksRP is the FiveM development work of William Brito. Projects cover:
 
-- Zombie, survival and horror systems
-- Vehicle gameplay, customization, racing and driving systems
-- Custom UI/NUI and inventory interfaces
-- Framework bridges and interoperability tools
-- Roleplay jobs, utilities and progression systems
+- Zombie, apocalypse, survival and horror gameplay
+- Vehicle systems, racing, drift and garage/dealership gameplay
+- Phones, shops, inventories, HUDs and custom UI/NUI
+- Framework bridges and developer utilities
+- Jobs, roleplay systems and dynamic encounters
 - Free and open-source community releases
-- Premium FiveM resources
-- Complete server foundations and migration/setup assistance
+- Premium resources sold through Tebex
+- Custom server foundations, modernization and migration work
 
 ## Framework Direction
 
-Current development targets:
+Resource support varies by package, but current development targets include:
 
-- Qbox
+- Qbox / qbx_core
 - QBCore
-- ESX where supported
-- Standalone where practical
+- ESX
+- Standalone
 
-Framework support varies by resource. `rs_bridge` is the public integration layer used to separate gameplay logic from framework-specific systems such as player data, money, inventory, banking, callbacks, targeting, fuel, vehicles and medical integrations.
+`rs_bridge` is the shared compatibility layer used to reduce framework-specific rewrites across supported RealitySucksRP resources.
 
-## Current Public Release Highlights
+## Current Public Release Lines
 
-### rs_bridge — v2.4.0
+- `rs_bridge` — v2.4.0
+- QB Inventory Punk Edition — v3.0.3
+- QB Inventory Zombie Edition — v3.0.2
+- RS GTA Progressbar — v3.0.0
+- RealitySucks TunerChip — v2.0.0
+- RS Outcome Bets — v2.4.1
+- RS Street Dice — v0.3.19-test
+- RealitySucks HUD — v1.0.0
 
-Public all-in-one framework bridge with expanded framework, inventory, banking, cash, vehicle, medical, callback, target, minigame, webhook and audit support.
+The GitHub repository is the source of truth for public source versions. The live Tebex store is the source of truth for current commercial package pricing, package descriptions, framework requirements, source-access notes, and Enhanced compatibility claims.
 
-https://github.com/RealitySucksRP/rs_bridge
+## Current Tebex Direction
 
-### QB Inventory — Punk Edition — v3.0.3
+The store currently includes categories and releases covering:
 
-Custom Punk inventory edition with server-authoritative inventory sessions, hardened transfers, cash-as-item support, drops, weapon attachments and HUD compatibility.
+- ZombieCore and apocalypse systems
+- Phantom Stalkers and supernatural encounters
+- Vehicle and racing systems
+- Weapon shops and weapon gameplay
+- Phones, garages and dealerships
+- Visual systems and utilities
+- Free/open-source resources
+- Enhanced-tested resources where explicitly listed
 
-https://github.com/RealitySucksRP/qb-inventory-reworked-images-in-menu
+Compatibility, dependencies, price and source access should always be confirmed on the individual Tebex package page because those details can change as resources are updated.
 
-### QB Inventory — Zombie Edition — v3.0.2
+## GTA V Enhanced
 
-Dedicated Zombie inventory edition with the hardened inventory/session system and apocalypse interface preserved as its own release line.
+RealitySucksRP marks Enhanced compatibility per resource rather than applying a blanket claim to the full catalog. Custom server migration work is scoped against the actual resources in the server and may involve dependency review, replacement of incompatible pieces, configuration updates and testing.
 
-https://github.com/RealitySucksRP/qb-inventory-Zombie-Menu-UI
+## Custom Server Work
 
-### Other Public Projects
+Complete server foundations, modernization and migration work are handled as scope-based inquiries rather than stale fixed website prices.
 
-- `rsgta-progressbar` — v3.0.0
-- `RealitySucks-TunerChip` — v2.0.0
-- `rs-outcomebets` — v2.4.1
-- `rs-streetdice-street-craps` — v0.3.19-test
-- `RealitySucks-HUD` — v1.0.0
+Discuss a server build or migration on Discord:
 
-See all public repositories:
+https://discord.gg/e9V3rPHySx
 
-https://github.com/RealitySucksRP?tab=repositories
+## Site Structure
 
-## Free and Premium Releases
+The GitHub Pages site is intentionally lightweight:
 
-The RealitySucksRP catalog includes both free/open-source resources and premium gameplay systems.
+- `index.html` — primary site content
+- `rs-storefront.css` — current responsive visual theme
+- `images/` — existing server-build artwork
 
-Free releases:
-
-https://reality-sucks-rp-webstore.tebex.io/category/free-scripts
-
-Zombie and survival ecosystem:
-
-https://reality-sucks-rp-webstore.tebex.io/category/zombie-core
-
-Enhanced-tested resources where listed:
-
-https://reality-sucks-rp-webstore.tebex.io/category/enhanced
-
-## Server Foundations
-
-The website also presents three complete server-foundation options:
-
-- QBCore Shell — $450
-- Zombie Server — $500
-- Full RP Server — $650
-
-Compatibility, migration scope and GTA V Enhanced readiness are reviewed against the actual resources included in each build rather than treated as a blanket guarantee.
-
-## Site Files
-
-- `index.html` — primary website content
-- `rs-storefront.css` — current responsive storefront/resource-hub styling
-- `images/` — local server-package artwork
-
-The older CSS files remain in the repository for historical/previous-layout reference but the public page currently loads `rs-storefront.css`.
+The site is designed as a public hub that connects the live Tebex store, GitHub releases, Discord community/support, YouTube previews, and custom server work.
