@@ -3,170 +3,574 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="RealitySucksRP builds custom FiveM scripts, complete server packages, zombie apocalypse systems, vehicles, racing, weapons, phones, shops, UI and cinematic gameplay." />
+  <meta name="description" content="RealitySucksRP builds memorable FiveM gameplay systems: zombie outbreaks, supernatural AI, vehicles, racing, dealerships, garages, phones, inventories, custom UI, framework bridges, free releases and complete server packages." />
   <meta name="theme-color" content="#05060a" />
-  <meta property="og:title" content="RealitySucksRP — FiveM Scripts and Complete Server Packages" />
-  <meta property="og:description" content="Custom FiveM gameplay systems, Tebex releases and complete server builds configured around the server owner's vision." />
+  <meta property="og:title" content="RealitySucksRP — FiveM Gameplay Systems Built To Be Remembered" />
+  <meta property="og:description" content="Zombie worlds, vehicle gameplay, cinematic AI, roleplay systems, custom interfaces, open-source tools and complete FiveM server packages for Qbox, QBCore, ESX and standalone setups." />
   <meta property="og:type" content="website" />
-  <title>RealitySucksRP — FiveM Scripts and Server Packages</title>
+  <title>RealitySucksRP — FiveM Gameplay Systems, Resources and Server Packages</title>
   <link rel="stylesheet" href="rs-storefront.css" />
 </head>
 <body>
   <nav class="topbar">
     <a class="brand" href="#top" aria-label="RealitySucksRP home">
-      <span>Reality</span><strong>Sucks</strong><em>RP</em>
+      <span>Reality</span>
+      <strong>Sucks</strong>
+      <em>RP</em>
     </a>
-    <button class="menu-toggle" type="button" onclick="document.body.classList.toggle('nav-open')">Menu</button>
+
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" onclick="document.body.classList.toggle('nav-open')">Menu</button>
+
     <div class="nav-links">
-      <a href="#packages">Server Packages</a>
-      <a href="#store">Scripts</a>
-      <a href="#zombie">Zombie</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#outbreak">Zombie</a>
       <a href="#vehicles">Vehicles</a>
-      <a href="#chaos">Phantom + Warfare</a>
-      <a href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="#chaos">Chaos</a>
+      <a href="#systems">Systems</a>
+      <a href="#open-source">Free</a>
+      <a href="#packages">Servers</a>
       <a href="https://www.youtube.com/@RealitySucksRP" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Discord</a>
       <a class="store-link" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">Tebex Store</a>
     </div>
   </nav>
 
-  <main>
-    <header id="top" class="hero">
-      <div class="hero-copy-wrap">
-        <p class="eyebrow">FiveM Scripts • Server Builds • Custom Gameplay</p>
-        <h1>Build A Server<br><span>Players Remember.</span></h1>
-        <p class="hero-copy">I build my own RealitySucksRP scripts and complete FiveM server setups — shops, weapons, phones, racing, LS Customs, garages, dealerships, zombie apocalypse systems, warfare, Phantom encounters, zombie shops, UI and more.</p>
-        <p class="hero-copy short">My server packages use the same systems I build, test and run myself, then I configure the setup around what the server owner actually wants.</p>
-        <div class="hero-actions">
-          <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">Browse Tebex Store</a>
-          <a class="btn primary" href="#packages">View Server Packages</a>
-          <a class="btn ghost" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Join Discord</a>
+  <header id="top" class="hero">
+    <div class="hero-left">
+      <p class="eyebrow">FiveM Gameplay Systems • Qbox • QBCore • ESX • Standalone</p>
+      <h1>Make Your Server<br><span>Impossible To Forget.</span></h1>
+
+      <p class="hero-copy">
+        I’m William, the developer behind RealitySucksRP. I build FiveM systems around the moments players actually remember: the outbreak that suddenly goes wrong, the car that refuses to stop hunting them, the dealership they can truly own, the garage that understands boats and aircraft, the phone that connects an entire server, the race ghost they are desperate to beat, and the interface that makes the whole experience feel like it belongs together.
+      </p>
+
+      <p class="hero-copy">
+        This has grown far beyond individual scripts. RealitySucksRP is now a connected ecosystem of zombie survival, cinematic AI, vehicles, racing, businesses, economy systems, phones, inventories, UI/NUI, framework bridges, free community releases, Enhanced-tested resources and complete server packages.
+      </p>
+
+      <div class="hero-buttons">
+        <a class="btn primary" href="#ecosystem">Explore The Ecosystem</a>
+        <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">Shop Tebex</a>
+        <a class="btn ghost" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Join Discord</a>
+        <a class="btn ghost" href="https://www.youtube.com/@RealitySucksRP" target="_blank" rel="noopener noreferrer">Watch On YouTube</a>
+      </div>
+
+      <div class="hero-badges">
+        <span>Gameplay First</span>
+        <span>OneSync Systems</span>
+        <span>Server Authority</span>
+        <span>Free + Premium</span>
+        <span>Full Source Where Listed</span>
+        <span>Enhanced Tested Where Listed</span>
+        <span>Active 2026 Development</span>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="neon-card">
+        <p>Current Release Signal</p>
+        <strong>Still Building.</strong>
+        <span>The public tools keep moving forward while the commercial ecosystem keeps getting deeper.</span>
+        <div class="signal-list">
+          <div><b>RS Bridge</b><span>v2.4.0</span></div>
+          <div><b>Punk Inventory</b><span>v3.0.3</span></div>
+          <div><b>Zombie Inventory</b><span>v3.0.2</span></div>
+          <div><b>ZombieCore</b><span>Enhanced listing live</span></div>
+          <div><b>Server Packages</b><span>30 days support</span></div>
         </div>
-        <div class="hero-tags">
-          <span>Qbox</span><span>QBCore</span><span>ESX</span><span>Standalone</span><span>Enhanced Where Listed</span>
-        </div>
       </div>
+    </div>
+  </header>
 
-      <aside class="store-card">
-        <p>RealitySucksRP Tebex</p>
-        <h2>Scripts Built For Real Gameplay.</h2>
-        <div class="store-list">
-          <span>Zombie + Survival</span>
-          <span>Vehicles + Racing</span>
-          <span>Weapons + Shops</span>
-          <span>Phones + UI</span>
-          <span>Phantom + Horror</span>
-          <span>Warfare + Events</span>
-        </div>
-        <a class="btn store full" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">Open The Store</a>
-      </aside>
-    </header>
-
-    <section id="packages" class="packages">
-      <div class="section-heading">
-        <p>Complete Server Packages</p>
-        <h2>Start With The Whole Foundation.</h2>
-        <span>Built from tested RealitySucksRP systems and configured around your server style. Every package includes 30 days of Discord setup support.</span>
+  <section id="packages" class="packages priority-packages">
+    <div class="section-heading">
+      <p>Start Here • Complete FiveM Server Packages</p>
+      <h2>Want The Whole Foundation?</h2>
+      <span>Three fixed server-package options with organized resources, setup guidance and 30 days of Discord support. Choose the foundation that fits your server, then use the Tebex catalog below to expand it with additional RealitySucksRP systems.</span>
+      <div class="package-heading-actions">
+        <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">Browse Tebex Store</a>
+        <a class="btn ghost" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Ask About A Package</a>
       </div>
+    </div>
 
-      <div class="package-grid">
-        <article class="package-card dev">
-          <div class="package-art"><img src="images/qbcoreshell.png" alt="QBCore Shell FiveM server package"></div>
-          <div class="package-line"><span>Developer Foundation</span><strong>$500</strong></div>
-          <h3>QBCore Shell</h3>
-          <p>Clean, organized starting point for owners who want a serious base ready to customize.</p>
-          <div class="mini-points"><span>321+ resources reviewed</span><span>Dependencies organized</span><span>Integration paths prepared</span></div>
-          <div class="support">30 Days Discord Support</div>
-          <a class="card-btn" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Ask About This Package</a>
-        </article>
+    <div class="package-grid">
+      <article class="package-card dev">
+        <div class="package-art"><img src="images/qbcoreshell.png" alt="QBCore Shell FiveM server package"></div>
+        <div class="package-top"><span class="label">For Developers</span><strong class="price">$500</strong></div>
+        <p class="special">Organized Foundation</p>
+        <h3>QBCore Shell</h3>
+        <p class="desc">A serious starting point for owners and developers who want the resource stack organized, tested and ready to build on instead of spending weeks sorting dependencies and conflicts.</p>
+        <ul>
+          <li>321+ resources reviewed in a live server environment</li>
+          <li>Load order, dependencies and common conflicts organized</li>
+          <li>RealitySucksRP bridge-aware integrations where supported</li>
+          <li>Framework, inventory, banking, jobs, target and notification integration paths</li>
+          <li>CFX-granted resources where the grant system applies</li>
+          <li>Free resources included; paid resources purchased/granted properly</li>
+          <li>Legacy and Enhanced compatibility reviewed against the actual stack</li>
+          <li><strong>30 days of Discord setup support</strong></li>
+        </ul>
+        <a class="card-btn" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Discuss QBCore Shell</a>
+      </article>
 
-        <article class="package-card zombie">
-          <div class="package-art"><img src="images/zombierp.png" alt="Zombie survival FiveM server package"></div>
-          <div class="package-line"><span>Zombie Survival</span><strong>$700</strong></div>
-          <h3>Zombie Server</h3>
-          <p>A full apocalypse foundation built around my zombie systems, survival gameplay and themed server ecosystem.</p>
-          <div class="mini-points"><span>ZombieCore gameplay</span><span>Survival economy + shops</span><span>Zombie phone, garage + UI</span></div>
-          <div class="support">30 Days Discord Support</div>
-          <a class="card-btn" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Ask About This Package</a>
-        </article>
+      <article class="package-card zombie">
+        <div class="package-art"><img src="images/zombierp.png" alt="Zombie survival FiveM server package"></div>
+        <div class="package-top"><span class="label">Zombie Survival</span><strong class="price">$700</strong></div>
+        <p class="special">Complete Outbreak Foundation</p>
+        <h3>Zombie Server</h3>
+        <p class="desc">A complete apocalypse foundation centered on the RealitySucksRP outbreak ecosystem rather than a normal server with a zombie spawner added afterward.</p>
+        <ul>
+          <li>ZombieCore-driven outbreak and special infected gameplay</li>
+          <li>Survivor economy, inventory, shops and progression systems</li>
+          <li>Zombie phone, vehicle, garage and communication ecosystem options</li>
+          <li>Vehicles, weapons, dealerships and themed UI</li>
+          <li>OneSync-focused multiplayer systems where supported</li>
+          <li>Qbox, QBCore, ESX and Standalone paths where each resource supports them</li>
+          <li>Legacy and Enhanced compatibility reviewed per included resource</li>
+          <li>CFX-granted resources where the grant system applies</li>
+          <li><strong>30 days of Discord setup support</strong></li>
+        </ul>
+        <a class="card-btn" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Discuss Zombie Server</a>
+      </article>
 
-        <article class="package-card owner">
-          <div class="package-art"><img src="images/full_server.png" alt="Full RP FiveM server package"></div>
-          <div class="package-line"><span>Complete RP</span><strong>$850</strong></div>
-          <h3>Full RP Server</h3>
-          <p>A complete roleplay foundation with major gameplay systems organized, connected and ready to shape around your city.</p>
-          <div class="mini-points"><span>Jobs + economy + gangs</span><span>Vehicles + racing + housing</span><span>Custom RS systems + UI</span></div>
-          <div class="support">30 Days Discord Setup + Support</div>
-          <a class="card-btn" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Ask About This Package</a>
-        </article>
+      <article class="package-card owner">
+        <div class="package-art"><img src="images/full_server.png" alt="Full RP FiveM server package"></div>
+        <div class="package-top"><span class="label">For Server Owners</span><strong class="price">$850</strong></div>
+        <p class="special">Complete RP Foundation</p>
+        <h3>Full RP Server</h3>
+        <p class="desc">A broader roleplay foundation with the major gameplay layers needed to open, customize and keep building instead of starting from an empty framework.</p>
+        <ul>
+          <li>Jobs, economy, gangs, racing, vehicles and housing foundation</li>
+          <li>RealitySucksRP gameplay systems and custom UI options</li>
+          <li>Bridge-based integrations across supported systems</li>
+          <li>Inventory, banking, keys, fuel, garage and target integration paths where supported</li>
+          <li>Resources organized for maintainability and future expansion</li>
+          <li>Hosting/deployment assistance for supported setups</li>
+          <li>Legacy and Enhanced migration review against the actual resource stack</li>
+          <li>CFX-granted resources where the grant system applies</li>
+          <li><strong>30 days of Discord setup and configuration support</strong></li>
+        </ul>
+        <a class="card-btn" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Discuss Full RP Server</a>
+      </article>
+    </div>
+  </section>
+
+
+  <section class="why-grid" aria-label="RealitySucksRP highlights">
+    <article><strong>4 Targets</strong><span>Qbox, QBCore, ESX and Standalone where each resource supports them.</span></article>
+    <article><strong>Free + Paid</strong><span>Open community projects beside larger premium gameplay systems.</span></article>
+    <article><strong>Same Brain</strong><span>City and apocalypse editions share proven logic without sharing the same identity.</span></article>
+    <article><strong>30 Days</strong><span>Discord setup support included with the three complete server packages.</span></article>
+  </section>
+
+  <section id="ecosystem" class="commercial-section">
+    <div class="section-heading">
+      <p>The RealitySucksRP Ecosystem</p>
+      <h2>Not One Script. Entire Layers Of Gameplay.</h2>
+      <span>Pick one system or connect several together. The goal is to make every layer of the server feel intentional instead of stitched together from unrelated menus.</span>
+    </div>
+
+    <div class="category-grid">
+      <a class="category-card outbreak" href="#outbreak">
+        <span>Outbreak + Survival</span>
+        <h3>Zombie World</h3>
+        <p>Persistent infected, special threats, safe zones, survivor systems, phones, garages, dealerships, radio/SOS, inventory and world events.</p>
+      </a>
+      <a class="category-card" href="#vehicles">
+        <span>Vehicles + Racing</span>
+        <h3>Vehicle Ecosystem</h3>
+        <p>Dealerships, garages, customization, racing, ghost replay, delivery, ownership, tuning, financing, vehicle businesses and HUD systems.</p>
+      </a>
+      <a class="category-card" href="#chaos">
+        <span>AI + Cinematic Events</span>
+        <h3>Chaos Systems</h3>
+        <p>Phantom predators, stalkers, convoy warfare, surprise attacks, atmospheric encounters and dynamic world-event design.</p>
+      </a>
+      <a class="category-card" href="#systems">
+        <span>RP + Economy</span>
+        <h3>Living Server Systems</h3>
+        <p>Weapons, banking, black markets, inventories, businesses, player-owned systems, secure transactions and persistent progression.</p>
+      </a>
+      <a class="category-card" href="#experience">
+        <span>Phones + UI/NUI</span>
+        <h3>Player Experience</h3>
+        <p>Phones, inventory redesigns, HUDs, progress systems, shop interfaces, tactical menus and themed visual experiences.</p>
+      </a>
+      <a class="category-card" href="#frameworks">
+        <span>Developer Backbone</span>
+        <h3>Bridge + Security</h3>
+        <p>Provider abstraction, framework interoperability, authoritative economy flows, validation, auditing and safer integration patterns.</p>
+      </a>
+    </div>
+  </section>
+
+  <section id="outbreak" class="split-section">
+    <div class="split-copy">
+      <p class="eyebrow">ZombieCore Ecosystem</p>
+      <h2>Build An Outbreak. Not A Zombie Spawner.</h2>
+      <p>ZombieCore is built around a living multiplayer threat: synchronized infected, walkers, runners, special infected, bosses, infected wildlife, noise and sight reactions, dynamic scenarios, supply drops, survivor encounters, safe zones, loot, reputation, CCTV, drones, disaster events and a live World Builder.</p>
+      <p>The real strength is what grows around it. The apocalypse edition now has its own phone, garages, vehicle dealerships, emergency radio, inventory identity and connected survivor systems, so the entire server can feel like one world instead of a modern RP server with zombies dropped on top.</p>
+      <div class="hero-buttons">
+        <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/category/zombie-core" target="_blank" rel="noopener noreferrer">Explore ZombieCore</a>
+        <a class="btn ghost" href="https://www.youtube.com/@RealitySucksRP" target="_blank" rel="noopener noreferrer">Watch Gameplay</a>
       </div>
-    </section>
+    </div>
+    <div class="release-stack">
+      <div><span>WORLD</span><strong>Persistent OneSync Outbreak</strong><small>Shared infected and synchronized world-state systems designed for multiplayer servers.</small></div>
+      <div><span>DIRECTOR</span><strong>Dynamic Threats</strong><small>Special infected, survivor encounters, disaster events, noise reactions and scenario control.</small></div>
+      <div><span>BUILDER</span><strong>World Builder + CCTV</strong><small>Saved world blueprints, safe-zone tools, camera networks and administrative outbreak controls.</small></div>
+      <div><span>ECOSYSTEM</span><strong>Phone + Garage + Shop + Radio</strong><small>Survival-focused systems that carry the apocalypse identity beyond the zombies themselves.</small></div>
+    </div>
+  </section>
 
-    <section class="made-by-me">
-      <p>Built By RealitySucksRP</p>
-      <h2>I Don’t Just Assemble Servers. I Build The Systems Inside Them.</h2>
-      <div class="pill-grid">
-        <span>Vehicle Shops</span><span>Weapon Shops</span><span>Phones</span><span>Racing</span><span>LS Customs</span><span>Garages</span><span>Banking</span><span>Zombie Apocalypse</span><span>Zombie Shops</span><span>Phantom Encounters</span><span>Warfare</span><span>Custom UI</span>
-      </div>
-    </section>
+  <section class="resources-section store-section">
+    <div class="section-heading left-heading">
+      <p>Apocalypse Releases</p>
+      <h2>The Survival Stack</h2>
+      <span>Current public store highlights from the RealitySucksRP zombie ecosystem.</span>
+    </div>
+    <div class="resource-grid">
+      <article class="resource-card featured zombie-card">
+        <div class="resource-meta"><span class="tag test">Enhanced</span><span class="version">$24.19</span></div>
+        <h3>RS ZombieCore</h3>
+        <p class="resource-lead">Persistent multiplayer outbreak and survival world.</p>
+        <p>Standalone outbreak brain with Qbox, QBCore, ESX and ox_inventory integration paths, OneSync synchronization, special encounters, safe zones, loot, World Builder, CCTV and disaster systems.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7624897" target="_blank" rel="noopener noreferrer">View ZombieCore</a></div>
+      </article>
+      <article class="resource-card zombie-card">
+        <div class="resource-meta"><span class="tag free">Full Source</span><span class="version">$9.99</span></div>
+        <h3>RS Zombie Phone</h3>
+        <p class="resource-lead">31 apps inside a survivor smartphone.</p>
+        <p>Communication, camera/gallery, Bank, Garage, races, maps, taxi, houses, weather, radio, Drone, SOS and more behind a damaged survival-phone presentation.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7612446" target="_blank" rel="noopener noreferrer">View Zombie Phone</a></div>
+      </article>
+      <article class="resource-card zombie-card">
+        <div class="resource-meta"><span class="tag free">Full Source</span><span class="version">$9.99</span></div>
+        <h3>RS Zombie Garage</h3>
+        <p class="resource-lead">One garage brain for road, marine and aircraft survival vehicles.</p>
+        <p>Public/private garages, impounds, recovery, tracking, renaming, transfers, ownership offers, NPC delivery, marinas, aircraft handling and persistent vehicle state.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7558297" target="_blank" rel="noopener noreferrer">View Zombie Garage</a></div>
+      </article>
+      <article class="resource-card zombie-card">
+        <div class="resource-meta"><span class="tag free">Full Source</span><span class="version">$9.99</span></div>
+        <h3>RS Zombie Vehicle Shop</h3>
+        <p class="resource-lead">Survivor dealership plus player-owned vehicle business.</p>
+        <p>Live 3D showroom, test drives, financing, coupons, stock, employee grades, commissions, business banking, repossession flows and server-authoritative purchasing.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7615510" target="_blank" rel="noopener noreferrer">View Zombie Vehicle Shop</a></div>
+      </article>
+      <article class="resource-card zombie-card">
+        <div class="resource-meta"><span class="tag test">Survival Comms</span><span class="version">$9.99</span></div>
+        <h3>Zombie Radio + SOS</h3>
+        <p class="resource-lead">Emergency team communication for the outbreak.</p>
+        <p>Survival-focused radio and emergency communication designed for teams operating in a dangerous shared world.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7555412" target="_blank" rel="noopener noreferrer">View Zombie Radio</a></div>
+      </article>
+      <article class="resource-card zombie-card">
+        <div class="resource-meta"><span class="tag free">Free + Open Source</span><span class="version">v3.0.2</span></div>
+        <h3>Zombie Inventory</h3>
+        <p class="resource-lead">A real apocalypse inventory—not a color swap.</p>
+        <p>Zombie UI, cash-as-item, ground drops, vehicle storage, attachments, durability, hotbar and editable artwork built on the hardened inventory line.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7540906" target="_blank" rel="noopener noreferrer">Get It Free</a></div>
+      </article>
+    </div>
+  </section>
 
-    <section id="store" class="storefront">
-      <div class="section-heading left">
-        <p>Shop RealitySucksRP</p>
-        <h2>Pick The Gameplay You Want.</h2>
-        <span>Everything below points back to the live Tebex storefront.</span>
-      </div>
+  <section id="vehicles" class="resources-section">
+    <div class="section-heading left-heading">
+      <p>Vehicles + Racing</p>
+      <h2>Make Vehicles Part Of The Economy, The Competition And The Story.</h2>
+      <span>Cars should do more than spawn. They can be bought, financed, owned by businesses, tuned, stored, delivered, raced, replayed, recovered and turned into gameplay.</span>
+    </div>
+    <div class="resource-grid">
+      <article class="resource-card featured">
+        <div class="resource-meta"><span class="tag free">Full Source</span><span class="version">$9.99</span></div>
+        <h3>RS Vehicle Shop</h3>
+        <p class="resource-lead">A dealership that can become an actual player-run business.</p>
+        <p>Live 3D showroom, test drives, financing, vehicle stock, restocking, pricing controls, coupons, employees, permissions, commissions, business banking, sales history, garage delivery, keys, fuel and authoritative ownership persistence.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7609845" target="_blank" rel="noopener noreferrer">View Vehicle Shop</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag free">Full Source</span><span class="version">$9.99</span></div>
+        <h3>RS Garage</h3>
+        <p class="resource-lead">Storage, recovery and delivery across the full vehicle world.</p>
+        <p>Public, private, property, job and gang garages plus marine, aircraft, impound, transfer, persistent state and OneSync-aware vehicle management.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7568316" target="_blank" rel="noopener noreferrer">View RS Garage</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag free">Full Source</span><span class="version">$9.99</span></div>
+        <h3>RS LS Customs</h3>
+        <p class="resource-lead">A tuner shop that looks and behaves like a real customization system.</p>
+        <p>Vehicle mods, chameleon colors, hundreds of rims, paint work, fitment, performance upgrades and a presentation built around the actual car instead of covering it with menus.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7481342" target="_blank" rel="noopener noreferrer">View LS Customs</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag test">Competition</span><span class="version">$9.99</span></div>
+        <h3>Racing + Ghost Replay</h3>
+        <p class="resource-lead">Build courses. Chase records. Race the line again.</p>
+        <p>Custom laps, race timers, ghost-car replay, speed traps, drift and hydraulics competition systems built around repeatable vehicle gameplay.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7448908" target="_blank" rel="noopener noreferrer">View Racing</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag free">Free</span><span class="version">v2.0.0</span></div>
+        <h3>RealitySucks TunerChip</h3>
+        <p class="resource-lead">Vehicle personalities instead of one generic drift button.</p>
+        <p>Performance and drift tuning profiles for street, takeover, pursuit, JDM and muscle-style gameplay with bridge support available for multi-framework servers.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7391814" target="_blank" rel="noopener noreferrer">Get It Free</a><a href="https://github.com/RealitySucksRP/RealitySucks-TunerChip" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag test">Vehicle UI</span><span class="version">$4.99</span></div>
+        <h3>RS HUDLIFE</h3>
+        <p class="resource-lead">A vehicle HUD that makes entering the car feel like an event.</p>
+        <p>Holographic boot sequence, cyberpunk speedometer, vehicle detection, status information and cinematic transitions for cars, bikes, aircraft and boats.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7414588" target="_blank" rel="noopener noreferrer">View HUDLIFE</a></div>
+      </article>
+    </div>
+  </section>
 
-      <div class="category-grid">
-        <a id="zombie" class="category zombie-cat" href="https://reality-sucks-rp-webstore.tebex.io/category/zombie-core" target="_blank" rel="noopener noreferrer">
-          <small>Survival + Horror</small><h3>Zombie Apocalypse</h3><p>ZombieCore, survivor systems, apocalypse phones, garages, shops, inventory, radio, events and world-building systems.</p><b>Shop Zombie Releases →</b>
-        </a>
-        <a id="vehicles" class="category" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">
-          <small>Vehicles + Competition</small><h3>Vehicles + Racing</h3><p>Dealerships, garages, LS Customs, tuning, racing, ghost replay, vehicle HUDs and ownership gameplay.</p><b>Shop Vehicle Releases →</b>
-        </a>
-        <a class="category" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">
-          <small>Weapons + Economy</small><h3>Shops + RP Systems</h3><p>Weapon shops, black markets, banking, business systems, inventories and player-facing economy gameplay.</p><b>Shop RP Releases →</b>
-        </a>
-        <a id="chaos" class="category" href="https://reality-sucks-rp-webstore.tebex.io/category/phantom-stalkers" target="_blank" rel="noopener noreferrer">
-          <small>AI + Cinematic</small><h3>Phantom + Warfare</h3><p>Stalking vehicles, human and animal predators, ambushes, convoy warfare and cinematic chaos systems.</p><b>Shop Phantom Releases →</b>
-        </a>
-        <a class="category" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">
-          <small>Player Experience</small><h3>Phones + UI</h3><p>Phones, inventory interfaces, HUDs, progress systems, themed menus and custom NUI experiences.</p><b>Shop UI Releases →</b>
-        </a>
-        <a class="category" href="https://reality-sucks-rp-webstore.tebex.io/category/free-scripts" target="_blank" rel="noopener noreferrer">
-          <small>Community Releases</small><h3>Free Scripts</h3><p>Useful free resources and open-source projects that connect into the larger RealitySucksRP ecosystem.</p><b>Browse Free Releases →</b>
-        </a>
-      </div>
-    </section>
+  <section id="chaos" class="split-section">
+    <div class="split-copy">
+      <p class="eyebrow">AI + Cinematic Encounters</p>
+      <h2>The Server Should Be Able To Surprise You.</h2>
+      <p>Some of the most memorable gameplay comes from systems that do not feel like a mission marker waiting to be clicked. Phantom vehicles stalk before attacking. Human and animal stalkers watch, disappear and return. Convoy events pressure players from land and air. Dynamic world systems are built to create stories instead of just completing checklists.</p>
+      <p>The design goal is tension, behavior and timing: threats entering off-screen, reacquiring players, escalating pressure, changing tactics and creating scenes that players talk about afterward.</p>
+      <div class="hero-buttons"><a class="btn primary" href="https://reality-sucks-rp-webstore.tebex.io/category/phantom-stalkers" target="_blank" rel="noopener noreferrer">Explore Phantom Systems</a></div>
+    </div>
+    <div class="release-stack">
+      <div><span>PHANTOM</span><strong>Cars, Helicopters + Jets</strong><small>Vehicles that stalk, ambush, ram, reacquire and pressure players from land or sky.</small></div>
+      <div><span>STALKERS</span><strong>Humans + Animal Predators</strong><small>Watching, hiding, flanking, attacking, retreating and returning from new positions.</small></div>
+      <div><span>WARFARE</span><strong>OP Fury and Fire</strong><small>Convoy defense with air and ground pressure, support roles, ambushes and escalating chaos.</small></div>
+      <div><span>DIRECTOR</span><strong>Dynamic World Events</strong><small>Ongoing work around cinematic encounters, surprise behavior and player-targeted event systems.</small></div>
+    </div>
+  </section>
 
-    <section class="custom-build">
+  <section class="resources-section">
+    <div class="resource-grid">
+      <article class="resource-card featured">
+        <div class="resource-meta"><span class="tag test">Phantom System</span><span class="version">$9.99</span></div>
+        <h3>Phantom Car + Aircraft</h3>
+        <p class="resource-lead">The vehicles that hunt you.</p>
+        <p>Configurable cars, trucks, helicopters and fighter jets can watch, pursue, ram, attack, reacquire and re-enter encounters with randomized timing and cinematic pressure.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7392445" target="_blank" rel="noopener noreferrer">View Phantom Car</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag test">Phantom System</span><span class="version">$9.99</span></div>
+        <h3>Phantom Stalkers</h3>
+        <p class="resource-lead">They watch. They attack. They leave. They come back.</p>
+        <p>Human stalkers, animal predators and hidden groups use off-screen positioning, flanking, pursuit, rage, retreat, escape and reappearance cycles.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7538234" target="_blank" rel="noopener noreferrer">View Phantom Stalkers</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag test">Cinematic Event</span><span class="version">$9.99</span></div>
+        <h3>OP Fury and Fire</h3>
+        <p class="resource-lead">Turn the road into a moving battlefield.</p>
+        <p>VIP convoy defense with air and ground support roles, attack waves, helicopters, armored pressure, radio alerts, mission selection and anti-grief protections.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7455524" target="_blank" rel="noopener noreferrer">View Fury and Fire</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="systems" class="resources-section">
+    <div class="section-heading left-heading">
+      <p>Roleplay + Economy Systems</p>
+      <h2>Give Players Something To Own, Run, Risk And Progress.</h2>
+      <span>The economy becomes more interesting when money moves through real gameplay: businesses, vehicles, weapon services, markets, inventory, financing, banking, commissions and player decisions.</span>
+    </div>
+    <div class="resource-grid">
+      <article class="resource-card featured">
+        <div class="resource-meta"><span class="tag free">Full Source</span><span class="version">$9.99</span></div>
+        <h3>RS WeaponShops</h3>
+        <p class="resource-lead">A tactical weapon experience instead of a buy list.</p>
+        <p>Live player preview, 3D weapon inspection, attachments, finishes, saved draw styles, hold/aim preferences, cash or bank checkout, weapon repair and built-in range trials including survival-style scenarios.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7481372" target="_blank" rel="noopener noreferrer">View WeaponShops</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag test">Underground RP</span><span class="version">$9.99</span></div>
+        <h3>RS BlackMarket</h3>
+        <p class="resource-lead">Underground commerce that belongs in the world.</p>
+        <p>Dealer-driven black-market gameplay built for illegal economy loops, configurable access and a darker RP layer outside normal shops.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7506182" target="_blank" rel="noopener noreferrer">View BlackMarket</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag test">Economy Backbone</span><span class="version">Active</span></div>
+        <h3>RS Banking</h3>
+        <p class="resource-lead">Money flows should survive the ugly edge cases.</p>
+        <p>Banking, PIN flows, cards, ATM use, transfers, transaction history, physical-cash integrations and webhook/audit paths built around server authority rather than trusting the browser.</p>
+        <div class="card-actions"><a href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Follow Development</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag test">Business Systems</span><span class="version">Connected</span></div>
+        <h3>Player-Owned Businesses</h3>
+        <p class="resource-lead">Employees, stock, permissions and money that actually matter.</p>
+        <p>Dealership ownership, offline rosters, employee grades, commissions, business accounts, restocking, pricing and finance history are examples of the deeper RP loops built into current systems.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7609845" target="_blank" rel="noopener noreferrer">See Dealership System</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience" class="split-section">
+    <div class="split-copy">
+      <p class="eyebrow">Phones + UI/NUI</p>
+      <h2>If Players See It Every Day, It Should Feel Worth Looking At.</h2>
+      <p>I spend a lot of time rebuilding interfaces because the menu is part of the gameplay. Phones, inventories, garages, dealerships, weapon shops, progress systems, HUDs and apocalypse terminals should feel like they belong to the same world as the mechanic behind them.</p>
+      <p>The normal and zombie product lines intentionally share proven gameplay brains where it makes sense while keeping distinct visual identities. A survivor terminal should not look like a city dealership. A zombie phone should not feel like a modern glass slab dropped into the apocalypse.</p>
+      <div class="hero-buttons"><a class="btn ghost" href="https://www.youtube.com/@RealitySucksRP" target="_blank" rel="noopener noreferrer">See UI In Motion</a></div>
+    </div>
+    <div class="release-stack">
+      <div><span>PHONE</span><strong>31-App Phone Systems</strong><small>Communication, media, banking, garage, racing, maps, services, weather, drone, SOS and more.</small></div>
+      <div><span>INVENTORY</span><strong>Punk, Zombie + Miami</strong><small>Distinct visual identities with real item metadata, drops, attachments and authoritative state underneath.</small></div>
+      <div><span>HUD</span><strong>Vehicle + Player Presentation</strong><small>Cinematic speedometers, holographic transitions, status systems and game-world visual language.</small></div>
+      <div><span>PROGRESS</span><strong>Progressbars With Atmosphere</strong><small>From clean GTA-style replacements to post-apocalyptic terminal presentation.</small></div>
+    </div>
+  </section>
+
+  <section class="resources-section">
+    <div class="resource-grid">
+      <article class="resource-card featured punk-card">
+        <div class="resource-meta"><span class="tag free">Free + Open Source</span><span class="version">v3.0.3</span></div>
+        <h3>RS Punk Inventory</h3>
+        <p class="resource-lead">Style on the front. Server authority underneath.</p>
+        <p>Physical cash, HUD synchronization, hardened floor drops, request locks, duplicate protection, refund protection, weapon metadata, attachments, vehicle storage, transfers, freshness and customizable menu art.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7449247" target="_blank" rel="noopener noreferrer">Get It Free</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag free">Free</span><span class="version">ox_inventory</span></div>
+        <h3>Miami Inventory Edition</h3>
+        <p class="resource-lead">A completely different visual experience on top of ox_inventory.</p>
+        <p>Large readable slots, cleaner containers, detailed metadata, real attachment inspection, weapon durability and a modern custom interface built with Qbox and Enhanced-era servers in mind.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7628371" target="_blank" rel="noopener noreferrer">Get Miami Inventory Free</a></div>
+      </article>
+      <article class="resource-card">
+        <div class="resource-meta"><span class="tag test">Premium UI</span><span class="version">$4.99</span></div>
+        <h3>Pip-Boi Progress UI</h3>
+        <p class="resource-lead">Turn waiting into atmosphere.</p>
+        <p>CRT-style terminal presentation, scanlines, flicker and segmented progress for hacking, black-market, survival and cinematic RP moments.</p>
+        <div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7391299" target="_blank" rel="noopener noreferrer">View Pip-Boi UI</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="frameworks" class="framework-section">
+    <div class="section-heading left-heading">
+      <p>Developer Backbone</p>
+      <h2>The Gameplay Should Not Care Which Provider Is Underneath It.</h2>
+      <span>That is the reason rs_bridge exists—and the reason current systems keep becoming easier to move between modern server stacks.</span>
+    </div>
+
+    <div class="framework-grid">
+      <article><strong>Qbox</strong><p>Primary modern development path, including native qbx_core integration where the resource supports it.</p></article>
+      <article><strong>QBCore</strong><p>Strong compatibility across the established RealitySucksRP catalog and public QB-based projects.</p></article>
+      <article><strong>ESX</strong><p>Provider and framework paths where the resource exposes the required bridge capability.</p></article>
+      <article><strong>Standalone</strong><p>Framework-independent operation for systems that do not require a full RP framework.</p></article>
+    </div>
+
+    <div class="bridge-callout">
       <div>
-        <p>Configured Around Your Server</p>
-        <h2>Your Server Should Feel Like Yours.</h2>
-        <span>I take my tested systems and configure the setup around the owner’s preferred gameplay, framework, economy, theme and server direction.</span>
+        <span class="tag free">Free • rs_bridge v2.4.0</span>
+        <h3>One API Between The Resource And The Server Ecosystem.</h3>
+        <p>Framework detection, inventory providers, physical or framework cash, banking, callbacks, notifications, progress, target wrappers, fuel, vehicle ownership, keys, medical helpers, minigames, webhooks, auditing, item definitions and shared vehicle data can be resolved behind a common bridge instead of duplicated across every resource.</p>
       </div>
-      <a class="btn primary" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Talk To Me On Discord</a>
-    </section>
+      <div class="hero-buttons">
+        <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/package/7628375" target="_blank" rel="noopener noreferrer">Get RS Bridge Free</a>
+        <a class="micro-link" href="https://github.com/RealitySucksRP/rs_bridge" target="_blank" rel="noopener noreferrer">Source</a>
+      </div>
+    </div>
+  </section>
 
-    <section class="final-cta">
-      <h2>Ready To Build Something Different?</h2>
-      <div class="hero-actions center">
-        <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">Browse Tebex</a>
-        <a class="btn ghost" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Discord</a>
-        <a class="btn ghost" href="https://www.youtube.com/@RealitySucksRP" target="_blank" rel="noopener noreferrer">YouTube</a>
-      </div>
-    </section>
-  </main>
+  <section class="commercial-section">
+    <div class="section-heading">
+      <p>Built To Survive Real Servers</p>
+      <h2>Security And Recovery Are Features Too.</h2>
+      <span>The work behind the menus matters when money, ownership, items and shared-world state are involved.</span>
+    </div>
+    <div class="category-grid">
+      <article class="category-card">
+        <span>Server Authority</span>
+        <h3>Do Not Trust The Browser</h3>
+        <p>Current systems increasingly validate prices, inventory movement, ownership, permissions, money and important actions on the server instead of accepting client claims.</p>
+      </article>
+      <article class="category-card">
+        <span>Transaction Safety</span>
+        <h3>Duplicate + Replay Resistance</h3>
+        <p>Request locks, session validation, idempotent flows, rollback paths and duplicate protection are used where economy actions can otherwise be abused or repeated.</p>
+      </article>
+      <article class="category-card">
+        <span>Persistence</span>
+        <h3>Restart + Recovery Thinking</h3>
+        <p>Vehicles, purchases, money operations, shared world state and interrupted flows are designed with cleanup, reconciliation and recovery paths where the system requires them.</p>
+      </article>
+      <article class="category-card">
+        <span>Auditability</span>
+        <h3>Webhooks + History</h3>
+        <p>Business sales, vehicle transfers, financial actions and other sensitive events can expose logging and audit trails in supported resources.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="open-source" class="resources-section">
+    <div class="section-heading left-heading">
+      <p>Free + Open Source</p>
+      <h2>No Stripped Demos. Real Community Releases.</h2>
+      <span>Free resources are part of the ecosystem, not bait. Use them, study them, modify them where the included license allows, and connect them to the larger stack if you want more.</span>
+    </div>
+    <div class="resource-grid">
+      <article class="resource-card bridge-card"><div class="resource-meta"><span class="tag free">Free</span><span class="version">v2.4.0</span></div><h3>RS Bridge</h3><p>Universal framework and provider compatibility layer.</p><div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7628375" target="_blank" rel="noopener noreferrer">Get Free on Tebex</a></div></article>
+      <article class="resource-card punk-card"><div class="resource-meta"><span class="tag free">Free</span><span class="version">v3.0.3</span></div><h3>Punk Inventory</h3><p>Hardened QBCore inventory with custom art, physical cash and dependable drop/state handling.</p><div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7449247" target="_blank" rel="noopener noreferrer">Get Free on Tebex</a></div></article>
+      <article class="resource-card zombie-card"><div class="resource-meta"><span class="tag free">Free</span><span class="version">v3.0.2</span></div><h3>Zombie Inventory</h3><p>Dedicated apocalypse inventory edition with its own artwork and survival identity.</p><div class="card-actions"><a href="https://reality-sucks-rp-webstore.tebex.io/package/7540906" target="_blank" rel="noopener noreferrer">Get Free on Tebex</a></div></article>
+      <article class="resource-card"><div class="resource-meta"><span class="tag free">Free</span><span class="version">v3.0.0</span></div><h3>RS GTA Progressbar</h3><p>A community progressbar replacement with GTA-style presentation.</p><div class="card-actions"><a href="https://github.com/RealitySucksRP/rsgta-progressbar" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+    </div>
+    <div class="center-actions"><a class="btn primary" href="https://reality-sucks-rp-webstore.tebex.io/category/free-scripts" target="_blank" rel="noopener noreferrer">Browse Free Releases</a><a class="micro-link" href="https://github.com/RealitySucksRP?tab=repositories" target="_blank" rel="noopener noreferrer">Public source on GitHub</a></div>
+  </section>
+
+  <section id="enhanced" class="enhanced-section">
+    <div>
+      <p class="eyebrow">GTA V Enhanced</p>
+      <h2>Tested Where Listed. Not Claimed Everywhere.</h2>
+      <p>Enhanced compatibility is treated as a resource-level claim, not a marketing blanket. The live Tebex Enhanced category contains the resources currently presented as Enhanced-tested, including ZombieCore, Zombie Phone, WeaponShops, vehicle systems, racing, the phone system, Miami ox_inventory and RS Bridge. Server migrations are reviewed against the actual resource stack so incompatible assets and dependencies can be identified instead of ignored.</p>
+    </div>
+    <div class="enhanced-actions">
+      <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/category/enhanced" target="_blank" rel="noopener noreferrer">Browse Enhanced Releases</a>
+      <a class="btn ghost" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Ask About Migration</a>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="about-card">
+      <p class="eyebrow">About RealitySucksRP</p>
+      <h2>Built, Broken, Rebuilt, Tested Again.</h2>
+      <p>I learned FiveM by building things, breaking them, fixing them and then finding another edge case. That process still drives the project. A resource is not finished because the menu opens; it needs to survive real players, strange timing, restarts, bad network conditions, different frameworks and the weird things GTA AI decides to do.</p>
+      <p>I care about gameplay purpose, interfaces that match the experience, understandable configuration, server-authoritative important actions, cleanup and recovery paths, and resources that owners can realistically maintain after installation.</p>
+    </div>
+    <div class="contact-card">
+      <h3>Follow RealitySucksRP</h3>
+      <a href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer"><span>Tebex</span><b>Live free and premium catalog</b></a>
+      <a href="https://github.com/RealitySucksRP" target="_blank" rel="noopener noreferrer"><span>GitHub</span><b>Public source, releases and community projects</b></a>
+      <a href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer"><span>Discord</span><b>Support, questions and server packages</b></a>
+      <a href="https://www.youtube.com/@RealitySucksRP" target="_blank" rel="noopener noreferrer"><span>YouTube</span><b>Gameplay previews and development videos</b></a>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div>
+      <p class="eyebrow">One Resource Or The Whole World</p>
+      <h2>Build The Server Players Talk About After They Log Off.</h2>
+      <p>Start with a free bridge or inventory. Add a premium vehicle, horror, weapon or survival system. Build the full ZombieCore ecosystem. Or start from one of the complete server packages and keep expanding from there.</p>
+    </div>
+    <div class="hero-buttons">
+      <a class="btn store" href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">Browse Tebex</a>
+      <a class="btn ghost" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Join Discord</a>
+      <a class="btn ghost" href="https://www.youtube.com/@RealitySucksRP" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </div>
+  </section>
 
   <footer>
-    <strong>RealitySucksRP</strong>
-    <span>FiveM scripts, gameplay systems and complete server packages.</span>
+    <div class="footer-logo">Reality <strong>Sucks</strong> RP</div>
+    <p>FiveM zombie worlds, cinematic AI, vehicles, racing, economy systems, phones, inventory, UI/NUI, framework bridges, free open-source projects, premium releases and complete server packages.</p>
     <div class="footer-links">
       <a href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">Tebex</a>
       <a href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Discord</a>
       <a href="https://www.youtube.com/@RealitySucksRP" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a class="tiny" href="https://github.com/RealitySucksRP" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
-    <small>© 2026 Reality Sucks RP. FiveM community resources. Compatibility and source access vary by product and are listed on the store.</small>
+    <small>© 2026 Reality Sucks RP. FiveM resources are independent community projects and are not affiliated with Rockstar Games, Take-Two Interactive, Cfx.re or framework maintainers unless explicitly stated. Compatibility, dependencies, source access and Enhanced support are listed per resource.</small>
   </footer>
 </body>
 </html>
