@@ -1,0 +1,138 @@
+name: RS website package correction
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/rs-site-package-correction.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  correct-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website refresh branch
+        uses: actions/checkout@v4
+        with:
+          ref: website-refresh-2026-09
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restore fixed server packages with updated pricing
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          start = s.index('  <section id="packages"')
+          end = s.index('  <section id="enhanced"', start)
+          replacement = '''  <section id="packages" class="packages">
+    <div class="section-heading">
+      <p>Complete Server Packages</p>
+      <h2>Need More Than A Script?</h2>
+      <span>Three complete FiveM server foundations with setup guidance, organized resources, bridge-aware integrations, and 30 days of Discord support.</span>
+    </div>
+
+    <div class="package-grid">
+      <article class="package-card dev">
+        <div class="package-art"><img src="images/qbcoreshell.png" alt="QBCore Shell package image"></div>
+        <div class="package-top"><span class="label">For Developers</span><strong class="price">$500</strong></div>
+        <p class="special">Enhanced-Aware Foundation</p>
+        <h3>QBCore Shell</h3>
+        <p class="desc">A clean QBCore foundation with 321+ resources reviewed, organized and patched as a serious starting point for developers and server owners. RealitySucksRP resources increasingly use bridge support for Qbox, QBCore, ESX and Standalone where supported.</p>
+        <ul>
+          <li>321+ resources reviewed in a live server environment</li>
+          <li>Load order, dependencies and common conflicts organized</li>
+          <li>RealitySucksRP bridge support where applicable</li>
+          <li>Framework, inventory, jobs, banking, targeting and notification integration paths</li>
+          <li>CFX-granted resources where the grant system applies</li>
+          <li>Free resources included; paid third-party resources handled through proper purchase/grant paths</li>
+          <li>Legacy and Enhanced compatibility reviewed against the actual resource set</li>
+          <li>30 days of Discord setup support</li>
+        </ul>
+        <a class="card-btn" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Discuss QBCore Shell</a>
+      </article>
+
+      <article class="package-card zombie">
+        <div class="package-art"><img src="images/zombierp.png" alt="Zombie Server package image"></div>
+        <div class="package-top"><span class="label">Zombie Survival</span><strong class="price">$700</strong></div>
+        <p class="special">Complete Outbreak Foundation</p>
+        <h3>Zombie Server</h3>
+        <p class="desc">A complete zombie-survival server built around the RealitySucksRP outbreak ecosystem with survivor gameplay, infected threats, vehicles, weapons, shops, UI, economy systems, phones, garages and expandable world systems.</p>
+        <ul>
+          <li>ZombieCore-driven outbreak gameplay and special infected systems</li>
+          <li>Survivor economy, inventory, shops and progression systems</li>
+          <li>Vehicles, weapons, garages, dealerships and apocalypse UI</li>
+          <li>RealitySucksRP zombie phone and ecosystem integration options</li>
+          <li>OneSync-focused shared-world systems where supported</li>
+          <li>Qbox, QBCore, ESX and Standalone integration paths where supported</li>
+          <li>Legacy and Enhanced compatibility reviewed per included resource</li>
+          <li>CFX-granted resources where the grant system applies</li>
+          <li>30 days of Discord setup support</li>
+        </ul>
+        <a class="card-btn" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Discuss Zombie Server</a>
+      </article>
+
+      <article class="package-card owner">
+        <div class="package-art"><img src="images/full_server.png" alt="Full RP Server package image"></div>
+        <div class="package-top"><span class="label">For Server Owners</span><strong class="price">$850</strong></div>
+        <p class="special">Complete RP Foundation</p>
+        <h3>Full RP Server</h3>
+        <p class="desc">A complete roleplay server foundation with jobs, economy, gangs, racing, vehicles, housing, custom UI and RealitySucksRP gameplay systems, built to be customized and expanded after delivery.</p>
+        <ul>
+          <li>Jobs, economy, gangs, racing, vehicles and housing foundation</li>
+          <li>Bridge-based integrations across supported RealitySucksRP systems</li>
+          <li>Custom HUD, menus and gameplay systems</li>
+          <li>Framework, inventory, banking, keys, fuel and target integration paths where supported</li>
+          <li>Resources organized for maintainability and future expansion</li>
+          <li>Legacy and Enhanced migration review based on the actual resource stack</li>
+          <li>CFX-granted resources where the grant system applies</li>
+          <li>Hosting and deployment assistance for supported setups</li>
+          <li>30 days of Discord setup and configuration support</li>
+        </ul>
+        <a class="card-btn" href="https://discord.gg/e9V3rPHySx" target="_blank" rel="noopener noreferrer">Discuss Full RP Server</a>
+      </article>
+    </div>
+  </section>
+
+'''
+          s = s[:start] + replacement + s[end:]
+          p.write_text(s, encoding='utf-8')
+
+          r = Path('README.md')
+          t = r.read_text(encoding='utf-8')
+          marker = '## Custom Server Work'
+          if marker in t:
+              a = t.index(marker)
+              b = t.index('## Site Structure', a)
+              package_readme = '''## Server Packages
+
+RealitySucksRP keeps three fixed server-package options on the website:
+
+- QBCore Shell — $500
+- Zombie Server — $700
+- Full RP Server — $850
+
+Each package includes 30 days of Discord setup/support. Exact compatibility, third-party paid resources, CFX grants, migration requirements, and Enhanced readiness are reviewed against the actual resource stack.
+
+Discuss a package on Discord:
+
+https://discord.gg/e9V3rPHySx
+
+'''
+              t = t[:a] + package_readme + t[b:]
+          r.write_text(t, encoding='utf-8')
+          PY
+
+      - name: Commit corrected package section
+        shell: bash
+        run: |
+          git config user.name "RealitySucksRP Update Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html README.md
+          git diff --cached --quiet && exit 0
+          git commit -m "Restore server packages with updated pricing and support"
+          git push origin HEAD:website-refresh-2026-09
