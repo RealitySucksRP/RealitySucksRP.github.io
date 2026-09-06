@@ -1,96 +1,71 @@
-# RealitySucksRP Website
+# RealitySucksRP
 
-Official public site for RealitySucksRP FiveM gameplay systems, open-source releases, premium Tebex resources, Enhanced-tested projects and complete server packages.
+### FiveM scripts, complete server builds and custom gameplay systems
 
-## Public Links
+<p align="center">
+  <a href="https://reality-sucks-rp-webstore.tebex.io/"><img src="https://img.shields.io/badge/BROWSE%20THE-TEBEX%20STORE-ff6a00?style=for-the-badge" alt="Browse RealitySucksRP Tebex Store"></a>
+  <a href="https://realitysucksrp.github.io/"><img src="https://img.shields.io/badge/VIEW-REALITYSUCKSRP%20SITE-111111?style=for-the-badge" alt="RealitySucksRP Website"></a>
+  <a href="https://discord.gg/e9V3rPHySx"><img src="https://img.shields.io/badge/JOIN-DISCORD-5865F2?style=for-the-badge" alt="Join RealitySucksRP Discord"></a>
+  <a href="https://www.youtube.com/@RealitySucksRP"><img src="https://img.shields.io/badge/WATCH-YOUTUBE-red?style=for-the-badge" alt="RealitySucksRP YouTube"></a>
+</p>
 
-- Website: https://realitysucksrp.github.io/
-- Tebex: https://reality-sucks-rp-webstore.tebex.io/
-- GitHub: https://github.com/RealitySucksRP
-- Discord: https://discord.gg/e9V3rPHySx
-- YouTube: https://www.youtube.com/@RealitySucksRP
+I build my own FiveM systems and use them in complete server builds that I configure around the server owner's setup.
 
-## RealitySucksRP Ecosystem
+**Shops • Weapons • Phones • Racing • LS Customs • Garages • Dealerships • Zombie Apocalypse • Warfare • Phantom / Ghost Encounters • UI • Framework Tools**
 
-RealitySucksRP is the FiveM development work of William Brito. Current work spans connected gameplay categories rather than one type of script:
+## What I Build
 
-- Zombie, apocalypse and survival worlds
-- Phantom horror and persistent stalker systems
-- AI-driven cinematic events and dynamic encounters
-- Vehicle dealerships, garages, tuning and vehicle businesses
-- Racing, ghost replay, drift and competition systems
-- Phones, inventories, HUDs, progress systems and custom UI/NUI
-- Weapon shops, black markets, banking and economy gameplay
-- Framework bridges and provider interoperability
-- Security hardening, server-authoritative transactions and audit systems
-- Free and open-source community releases
-- Premium Full Source or protected resources as stated per package
-- Complete FiveM server packages and migration/setup support
+### Zombie and Survival
+ZombieCore, outbreak gameplay, zombie shops, survivor systems, apocalypse vehicles, communications, garages and survival-focused UI.
 
-## Framework Direction
+### Vehicles and Racing
+Dealerships, garages, LS Customs, tuning, race systems, ghost replay, vehicle businesses and street-focused gameplay.
 
-Resource support varies by package, but current development targets include:
+### Shops, Weapons and Economy
+Weapon shops, black markets, banking, inventory systems, businesses and server-authoritative economy features.
 
-- Qbox / qbx_core
-- QBCore
-- ESX
-- Standalone
+### Phantom, Horror and Warfare
+Phantom vehicles, stalkers, cinematic encounters, warfare events and unpredictable world threats.
 
-`rs_bridge` is the shared compatibility layer used to reduce framework-specific rewrites across supported RealitySucksRP resources and providers.
+### Phones, UI and Server Systems
+Phones, HUDs, progress systems, custom NUI, framework bridges and compatibility layers.
 
-## Current Public Release Lines
+## Complete Server Packages
 
-- `rs_bridge` — v2.4.0
-- QB Inventory Punk Edition — v3.0.3
-- QB Inventory Zombie Edition — v3.0.2
-- RS GTA Progressbar — v3.0.0
-- RealitySucks TunerChip — v2.0.0
-- RS Outcome Bets — v2.4.1
-- RS Street Dice — v0.3.19-test
-- RealitySucks HUD — v1.0.0
+I also build complete FiveM server setups using tested RealitySucksRP systems and configure them around the owner's preferred style and stack.
 
-GitHub is the source of truth for public source versions. The live Tebex store is the source of truth for current commercial pricing, package descriptions, dependencies, source-access notes and Enhanced compatibility claims.
+| Package | Price | Support |
+|---|---:|---|
+| QBCore Shell | **$500** | 30 days Discord support |
+| Zombie Server | **$700** | 30 days Discord support |
+| Full RP Server | **$850** | 30 days Discord support |
 
-## Live Tebex Categories
+**Discuss a server build:** https://discord.gg/e9V3rPHySx
 
-The store currently includes releases covering:
+## Shop RealitySucksRP
 
-- ZombieCore and apocalypse systems
-- Phantom Stalkers and supernatural vehicle/air threats
-- Vehicle dealerships, garages, LS Customs and racing
-- Weapon shops, black markets and roleplay systems
-- Phones, HUDs, progressbars and visual systems
-- Free/open-source resources
-- Enhanced-tested resources where explicitly listed
+The Tebex store is the main home for current RealitySucksRP releases, package details and commercial resources.
 
-Compatibility, dependencies, price and source access should always be confirmed on the individual package page because those details can change as resources are updated.
+**Tebex:** https://reality-sucks-rp-webstore.tebex.io/
 
-## Server Packages
+## Free and Open-Source Releases
 
-RealitySucksRP keeps three fixed complete server-package options on the website:
+Some RealitySucksRP projects are released publicly on GitHub so server owners can use them, learn from them and customize them.
 
-- QBCore Shell — **$500**
-- Zombie Server — **$700**
-- Full RP Server — **$850**
+Current public projects include:
 
-Each package includes **30 days of Discord setup support**.
+- RS Bridge
+- RS Punk Inventory
+- RS Zombie Inventory
+- Reality Sucks Tuner Chip
+- RealitySucks HUD
+- RS GTA Progressbar
+- QB-Core server.cfg beginner guide
+- RS StreetDice
+- RS Outcomes
 
-Paid third-party resources are handled through proper purchase/CFX grant paths rather than being copied or redistributed. Compatibility, migration requirements and Enhanced readiness are reviewed against the actual resource stack included in the build.
+GitHub is for source, documentation and community releases. **Tebex is the storefront.**
 
-Discuss a package or migration:
+---
 
-https://discord.gg/e9V3rPHySx
-
-## GTA V Enhanced
-
-RealitySucksRP marks Enhanced compatibility per resource instead of applying a blanket claim to the entire catalog. The live Enhanced category is the authority for currently advertised Enhanced-tested releases. Server migration work is reviewed against the real resource stack and may involve dependency review, replacement of incompatible pieces, configuration updates and testing.
-
-## Site Structure
-
-The GitHub Pages site is intentionally lightweight:
-
-- `index.html` — primary ecosystem and marketing page
-- `rs-storefront.css` — current responsive visual theme
-- `images/` — server-package artwork
-
-The site connects the live Tebex store, GitHub releases, Discord community/support, YouTube previews and complete server-package offerings.
+**Reality Sucks. Build something memorable anyway.**
