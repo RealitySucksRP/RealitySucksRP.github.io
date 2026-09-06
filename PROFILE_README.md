@@ -9,9 +9,9 @@
   <a href="https://www.youtube.com/@RealitySucksRP"><img src="https://img.shields.io/badge/WATCH-YOUTUBE-red?style=for-the-badge" alt="RealitySucksRP YouTube"></a>
 </p>
 
-I create my own FiveM scripts, test them in my own server builds and configure complete servers around what the owner actually wants.
+I love making FiveM scripts and running wild in GTA, but I also enjoy building complete servers. I create my own systems, test them in my own server builds and configure complete setups around what the owner actually wants.
 
-**Zombie Apocalypse • Shops • Weapons • Phones • Racing • LS Customs • Garages • Dealerships • Warfare • Phantom / Ghost Encounters • UI • Framework Systems**
+**Zombie Apocalypse • Shops • Weapons • Phones • Racing • LS Customs • Garages • Dealerships • Inventories • Warfare • Phantom / Ghost Encounters • UI • Framework Systems**
 
 ## Build Your Server Around Real Systems
 
@@ -28,9 +28,9 @@ Weapon shops, black markets, banking, inventories, businesses and economy system
 Phantom vehicles, stalkers, cinematic encounters, warfare and unpredictable world events.
 
 **Phones, UI and Framework Tools**  
-Phones, HUDs, progress systems, NUI, framework bridges and compatibility tools.
+Phones, HUDs, progress systems, Miami-style inventory work, NUI, framework bridges and compatibility tools.
 
-## Complete Server Builds
+## Complete FiveM Servers For Sale
 
 | Package | Price | Included Support |
 |---|---:|---|
@@ -38,14 +38,16 @@ Phones, HUDs, progress systems, NUI, framework bridges and compatibility tools.
 | Zombie Server | **$700** | 30 days Discord support |
 | Full RP Server | **$850** | 30 days Discord support |
 
-I use tested RealitySucksRP systems and configure the build around the server owner's preferred setup.
+I use tested RealitySucksRP systems and configure the build around the server owner's preferred gameplay, framework, economy, theme and direction.
 
 ## Shop RealitySucksRP
 
 **Tebex:** https://reality-sucks-rp-webstore.tebex.io/
 
+**Enhanced resources:** https://reality-sucks-rp-webstore.tebex.io/category/enhanced
+
 ## Free Releases and Source
 
-GitHub is where I publish open-source tools, free releases and documentation. Tebex is where the full RealitySucksRP catalog lives.
+GitHub is where I publish open-source tools, free releases and documentation, including RS Bridge, Punk Inventory, Zombie Inventory and the RealitySucksRP Miami Edition ox_inventory work. Tebex is where the full RealitySucksRP catalog lives.
 
 **Reality Sucks. Build something memorable anyway.**
