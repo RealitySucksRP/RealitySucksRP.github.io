@@ -9,9 +9,9 @@
   <a href="https://www.youtube.com/@RealitySucksRP"><img src="https://img.shields.io/badge/WATCH-YOUTUBE-red?style=for-the-badge" alt="RealitySucksRP YouTube"></a>
 </p>
 
-I build my own FiveM systems and use them in complete server builds that I configure around the server owner's setup.
+I love making FiveM scripts and running wild in GTA, but I also enjoy building complete servers. I build my own systems, test them in my own server builds and configure complete setups around what the server owner actually wants.
 
-**Shops • Weapons • Phones • Racing • LS Customs • Garages • Dealerships • Zombie Apocalypse • Warfare • Phantom / Ghost Encounters • UI • Framework Tools**
+**Shops • Weapons • Phones • Racing • LS Customs • Garages • Dealerships • Zombie Apocalypse • Warfare • Phantom / Ghost Encounters • Inventories • UI • Framework Tools**
 
 ## What I Build
 
@@ -28,11 +28,11 @@ Weapon shops, black markets, banking, inventory systems, businesses and server-a
 Phantom vehicles, stalkers, cinematic encounters, warfare events and unpredictable world threats.
 
 ### Phones, UI and Server Systems
-Phones, HUDs, progress systems, custom NUI, framework bridges and compatibility layers.
+Phones, HUDs, progress systems, custom NUI, framework bridges, Miami-style inventory work and compatibility layers.
 
 ## Complete Server Packages
 
-I also build complete FiveM server setups using tested RealitySucksRP systems and configure them around the owner's preferred style and stack.
+I build complete FiveM server setups using tested RealitySucksRP systems and configure them around the owner's preferred gameplay, framework, economy, theme and direction.
 
 | Package | Price | Support |
 |---|---:|---|
@@ -48,6 +48,8 @@ The Tebex store is the main home for current RealitySucksRP releases, package de
 
 **Tebex:** https://reality-sucks-rp-webstore.tebex.io/
 
+**Enhanced:** https://reality-sucks-rp-webstore.tebex.io/category/enhanced
+
 ## Free and Open-Source Releases
 
 Some RealitySucksRP projects are released publicly on GitHub so server owners can use them, learn from them and customize them.
@@ -57,6 +59,7 @@ Current public projects include:
 - RS Bridge
 - RS Punk Inventory
 - RS Zombie Inventory
+- ox_inventory RealitySucksRP Miami Edition
 - Reality Sucks Tuner Chip
 - RealitySucks HUD
 - RS GTA Progressbar
