@@ -126,3 +126,10 @@ body[data-radio-kind="zombie"] .medical-card .member-main { grid-area:auto; }
  .palette-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
  .palette-choice { min-width:0; grid-template-columns:minmax(0,1fr); }
 }
+
+body[data-radio-kind="zombie"] .screen-status { flex-direction:column; align-items:flex-end; gap:.12rem; font-size:max(5px,calc(var(--u)*.65)); }
+body[data-radio-kind="zombie"] .frequency-copy strong { font-size:max(6px,calc(var(--u)*.9)); }
+body[data-radio-kind="zombie"] .frequency-copy small { font-size:max(4.5px,calc(var(--u)*.55)); }
+body[data-radio-kind="zombie"] #screen-talk { font-size:max(5px,calc(var(--u)*.6)); padding:.2rem; }
+body[data-radio-kind="zombie"] .screen-footer { font-size:max(5px,calc(var(--u)*.65)); }
+body[data-radio-kind="zombie"] #distress-button { font-size:max(5px,calc(var(--u)*.65)); padding:.2rem; }

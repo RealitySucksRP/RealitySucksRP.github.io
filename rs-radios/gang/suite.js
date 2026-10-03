@@ -20,7 +20,7 @@
     let simulationSequence = 0;
     document.body.dataset.radioKind = kind;
     const tabs = document.querySelector('.screen-tabs');
-    const hint=document.getElementById('gameplay-hint');if(hint)hint.textContent='F11 CLOSE · WALK / RUN / PTT ENABLED';
+    const hint=document.getElementById('gameplay-hint');if(hint)hint.textContent='F11 CLOSE | WALK / RUN / PTT ENABLED';
     tabs.querySelectorAll('[data-tab]').forEach(tab => {
         const label = ({ home:def.home, roster:def.home, units:def.units, distress:def.sos, medical:'VITALS', channels:'BANDS', settings:'STYLE' })[tab.dataset.tab];
         if (label) tab.innerHTML = `<span>${label}</span>`;
@@ -113,6 +113,7 @@
     const baseScreen=renderScreen;
     renderScreen=()=>{
         baseScreen();
+        const distress=document.getElementById("distress-button");if(distress)distress.textContent=state.distressActive?`CANCEL ${def.sos}`:def.sos;
         document.querySelector('.screen-brand strong').textContent=def.brand;
         const team=document.getElementById('screen-team'); if(team && !state.assignment?.team) team.textContent=def.network;
         if(['dispatch','scanner','jammer'].includes(state.tab)) {
