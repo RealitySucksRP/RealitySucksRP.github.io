@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RS Zombie Radio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="suite.css" />
+</head>
+<body>
+<div id="roster-overlay" aria-hidden="true"></div>
+<div id="app" aria-hidden="true">
+    <section id="radio-shell" data-frame="battered">
+        <span class="window-label">win1</span>
+        <img id="radio-art" src="img/ems-frames/frame-01.png" alt="Battered survival handheld radio" />
+
+        <section id="screen-bezel" aria-label="Radio squad display">
+            <div class="bezel-rivet rivet-a"></div>
+            <div class="bezel-rivet rivet-b"></div>
+            <div class="bezel-rivet rivet-c"></div>
+            <div class="bezel-rivet rivet-d"></div>
+
+            <div id="radio-screen" class="powered-off">
+                <div class="screen-noise"></div>
+
+                <header class="screen-header">
+                    <div class="screen-brand"><strong id="screen-team">NO TEAM ASSIGNED</strong></div>
+                    <div class="screen-status">
+                        <span id="screen-signal">LINK 000%</span>
+                        <span id="screen-battery">BAT 100%</span>
+                    </div>
+                </header>
+
+                <div class="frequency-strip">
+                    <span id="screen-frequency">---</span>
+                    <div class="frequency-copy">
+                        <strong id="screen-channel">RADIO OFFLINE</strong>
+                        <small id="screen-callsign">NO CALLSIGN</small>
+                    </div>
+                    <span id="screen-talk">POWER OFF</span>
+                </div>
+
+                <nav class="screen-tabs">
+                    <button data-tab="roster" class="tab active">TEAM</button>
+                    <button data-tab="channels" class="tab">CHAN</button>
+                    <button data-tab="distress" class="tab">SOS</button>
+                    <button data-tab="medical" class="tab">MED</button>
+                    <button data-tab="settings" class="tab">SET</button>
+                </nav>
+
+                <main id="screen-content"></main>
+
+                <footer class="screen-footer">
+                    <span id="last-sync">RS LINK · SYNC --:--</span>
+                    <span id="keypad-entry"></span>
+                    <button id="distress-button">DISTRESS</button>
+                </footer>
+            </div>
+        </section>
+
+        <button class="hotspot power" data-action="power" aria-label="Power"></button>
+        <button class="hotspot volume" data-action="volume" aria-label="Volume"></button>
+        <button class="hotspot lock" data-action="leave" aria-label="Disconnect"></button>
+        <button class="hotspot lamp" data-action="distress" aria-label="Distress"></button>
+        <button class="hotspot close" data-action="close" aria-label="Close radio">×</button>
+
+        <div id="keypad" aria-label="Frequency keypad"></div>
+        <div id="gameplay-hint">F11 CLOSE · WALK / RUN / PTT ENABLED</div>
+    </section>
+</div>
+<script src="rs-enhanced.js"></script>
+<script src="app.js"></script>
+<script src="suite.js"></script>
+</body>
+</html>
