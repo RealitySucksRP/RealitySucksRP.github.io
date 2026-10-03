@@ -133,3 +133,11 @@ body[data-radio-kind="zombie"] .frequency-copy small { font-size:max(4.5px,calc(
 body[data-radio-kind="zombie"] #screen-talk { font-size:max(5px,calc(var(--u)*.6)); padding:.2rem; }
 body[data-radio-kind="zombie"] .screen-footer { font-size:max(5px,calc(var(--u)*.65)); }
 body[data-radio-kind="zombie"] #distress-button { font-size:max(5px,calc(var(--u)*.65)); padding:.2rem; }
+
+body[data-radio-kind="zombie"] .screen-footer { grid-template-columns:minmax(0,1fr) auto auto; }
+body[data-radio-kind="zombie"] #distress-button { max-width:none; justify-self:end; }
+
+#radio-screen .screen-footer { display:flex; }
+#radio-screen #last-sync { flex:1 1 0; min-width:0; }
+#radio-screen #keypad-entry { flex:0 1 auto; min-width:0; max-width:28%; overflow:hidden; text-overflow:ellipsis; }
+#radio-screen .screen-footer #distress-button { flex:0 0 auto; max-width:50%; overflow-wrap:anywhere; white-space:normal; }

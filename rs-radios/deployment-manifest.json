@@ -76,8 +76,8 @@
   },
   {
     "path": "ems/suite.css",
-    "sha256": "93d7cc31f9de71628d31e02655918951282b7d477c5f3755005cd5517504056a",
-    "bytes": 10691
+    "sha256": "0042ef4ee8214de3e938daa58ae83b8a62ade27374ff49bcfa0bd3728c34ac0c",
+    "bytes": 11217
   },
   {
     "path": "ems/suite.js",
@@ -161,8 +161,8 @@
   },
   {
     "path": "gang/suite.css",
-    "sha256": "93d7cc31f9de71628d31e02655918951282b7d477c5f3755005cd5517504056a",
-    "bytes": 10691
+    "sha256": "0042ef4ee8214de3e938daa58ae83b8a62ade27374ff49bcfa0bd3728c34ac0c",
+    "bytes": 11217
   },
   {
     "path": "gang/suite.js",
@@ -251,8 +251,8 @@
   },
   {
     "path": "police/suite.css",
-    "sha256": "93d7cc31f9de71628d31e02655918951282b7d477c5f3755005cd5517504056a",
-    "bytes": 10691
+    "sha256": "0042ef4ee8214de3e938daa58ae83b8a62ade27374ff49bcfa0bd3728c34ac0c",
+    "bytes": 11217
   },
   {
     "path": "police/suite.js",
@@ -346,8 +346,8 @@
   },
   {
     "path": "zombie/suite.css",
-    "sha256": "93d7cc31f9de71628d31e02655918951282b7d477c5f3755005cd5517504056a",
-    "bytes": 10691
+    "sha256": "0042ef4ee8214de3e938daa58ae83b8a62ade27374ff49bcfa0bd3728c34ac0c",
+    "bytes": 11217
   },
   {
     "path": "zombie/suite.js",
