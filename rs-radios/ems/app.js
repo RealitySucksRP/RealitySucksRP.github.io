@@ -571,11 +571,28 @@ function sendDistress() { nui('distress'); play('click'); }
 function updateProfile(patch) {
     state.profile = { ...(state.profile || {}), ...patch };
     state.volume = state.profile.volume ?? state.volume;
-    nui('profile', patch);
+    queueProfilePatch(patch);
     render();
 }
 
-let profilePreviewTimer = 0;
+let pendingProfilePatch = {};
+let optimisticProfilePatch = {};
+let profileSendTimer = 0;
+let lastProfileSend = -1000;
+// Coalesce rapid changes, including changes to different controls. Keep sends
+// outside the server's 250ms settings throttle so valid changes are retained.
+function queueProfilePatch(patch) {
+    Object.assign(pendingProfilePatch, patch);
+    Object.assign(optimisticProfilePatch, patch);
+    if (profileSendTimer) clearTimeout(profileSendTimer);
+    profileSendTimer = setTimeout(() => {
+        profileSendTimer = 0;
+        const payload = pendingProfilePatch;
+        pendingProfilePatch = {};
+        lastProfileSend = performance.now();
+        nui('profile', payload);
+    }, Math.max(80, 350 - (performance.now() - lastProfileSend)));
+}
 function previewProfile(patch, sendNow = false) {
     state.profile = { ...(state.profile || {}), ...patch };
     state.volume = state.profile.volume ?? state.volume;
@@ -584,13 +601,7 @@ function previewProfile(patch, sendNow = false) {
     renderOverlay();
     renderScreenHeaderOnly();
 
-    if (profilePreviewTimer) clearTimeout(profilePreviewTimer);
-    const flush = () => {
-        profilePreviewTimer = 0;
-        nui('profile', patch);
-    };
-    if (sendNow) flush();
-    else profilePreviewTimer = setTimeout(flush, 275);
+    queueProfilePatch(patch);
 }
 
 function renderScreenHeaderOnly() {
@@ -667,7 +678,7 @@ document.addEventListener('keydown', event => {
     if (event.key === 'Enter' && state.entry) joinChannel(Number(state.entry));
     if (event.key === 'Backspace' && state.tab !== 'settings') { state.entry = state.entry.slice(0, -1); render(); }
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-        const tabs = ['home', 'channels', 'units', 'distress', 'settings'];
+        const tabs = [...document.querySelectorAll('.screen-tabs [data-tab]')].map(tab => tab.dataset.tab);
         const current = tabs.indexOf(navTabForCurrent());
         const direction = event.key === 'ArrowRight' ? 1 : -1;
         state.tab = tabs[(current + direction + tabs.length) % tabs.length];
@@ -703,7 +714,14 @@ window.addEventListener('message', async event => {
     if (data.action === 'distressBoard') state.distressBoard = data.distressBoard || [];
     if (data.action === 'battery') state.battery = data.battery;
     if (data.action === 'volume') { state.volume = data.volume; state.profile.volume = data.volume; state.profile.deafened = data.deafened === true; }
-    if (data.action === 'profile') { state.profile = { ...state.profile, ...(data.profile || {}) }; state.volume = state.profile.volume ?? state.volume; if (data.channels) state.channels = data.channels; }
+    if (data.action === 'profile') {
+        for (const key of Object.keys(optimisticProfilePatch)) {
+            if (data.profile?.[key] === optimisticProfilePatch[key]) delete optimisticProfilePatch[key];
+        }
+        state.profile = { ...state.profile, ...(data.profile || {}), ...optimisticProfilePatch };
+        state.volume = state.profile.volume ?? state.volume;
+        if (data.channels) state.channels = data.channels;
+    }
     if (data.action === 'jammer') state.jammed = data.jammed === true;
     if (data.action === 'jammers') state.jammers = data.jammers || [];
     if (data.action === 'jammerStatus') { state.nearbyJammer = data.jammer || null; state.nearbyJammerDistance = data.distance ?? null; if (data.jammer?.range) state.jammerRange = Number(data.jammer.range); }

@@ -1,8 +1,8 @@
 [
   {
     "path": "ems/app.js",
-    "sha256": "309dac8b4f22b983e46c1f7dcf9dfb5ac636a490de86c7b869141217834a80d6",
-    "bytes": 47979
+    "sha256": "363ca01c2adc6887cc8d7fe5ffee3049a031874b7bd5c5e977f07bebb8f5af84",
+    "bytes": 48773
   },
   {
     "path": "ems/img/ems-frames/frame-01.png",
@@ -76,13 +76,13 @@
   },
   {
     "path": "ems/suite.css",
-    "sha256": "0042ef4ee8214de3e938daa58ae83b8a62ade27374ff49bcfa0bd3728c34ac0c",
-    "bytes": 11217
+    "sha256": "0f8a05ab3ce06971345b559499b9bf51b118aa32575964828f34688656a102a5",
+    "bytes": 14082
   },
   {
     "path": "ems/suite.js",
-    "sha256": "a723953babf2e5fd77779eb93873ad48a1513aeab66635070662fd0d3526ce8a",
-    "bytes": 23756
+    "sha256": "b076a68c9a6a9377002d993cd33333195a71cdf978c26f9ba7b30e514c6bd680",
+    "bytes": 26618
   },
   {
     "path": "gang/app.js",
@@ -116,7 +116,7 @@
   },
   {
     "path": "gang/index.html",
-    "sha256": "b1f7b5565603354ff58c352516dfa624d1558dfd1bffd361b49a1b4f31f0e28a",
+    "sha256": "b7bf32758e9709dd44c588f3c7cc2e410fb76fdfc19e80d2dd2dcb55a11829d7",
     "bytes": 3490
   },
   {
@@ -161,13 +161,13 @@
   },
   {
     "path": "gang/suite.css",
-    "sha256": "0042ef4ee8214de3e938daa58ae83b8a62ade27374ff49bcfa0bd3728c34ac0c",
-    "bytes": 11217
+    "sha256": "372c00d7ec6266e8ac0118c77a5d85f1a638f47d9b1c57afd831df9fcb7fd87b",
+    "bytes": 11868
   },
   {
     "path": "gang/suite.js",
-    "sha256": "a723953babf2e5fd77779eb93873ad48a1513aeab66635070662fd0d3526ce8a",
-    "bytes": 23756
+    "sha256": "67bc918af6c81e8194c8db32bfa868598c5a35414eec35b8ba25544eb46beb0f",
+    "bytes": 26618
   },
   {
     "path": "index.html",
@@ -251,13 +251,13 @@
   },
   {
     "path": "police/suite.css",
-    "sha256": "0042ef4ee8214de3e938daa58ae83b8a62ade27374ff49bcfa0bd3728c34ac0c",
-    "bytes": 11217
+    "sha256": "1e990a3d57407429689183993aaf5ca7027de3c0621498833ed0c1ede5e00914",
+    "bytes": 12358
   },
   {
     "path": "police/suite.js",
-    "sha256": "a723953babf2e5fd77779eb93873ad48a1513aeab66635070662fd0d3526ce8a",
-    "bytes": 23756
+    "sha256": "fbe84e7f758dd72be2e0a6a91340e9b60b555387772e8d5f37f27f52516a9a3c",
+    "bytes": 26618
   },
   {
     "path": "showcase.css",
@@ -346,12 +346,12 @@
   },
   {
     "path": "zombie/suite.css",
-    "sha256": "0042ef4ee8214de3e938daa58ae83b8a62ade27374ff49bcfa0bd3728c34ac0c",
-    "bytes": 11217
+    "sha256": "372c00d7ec6266e8ac0118c77a5d85f1a638f47d9b1c57afd831df9fcb7fd87b",
+    "bytes": 11868
   },
   {
     "path": "zombie/suite.js",
-    "sha256": "a723953babf2e5fd77779eb93873ad48a1513aeab66635070662fd0d3526ce8a",
-    "bytes": 23756
+    "sha256": "374cccc7577ea87a677b799f8f1271382245d428c9d70f68814bb8629fe78465",
+    "bytes": 26618
   }
 ]

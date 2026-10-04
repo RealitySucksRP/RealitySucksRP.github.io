@@ -47,6 +47,7 @@
     </section>${baseSettings()}`;
     const baseUpdateProfile=updateProfile;
     updateProfile=patch=>{
+        if(patch.suiteBackground && patch.suiteCustom===undefined)patch.suiteCustom=true;
         if(patch.font && !patch.suiteFont)patch.suiteFont=({clinical:'sans',tactical:'mono',signal:'square',dispatch:'condensed',modern:'sans'})[patch.font]||'sans';
         if(patch.background){
             const palettes=kind==='ems'?EMS_PALETTES:kind==='police'?POLICE_PALETTES:kind==='gang'?GANG_PALETTES:ZOMBIE_PALETTES;
@@ -56,9 +57,19 @@
         if(patch.backgroundColor){patch.suiteBackground=patch.backgroundColor;patch.suiteCustom=true;}
         baseUpdateProfile(patch);
     };
+    const glassBounds=[[333, 659, 763, 1124], [332, 657, 763, 1123], [332, 659, 763, 1125], [332, 658, 764, 1124], [332, 658, 764, 1123]];
+    const backplate=document.createElement('div');
+    backplate.id='display-backplate'; backplate.setAttribute('aria-hidden','true');
+    shell.appendChild(backplate);
     const oldVisual=applyVisualSettings;
     applyVisualSettings=()=>{
         oldVisual();
+        const index=Math.max(0,Math.min(4,Number(radioArt.src.match(/frame-(\d+)/)?.[1]||1)-1));
+        const [left,top,right,bottom]=glassBounds[index];
+        Object.assign(backplate.style,{
+            left:`${(left-2)/FRAME_GEOMETRY.width*100}%`, top:`${(top-2)/FRAME_GEOMETRY.height*100}%`,
+            width:`${(right-left+4)/FRAME_GEOMETRY.width*100}%`, height:`${(bottom-top+4)/FRAME_GEOMETRY.height*100}%`
+        });
         const t=theme();
         screen.dataset.suiteFont=state.profile.suiteFont||'sans';
         screen.dataset.labelStyle=state.profile.labelStyle||'full';
@@ -111,8 +122,23 @@
         overlay.style.top=`${Math.max(8,Math.min(innerHeight-r.height-8,innerHeight*Number(state.profile.overlayY||0)/100))}px`;
     };
     const baseScreen=renderScreen;
+    let renderedTab=null;
+    let adjustingRange=false;
+    content.addEventListener('pointerdown',event=>{if(event.target.matches('input[type="range"]'))adjustingRange=true;});
+    document.addEventListener('pointerup',()=>{adjustingRange=false;});
+    document.addEventListener('pointercancel',()=>{adjustingRange=false;});
     renderScreen=()=>{
+        const sameTab=renderedTab===state.tab;
+        const focused=content.contains(document.activeElement)?document.activeElement:null;
+        // Live battery/roster/profile messages must not interrupt slider drags
+        // or close an open select. Header updates remain live while editing.
+        if(sameTab && focused && (adjustingRange || focused.tagName==='SELECT')) { renderScreenHeaderOnly(); return; }
+        const scrollTop=sameTab?content.scrollTop:0;
+        const drafts=sameTab?[...content.querySelectorAll('#dispatch-form input, #dispatch-form textarea, #dispatch-form select, #setting-name')].map(e=>({id:e.id,name:e.name,value:e.value})):[];
+        const focusKey=focused?.id?`#${focused.id}`:focused?.dataset.setting?`[data-setting="${focused.dataset.setting}"]`:focused?.name?`[name="${focused.name}"]`:null;
+        const selection=focused && ['text','textarea'].includes(focused.type)?[focused.selectionStart,focused.selectionEnd]:null;
         baseScreen();
+        renderedTab=state.tab;
         const distress=document.getElementById("distress-button");if(distress)distress.textContent=state.distressActive?`CANCEL ${def.sos}`:def.sos;
         document.querySelector('.screen-brand strong').textContent=def.brand;
         const team=document.getElementById('screen-team'); if(team && !state.assignment?.team) team.textContent=def.network;
@@ -124,7 +150,7 @@
         content.querySelectorAll('[data-suite-theme]').forEach(b=>b.onclick=()=>applyTheme(b.dataset.suiteTheme));
         const refresh=content.querySelector('[data-dispatch-refresh]'); if(refresh) refresh.onclick=()=>nui('dispatchRequest');
         const form=document.getElementById('dispatch-form');
-        if(form) form.onsubmit=async event=>{event.preventDefault();if(ops.busy)return;ops.busy=true;const data=Object.fromEntries(new FormData(form));await nui('dispatchSend',data);ops.busy=false;};
+        if(form) form.onsubmit=async event=>{event.preventDefault();if(ops.busy)return;ops.busy=true;const data=Object.fromEntries(new FormData(form));try{const result=await nui('dispatchSend',data);if(result?.ok!==false)document.getElementById('dispatch-form')?.reset();}finally{ops.busy=false;}};
         content.querySelectorAll('[data-call-status]').forEach(b=>b.onclick=()=>nui('dispatchRespond',{id:b.dataset.callId,status:b.dataset.callStatus}));
         content.querySelectorAll('[data-call-gps]').forEach(b=>b.onclick=()=>{const row=ops.dispatch.find(r=>r.id===b.dataset.callGps);if(row?.location)nui('waypoint',{coords:row.location});});
         const start=content.querySelector('[data-scanner-start]'); if(start)start.onclick=()=>nui('scannerStart');
@@ -143,6 +169,12 @@
             else if(action==='refresh')nui('requestJammerStatus');
             else nui('jammerAction',{action,value:action==='range'?state.jammerRange:action==='allow'?state.channel:undefined});
         });
+        // One font selector controls the display; the legacy typeface selector
+        // otherwise shows a conflicting value after selecting a suite font.
+        content.querySelector('[data-setting="font"]')?.closest('label')?.remove();
+        for(const draft of drafts){const input=draft.id?document.getElementById(draft.id):content.querySelector(`[name="${draft.name}"]`);if(input)input.value=draft.value;}
+        content.scrollTop=scrollTop;
+        if(focusKey){const input=content.querySelector(focusKey);if(input){input.focus({preventScroll:true});if(selection)input.setSelectionRange(...selection);}}
     };
     window.addEventListener('message',event=>{
         const data=event.data;if(!data||typeof data!=='object')return;

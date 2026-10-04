@@ -2,6 +2,28 @@
 #radio-shell { animation: suite-in .22s ease both; }
 @keyframes suite-in { from { opacity:0; } to { opacity:1; } }
 #screen-bezel { padding:0; border-radius:4.5%; }
+/* EMS hardware controls sit on the physical knobs, never over the display. */
+body[data-radio-kind="ems"] .hw-volume { left:44%; top:18%; width:12%; height:6%; }
+body[data-radio-kind="ems"] .hw-power { left:61%; top:21%; width:10%; height:5%; }
+body[data-radio-kind="ems"] .hw-sos { left:45%; top:26%; width:10%; height:2.5%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="night-response"] .hw-volume { top:21%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="night-response"] .hw-power { top:24%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="night-response"] .hw-sos { left:62%; top:29%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="field-medic"] .hw-volume { top:22%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="field-medic"] .hw-power { top:25%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="field-medic"] .hw-sos { left:69%; top:28%; width:8%; height:3.5%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="ems-classic"] .hw-volume { left:52%; top:20%; width:10%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="ems-classic"] .hw-power { left:63%; top:24%; width:9%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="ems-classic"] .hw-sos { left:43%; top:27%; width:7%; height:2%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="rescue-ops"] .hw-volume { top:25%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="rescue-ops"] .hw-power { top:28%; }
+body[data-radio-kind="ems"] #radio-shell[data-frame="rescue-ops"] .hw-sos { left:50%; top:32%; width:5%; height:1.5%; }
+/* The chamfered shells have angled glass; percentages keep the cut constant
+   in artwork coordinates at every viewport and radio scale. */
+body[data-radio-kind="ems"] #screen-bezel,
+body[data-radio-kind="ems"] #radio-screen { border-radius:7% / 4%; }
+body[data-radio-kind="ems"] #radio-shell:is([data-frame="night-response"],[data-frame="field-medic"],[data-frame="rescue-ops"]) #screen-bezel { border-radius:0; clip-path:polygon(7% 0,93% 0,100% 4%,100% 96%,93% 100%,7% 100%,0 96%,0 4%); }
+body[data-radio-kind="ems"] #radio-shell:is([data-frame="night-response"],[data-frame="field-medic"],[data-frame="rescue-ops"]) #radio-screen { border-radius:0; }
 #radio-screen { border:1px solid #b7cdd12b; box-shadow:inset 0 0 12px #0006,inset 0 0 0 1px #ffffff06; border-radius:4%; }
 #radio-screen { --cyan:var(--suite-accent); --blue:var(--suite-accent); --line:color-mix(in srgb,var(--suite-accent) 25%,transparent); }
 #radio-screen .hero-frequency,#radio-screen .channel-row .freq,#radio-screen .quick-channel b,#radio-screen .screen-brand .brand-mark { color:var(--suite-accent); }
@@ -141,3 +163,19 @@ body[data-radio-kind="zombie"] #distress-button { max-width:none; justify-self:e
 #radio-screen #last-sync { flex:1 1 0; min-width:0; }
 #radio-screen #keypad-entry { flex:0 1 auto; min-width:0; max-width:28%; overflow:hidden; text-overflow:ellipsis; }
 #radio-screen .screen-footer #distress-button { flex:0 0 auto; max-width:50%; overflow-wrap:anywhere; white-space:normal; }
+
+/* Opaque glass backing extends beneath the physical bezel, covering the entire
+   measured alpha opening, including antialiased edges and clipped UI corners. */
+#display-backplate { position:absolute; z-index:14; background:#050911; pointer-events:none; }
+#radio-art-viewport { z-index:16; }
+#radio-screen { opacity:1; }
+
+/* Common layer order: opaque glass, display, physical frame, hardware input. */
+#screen-bezel { z-index:15; }
+#radio-art { z-index:16; }
+.hotspot { z-index:32; }
+
+/* Common layer order: opaque glass, display, physical frame, hardware input. */
+#screen-bezel { z-index:15; }
+#radio-art { z-index:16; }
+.hotspot { z-index:32; }
