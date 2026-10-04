@@ -1,0 +1,162 @@
+{
+  "resource": "RS-HVAC",
+  "uiReference": "0.25.60",
+  "mode": "standalone-browser-simulation",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2698,
+      "sha256": "409761356386cf8bf47cf4870d396b56ec2b44bf56d57b39e4028f4f1d2a15f3"
+    },
+    {
+      "path": "assets/items/aircon_l_01.webp",
+      "bytes": 4590,
+      "sha256": "c9e3f2d45091dc3e7bd8c76257a49b06cb2cf304d098007c9bbdd17c7d604dbf"
+    },
+    {
+      "path": "assets/items/aircon_s_01a.webp",
+      "bytes": 3990,
+      "sha256": "1c937a8e89221faaf6554a617c01177094ef9a73a97cd8caf81331be5e775413"
+    },
+    {
+      "path": "assets/items/aircon_s_03a.webp",
+      "bytes": 6836,
+      "sha256": "56b9bee096d11d321353fe1a0be0796da58b79da1612957d8f98a86726067cc5"
+    },
+    {
+      "path": "assets/items/contactor_2p_40a.webp",
+      "bytes": 4190,
+      "sha256": "98d83333a7c423ef83ca59c7d4ac2a04c8fc70e8171ffad60b22a9312927e730"
+    },
+    {
+      "path": "assets/items/digital_multimeter.webp",
+      "bytes": 4230,
+      "sha256": "9ad7444f78490c3d8e956c8326c24505b43728ed1ada3b3616c8e3c913624b39"
+    },
+    {
+      "path": "assets/items/dual_run_capacitor.webp",
+      "bytes": 4026,
+      "sha256": "1b4af033fe82925ecf40df455b848d98ad8542166f410719a54fb7171f502b65"
+    },
+    {
+      "path": "assets/items/filter_pleated_merv8.webp",
+      "bytes": 6000,
+      "sha256": "2cc38ea00e90a46a44a5493dc59769397d46f2532211291e6c8788a2aeff30e2"
+    },
+    {
+      "path": "assets/rs-hvac-lift-supervisor.png",
+      "bytes": 2402447,
+      "sha256": "2a755a7db31b59469a6c93ce3f3eb5c11a877940a3585001514f5534293b3110"
+    },
+    {
+      "path": "assets/rs-hvac-service-tech.png",
+      "bytes": 2373937,
+      "sha256": "25df168a4a2dbef76e7e98d4861b19bd60cf6ea94cf22299bf19e0bc9889cc4a"
+    },
+    {
+      "path": "assets/rs-hvac-skylift-tech.png",
+      "bytes": 2420231,
+      "sha256": "0e5b8c17fbb087a0cba82b1fea35d82e7fd1e58331894cd0e6a41c642e2b4aa1"
+    },
+    {
+      "path": "assets/tablet-ui/hero-business.jpg",
+      "bytes": 42734,
+      "sha256": "7389db2d19bc09c03af786729d494ffe702cde55eb7ebbabd4c5e7949b4295e4"
+    },
+    {
+      "path": "assets/tablet-ui/hero-electrical.jpg",
+      "bytes": 64931,
+      "sha256": "c60f53ea6615864884b214d3c9632b7ba88f4bb52b7d9e6c856d13b3e2341ebc"
+    },
+    {
+      "path": "assets/tablet-ui/hero-rooftop.jpg",
+      "bytes": 705191,
+      "sha256": "99f26773b41cf2d8db0d701446b84252c73e219593de88f3720f2d2133e78995"
+    },
+    {
+      "path": "assets/tablet-ui/hero-service.jpg",
+      "bytes": 95372,
+      "sha256": "4d5bb40b80db5b1d2a2a296afabbf352644d8b203f5de5c25c5639fb481a4265"
+    },
+    {
+      "path": "assets/tablet-ui/hero-stock.jpg",
+      "bytes": 69071,
+      "sha256": "4673d7c69ea1f5756e8d0135218b57fd9a612eb7f1a66ca8af166246e03b38c8"
+    },
+    {
+      "path": "assets/tablet-ui/icon-academy.png",
+      "bytes": 5789,
+      "sha256": "3e5bbd159ca6dde23f5e4886482e20c871b44c963edebeb6add03cdf5593498e"
+    },
+    {
+      "path": "assets/tablet-ui/icon-certification.png",
+      "bytes": 1891,
+      "sha256": "d4006a0b3985afee940af222e7f6fbf8dbc889a4e2e5338f967d9288432d27fb"
+    },
+    {
+      "path": "assets/tablet-ui/icon-changeout.png",
+      "bytes": 2248,
+      "sha256": "5267dd970328007ed42d9e729232247b91057dad501f65e5147a57efd07e1d4f"
+    },
+    {
+      "path": "assets/tablet-ui/icon-command.png",
+      "bytes": 10126,
+      "sha256": "4c4e6ff0216938b0b9d1393ead56ebe36803405b45c08c50f7727380960b337a"
+    },
+    {
+      "path": "assets/tablet-ui/icon-company.png",
+      "bytes": 12516,
+      "sha256": "4da740fc5562729f7db170263e9fff2ccb13574d8cb1c0b7e235901afbd06c86"
+    },
+    {
+      "path": "assets/tablet-ui/icon-crane.png",
+      "bytes": 11466,
+      "sha256": "3131505b1bfbc750dd470daa7b97b64ad0a6f1372faa7401d5c056a66b835c56"
+    },
+    {
+      "path": "assets/tablet-ui/icon-dispatch.png",
+      "bytes": 21568,
+      "sha256": "e3efc037a0f178dfbf05e95cc32d5ef1cc1e5974b47a63217a60ba43ebe828c2"
+    },
+    {
+      "path": "assets/tablet-ui/icon-fleet.png",
+      "bytes": 9907,
+      "sha256": "b65c88e8f1e43bffda48e597821333dac438f852f09b3d328c171a3c218dea20"
+    },
+    {
+      "path": "assets/tablet-ui/icon-guided.png",
+      "bytes": 16599,
+      "sha256": "1b5640be5dc5b893ea782a0382cb0f07302211480acd9461bc313fa2f1fff42d"
+    },
+    {
+      "path": "assets/tablet-ui/icon-ppe.png",
+      "bytes": 15064,
+      "sha256": "abfb7ead14788e9244dc7e03d5b241a05c73e4b693b5c078c995ab1b1d065156"
+    },
+    {
+      "path": "assets/tablet-ui/icon-stock.png",
+      "bytes": 3448,
+      "sha256": "ae2896da7434da92a68f49061d3ed761b1699a17bcb1ff04a4e1c535cb6062f5"
+    },
+    {
+      "path": "assets/tablet-ui/icon-supply.png",
+      "bytes": 14987,
+      "sha256": "0a22a1a9a6eb1fe287e1d2037a3127921ce07dff6ebdb4ec053d1c2586e7a6aa"
+    },
+    {
+      "path": "demo.css",
+      "bytes": 16089,
+      "sha256": "98e9a927d0e8bf87643294a1f809a3ef882eec9d8887b7c9d8e83b7bbe48777e"
+    },
+    {
+      "path": "demo.js",
+      "bytes": 40843,
+      "sha256": "c1bcdf67b511430d5a5d619d0e8166b2764841176aa274911e19f2e3c049228b"
+    },
+    {
+      "path": "index.html",
+      "bytes": 5608,
+      "sha256": "0aa5820135d1058fc2f8d9c2ed481ed5fce0e46a9cfa8460104cc5281839b9c2"
+    }
+  ]
+}
