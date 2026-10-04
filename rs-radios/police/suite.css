@@ -141,3 +141,29 @@ body[data-radio-kind="zombie"] #distress-button { max-width:none; justify-self:e
 #radio-screen #last-sync { flex:1 1 0; min-width:0; }
 #radio-screen #keypad-entry { flex:0 1 auto; min-width:0; max-width:28%; overflow:hidden; text-overflow:ellipsis; }
 #radio-screen .screen-footer #distress-button { flex:0 0 auto; max-width:50%; overflow-wrap:anywhere; white-space:normal; }
+
+/* Opaque glass backing extends beneath the physical bezel, covering the entire
+   measured alpha opening, including antialiased edges and clipped UI corners. */
+#display-backplate { position:absolute; z-index:14; background:#050911; pointer-events:none; }
+#radio-art-viewport { z-index:16; }
+#radio-screen { opacity:1; }
+
+/* Common layer order: opaque glass, display, physical frame, hardware input. */
+#screen-bezel { z-index:15; }
+#radio-art { z-index:16; }
+.hotspot { z-index:32; }
+
+/* Police hardware controls are on the upper knobs and side emergency switch. */
+.hw-volume { left:50%; top:25%; width:11%; height:7%; }
+.hw-power { left:62%; top:26%; width:11%; height:6%; }
+.hw-sos { left:21%; top:42%; width:4%; height:7%; }
+
+/* Common layer order: opaque glass, display, physical frame, hardware input. */
+#screen-bezel { z-index:15; }
+#radio-art { z-index:16; }
+.hotspot { z-index:32; }
+
+/* Police hardware controls are on the upper knobs and side emergency switch. */
+.hw-volume { left:50%; top:25%; width:11%; height:7%; }
+.hw-power { left:62%; top:26%; width:11%; height:6%; }
+.hw-sos { left:21%; top:42%; width:4%; height:7%; }
