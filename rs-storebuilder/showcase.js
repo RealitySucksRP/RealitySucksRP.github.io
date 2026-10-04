@@ -7,4 +7,4 @@ function send(view){
   buttons.forEach(b=>b.classList.toggle('active',b.dataset.demoView===view));
 }
 buttons.forEach(button=>button.addEventListener('click',()=>send(button.dataset.demoView)));
-frame.addEventListener('load',()=>setTimeout(()=>send('editor'),180));
+frame.addEventListener('load',()=>setTimeout(()=>send('setup'),180));
