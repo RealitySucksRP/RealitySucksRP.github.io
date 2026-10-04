@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RS StoreBuilder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="storefront.css">
+    <link rel="stylesheet" href="builder_steps.css">
+    <link rel="stylesheet" href="image_polish.css">
+    <link rel="stylesheet" href="demo-mode.css">
+</head>
+<body class="simple">
+    <main id="editor" class="editor is-hidden" aria-label="RS StoreBuilder editor">
+        <header class="topbar panel">
+            <div class="brand">
+                <img class="brand-logo" src="assets/storefront/rs-logo.png" alt="RS">
+                <div><strong>STOREBUILDER</strong><small id="version">ALPHA</small></div>
+            </div>
+            <div class="project-status">
+                <span id="projectName">NO PROJECT</span>
+                <span id="revision" class="adv-only">REV —</span>
+                <span id="saveState" class="status-dot" title="Save status">IDLE</span>
+            </div>
+            <nav class="mode-switch" aria-label="Editor mode">
+                <button data-mode="walk" title="Walk around as your character.">WALK</button>
+                <button data-mode="camera" title="Fly a free camera around your build.">FLY CAMERA</button>
+                <button data-mode="gizmo" title="Move or rotate the selected prop with arrows and rings (G).">MOVE TOOL</button>
+            </nav>
+            <div class="top-actions">
+                <button id="projectsBtn" title="Open, switch or start a project.">MY PROJECTS</button>
+                <button id="storeSetupBtn" class="store-action" title="Name the business, set ownership, products, checkout and stock points.">STORE SETUP</button>
+                <button id="undoBtn" title="Undo (Ctrl+Z)">UNDO</button>
+                <button id="redoBtn" title="Redo (Ctrl+Y)">REDO</button>
+                <button id="saveBtn" class="accent" title="Save your project to the server.">SAVE</button>
+                <button id="freezeMeBtn" title="Freeze your own ped in place so you can use the camera and tools without drifting.">FREEZE ME</button>
+                <button id="focusWorldBtn" title="Hide the cursor so you can look around. Press F7 to get the cursor back.">LOOK AROUND <kbd>F7</kbd></button>
+                <button id="helpBtn" title="Show or hide the step-by-step guide.">HELP</button>
+                <button id="advancedBtn" title="Show the precision and admin tools.">ADVANCED</button>
+                <button id="minimizeBtn" title="Shrink the editor to a small bar.">HIDE PANELS</button>
+                <button id="diagBtn" class="adv-only" title="Diagnostics">DIAG</button>
+                <button id="closeBtn" class="danger" title="Close the StoreBuilder">×</button>
+            </div>
+        </header>
+
+        <section id="guideStrip" class="guide panel" aria-label="Store build path">
+            <div class="guide-brand"><small>BUILD PATH</small><strong>FOLLOW THE JOB</strong></div>
+            <ol>
+                <li data-step="project"><b>01</b><span>Project<small>Start at your location</small></span></li>
+                <li data-step="category"><b>02</b><span>Browse<small>Choose a store part</small></span></li>
+                <li data-step="place"><b>03</b><span>Place<small>Aim + left click</small></span></li>
+                <li data-step="move"><b>04</b><span>Position<small>Move, rotate, coords</small></span></li>
+                <li data-step="store"><b>05</b><span>Business<small>Pages, products, POS</small></span></li>
+                <li data-builder-step="signs"><b>06</b><span>Signs<small>Build 3D lettering</small></span></li>
+                <li data-builder-step="robbery"><b>07</b><span>Robbery<small>Optional scenario</small></span></li>
+                <li data-builder-step="maps"><b>08</b><span>Map check<small>Admin scan</small></span></li>
+                <li data-step="save"><b>09</b><span>Save<small>Lock in the build</small></span></li>
+            </ol>
+            <div class="guide-now"><small>CURRENT INSTRUCTION</small><span id="guideNext" class="guide-next">Open or start a project.</span></div>
+            <button id="guideHide" title="Hide the build path. HELP brings it back.">HIDE PATH</button>
+        </section>
+
+        <section class="world-workspace" aria-label="Live world workspace">
+            <div class="world-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div class="world-title"><small>LIVE WORLD CANVAS</small><strong>BUILD DIRECTLY IN LOS SANTOS</strong><span>The center stays clear so you can see the store while editing.</span></div>
+            <div id="coordinateDock" class="coordinate-dock">
+                <div class="coord-head"><span><small>POINT AT A LOCATION</small><strong id="coordStatus">WORLD TARGET</strong></span><button id="coordAimBtn" title="Give control back to the game so you can point the camera. Press F7 to return to the menu.">AIM IN WORLD</button></div>
+                <div class="coord-values"><span><b>X</b><code id="aimX">—</code></span><span><b>Y</b><code id="aimY">—</code></span><span><b>Z</b><code id="aimZ">—</code></span></div>
+                <div class="coord-player"><span>YOU <code id="playerCoords">—</code></span><span>HEADING <code id="playerHeading">—</code></span></div>
+                <p>Use this target while placing. <kbd>F7</kbd> returns the cursor without closing the builder.</p>
+            </div>
+        </section>
+
+        <aside class="catalog panel" data-library="props">
+            <header class="panel-title"><div><small id="catalogSubtitle">PICK A CATEGORY, THEN PLACE</small><strong id="catalogTitle">PROPS</strong></div><span id="catalogCount" title="How many you can place">0</span></header>
+            <div id="categoryHero" class="category-hero" style="--hero-image:url('assets/store_menu/manufactured.jpg')">
+                <small>BUILD LIBRARY</small><strong id="categoryHeroTitle">START WITH THE STORE</strong><span id="categoryHeroHint">Choose a visual category, preview it in the world, then place it.</span>
+            </div>
+            <nav class="library-switch" id="librarySwitch" aria-label="What to place">
+                <button data-library="props" class="active" title="Objects: walls, crates, furniture, lights…">PROPS</button>
+                <button data-library="peds" title="People and animals, with a pose.">PEDS</button>
+            </nav>
+            <label class="live-toggle" title="Clicking a row shows it where you are looking, before you place it. F7 lets you look around and it follows your view."><input id="liveToggle" type="checkbox" checked> SHOW IT LIVE WHEN I CLICK A ROW</label>
+            <input id="catalogSearch" class="search" type="search" placeholder="Search props… e.g. barrier, crate, grave" autocomplete="off">
+            <div class="build-kind-row adv-only props-only">
+                <label>PLACE AS
+                    <select id="placementKind">
+                        <option value="object">OBJECT</option>
+                        <option value="structure">COMPLETE STRUCTURE</option>
+                        <option value="wall">WALL</option>
+                        <option value="floor">FLOOR</option>
+                        <option value="ceiling">CEILING</option>
+                        <option value="door">DOOR</option>
+                        <option value="window">WINDOW</option>
+                        <option value="furniture">FURNITURE</option>
+                    </select>
+                </label>
+            </div>
+            <div class="category-tabs" id="categoryTabs" role="tablist" aria-label="Prop categories"></div>
+            <div id="categoryHint" class="category-hint">Every prop in the game. Pick a category above to narrow it down.</div>
+            <div id="posePicker" class="pose-picker peds-only">
+                <label>POSE <span>what the ped does once placed</span>
+                    <select id="poseSelect"><option value="">STANDING STILL (NO ANIMATION)</option></select>
+                </label>
+                <small id="poseHint" class="adv-only">The ped stands still.</small>
+            </div>
+            <div id="catalogPreviewEditor" class="catalog-preview-editor adv-only props-only is-hidden">
+                <img id="catalogPreviewImage" alt="Selected asset preview">
+                <div><strong id="catalogPreviewModel">SELECT AN ASSET</strong>
+                    <input id="catalogPreviewInput" maxlength="512" placeholder="assets/previews/name.webp or https://...">
+                    <span><button id="catalogPreviewSave">SAVE IMAGE</button><button id="catalogPreviewRemove">REMOVE</button></span>
+                </div>
+            </div>
+            <div id="catalogRows" class="asset-list"></div>
+            <footer><span>Click to see it live · PLACE to put it down</span><span id="catalogLoaded">LOADING</span></footer>
+        </aside>
+
+        <aside class="inspector panel">
+            <header class="panel-title"><div><small>WHAT YOU CLICKED</small><strong>SELECTED PROP</strong></div><span id="readOnlyBadge"></span></header>
+            <section id="shellTools" class="shell-tools is-hidden">
+                <div class="section-head"><b>MANUFACTURED STORE / INTERIOR</b><span id="shellStatus">DRAFT</span></div>
+                <p class="section-help">Stand where you want each point, then press its button. FINALIZE when all three show ✓.</p>
+                <div class="shell-point-grid">
+                    <span id="shellEntryStatus">ENTRY —</span><span id="shellExitStatus">EXIT —</span><span id="shellSafeStatus">SAFE —</span>
+                </div>
+                <div class="tool-grid shell-grid">
+                    <button data-shell-action="origin">SET ORIGIN HERE</button>
+                    <button data-shell-action="entry">SET ENTRY HERE</button>
+                    <button data-shell-action="exit">SET EXIT HERE</button>
+                    <button data-shell-action="safeSpawn">SET SAFE SPAWN</button>
+                    <button data-shell-action="finalize" class="accent">FINALIZE INTERIOR</button>
+                    <button id="blueprintsBtn">MANUFACTURED STORES</button>
+                </div>
+                <div class="blueprint-save-row">
+                    <input id="blueprintName" maxlength="72" placeholder="Manufactured-store template name">
+                    <button id="saveBlueprintBtn">SAVE TEMPLATE</button>
+                </div>
+            </section>
+            <section id="emptyInspector" class="empty-state">
+                <b>NOTHING SELECTED</b>
+                <span>Click a prop in the world, or pick one from IN THIS PROJECT at the bottom.</span>
+            </section>
+            <div id="inspectorBody" class="is-hidden">
+                <section class="identity">
+                    <small id="selectedId" class="adv-only">—</small>
+                    <strong id="selectedModel">—</strong><span id="selectedKind" class="kind-badge">OBJECT</span>
+                </section>
+                <section class="gizmo-bar">
+                    <div class="section-head"><b>MOVE TOOL</b><span>DRAG THE ARROWS OR RINGS</span></div>
+                    <div class="gizmo-buttons">
+                        <button data-gizmo-tool="translate" title="Show arrows to move the prop (T).">MOVE <kbd>T</kbd></button>
+                        <button data-gizmo-tool="rotate" title="Show rings to turn the prop (R).">ROTATE <kbd>R</kbd></button>
+                        <button data-gizmo-tool="scale" title="Show handles to make it bigger or smaller (U). Looks only: you still bump into its original size.">SCALE <kbd>U</kbd></button>
+                        <button id="gizmoSpaceBtn" title="Line the arrows up with the world, or with the prop itself (L).">AXES: WORLD <kbd>L</kbd></button>
+                    </div>
+                    <p class="section-help">Hold left mouse on an arrow or ring and drag. <kbd>G</kbd> turns the tool off, <kbd>F7</kbd> brings the cursor back. SCALE changes how it looks only; its collision keeps the original size. Peds cannot be scaled.</p>
+                </section>
+                <section class="quick-actions">
+                    <div class="section-head"><b>QUICK FIXES</b></div>
+                    <div class="tool-grid">
+                        <button data-transform-action="ground" title="Drop the prop straight down onto the ground.">DROP TO GROUND</button>
+                        <button data-transform-action="surfaceSnap" title="Stick the prop to the surface under it.">SNAP TO SURFACE</button>
+                        <button data-transform-action="resetRotation" title="Stand the prop back upright.">STAND UPRIGHT</button>
+                        <button data-transform-action="frame" title="Point the camera at this prop (F).">ZOOM TO IT</button>
+                        <button data-transform-action="resetScale" title="Back to the model's real size.">REAL SIZE</button>
+                        <button data-transform-action="duplicate" title="Make a copy right next to it.">DUPLICATE</button>
+                        <button data-transform-action="delete" class="danger" title="Remove this prop (Delete).">DELETE</button>
+                    </div>
+                </section>
+                <section class="precision-position">
+                    <div class="section-head"><b>EXACT POSITION</b><span>LIVE COORDS · METERS</span></div>
+                    <div class="vector-grid">
+                        <label><span>X</span><input id="posX" type="number" step="0.001"></label>
+                        <label><span>Y</span><input id="posY" type="number" step="0.001"></label>
+                        <label><span>Z</span><input id="posZ" type="number" step="0.001"></label>
+                    </div>
+                    <p class="section-help">Select a prop to see its exact world position. Edit a number, then use APPLY EXACT TRANSFORM below.</p>
+                </section>
+                <section class="precision-position">
+                    <div class="section-head"><b>EXACT ROTATION</b><span>DEGREES</span></div>
+                    <div class="vector-grid">
+                        <label><span>PITCH</span><input id="rotX" type="number" step="0.1"></label>
+                        <label><span>ROLL</span><input id="rotY" type="number" step="0.1"></label>
+                        <label><span>YAW</span><input id="rotZ" type="number" step="0.1"></label>
+                    </div>
+                </section>
+                <button id="applyTransformBtn" class="wide accent primary-transform">APPLY EXACT POSITION / ROTATION</button>
+                <div class="adv-only">
+                    <section>
+                        <div class="section-head"><b>PROP COLLISION</b><span>REAL SIZE KEEPS COLLISION TRUE</span></div>
+                        <label class="collision-toggle"><input id="decorativeProp" type="checkbox"><span>DECORATIVE · NO PLAYER / VEHICLE COLLISION</span></label>
+                        <p id="collisionHint" class="collision-hint">Solid props keep their real model size so players and vehicles collide with them correctly.</p>
+                        <div class="vector-grid scale-grid">
+                            <label><span>W+D</span><input id="scaleXY" type="number" step="0.01" min="0.1" max="10" title="Width and depth together"></label>
+                            <label><span>H</span><input id="scaleZ" type="number" step="0.01" min="0.1" max="10" title="Height"></label>
+                        </div>
+                    </section>
+                    <section class="settings-grid">
+                        <label>AXES<select id="space"><option value="world">WORLD</option><option value="local_space">LOCAL (PROP)</option></select></label>
+                        <label>MOVE SNAP<select id="positionSnap"></select></label>
+                        <label>TURN SNAP<select id="rotationSnap"></select></label>
+                        <label>TOOL<select id="gizmoTool"><option value="translate">MOVE</option><option value="rotate">ROTATE</option><option value="scale">SCALE</option></select></label>
+                    </section>
+                    <div class="tool-grid">
+                        <button data-transform-action="surface" title="Tilt the prop to match the slope under it.">ALIGN NORMAL</button>
+                        <button data-transform-action="structSnap" title="Join this wall to the nearest wall end.">WALL END SNAP</button>
+                        <button data-transform-action="doorToggle" title="Swing the door open and shut.">TEST DOOR</button>
+                        <button data-transform-action="copy">COPY</button>
+                        <button data-transform-action="paste">PASTE</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="hierarchy panel">
+            <header class="panel-title">
+                <div><small>EVERYTHING YOU HAVE PLACED</small><strong>IN THIS PROJECT</strong></div>
+                <div class="mode-readout"><span id="modeReadout">WALKING</span><span id="snapReadout" class="adv-only">SNAP 0.05m / 5°</span></div>
+            </header>
+            <div id="hierarchyRows" class="hierarchy-list"></div>
+            <footer><span><kbd>F7</kbd> cursor on / off</span><span><kbd>G</kbd> move tool</span><span><kbd>F</kbd> zoom to</span><span><kbd>DEL</kbd> delete</span><span><kbd>CTRL+Z</kbd> undo</span><span><kbd>CTRL+Y</kbd> redo</span></footer>
+        </section>
+    </main>
+
+    <section id="projectDialog" class="dialog is-hidden" role="dialog" aria-modal="true">
+        <div class="dialog-card">
+            <header><div><small>YOUR BUILDS</small><h1>RS STOREBUILDER</h1></div><button id="dialogClose" title="Close">×</button></header>
+            <div class="dialog-columns">
+                <section>
+                    <h2>OPEN A PROJECT</h2>
+                    <div id="projectRows" class="project-list"></div>
+                </section>
+                <section class="new-project">
+                    <h2>START A NEW PROJECT</h2>
+                    <label>NAME<input id="newProjectName" maxlength="72" placeholder="e.g. Vespucci Beach Market"></label>
+                    <label>WHAT ARE YOU BUILDING?<select id="newProjectType">
+                        <option value="world">POP-UP / EXISTING LOCATION: build at this spot</option>
+                        <option value="shell">MANUFACTURED STORE: shell/interior template</option>
+                        <option value="hybrid" selected>FULL STORE: exterior + interior + fixtures</option>
+                    </select></label>
+                    <p>Your project starts right where you are standing. You can move everything later.</p>
+                    <button id="createProjectBtn" class="accent wide">CREATE HERE</button>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <section id="storeDialog" class="dialog is-hidden" role="dialog" aria-modal="true">
+      <div class="dialog-card site-builder-dialog">
+        <header class="site-builder-head"><div class="site-builder-brand"><img src="assets/storefront/rs-logo.png"><div><small>RS MERCHANT STUDIO</small><h1>STOREBUILDER</h1><span>Structure on the left. Live customer view on the right.</span></div></div><div class="site-builder-head-tools"><span class="studio-state"><i></i> DRAFT</span><button id="storeClose" aria-label="Close StoreBuilder">×</button></div></header>
+        <div class="site-builder-shell"><nav id="siteBuilderSteps" class="site-builder-steps">
+          <button class="active" data-site-step="brand"><b>1</b><span>BRAND<small>Name + style</small></span></button><button data-site-step="pages"><b>2</b><span>PAGES<small>Like a website</small></span></button><button data-site-step="categories"><b>3</b><span>CATEGORIES<small>Organize items</small></span></button><button data-site-step="products"><b>4</b><span>PRODUCTS<small>Import inventory</small></span></button><button data-site-step="checkout"><b>5</b><span>CHECKOUT<small>POS + points</small></span></button><button data-site-step="test"><b>6</b><span>TEST<small>Server check</small></span></button><button data-site-step="publish"><b>7</b><span>PUBLISH<small>Open the doors</small></span></button>
+        </nav><main class="site-builder-workspace"><section class="site-builder-form">
+          <div class="site-step-panel active" data-site-panel="brand"><div class="site-panel-title"><div><small>STEP 1</small><h2>MAKE IT YOUR STORE</h2></div><span>No code. Build it like a website.</span></div><div class="site-form-grid two"><label>STORE NAME<input id="storeLabel" maxlength="72"></label><label>STORE TYPE<input id="storeCategory" maxlength="32"></label><label>WELCOME LINE<input id="siteWelcome" maxlength="120"></label><label>TAGLINE<input id="siteTagline" maxlength="180"></label><label>LOGO / IMAGE PATH<input id="siteLogo" maxlength="512"></label><label>BANNER / IMAGE PATH<input id="siteBanner" maxlength="512"></label></div><h3>CHOOSE A DESIGN</h3><div id="siteThemeCards" class="theme-picker">
+<button data-store-theme="rail"><span class="theme-diagram diagram-rail"><i></i><i></i><i></i><i></i></span><b>RAIL</b><small>POS-first · left navigation</small></button>
+<button data-store-theme="header"><span class="theme-diagram diagram-header"><i></i><i></i><i></i><i></i></span><b>HEADER</b><small>Retail site · top navigation</small></button>
+<button data-store-theme="dock"><span class="theme-diagram diagram-dock"><i></i><i></i><i></i><i></i></span><b>DOCK</b><small>Game launcher · bottom dock</small></button>
+<button data-store-theme="desktop"><span class="theme-diagram diagram-desktop"><i></i><i></i><i></i><i></i></span><b>DESKTOP</b><small>Windowed · Linux-inspired</small></button>
+<button data-store-theme="kiosk"><span class="theme-diagram diagram-kiosk"><i></i><i></i><i></i><i></i></span><b>KIOSK</b><small>Large touch targets · quick sale</small></button>
+</div></div>
+          <div class="site-step-panel" data-site-panel="pages"><div class="site-panel-title"><div><small>STEP 2</small><h2>BUILD YOUR PAGES</h2></div><button id="siteAddPage" class="accent">+ ADD PAGE</button></div><p class="site-help">Pages work like a small website. Add Home, Food, Drinks, Specials or anything you want.</p><div id="sitePages" class="site-sort-list"></div></div>
+          <div class="site-step-panel" data-site-panel="categories"><div class="site-panel-title"><div><small>STEP 3</small><h2>MAKE YOUR CATEGORIES</h2></div><button id="siteAddCategory" class="accent">+ ADD CATEGORY</button></div><p class="site-help">Each store gets its own categories and category icons.</p><div id="siteCategories" class="site-sort-list"></div></div>
+          <div class="site-step-panel" data-site-panel="products"><div class="site-panel-title"><div><small>STEP 4</small><h2>ADD YOUR PRODUCTS</h2></div><button id="siteImportInventory" class="accent">IMPORT INVENTORY</button></div><div class="site-product-tools"><input id="siteProductSearch" placeholder="Search this store..."><button id="siteAddBlankProduct">+ BLANK ITEM</button></div><div id="siteInventoryPicker" class="inventory-picker is-hidden"><header><b>SERVER INVENTORY</b><input id="siteInventorySearch" placeholder="Type 2–3 letters..."><button id="siteInventoryClose">×</button></header><div id="siteInventoryRows"></div></div><div id="siteProducts" class="site-product-editor"></div><textarea id="storeProducts" class="is-hidden"></textarea></div>
+          <div class="site-step-panel" data-site-panel="checkout"><div class="site-panel-title"><div><small>STEP 5</small><h2>CHECKOUT & POS</h2></div><span>Simple first. Advanced when needed.</span></div><div class="site-form-grid three"><label>POS STYLE<select id="sitePosMode"><option value="cart">SHOPPING CART</option><option value="instant">INSTANT BUY</option><option value="counter">COUNTER / CASHIER</option></select></label><label>ITEMS PER PAGE<input id="siteItemsPerPage" type="number" min="1" max="48" value="12"></label><label>DEFAULT PAYMENT<select id="storeDefaultPayment"><option value="cash">CASH</option><option value="bank">BANK / CARD</option></select></label></div><div class="site-check-row"><label><input id="storeCash" type="checkbox" checked> CASH</label><label><input id="storeBank" type="checkbox" checked> BANK/CARD</label><label><input id="siteEnableSearch" type="checkbox" checked> SEARCH</label><label><input id="siteShowStock" type="checkbox" checked> SHOW STOCK</label></div><h3>SELLERS & CHECKOUT</h3><p class="site-help">Assign any ped you placed in this project as a cashier/vendor. Players can target that actual ped to open this store menu and buy these products. A checkout point is optional when at least one vendor ped is assigned.</p><div id="siteVendorPeds" class="site-vendor-list"></div><h3>WORLD POINTS</h3><div class="store-point-status"><span id="storeCheckoutStatus">CHECKOUT —</span><span id="storeStockStatus">STOCK —</span><span id="storeManagementStatus">BOSS MENU —</span><span id="storeEmployeeStatus">EMPLOYEE —</span></div><div class="tool-grid"><button data-store-point="checkout" class="accent">SET SELF-CHECKOUT HERE</button><button data-store-point="stock">SET STOCK HERE</button><button data-store-point="management">SET BOSS MENU HERE</button><button data-store-point="employee">SET EMPLOYEE HERE</button></div><details class="site-advanced"><summary>BUSINESS / OWNERSHIP / SUPPLIER — ADVANCED</summary><div class="site-form-grid two"><label>OWNERSHIP<select id="storeOwnerMode"><option value="public">PUBLIC / ADMIN</option><option value="job">JOB / BUSINESS</option><option value="character">CHARACTER OWNER</option></select></label><label>JOB<input id="storeJob"></label><label>MIN GRADE<input id="storeGrade" type="number" min="0" value="0"></label><label>CHARACTER ID<input id="storeOwnerId"></label><label><input id="storeDuty" type="checkbox"> REQUIRE DUTY</label><label><input id="siteSupplierEnabled" type="checkbox" checked> SUPPLIER ORDERS</label><label><input id="siteSupplierAuto" type="checkbox" checked> AUTO RESTOCK</label><label>DELIVERY FLAT FEE<input id="siteSupplierFlat" type="number" min="0" value="0"></label><label>DELIVERY %<input id="siteSupplierPercent" type="number" min="0" max="100" value="0"></label><label>MANAGER LIMIT<input id="siteManagerLimit" type="number" min="0" value="7500"></label><label>OWNER LIMIT<input id="siteOwnerLimit" type="number" min="0" value="250000"></label></div></details></div>
+          <div class="site-step-panel" data-site-panel="test"><div class="site-panel-title"><div><small>STEP 6</small><h2>TEST BEFORE OPENING</h2></div><span>Uses the same requirements as the server publish gate.</span></div><p class="site-help">Press SAVE & CHECK. Your current design is saved first, then the server verifies checkout, products, payments, interior points when required, permissions, framework and inventory bridge.</p><div class="site-shell-quick"><strong>OPTIONAL BUILD STEPS</strong><span>Build your signs, author a robbery scenario, then review map conflicts before opening.</span><div class="tool-grid"><button data-builder-step="signs">BUILD SIGNS</button><button data-builder-step="robbery">BUILD ROBBERY</button><button data-builder-step="maps">MAP REVIEW</button></div></div><div id="siteTestChecklist" class="publish-checklist"></div><div id="siteBridgeStatus" class="site-bridge-status">Not checked yet.</div><div id="siteShellQuickPoints" class="site-shell-quick"><strong>MANUFACTURED / INTERIOR PROJECT?</strong><span>Stand at each point in the game, then use these shortcuts. World projects do not need them.</span><div class="tool-grid"><button data-site-shell="entry">SET ENTRY HERE</button><button data-site-shell="exit">SET EXIT HERE</button><button data-site-shell="safeSpawn">SET SAFE SPAWN HERE</button></div></div><button id="siteRunReadiness" class="accent wide">SAVE & CHECK</button></div>
+          <div class="site-step-panel" data-site-panel="publish"><div class="site-panel-title"><div><small>STEP 7</small><h2>PREVIEW & OPEN</h2></div><span>Publish stays locked until the server check passes.</span></div><div id="sitePublishChecklist" class="publish-checklist"></div><div class="publish-row"><button id="storeSaveConfig" class="accent">SAVE DESIGN</button><button id="storePublish" class="accent green" disabled>PUBLISH / OPEN</button><button id="storeUnpublish" class="danger">CLOSE STORE</button></div></div>
+        </section><aside class="site-live-preview"><header><div><small>LIVE PREVIEW</small><b id="sitePreviewTheme">RAIL</b></div><span>Customer view</span></header><div id="sitePreviewCanvas" class="site-preview-canvas theme-rail"></div><footer><button id="sitePrevStep">← BACK</button><span id="siteStepMessage" class="site-step-message">STEP 1 OF 7 · Give the store a name.</span><button id="siteNextStep" class="accent">CONTINUE →</button></footer></aside></main></div>
+      </div>
+    </section>
+
+    <section id="productImageDialog" class="dialog is-hidden product-image-dialog" role="dialog" aria-modal="true">
+      <div class="dialog-card product-image-editor-card">
+        <header><div><small>PRODUCT IMAGE</small><h1 id="productImageEditorLabel">ADJUST IMAGE</h1><span id="productImageEditorItem">Select a product</span></div><button id="productImageEditorClose" aria-label="Close image editor">×</button></header>
+        <div class="product-image-editor-body">
+          <section class="product-image-stage">
+            <div class="product-image-square"><img id="productImageEditorPreview" alt=""><div id="productImageEditorEmpty">NO IMAGE FOUND</div></div>
+            <div class="product-image-provider">SOURCE <b id="productImageEditorProvider">INVENTORY</b></div>
+            <p>Adjust the framing here. The original inventory image is never modified.</p>
+          </section>
+          <section class="product-image-controls">
+            <label>IMAGE SOURCE<select id="productImageMode"><option value="inventory">INVENTORY BRIDGE</option><option value="custom">CUSTOM IMAGE</option></select></label>
+            <label>CUSTOM IMAGE URL / NUI PATH<input id="productImageSource" maxlength="512" placeholder="https://... or nui://..."></label>
+            <div class="product-image-source-actions"><button id="productImageUseInventory">USE INVENTORY IMAGE</button><button id="productImageApplyCustom">APPLY CUSTOM IMAGE</button></div>
+            <label>FIT<select id="productImageFit"><option value="contain">CONTAIN — SHOW WHOLE IMAGE</option><option value="cover">COVER — FILL THE SQUARE</option></select></label>
+            <label class="image-range">ZOOM <output id="productImageZoomOut">100%</output><input id="productImageZoom" type="range" min="50" max="200" value="100"></label>
+            <label class="image-range">LEFT / RIGHT <output id="productImageXOut">50%</output><input id="productImageX" type="range" min="0" max="100" value="50"></label>
+            <label class="image-range">UP / DOWN <output id="productImageYOut">50%</output><input id="productImageY" type="range" min="0" max="100" value="50"></label>
+            <div class="product-image-editor-actions"><button id="productImageReset">RESET</button><button id="productImageSave" class="accent">SAVE IMAGE</button></div>
+            <small class="product-image-help">Inventory Bridge follows the active inventory provider. Custom Image overrides it. Fit, zoom and position are saved per product.</small>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="blueprintDialog" class="dialog is-hidden" role="dialog" aria-modal="true">
+        <div class="dialog-card blueprint-card">
+            <header><div><small>REUSABLE STORE SHELLS</small><h1>MANUFACTURED STORES</h1></div><button id="blueprintClose" title="Close">×</button></header>
+            <div id="blueprintRows" class="blueprint-list"><div class="empty-state"><b>NO BLUEPRINTS LOADED</b></div></div>
+            <footer class="blueprint-help">LOAD AT PLAYER builds the blueprint where you stand, facing the way you face.</footer>
+        </div>
+    </section>
+
+    <section id="shopDialog" class="dialog is-hidden storefront-overlay" role="dialog" aria-modal="true"><div id="storefrontRuntime" class="dialog-card storefront-runtime theme-rail"><header class="storefront-topline"><div class="storefront-brand"><img id="shopLogo" src="assets/storefront/rs-logo.png"><div><small id="shopWelcome">WELCOME</small><h1 id="shopTitle">STORE</h1><span id="shopTagline"></span></div></div><div class="storefront-top-actions"><span id="shopStoreId"></span><label>PAY<select id="shopPayment"><option value="cash">CASH</option><option value="bank">CARD</option></select></label><button id="shopClose">×</button></div></header><div id="storefrontCustomer" class="storefront-customer"><nav id="shopNav" class="storefront-nav"></nav><section class="storefront-main"><div id="shopHero" class="storefront-hero"></div><div id="shopCategoryBar" class="storefront-categorybar"></div><div class="storefront-toolbar"><div><h2 id="shopSectionTitle">ALL ITEMS</h2><span id="shopCount"></span></div><input id="shopSearch" placeholder="Search products..."><select id="shopPageSize"></select></div><div id="shopRows" class="storefront-products"></div><div id="shopPagination" class="storefront-pagination"></div></section><aside id="shopCart" class="storefront-cart"><header><div><img src="assets/storefront/basket.png"><b>YOUR CART / POS</b></div><button id="shopClearCart">CLEAR</button></header><div id="shopCartRows"></div><footer><div><span>SUBTOTAL</span><b id="shopSubtotal">$0</b></div><button id="shopCheckout" class="accent">CHECKOUT</button></footer></aside></div><div id="storefrontBoss" class="storefront-boss is-hidden"><header><div><small>STORE MANAGEMENT</small><h2 id="bossStoreName">BUSINESS</h2></div><strong id="bossBalance">$0</strong></header><div class="boss-grid"><section><h3>MONEY</h3><div class="boss-money-row"><input id="bossAmount" type="number" min="1" placeholder="Amount"><select id="bossPayment"><option value="bank">BANK</option><option value="cash">CASH</option></select><button id="bossDeposit">DEPOSIT</button><button id="bossWithdraw">WITHDRAW</button></div><div id="bossFinance" class="boss-finance"></div><button id="bossPaySupplier" class="boss-pay-supplier">PAY SUPPLIER ACCOUNT</button><h3>STOCK & SUPPLIER</h3><div id="bossStockRows"></div></section><section><h3>RECENT LEDGER</h3><div id="bossLedgerRows"></div></section></div></div></div></section>
+
+    <section id="diagnosticsDialog" class="dialog is-hidden" role="dialog" aria-modal="true">
+        <div class="dialog-card diagnostics-card">
+            <header><div><small>LIVE PRODUCTION STATE</small><h1>DIAGNOSTICS</h1></div><button id="diagnosticsClose" title="Close">×</button></header>
+            <pre id="diagnosticsText">Requesting current state…</pre>
+        </div>
+    </section>
+
+    <div id="placementHelp" class="placement-help is-hidden" aria-live="polite"></div>
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+    <script src="app.js"></script>
+    <script src="storefront.js"></script>
+    <script src="menu_backgrounds.js"></script>
+    <script src="builder_steps.js"></script>
+    <script src="interactions.js"></script>
+    <script src="demo-assets.js"></script>
+  <script src="demo-bridge.js"></script>
+</body>
+</html>
