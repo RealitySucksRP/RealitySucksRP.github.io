@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore the RS-HVAC FiveM business tablet: interactive dispatch, guided diagnostics, career training, fleet, stock and company finance previews.">
+  <meta name="theme-color" content="#07141f">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>RS-HVAC · Interactive Business Tablet</title>
+  <link rel="stylesheet" href="demo.css">
+  <link rel="icon" href="assets/tablet-ui/icon-company.png" type="image/png">
+  <script src="demo.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a href="/" class="site-brand">REALITY<span>SUCKS</span>RP</a><div><a href="https://reality-sucks-rp-webstore.tebex.io/" target="_blank" rel="noopener noreferrer">Tebex store ↗</a><a href="/">All resources ↗</a></div></header>
+  <main class="demo">
+    <section class="intro"><div><p class="eyebrow">FIVEM RESOURCE / INTERACTIVE PREVIEW</p><h1>RS-HVAC <span>Emergency Services</span></h1><p>A career to earn. A service company to run. Explore the field operations tablet.</p></div><a class="try-link" href="#tablet">Explore the menu ↓</a></section>
+    <section class="demo-controls" aria-label="Demo controls">
+      <div class="demo-note"><span class="status-dot"></span><div><strong>BROWSER DEMO</strong><span>Sample data. Actions stay in this tab; no FiveM server is connected.</span></div></div>
+      <label>Preview role<select id="persona"><option value="senior">G5 · Senior technician</option><option value="helper">G0 · HVAC helper</option><option value="owner">G9 · Operations owner</option></select></label>
+      <button id="reset" class="secondary">Reset demo</button>
+    </section>
+    <section id="tablet" class="tablet" aria-label="RS HVAC business tablet">
+      <header class="topbar"><div class="brand-lockup"><div class="brand-mark">RS</div><div><p class="eyebrow">FIELD OPERATIONS & TRAINING</p><h2>HVAC EMERGENCY SERVICES</h2></div></div><div class="top-status"><span id="clock">08:42</span><button id="duty" class="primary">Go off duty</button></div></header>
+      <div class="workspace">
+        <aside class="technician-panel">
+          <div class="portrait"><img id="role-art" src="assets/rs-hvac-service-tech.png" alt="RS HVAC field service technician artwork"><span>OFFICIAL RS-HVAC ROLE ART</span></div>
+          <div class="tech-copy"><p class="eyebrow">DEMO TECHNICIAN</p><h2>Alex Morgan</h2><div class="rank"><span id="grade-title">Senior Service Technician</span><strong id="grade">G5</strong></div><div id="badges" class="badges"></div></div>
+          <div class="mini-stats"><div><strong id="closed">127</strong><span>Calls closed</span></div><div><strong>94%</strong><span>First-time fix</span></div><div><strong id="trained">18</strong><span>Training passes</span></div></div>
+          <div class="fleet-status"><p class="eyebrow">FLEET STATUS</p><strong id="fleet-status">Service van · inspected</strong><div class="meter"><i id="fleet-meter"></i></div><p id="fleet-caption">Tools and stock ready for the next call.</p></div>
+          <button class="secondary career-button" data-view="guide">View career progression →</button>
+        </aside>
+        <section class="content-panel">
+          <div class="hero-frame"><img id="hero-image" src="assets/tablet-ui/hero-rooftop.jpg" alt=""><div class="hero-copy"><p id="hero-eyebrow" class="eyebrow">COMMAND</p><h2 id="hero-title">LEARN THE SYSTEM. PROVE THE DIAGNOSIS.</h2><p id="hero-text">Interview, inspect, measure, diagnose, repair and commission.</p></div><span class="hero-tag">DEMO<br><b>FIELD OPS</b></span></div>
+          <nav id="tabs" class="tabs" aria-label="HVAC menu sections"></nav>
+          <div id="view" class="view-root" aria-live="polite"></div>
+        </section>
+        <aside class="control-rail"><p class="eyebrow">SYSTEM ACCESS</p><nav id="rail" aria-label="Tablet shortcuts"></nav><div class="rail-footer"><span class="status-dot"></span> PREVIEW LINK<br><strong>LOCAL SIMULATION</strong></div></aside>
+      </div>
+      <footer class="tablet-footer"><span>RS CLIMATE CONTROL · v0.25.60 UI REFERENCE</span><span>INTERVIEW · INSPECT · MEASURE · DIAGNOSE · REPAIR · COMMISSION</span></footer>
+    </section>
+    <section class="about"><div><p class="eyebrow">FROM FIRST SHIFT TO COMPANY OWNER</p><h2>More than a job menu.</h2><p>RS-HVAC connects guided diagnostics, training, earned grades, service fleet, serialized change-outs, warehouse logistics and business finance in FiveM.</p></div><div><p>This public preview mirrors the resource’s tablet design and twelve menu sections. Its abbreviated scenarios, prices and balances are illustrative. World placement, physics, multiplayer permissions and money handling run inside the installed resource.</p><p>Training is a roleplay simulation and does not issue real trade qualifications.</p></div></section>
+  </main>
+  <footer class="site-footer"><span>RealitySucksRP · RS-HVAC interactive preview</span><a href="/">Back to the resource catalog ↑</a></footer>
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+  <dialog id="detail"><div id="detail-content"></div><button id="dialog-close" class="secondary">Back to the tablet</button></dialog>
+  <noscript><p class="noscript">Enable JavaScript to use the interactive tablet demo.</p></noscript>
+</body>
+</html>
