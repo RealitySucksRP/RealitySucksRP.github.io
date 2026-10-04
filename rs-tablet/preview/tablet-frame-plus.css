@@ -1,0 +1,264 @@
+
+/* RS Tablet v0.9.0 — frame, motion, Pulse ID and video-call presentation.
+   Additive layer only: the original tablet artwork remains intact and the live
+   screen geometry stays exactly where v0.8.8 placed it. */
+:root{
+  --tablet-frame-accent:#68dfff;
+  --tablet-frame-accent2:#4d76ff;
+  --tablet-frame-metal:#3c4553;
+  --tablet-frame-dark:#11161e;
+}
+#tablet{--tablet-frame-radius:5.7%;}
+#tablet-art{transition:filter .25s ease,opacity .25s ease}
+#tablet::after{
+  content:""!important;display:block!important;position:absolute!important;inset:.35%!important;z-index:5!important;pointer-events:none!important;
+  border:2px solid color-mix(in srgb,var(--tablet-frame-accent) 64%,rgba(255,255,255,.24))!important;
+  border-radius:var(--tablet-frame-radius)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 0 18px color-mix(in srgb,var(--tablet-frame-accent) 26%,transparent),0 26px 58px rgba(0,0,0,.28)!important;
+  background:transparent!important;transition:border-color .25s ease,box-shadow .25s ease,border-radius .25s ease!important;
+}
+#tablet::before{
+  content:""!important;position:absolute!important;z-index:5!important;pointer-events:none!important;
+  inset:2.2% 2.4%!important;border-radius:calc(var(--tablet-frame-radius) * .82)!important;
+  background:transparent!important;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--tablet-frame-accent) 12%,rgba(255,255,255,.04))!important;
+  transition:all .25s ease!important;
+}
+
+/* GTA6-adjacent frame palettes */
+#tablet[data-frame-color="graphite"]{--tablet-frame-accent:#9ca8ba;--tablet-frame-accent2:#5e718d;--tablet-frame-metal:#545d68;--tablet-frame-dark:#171c24}
+#tablet[data-frame-color="titanium"]{--tablet-frame-accent:#d1d7e1;--tablet-frame-accent2:#8994a6;--tablet-frame-metal:#959ca8;--tablet-frame-dark:#2c323a}
+#tablet[data-frame-color="midnight"]{--tablet-frame-accent:#668cff;--tablet-frame-accent2:#222b48;--tablet-frame-metal:#303746;--tablet-frame-dark:#050811}
+#tablet[data-frame-color="vice"]{--tablet-frame-accent:#70e8ff;--tablet-frame-accent2:#4d5fff;--tablet-frame-metal:#516982;--tablet-frame-dark:#101925}
+#tablet[data-frame-color="coral"]{--tablet-frame-accent:#ff8b9f;--tablet-frame-accent2:#ff596e;--tablet-frame-metal:#745865;--tablet-frame-dark:#27131c}
+#tablet[data-frame-color="mint"]{--tablet-frame-accent:#76ffda;--tablet-frame-accent2:#18bc90;--tablet-frame-metal:#55736d;--tablet-frame-dark:#10211e}
+#tablet[data-frame-color="gold"]{--tablet-frame-accent:#f1d27a;--tablet-frame-accent2:#b78635;--tablet-frame-metal:#897953;--tablet-frame-dark:#251f16}
+#tablet[data-frame-color="lime"]{--tablet-frame-accent:#d2ff67;--tablet-frame-accent2:#4ca627;--tablet-frame-metal:#66774f;--tablet-frame-dark:#15210f}
+
+#tablet[data-frame-color="graphite"] #tablet-art{filter:saturate(.5) brightness(.92) contrast(1.05)}
+#tablet[data-frame-color="titanium"] #tablet-art{filter:saturate(.35) brightness(1.16) contrast(.94)}
+#tablet[data-frame-color="midnight"] #tablet-art{filter:saturate(.6) brightness(.58) contrast(1.18) hue-rotate(6deg)}
+#tablet[data-frame-color="vice"] #tablet-art{filter:saturate(1.28) brightness(.9) hue-rotate(150deg)}
+#tablet[data-frame-color="coral"] #tablet-art{filter:saturate(1.35) brightness(.88) sepia(.18) hue-rotate(305deg)}
+#tablet[data-frame-color="mint"] #tablet-art{filter:saturate(1.2) brightness(.88) hue-rotate(92deg)}
+#tablet[data-frame-color="gold"] #tablet-art{filter:saturate(1.15) brightness(.96) sepia(.45) hue-rotate(345deg)}
+#tablet[data-frame-color="lime"] #tablet-art{filter:saturate(1.45) brightness(.9) hue-rotate(62deg)}
+
+/* Six original tablet shell personalities. */
+#tablet[data-frame-style="sleek"]{--tablet-frame-radius:5.9%}
+#tablet[data-frame-style="sleek"]::after{border-width:1.5px!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 0 15px color-mix(in srgb,var(--tablet-frame-accent) 24%,transparent),0 28px 54px rgba(0,0,0,.26)!important}
+#tablet[data-frame-style="sleek"]::before{inset:2.9% 3%!important;opacity:.52}
+
+#tablet[data-frame-style="ifruit"]{--tablet-frame-radius:6.5%}
+#tablet[data-frame-style="ifruit"]::after{border-width:3px!important;border-color:color-mix(in srgb,var(--tablet-frame-accent) 50%,#fff 34%)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),inset 0 0 20px rgba(255,255,255,.025),0 0 22px color-mix(in srgb,var(--tablet-frame-accent) 24%,transparent),0 28px 56px rgba(0,0,0,.3)!important}
+#tablet[data-frame-style="ifruit"]::before{inset:1.9% 2.2%!important;background:transparent!important;box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--tablet-frame-accent) 18%,rgba(255,255,255,.07))!important}
+
+#tablet[data-frame-style="gang"]{--tablet-frame-radius:4.6%}
+#tablet[data-frame-style="gang"]::after{border-width:4px!important;border-color:color-mix(in srgb,var(--tablet-frame-accent) 42%,#08090b 58%)!important;box-shadow:inset 0 0 0 2px #070809,0 0 13px color-mix(in srgb,var(--tablet-frame-accent) 18%,transparent),0 32px 62px rgba(0,0,0,.44)!important;background:radial-gradient(circle at 2.2% 4%,rgba(255,255,255,.32) 0 2px,transparent 3px),radial-gradient(circle at 97.8% 4%,rgba(255,255,255,.32) 0 2px,transparent 3px),radial-gradient(circle at 2.2% 96%,rgba(255,255,255,.32) 0 2px,transparent 3px),radial-gradient(circle at 97.8% 96%,rgba(255,255,255,.32) 0 2px,transparent 3px)!important}
+#tablet[data-frame-style="gang"]::before{inset:2% 2.1%!important;opacity:.5;background:transparent!important;box-shadow:inset 0 0 0 2px rgba(0,0,0,.72),inset 0 0 0 4px color-mix(in srgb,var(--tablet-frame-accent) 12%,transparent)!important}
+
+#tablet[data-frame-style="recon"]{--tablet-frame-radius:3.4%}
+#tablet[data-frame-style="recon"]::after{border-width:3px!important;border-color:color-mix(in srgb,var(--tablet-frame-accent) 64%,#111 36%)!important;border-radius:3.4%!important;box-shadow:inset 0 0 0 2px #090d10,inset 0 0 0 5px color-mix(in srgb,var(--tablet-frame-accent) 9%,transparent),0 0 20px color-mix(in srgb,var(--tablet-frame-accent) 22%,transparent),0 30px 60px rgba(0,0,0,.38)!important;background:transparent!important}
+#tablet[data-frame-style="recon"]::before{inset:1.8% 2%!important;border-radius:2.8%!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--tablet-frame-accent) 28%,transparent),inset 0 0 24px rgba(0,0,0,.3)!important}
+
+#tablet[data-frame-style="professional"]{--tablet-frame-radius:5.4%}
+#tablet[data-frame-style="professional"]::after{border-width:2px!important;border-color:color-mix(in srgb,var(--tablet-frame-accent) 34%,#d8d0b8 30%)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(0,0,0,.3),0 24px 50px rgba(0,0,0,.28)!important}
+#tablet[data-frame-style="professional"]::before{inset:2.4% 2.6%!important;background:transparent!important;opacity:.72;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -1px 0 rgba(0,0,0,.38)!important}
+
+#tablet[data-frame-style="burner"]{--tablet-frame-radius:3.8%}
+#tablet[data-frame-style="burner"]::after{border-width:6px!important;border-color:#34383e!important;box-shadow:inset 0 0 0 2px #15171a,0 26px 56px rgba(0,0,0,.46)!important}
+#tablet[data-frame-style="burner"]::before{inset:2.1% 2.25%!important;border-radius:3%!important;background:transparent!important;opacity:.8;box-shadow:inset 0 0 0 3px #17191d!important}
+
+/* Settings preview controls */
+.tablet-frame-style-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.tablet-frame-style-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);border-radius:15px;padding:12px;text-align:left;display:grid;gap:4px;min-height:76px;cursor:pointer}
+.tablet-frame-style-card b{font-size:12px}.tablet-frame-style-card span{font-size:9px;color:var(--muted);line-height:1.3}.tablet-frame-style-card.active{border-color:color-mix(in srgb,var(--accent) 60%,rgba(255,255,255,.2));background:color-mix(in srgb,var(--accent) 10%,rgba(255,255,255,.04));box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 24%,transparent)}
+.tablet-frame-color-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.tablet-frame-color-chip{width:32px;height:32px;border-radius:999px;border:2px solid rgba(255,255,255,.22);cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.25),inset 0 1px 4px rgba(255,255,255,.25)}
+.tablet-frame-color-chip.active{transform:scale(1.08);border-color:#fff;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent),0 7px 18px rgba(0,0,0,.3)}
+.tablet-frame-color-chip[data-frame-color="graphite"]{background:linear-gradient(145deg,#99a1af,#303744)}
+.tablet-frame-color-chip[data-frame-color="titanium"]{background:linear-gradient(145deg,#e3e5e9,#878e9a)}
+.tablet-frame-color-chip[data-frame-color="midnight"]{background:linear-gradient(145deg,#405070,#050811)}
+.tablet-frame-color-chip[data-frame-color="vice"]{background:linear-gradient(145deg,#76e9ff,#4d5fff)}
+.tablet-frame-color-chip[data-frame-color="coral"]{background:linear-gradient(145deg,#ff9cad,#ff586d)}
+.tablet-frame-color-chip[data-frame-color="mint"]{background:linear-gradient(145deg,#91ffe1,#18bd91)}
+.tablet-frame-color-chip[data-frame-color="gold"]{background:linear-gradient(145deg,#f7e3a9,#b88e45)}
+.tablet-frame-color-chip[data-frame-color="lime"]{background:linear-gradient(145deg,#e2ff8c,#55b329)}
+.tablet-open-motion-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.tablet-open-motion-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);border-radius:13px;padding:10px;display:grid;gap:4px;cursor:pointer;text-align:left}.tablet-open-motion-card b{font-size:11px}.tablet-open-motion-card small{font-size:8px;color:var(--muted)}.tablet-open-motion-card.active{border-color:color-mix(in srgb,var(--accent) 54%,rgba(255,255,255,.15));background:color-mix(in srgb,var(--accent) 9%,rgba(255,255,255,.035))}
+
+/* Device opening motions — separate from in-app motion and disabled by Reduced Motion. */
+#stage[data-open-motion="lift"] #tablet.device-entering{animation:rsTabletLift .5s cubic-bezier(.16,1,.3,1) both!important}
+#stage[data-open-motion="glide"] #tablet.device-entering{animation:rsTabletGlide .5s cubic-bezier(.16,1,.3,1) both!important}
+#stage[data-open-motion="pop"] #tablet.device-entering{animation:rsTabletPop .42s cubic-bezier(.2,1.2,.3,1) both!important}
+#stage[data-open-motion="pivot"] #tablet.device-entering{animation:rsTabletPivot .55s cubic-bezier(.16,1,.3,1) both!important;transform-origin:76% 72%!important}
+#screen.reduced-motion~*,#screen.reduced-motion{scroll-behavior:auto}
+#screen.reduced-motion+#unused{}
+#stage:has(#screen.reduced-motion) #tablet.device-entering{animation:none!important}
+@keyframes rsTabletLift{from{opacity:0;transform:translateY(90px) scale(.97)}to{opacity:1;transform:scale(var(--tablet-scale,1))}}
+@keyframes rsTabletGlide{from{opacity:0;transform:translateX(130px) scale(.98)}to{opacity:1;transform:scale(var(--tablet-scale,1))}}
+@keyframes rsTabletPop{0%{opacity:0;transform:scale(.72)}72%{opacity:1;transform:scale(calc(var(--tablet-scale,1) * 1.018))}100%{opacity:1;transform:scale(var(--tablet-scale,1))}}
+@keyframes rsTabletPivot{from{opacity:0;transform:perspective(1200px) rotateY(-44deg) rotateZ(2deg) scale(.94)}to{opacity:1;transform:perspective(1200px) rotateY(0) rotateZ(0) scale(var(--tablet-scale,1))}}
+
+/* RS Pulse ID: deliberately not an iPhone/FaceID copy. */
+.pulse-id-panel{position:absolute;inset:0;z-index:120;display:grid;place-items:center;background:radial-gradient(circle at 50% 38%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 38%),rgba(3,7,12,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.pulse-id-panel[hidden]{display:none!important}
+.tablet-pulse-id{display:grid;justify-items:center;gap:10px;text-align:center;color:#f5f9ff}.tablet-pulse-id>b{font-size:18px;letter-spacing:.22em}.tablet-pulse-id>span{font-size:11px;color:rgba(233,240,251,.75)}.tablet-pulse-id>small{font-size:10px;color:color-mix(in srgb,var(--accent) 78%,#fff)}
+.tablet-pulse-mesh{position:relative;width:270px;height:170px;border-radius:34px;border:1px solid color-mix(in srgb,var(--accent) 38%,rgba(255,255,255,.12));overflow:hidden;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));box-shadow:0 0 36px color-mix(in srgb,var(--accent) 16%,transparent),inset 0 0 30px rgba(255,255,255,.02)}
+.tablet-pulse-mesh>i{position:absolute;display:block}.mesh-grid{inset:0;background:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:22px 22px;opacity:.45;mask-image:radial-gradient(ellipse at center,#000 38%,transparent 78%)}
+.mesh-profile{left:50%;top:23px;width:82px;height:108px;transform:translateX(-50%);border:2px solid color-mix(in srgb,var(--accent) 72%,#fff 10%);border-radius:44% 44% 37% 37%;box-shadow:0 0 18px color-mix(in srgb,var(--accent) 16%,transparent)}
+.mesh-eyes{left:50%;top:69px;width:48px;height:13px;transform:translateX(-50%);border-top:2px solid color-mix(in srgb,var(--accent) 70%,#fff 12%);border-bottom:1px solid color-mix(in srgb,var(--accent) 44%,transparent);border-radius:50%}
+.mesh-scan{left:0;right:0;top:-18%;height:28%;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--accent) 70%,transparent),transparent);filter:blur(2px);animation:rsPulseScan 1.15s ease-in-out infinite}
+.mesh-orbit{border:1px solid rgba(255,255,255,.12);border-radius:30px}.orbit-a{inset:13px 32px;animation:rsPulseOrbit 4s linear infinite}.orbit-b{inset:29px 56px;border-style:dashed;border-color:color-mix(in srgb,var(--accent) 40%,rgba(255,255,255,.12));animation:rsPulseOrbitRev 5.3s linear infinite}
+@keyframes rsPulseScan{0%{transform:translateY(0);opacity:.2}48%{transform:translateY(190px);opacity:.95}100%{transform:translateY(190px);opacity:.16}}
+@keyframes rsPulseOrbit{to{transform:rotate(360deg)}}@keyframes rsPulseOrbitRev{to{transform:rotate(-360deg)}}
+
+/* Tablet video-call composition. The frames are transient JPEG previews only. */
+.tablet-video-call-stage{position:relative;height:100%;min-height:0;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:linear-gradient(150deg,#14202a,#05080c 68%,#0b1016);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.tablet-video-remote{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}.tablet-video-remote img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .16s ease}.tablet-video-remote.has-frame img{opacity:1}.tablet-video-remote.has-frame .tablet-video-fallback{opacity:0}.tablet-video-fallback{display:grid;justify-items:center;gap:7px;transition:opacity .16s ease}.tablet-video-fallback b{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#2c5874,#153047);font-size:34px;border:2px solid rgba(255,255,255,.12)}.tablet-video-fallback span{font-size:11px;color:rgba(255,255,255,.66)}
+.tablet-video-self{position:absolute;right:18px;top:18px;width:175px;height:118px;z-index:4;border-radius:17px;overflow:hidden;background:linear-gradient(145deg,#283640,#11171d);border:1px solid rgba(255,255,255,.24);box-shadow:0 14px 34px rgba(0,0,0,.48)}.tablet-video-self img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .16s ease}.tablet-video-self.has-frame img{opacity:1}.tablet-video-self span{position:absolute;left:8px;bottom:7px;padding:3px 7px;border-radius:999px;background:rgba(0,0,0,.52);font-size:9px;color:white;z-index:2}
+.tablet-video-call-overlay{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:26px 24px 20px;background:linear-gradient(180deg,transparent,rgba(2,5,8,.78) 38%,rgba(2,5,8,.93));display:flex;align-items:flex-end;justify-content:space-between;gap:18px}.tablet-video-call-person strong{display:block;font-size:25px}.tablet-video-call-person small{display:block;margin-top:4px;color:rgba(255,255,255,.64)}.tablet-video-controls{display:flex;gap:9px}.tablet-video-controls button{min-width:96px}
+
+@media(max-width:980px){.tablet-frame-style-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tablet-open-motion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tablet-video-self{width:145px;height:98px}.tablet-video-call-stage{min-height:360px}}
+
+#app-shell[data-app="videocall"] #app-content.video-call-live{overflow:hidden!important;padding:10px 16px!important}
+#app-shell[data-app="videocall"] #app-content.video-call-live .tablet-video-call-stage{height:100%!important;min-height:0!important}
+
+
+/* ========================================================================
+   RS Tablet v0.9.2 — FIXED APERTURE + REAL FRAME HARDWARE
+   Same rule as RS Phone v4.15.1: all six shell styles share one immutable
+   display rectangle. Only hardware OUTSIDE the display changes.
+   ======================================================================== */
+#tablet{
+  --tablet-aperture-left:5.2145%;
+  --tablet-aperture-top:8.1888%;
+  --tablet-aperture-width:89.5709%;
+  --tablet-aperture-height:82.6589%;
+  --frame-rail-size:18px;
+  --frame-corner-size:64px;
+  --frame-shell-radius:6%;
+}
+
+/* Lock the usable display geometry. Frame style/color rules are forbidden from
+   moving or resizing #screen. Keep the existing UI-scale transform intact. */
+#tablet > #screen{
+  left:var(--tablet-aperture-left)!important;
+  top:var(--tablet-aperture-top)!important;
+  width:calc(var(--tablet-aperture-width) / var(--tablet-ui-scale,1))!important;
+  height:calc(var(--tablet-aperture-height) / var(--tablet-ui-scale,1))!important;
+  transform:scale(var(--tablet-ui-scale,1))!important;
+  transform-origin:0 0!important;
+}
+
+/* Dedicated shell hardware. It renders above the original PNG but only around
+   the perimeter, so apps never get recolored, clipped, stretched or shifted. */
+#tablet-frame-hardware{
+  position:absolute;
+  inset:0;
+  z-index:7;
+  pointer-events:none;
+  border-radius:var(--frame-shell-radius);
+  filter:drop-shadow(0 14px 20px rgba(0,0,0,.24));
+}
+#tablet-frame-hardware .frame-rail,
+#tablet-frame-hardware .frame-corner{
+  position:absolute;
+  display:block;
+  box-sizing:border-box;
+  transition:background .22s ease,border-color .22s ease,box-shadow .22s ease,opacity .22s ease,transform .22s ease,border-radius .22s ease;
+}
+#tablet-frame-hardware .frame-rail{
+  background:linear-gradient(180deg,color-mix(in srgb,var(--tablet-frame-accent) 52%,var(--tablet-frame-metal)),var(--tablet-frame-dark));
+  border:1px solid color-mix(in srgb,var(--tablet-frame-accent) 48%,rgba(255,255,255,.18));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(0,0,0,.44),0 0 14px color-mix(in srgb,var(--tablet-frame-accent) 16%,transparent);
+  opacity:.92;
+}
+#tablet-frame-hardware .frame-rail-top{left:7.2%;right:7.2%;top:.55%;height:var(--frame-rail-size);border-radius:999px}
+#tablet-frame-hardware .frame-rail-bottom{left:7.2%;right:7.2%;bottom:.55%;height:var(--frame-rail-size);border-radius:999px}
+#tablet-frame-hardware .frame-rail-left{top:9.4%;bottom:9.4%;left:.55%;width:var(--frame-rail-size);border-radius:999px}
+#tablet-frame-hardware .frame-rail-right{top:9.4%;bottom:9.4%;right:.55%;width:var(--frame-rail-size);border-radius:999px}
+#tablet-frame-hardware .frame-corner{
+  width:var(--frame-corner-size);height:var(--frame-corner-size);
+  background:linear-gradient(145deg,color-mix(in srgb,var(--tablet-frame-accent) 62%,var(--tablet-frame-metal)),var(--tablet-frame-dark) 68%);
+  border:2px solid color-mix(in srgb,var(--tablet-frame-accent) 62%,rgba(255,255,255,.18));
+  box-shadow:inset 0 0 0 3px rgba(5,8,12,.56),0 0 14px color-mix(in srgb,var(--tablet-frame-accent) 20%,transparent);
+  opacity:.94;
+}
+#tablet-frame-hardware .frame-corner-tl{left:.45%;top:.55%;border-radius:24px 8px 18px 8px}
+#tablet-frame-hardware .frame-corner-tr{right:.45%;top:.55%;border-radius:8px 24px 8px 18px}
+#tablet-frame-hardware .frame-corner-bl{left:.45%;bottom:.55%;border-radius:8px 18px 8px 24px}
+#tablet-frame-hardware .frame-corner-br{right:.45%;bottom:.55%;border-radius:18px 8px 24px 8px}
+
+/* SLEEK MODERN — thin rails, minimal corners. */
+#tablet[data-frame-style="sleek"]{--frame-rail-size:8px;--frame-corner-size:28px;--frame-shell-radius:6.1%}
+#tablet[data-frame-style="sleek"] #tablet-frame-hardware .frame-rail{opacity:.70;border-width:1px;box-shadow:0 0 10px color-mix(in srgb,var(--tablet-frame-accent) 18%,transparent)}
+#tablet[data-frame-style="sleek"] #tablet-frame-hardware .frame-corner{opacity:.42;border-width:1px;box-shadow:none;border-radius:12px!important}
+
+/* iFRUIT PRO — polished double rail / flagship finish. */
+#tablet[data-frame-style="ifruit"]{--frame-rail-size:13px;--frame-corner-size:44px;--frame-shell-radius:6.7%}
+#tablet[data-frame-style="ifruit"] #tablet-frame-hardware .frame-rail{background:linear-gradient(180deg,#ffffff55,color-mix(in srgb,var(--tablet-frame-accent) 64%,var(--tablet-frame-metal)) 34%,var(--tablet-frame-dark));border-color:color-mix(in srgb,var(--tablet-frame-accent) 42%,#fff 42%);box-shadow:inset 0 0 0 2px rgba(255,255,255,.08),0 0 17px color-mix(in srgb,var(--tablet-frame-accent) 22%,transparent)}
+#tablet[data-frame-style="ifruit"] #tablet-frame-hardware .frame-corner{border-radius:22px!important;background:linear-gradient(145deg,#ffffff42,color-mix(in srgb,var(--tablet-frame-accent) 56%,var(--tablet-frame-metal)),var(--tablet-frame-dark));}
+
+/* GANG — squared, heavy, blacked hardware with visible fasteners. */
+#tablet[data-frame-style="gang"]{--frame-rail-size:22px;--frame-corner-size:70px;--frame-shell-radius:4.3%}
+#tablet[data-frame-style="gang"] #tablet-frame-hardware .frame-rail{border-width:3px;border-radius:5px;background:linear-gradient(180deg,#090b0e,var(--tablet-frame-dark));box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--tablet-frame-accent) 22%,transparent),0 0 12px rgba(0,0,0,.58)}
+#tablet[data-frame-style="gang"] #tablet-frame-hardware .frame-corner{border-radius:7px!important;border-width:3px;background:radial-gradient(circle at 11px 11px,#c9d1dc 0 2px,transparent 3px),radial-gradient(circle at calc(100% - 11px) calc(100% - 11px),#c9d1dc 0 2px,transparent 3px),linear-gradient(145deg,#0b0d10,var(--tablet-frame-dark));}
+
+/* RECON — segmented tactical shell. Clearly different from the base tablet. */
+#tablet[data-frame-style="recon"]{--frame-rail-size:28px;--frame-corner-size:86px;--frame-shell-radius:3.1%}
+#tablet[data-frame-style="recon"] #tablet-frame-hardware .frame-rail{border-radius:4px;border-width:2px;background:repeating-linear-gradient(90deg,color-mix(in srgb,var(--tablet-frame-accent) 50%,#141a20) 0 54px,#090d11 54px 62px);box-shadow:inset 0 0 0 3px #080b0f,0 0 16px color-mix(in srgb,var(--tablet-frame-accent) 20%,transparent)}
+#tablet[data-frame-style="recon"] #tablet-frame-hardware .frame-rail-left,
+#tablet[data-frame-style="recon"] #tablet-frame-hardware .frame-rail-right{background:repeating-linear-gradient(180deg,color-mix(in srgb,var(--tablet-frame-accent) 50%,#141a20) 0 48px,#090d11 48px 56px)}
+#tablet[data-frame-style="recon"] #tablet-frame-hardware .frame-corner{border-radius:8px!important;border-width:4px;clip-path:polygon(0 22%,22% 0,100% 0,100% 74%,74% 100%,0 100%);background:linear-gradient(145deg,color-mix(in srgb,var(--tablet-frame-accent) 55%,#26313b),#080b0e 72%);}
+#tablet[data-frame-style="recon"] #tablet-frame-hardware .frame-corner-tr{transform:scaleX(-1)}
+#tablet[data-frame-style="recon"] #tablet-frame-hardware .frame-corner-bl{transform:scaleY(-1)}
+#tablet[data-frame-style="recon"] #tablet-frame-hardware .frame-corner-br{transform:scale(-1)}
+
+/* PROFESSIONAL — restrained satin metal, rounded executive corners. */
+#tablet[data-frame-style="professional"]{--frame-rail-size:11px;--frame-corner-size:38px;--frame-shell-radius:5.7%}
+#tablet[data-frame-style="professional"] #tablet-frame-hardware .frame-rail{opacity:.82;background:linear-gradient(180deg,color-mix(in srgb,#fff 24%,var(--tablet-frame-accent)),var(--tablet-frame-metal),var(--tablet-frame-dark));border-color:rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.24),0 9px 20px rgba(0,0,0,.22)}
+#tablet[data-frame-style="professional"] #tablet-frame-hardware .frame-corner{border-radius:18px!important;opacity:.76;box-shadow:inset 0 1px 0 rgba(255,255,255,.20),0 8px 16px rgba(0,0,0,.20)}
+
+/* BURNER — thick inexpensive utility polymer. */
+#tablet[data-frame-style="burner"]{--frame-rail-size:31px;--frame-corner-size:76px;--frame-shell-radius:3.5%}
+#tablet[data-frame-style="burner"] #tablet-frame-hardware .frame-rail{border-width:4px;border-radius:3px;background:linear-gradient(180deg,#4a4e54,#1a1d21);border-color:#0c0e10;box-shadow:inset 0 0 0 3px #30343a,0 14px 20px rgba(0,0,0,.38)}
+#tablet[data-frame-style="burner"] #tablet-frame-hardware .frame-corner{border-width:5px;border-radius:5px!important;background:linear-gradient(145deg,#4a4e54,#171a1e);border-color:#0c0e10;box-shadow:inset 0 0 0 4px #30343a,0 9px 16px rgba(0,0,0,.35)}
+
+/* Burner still respects selected finish through modest accent strips. */
+#tablet[data-frame-style="burner"] #tablet-frame-hardware .frame-rail::after{
+  content:"";position:absolute;inset:4px;border:1px solid color-mix(in srgb,var(--tablet-frame-accent) 58%,transparent);border-radius:inherit;opacity:.62;
+}
+
+/* Make the frame chooser visual, like RS Phone. Every miniature uses the same
+   inner screen aperture; its outer silhouette previews the selected hardware. */
+.tablet-frame-style-card{
+  grid-template-columns:70px minmax(0,1fr)!important;
+  grid-template-rows:auto auto!important;
+  column-gap:12px!important;
+  align-items:center!important;
+}
+.tablet-frame-style-card::before{
+  content:"";
+  grid-row:1 / span 2;
+  width:62px;height:42px;
+  justify-self:center;
+  box-sizing:border-box;
+  border:3px solid var(--tablet-frame-accent);
+  background:linear-gradient(145deg,var(--tablet-frame-metal),var(--tablet-frame-dark));
+  box-shadow:inset 0 0 0 6px #07101a,0 5px 12px rgba(0,0,0,.32);
+}
+.tablet-frame-style-card[data-frame-style="sleek"]::before{border-radius:8px;border-width:1.5px}
+.tablet-frame-style-card[data-frame-style="ifruit"]::before{border-radius:10px;border-width:2px;box-shadow:inset 0 0 0 6px #07101a,inset 0 2px 0 rgba(255,255,255,.22),0 5px 12px rgba(0,0,0,.32)}
+.tablet-frame-style-card[data-frame-style="gang"]::before{border-radius:5px;border-width:4px;outline:1px solid #070809}
+.tablet-frame-style-card[data-frame-style="recon"]::before{border-radius:3px;border-width:5px;outline:2px solid color-mix(in srgb,var(--tablet-frame-accent) 34%,transparent);outline-offset:2px;clip-path:polygon(0 16%,12% 0,88% 0,100% 16%,100% 84%,88% 100%,12% 100%,0 84%)}
+.tablet-frame-style-card[data-frame-style="professional"]::before{border-radius:9px;border-width:2px;box-shadow:inset 0 0 0 6px #07101a,0 5px 12px rgba(0,0,0,.26),0 0 9px color-mix(in srgb,var(--tablet-frame-accent) 24%,transparent)}
+.tablet-frame-style-card[data-frame-style="burner"]::before{border-radius:3px;border-width:6px;border-color:#353a41;outline:2px solid color-mix(in srgb,var(--tablet-frame-accent) 46%,transparent)}
+.tablet-frame-style-card b,.tablet-frame-style-card span{grid-column:2!important}
+
+@media(max-width:980px){
+  #tablet{--frame-rail-size:12px;--frame-corner-size:44px}
+  #tablet[data-frame-style="gang"]{--frame-rail-size:16px;--frame-corner-size:52px}
+  #tablet[data-frame-style="recon"]{--frame-rail-size:18px;--frame-corner-size:60px}
+  #tablet[data-frame-style="burner"]{--frame-rail-size:20px;--frame-corner-size:54px}
+}

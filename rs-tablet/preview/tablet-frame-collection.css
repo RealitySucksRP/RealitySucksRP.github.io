@@ -1,0 +1,115 @@
+/* Additive shells. The original six designs and display geometry are retained. */
+#tablet{filter:none!important}
+#tablet-frame-hardware{filter:none!important}
+#tablet-art,#tablet-frame-hardware{-webkit-mask-image:url('img/tablet-shell-mask.svg');mask-image:url('img/tablet-shell-mask.svg');-webkit-mask-size:100% 100%;mask-size:100% 100%}
+#screen{filter:opacity(1)}
+#tablet[data-frame-style]::after{width:auto!important;height:auto!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)!important}
+#tablet[data-frame-color="rose"]{--tablet-frame-accent:#f6b8cb;--tablet-frame-accent2:#b56a85;--tablet-frame-metal:#be939f;--tablet-frame-dark:#35232c}
+#tablet[data-frame-color="lavender"]{--tablet-frame-accent:#d3c3ff;--tablet-frame-accent2:#9473ce;--tablet-frame-metal:#9c91b6;--tablet-frame-dark:#282238}
+#tablet[data-frame-color="pearl"]{--tablet-frame-accent:#fff9ec;--tablet-frame-accent2:#b9a991;--tablet-frame-metal:#d0ccca;--tablet-frame-dark:#55535a}
+#tablet[data-frame-color="burgundy"]{--tablet-frame-accent:#cb758c;--tablet-frame-accent2:#8b294f;--tablet-frame-metal:#77394d;--tablet-frame-dark:#230d17}
+#tablet[data-frame-color="rose"] #tablet-art{filter:sepia(.25) saturate(.8) hue-rotate(290deg) brightness(1.1)}
+#tablet[data-frame-color="lavender"] #tablet-art{filter:sepia(.25) saturate(.9) hue-rotate(215deg) brightness(1.04)}
+#tablet[data-frame-color="pearl"] #tablet-art{filter:saturate(.1) brightness(1.3)}
+#tablet[data-frame-color="burgundy"] #tablet-art{filter:sepia(.3) saturate(1.7) hue-rotate(295deg) brightness(.7)}
+/* Pulse ID and app accents follow the icon theme; shell colors cannot tint UI. */
+#screen{--tablet-frame-accent:var(--accent);--tablet-frame-accent2:var(--accent);--tablet-frame-metal:#3c4553;--tablet-frame-dark:#11161e}
+#tablet-collection-art{position:absolute;inset:0;z-index:8;pointer-events:none}
+#tablet-collection-art svg{display:block;width:100%;height:100%;overflow:hidden}
+#tablet.collection-shell::before,#tablet.collection-shell::after,#tablet.collection-shell #tablet-frame-hardware{display:none!important}
+.tablet-frame-style-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important}
+.tablet-frame-style-card{display:flex!important;flex-direction:column!important;align-items:stretch!important;min-width:0;gap:8px!important;padding:12px!important;text-align:left!important;overflow:hidden}
+.tablet-frame-style-card::before{display:none!important}
+.tablet-frame-style-card b,.tablet-frame-style-card span{display:block!important;min-width:0;white-space:normal;overflow-wrap:anywhere;line-height:1.35}
+.tablet-frame-style-card b{font-size:1em!important}
+.tablet-frame-style-card>span{font-size:.82em!important;opacity:.72}
+.tablet-frame-preview{display:block;position:relative;width:100%;aspect-ratio:1515/1038;overflow:hidden;border-radius:12px;background:linear-gradient(140deg,#202b3a,#101722)}
+.tablet-frame-preview-screen{position:absolute;left:5.2145%;top:8.1888%;width:89.5709%;height:82.6589%;object-fit:fill;border-radius:3px}
+.tablet-frame-preview-art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.tablet-frame-color-row{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:9px!important;width:100%}
+.tablet-frame-color-chip{width:auto!important;height:auto!important;min-height:42px!important;border-radius:10px!important;padding:9px!important;display:flex!important;align-items:center;gap:8px;background:#ffffff0a!important;font-size:.8em!important;text-align:left;color:inherit}
+.tablet-frame-color-chip::before{content:'';display:block;width:18px;height:18px;border-radius:50%;flex:0 0 18px;background:var(--chip);box-shadow:inset 0 0 0 1px #ffffff55}
+.tablet-frame-color-chip[data-frame-color="graphite"]{--chip:#545d68}.tablet-frame-color-chip[data-frame-color="titanium"]{--chip:#d1d7e1}.tablet-frame-color-chip[data-frame-color="midnight"]{--chip:#222b48}.tablet-frame-color-chip[data-frame-color="vice"]{--chip:#4d76ff}.tablet-frame-color-chip[data-frame-color="coral"]{--chip:#ff8b9f}.tablet-frame-color-chip[data-frame-color="mint"]{--chip:#76ffda}.tablet-frame-color-chip[data-frame-color="gold"]{--chip:#f1d27a}.tablet-frame-color-chip[data-frame-color="lime"]{--chip:#d2ff67}.tablet-frame-color-chip[data-frame-color="rose"]{--chip:#f6b8cb}.tablet-frame-color-chip[data-frame-color="lavender"]{--chip:#d3c3ff}.tablet-frame-color-chip[data-frame-color="pearl"]{--chip:#fff9ec}.tablet-frame-color-chip[data-frame-color="burgundy"]{--chip:#8b294f}.tablet-frame-color-chip[data-frame-color="obsidian"]{--chip:#101318}.tablet-frame-color-chip[data-frame-color="emerald"]{--chip:#2d6a4f}.tablet-frame-color-chip[data-frame-color="blush"]{--chip:#f6c2cf}.tablet-frame-color-chip[data-frame-color="platinum"]{--chip:#dce7f1}
+@media(max-width:700px){.tablet-frame-style-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.tablet-frame-color-row{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+
+/* v1.0.1 — every shell is rendered by the same SVG hardware engine. */
+#tablet.collection-shell::before,
+#tablet.collection-shell::after,
+#tablet.collection-shell #tablet-frame-hardware,
+#tablet.collection-shell #tablet-art{display:none!important}
+#tablet-collection-art{position:absolute;inset:0;z-index:8;pointer-events:none;filter:drop-shadow(0 18px 26px rgba(0,0,0,.26))}
+#tablet-collection-art svg{display:block;width:100%;height:100%;overflow:visible}
+
+/* App icons: one full-bleed squircle, no nested 3D frame, no fake badge corners. */
+#screen .app-icon{overflow:visible!important;background:transparent!important;border:0!important;box-shadow:none!important}
+#screen .theme-app-art{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:24%!important;display:block!important;filter:none!important;box-shadow:0 4px 10px rgba(20,31,46,.20)}
+#screen .mini-app-icon .theme-app-art{border-radius:24%!important;box-shadow:none}
+#screen .app-tile:hover .theme-app-art{transform:translateY(-2px) scale(1.02)}
+
+/* Icon packs are a visible catalog, not a sideways hidden rail. */
+#screen #app-content .theme-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;overflow:visible!important;padding:0!important}
+#screen #app-content .theme-card{display:grid!important;grid-template-columns:164px minmax(0,1fr)!important;align-items:center!important;gap:14px!important;min-width:0!important;min-height:102px!important;padding:12px!important;border-radius:13px!important;text-align:left!important;cursor:pointer!important}
+#screen #app-content .theme-card.active{border-color:var(--studio-blue,var(--accent))!important;box-shadow:inset 0 0 0 1px var(--studio-blue,var(--accent))!important}
+#screen #app-content .theme-card-preview{display:grid!important;grid-template-columns:repeat(4,34px)!important;gap:6px!important;align-items:center!important;justify-content:start!important}
+#screen #app-content .theme-card-preview img{display:block!important;width:34px!important;height:34px!important;border-radius:9px!important;object-fit:cover!important;box-shadow:0 2px 5px rgba(20,31,46,.15)!important}
+#screen #app-content .theme-card-copy{display:grid!important;gap:3px!important;min-width:0!important}
+#screen #app-content .theme-card-copy b{font-size:14px!important;line-height:1.2!important;white-space:normal!important}
+#screen #app-content .theme-card-copy small{font-size:11px!important;line-height:1.3!important;color:var(--studio-muted,var(--muted))!important}
+#screen #app-content .theme-badge{display:none!important}
+
+/* Frame previews use the live shell renderer, so the preview always matches the selected frame. */
+.tablet-frame-preview{background:linear-gradient(145deg,#edf1f5,#dfe5eb)!important;border:1px solid rgba(25,38,55,.12)!important}
+.tablet-frame-preview-screen{filter:saturate(.88) brightness(1.02)}
+.tablet-frame-preview-art{z-index:3}
+
+@media(max-width:980px){
+  #screen #app-content .theme-grid{grid-template-columns:1fr!important}
+  #screen #app-content .theme-card{grid-template-columns:150px minmax(0,1fr)!important}
+}
+
+/* 1.0.3 — premium frame catalog: keep settings dense and previews readable. */
+.tablet-frame-style-card{border-radius:14px!important;transition:transform .16s ease,border-color .16s ease,background .16s ease!important}
+.tablet-frame-style-card:hover{transform:translateY(-1px)}
+.tablet-frame-style-card.active{box-shadow:inset 0 0 0 1px var(--accent)!important}
+.tablet-frame-preview{border-radius:10px!important}
+@media(min-width:1100px){.tablet-frame-style-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+
+/* 1.0.4 — high-detail feminine art shells. The source PNG/WebP alpha stays intact;
+   the UI remains behind the artwork and the center opening is never painted over. */
+#tablet-collection-art{overflow:visible!important}
+#tablet-collection-art .tablet-raster-svg{display:block;width:100%;height:100%;overflow:visible!important}
+#tablet-collection-art .tablet-raster-frame{
+  pointer-events:none;
+  user-select:none;
+  transition:filter .18s ease;
+}
+.tablet-frame-preview-art.raster-frame-preview{
+  object-fit:contain!important;
+  inset:0!important;
+  filter-origin:center;
+}
+.tablet-frame-preview:has(.raster-frame-preview){
+  background:
+    radial-gradient(circle at 72% 18%,rgba(130,101,255,.22),transparent 30%),
+    linear-gradient(145deg,#1a2432,#0c131d)!important;
+  overflow:hidden!important;
+}
+
+/* 1.0.5: complete handset previews share a thumbnail canvas, including charm hardware. */
+.tablet-frame-preview{aspect-ratio:1955/1515!important;overflow:hidden!important;background:var(--studio-bg,#eef1f5)!important}
+.tablet-preview-stage{position:absolute;left:12.2762%;top:15.1815%;width:77.4936%;height:68.5149%}
+.tablet-frame-preview-art{position:absolute;inset:0;width:100%;height:100%;filter:none}
+.tablet-frame-preview-art svg{display:block;width:100%;height:100%;overflow:visible}
+.tablet-frame-preview-screen{opacity:1!important;filter:none!important;object-fit:fill}
+.tablet-frame-color-chip[data-frame-color="ocean"]{--chip:#287d85}
+.tablet-frame-color-chip[data-frame-color="copper"]{--chip:#bb825d}
+.tablet-frame-color-chip[data-frame-color="ice"]{--chip:#b8dcef}
+.tablet-frame-color-chip[data-frame-color="amethyst"]{--chip:#9161ba}
+#screen #app-content .tablet-frame-style-card{padding:10px!important;gap:7px!important}
+#screen #app-content .tablet-frame-style-card>b{font-size:14px!important}
+#screen #app-content .tablet-frame-style-card>span{font-size:11px!important}
+#screen #app-content .tablet-frame-color-row{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.tablet-frame-finishbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:16px 0 12px;font-size:14px}
+.tablet-frame-finishbar select{width:230px;flex:0 1 230px}
+.tablet-finish-palette{border-top:1px solid var(--studio-line);margin-bottom:18px;padding-top:12px;font-size:12px}
+.tablet-finish-palette summary{color:var(--studio-blue);cursor:pointer;padding:3px 0 8px}

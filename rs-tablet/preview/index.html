@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>RS Tablet · Interactive Demo</title><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <!-- Critical FiveM NUI transparency lives inline on purpose.  If the external
+       stylesheet is stale, delayed or fails to load, Chromium must still never
+       paint an opaque full-screen page over GTA. -->
+  <style>
+    html,body{background:rgba(0,0,0,0)!important;background-image:none!important;}
+    #stage{background:rgba(0,0,0,0)!important;background-image:none!important;}
+    #stage[hidden],#stage.hidden{display:none!important;visibility:hidden!important;pointer-events:none!important;}
+  </style>
+  <link rel="stylesheet" href="style.css?v=088" />
+  <link rel="stylesheet" href="tablet-polish.css?v=088" />
+  <link rel="stylesheet" href="tablet-os.css?v=092" />
+  <link rel="stylesheet" href="tablet-frame-plus.css?v=092" />
+  <link rel="stylesheet" href="tablet-frame-collection.css?v=105-display-studio" />
+  <link rel="stylesheet" href="tablet-experience.css?v=093" />
+  <link rel="stylesheet" href="tablet-studio.css?v=105-display-studio" />
+<link rel="stylesheet" href="preview-demo.css"></head>
+<body style="background:rgba(0,0,0,0)!important;background-image:none!important">
+  <main id="stage" class="hidden" hidden style="display:none;background:rgba(0,0,0,0)!important;background-image:none!important" aria-hidden="true">
+    <section id="tablet" aria-label="iFruit Tablet">
+      <img id="tablet-art" src="img/tablet.png" alt="" draggable="false">
+      <div id="tablet-frame-hardware" aria-hidden="true">
+        <i class="frame-rail frame-rail-top"></i>
+        <i class="frame-rail frame-rail-right"></i>
+        <i class="frame-rail frame-rail-bottom"></i>
+        <i class="frame-rail frame-rail-left"></i>
+        <i class="frame-corner frame-corner-tl"></i>
+        <i class="frame-corner frame-corner-tr"></i>
+        <i class="frame-corner frame-corner-bl"></i>
+        <i class="frame-corner frame-corner-br"></i>
+      </div>
+      <div id="screen" data-wallpaper="city" data-theme="midnight">
+        <div class="wallpaper-layer"></div>
+        <header id="statusbar">
+          <button id="status-left" class="status-pill" title="Notifications"><span id="status-time">12:00</span><span id="status-job">CIV</span></button>
+          <div id="status-center" class="status-center"><span class="rs-mark">iF</span><span id="os-label">iFruitOS 26</span></div>
+          <button id="status-right" class="status-pill" title="Control Center"><span id="radio-chip">OFF</span><span>▮▮▮</span><span id="battery-text">100%</span></button>
+        </header>
+
+        <section id="lockscreen" class="view active">
+          <div id="tablet-lock-weather-scene" class="live-weather-scene tablet-lock-weather-scene" data-weather="clear" aria-hidden="true">
+            <i class="weather-depth weather-sun"></i><i class="weather-depth weather-moon"></i>
+            <i class="weather-depth weather-cloud weather-cloud-back"></i><i class="weather-depth weather-cloud weather-cloud-front"></i>
+            <i class="weather-depth weather-fog"></i><i class="weather-depth weather-rain"></i><i class="weather-depth weather-snow"></i><i class="weather-depth weather-lightning"></i>
+          </div>
+          <div class="lock-glow"></div>
+          <div class="lock-time" id="lock-time">12:00</div>
+          <div class="lock-date" id="lock-date">Saturday, September 13</div>
+          <div class="lock-glance" aria-label="Device glance">
+            <span><b id="lock-weather">WORLD</b><small>weather</small></span>
+            <span><b id="lock-location">Los Santos</b><small>location</small></span>
+            <span><b id="lock-battery">100%</b><small>power</small></span>
+            <span><b id="lock-network">ONLINE</b><small>network</small></span>
+          </div>
+          <div class="lock-card">
+            <div class="lock-card-icon">iF</div>
+            <div><strong>iFruit Tablet</strong><span>Los Santos connected</span></div>
+            <span class="lock-arrow">›</span>
+          </div>
+          <button id="unlock-btn" class="unlock-btn">Swipe up to open</button>
+          <div class="lock-hint">Your workspace, ready when you are</div>
+        </section>
+
+        <section id="pulse-id-panel" class="pulse-id-panel" hidden aria-hidden="true" aria-label="RS Pulse ID biometric verification">
+          <div class="tablet-pulse-id">
+            <div class="tablet-pulse-mesh" aria-hidden="true">
+              <i class="mesh-grid"></i><i class="mesh-profile"></i><i class="mesh-eyes"></i><i class="mesh-scan"></i><i class="mesh-orbit orbit-a"></i><i class="mesh-orbit orbit-b"></i>
+            </div>
+            <b>RS PULSE ID</b>
+            <span>Adaptive biometric resonance</span>
+            <small id="pulse-id-status">Building facial contour mesh…</small>
+          </div>
+        </section>
+
+        <section id="desktop" class="view">
+          <div class="desktop-grid">
+            <div class="hero-widget panel">
+              <div class="live-weather-scene tablet-hero-weather-scene" data-weather="clear" aria-hidden="true">
+                <i class="weather-depth weather-sun"></i><i class="weather-depth weather-moon"></i>
+                <i class="weather-depth weather-cloud weather-cloud-back"></i><i class="weather-depth weather-cloud weather-cloud-front"></i>
+                <i class="weather-depth weather-fog"></i><i class="weather-depth weather-rain"></i><i class="weather-depth weather-snow"></i><i class="weather-depth weather-lightning"></i>
+              </div>
+              <div class="hero-topline"><div class="eyebrow">LOS SANTOS LIVE</div><span id="hero-server">RS NETWORK</span></div>
+              <div class="hero-time" id="hero-time">12:00</div>
+              <div class="hero-location" id="hero-location">Loading location…</div>
+              <div class="hero-row"><span id="hero-speed">0 MPH</span><span id="hero-heading">000°</span><span id="hero-alt">0 FT</span></div>
+              <div class="hero-system-row"><span id="hero-weather">WEATHER —</span><span id="hero-power">POWER 100%</span><span id="hero-network">NETWORK ONLINE</span><span id="hero-alerts">0 ALERTS</span></div>
+            </div>
+            <div class="comms-widget panel" id="comms-widget">
+              <div class="widget-top"><span class="eyebrow">COMMS</span><span class="live-dot"></span></div>
+              <div class="widget-frequency" id="widget-channel">OFF AIR</div>
+              <div class="widget-label" id="widget-channel-label">Tap to open communications</div>
+            </div>
+            <div class="scanner-widget panel" id="scanner-widget">
+              <div class="widget-top"><span class="eyebrow">WORLD SCANNER</span><span>⌖</span></div>
+              <div class="scanner-readout" id="scanner-readout">READY</div>
+              <div class="widget-label">Raycast • vehicle • location</div>
+            </div>
+          </div>
+
+          <div class="launcher-bar"><span>Applications</span><button id="launcher-library" type="button">App Library <span aria-hidden="true">⌕</span></button></div>
+          <div id="app-grid" class="app-grid" aria-label="Applications"></div>
+          <div id="home-page-dots" class="home-page-dots" aria-label="Home screen pages"></div>
+          <div class="home-indicator"></div>
+        </section>
+
+        <section id="app-shell" class="view app-shell">
+          <header class="app-header">
+            <button id="app-back" class="nav-back" title="Back (ESC)"><span aria-hidden="true">‹</span><b>Back</b></button>
+            <div class="app-title-wrap"><span id="app-icon" class="mini-app-icon">RS</span><div><strong id="app-title">App</strong><span id="app-subtitle">RS OS</span></div></div>
+            <div class="app-header-actions"><span class="esc-hint">ESC Back</span><button id="app-search" class="icon-btn" title="Command Palette (Ctrl+K)">⌕</button><button id="app-home" class="icon-btn" title="Home">⌂</button><button id="app-close" class="icon-btn" title="Close tablet">×</button></div>
+          </header>
+          <div id="app-content" class="app-content"></div>
+          <div class="home-indicator"></div>
+        </section>
+
+        <nav id="dock" class="dock" aria-label="Tablet dock"></nav>
+        <section id="app-library" class="tablet-library" hidden aria-label="App Library"><header><div><small>YOUR TABLET</small><h2>App Library</h2></div><button id="library-close" class="icon-btn" aria-label="Close App Library">×</button></header><input id="library-search" class="text-input" placeholder="Search your apps" aria-label="Search your apps"><div id="library-recents"></div><div id="library-apps" class="library-apps"></div></section>
+        <aside id="notifications" class="sheet left-sheet" aria-hidden="true">
+          <div class="sheet-handle"></div><div class="sheet-title"><strong>Notifications</strong><button data-close-sheet="notifications">×</button></div>
+          <div id="notification-list" class="notification-list"><div class="empty-state">No notifications</div></div>
+        </aside>
+
+        <aside id="control-center" class="sheet right-sheet" aria-hidden="true">
+          <div class="sheet-handle"></div><div class="sheet-title"><strong>Control Center</strong><button data-close-sheet="control-center">×</button></div>
+          <div class="control-grid">
+            <button class="control-tile" id="cc-comms"><span>◉</span><b>Comms</b><small id="cc-comms-state">Off</small></button>
+            <button class="control-tile" id="cc-scanner"><span>⌖</span><b>Scanner</b><small>World</small></button>
+            <button class="control-tile danger" id="cc-sos"><span>!</span><b>SOS</b><small>Emergency</small></button>
+            <button class="control-tile" id="cc-camera"><span>◫</span><b>Camera</b><small>Native</small></button>
+            <button class="control-tile" id="cc-drone"><span>⌁</span><b>Drone</b><small>Recon</small></button>
+            <button class="control-tile" id="cc-cctv"><span>◉</span><b>CCTV</b><small>Surveillance</small></button>
+            <button class="control-tile" id="cc-dispatch"><span>D</span><b>Dispatch</b><small>Inbox</small></button>
+          </div>
+          <label class="slider-row"><span>Brightness</span><input id="brightness" type="range" min="35" max="100" value="100" /></label>
+          <label class="slider-row"><span>UI scale</span><input id="ui-scale" type="range" min="90" max="110" value="100" /></label>
+          <div class="sensor-strip"><span id="cc-street">Street</span><span id="cc-coords">0, 0</span></div>
+        </aside>
+
+        <div id="toast-stack" class="toast-stack"></div>
+      </div>
+      <!-- hardware-bottom strip removed: the artwork carries its own branding. -->
+      <button id="hardware-power" class="hardware-power" title="Close tablet"></button>
+    </section>
+  </main>
+
+
+  <script src="preview-demo.js"></script>
+  <script src="tablet-frame-collection.js?v=105-display-studio"></script>
+  <script src="app.js?v=105-display-studio"></script>
+  <script src="tablet-os.js?v=103-restored"></script>
+  <script src="tablet-polish.js?v=093"></script>
+  <script src="tablet-gifs.js?v=101"></script>
+  <script src="tablet-experience.js?v=093"></script>
+  <script src="tablet-studio.js?v=105-display-studio"></script>
+</body>
+</html>

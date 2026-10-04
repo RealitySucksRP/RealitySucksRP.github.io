@@ -1,0 +1,165 @@
+/* Authored at 1100px of glass; scales with the physical tablet at every resolution. */
+:root{--tablet-device-scale:1}
+#tablet{width:min(calc(1420px * var(--tablet-device-scale)),88vw,127vh)!important;aspect-ratio:1515/1038!important}
+#screen{--tablet-ui-scale:1;left:5.2145%!important;top:8.1888%!important;width:calc(89.5709% / var(--tablet-ui-scale))!important;height:calc(82.6589% / var(--tablet-ui-scale))!important;transform:scale(var(--tablet-ui-scale))!important;transform-origin:0 0!important;overflow:hidden!important;font-size:calc(14px * var(--rs-font-scale,1));border-radius:20px!important;isolation:isolate}
+#screen[data-wallpaper="city"] .wallpaper-layer,#screen[data-wallpaper="air-blue"] .wallpaper-layer{background:radial-gradient(ellipse at 18% 0%,rgba(66,187,255,.85),transparent 52%),radial-gradient(ellipse at 85% 90%,rgba(232,64,202,.68),transparent 55%),radial-gradient(ellipse at 70% 20%,rgba(115,87,255,.85),transparent 50%),linear-gradient(135deg,#132d66,#351959 65%,#0d4557)!important}
+#statusbar{height:40px!important;padding:0 22px!important;z-index:60}
+#statusbar .status-pill{font:600 12px/1.2 'Segoe UI',sans-serif!important;min-height:28px;gap:8px}
+#status-center{font:600 11px/1.2 'Segoe UI',sans-serif!important;letter-spacing:.4px}
+#screen .view{inset:0!important;overflow:hidden!important}
+#screen #lockscreen.active{display:flex!important;align-items:center;justify-content:flex-start;padding:64px 28px 30px!important;z-index:25;background:linear-gradient(180deg,rgba(14,18,48,.02),rgba(8,13,32,.18))}
+#screen #lockscreen:not(.active){display:none!important}
+#lockscreen .lock-time{font:300 96px/1.12 'Segoe UI',sans-serif!important;letter-spacing:-4px;margin:0!important;text-shadow:0 4px 32px #25327d55}
+#lockscreen .lock-date{font:500 18px/1.4 'Segoe UI',sans-serif!important;margin:8px 0 32px!important;letter-spacing:.3px}
+#lockscreen .lock-glance{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;width:570px;max-width:90%;padding:18px 10px;margin:0!important;border:1px solid #ffffff30;border-radius:22px;background:#ffffff12;backdrop-filter:blur(18px)}
+#lockscreen .lock-glance span{min-width:0;padding:0 12px;border-right:1px solid #ffffff25}
+#lockscreen .lock-glance span:last-child{border:0}
+#lockscreen .lock-glance b{font-size:15px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#lockscreen .lock-glance small{font-size:10px;letter-spacing:1.3px;text-transform:uppercase;opacity:.7;display:block;margin-top:5px}
+#lockscreen .lock-card{width:430px;max-width:90%;min-height:68px;margin:28px 0 0!important;padding:12px 18px;border-radius:20px;background:#10183235;border:1px solid #ffffff20;box-shadow:0 10px 35px #10163220;backdrop-filter:blur(18px)}
+#lockscreen .lock-card strong{font-size:15px}#lockscreen .lock-card span{font-size:12px}
+#lockscreen .lock-card-icon{width:40px;height:40px;border-radius:13px;background:linear-gradient(140deg,#7fefff,#8f70ff);color:#122043;font:700 16px 'Segoe UI'}
+#lockscreen .unlock-btn{position:absolute;bottom:70px;left:50%;transform:translateX(-50%);width:280px;height:48px;margin:0!important;border:1px solid #ffffff60;border-radius:28px;background:linear-gradient(110deg,#7bcbff40,#ac74ff50);box-shadow:0 0 40px #9878ff30;backdrop-filter:blur(20px);font-size:15px;touch-action:none;animation:tabletSwipeHint 3s ease-in-out infinite}
+#lockscreen .lock-hint{position:absolute;bottom:42px;font-size:11px;letter-spacing:.5px;opacity:.75}
+#lockscreen::after{content:'';position:absolute;bottom:14px;left:calc(50% - 70px);width:140px;height:4px;border-radius:4px;background:#ffffffdc}
+#lockscreen.swiping{transform:translateY(var(--swipe-y,0px))!important;opacity:var(--swipe-opacity,1)!important;transition:none!important}
+#lockscreen.unlocking{animation:tabletUnlock .52s cubic-bezier(.2,.8,.2,1) both!important;pointer-events:none!important}
+#desktop.unlock-preview{pointer-events:none!important;transform:scale(.98)!important}
+#desktop.unlock-reveal{animation:tabletHomeReveal .5s cubic-bezier(.2,.8,.2,1) both!important}
+#desktop .desktop-grid{position:absolute;left:30px;right:30px;top:50px;height:134px;display:grid!important;grid-template-columns:1.65fr 1fr 1fr;gap:14px;margin:0!important}
+#desktop .panel{padding:15px 18px!important;min-height:0!important;border-radius:22px!important;background:linear-gradient(145deg,#ffffff20,#ffffff0d)!important;border:1px solid #ffffff2a!important;box-shadow:0 10px 28px #101b4d15;overflow:hidden;backdrop-filter:blur(24px)}
+#desktop .hero-time{font:400 34px/1.1 'Segoe UI',sans-serif!important;margin:5px 0!important;letter-spacing:-1px}
+#desktop .eyebrow,#desktop .hero-topline,#desktop .hero-topline span{font-size:10px!important;letter-spacing:.9px}
+#desktop .hero-location{font-size:11px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#desktop .hero-row{font-size:10px!important;gap:12px;margin-top:6px!important}
+#desktop .hero-system-row{font-size:8px!important;gap:8px;margin-top:5px!important}
+#desktop .widget-frequency,#desktop .scanner-readout{font-size:23px!important;margin:15px 0 9px!important}
+#desktop .widget-label{font-size:11px!important}
+.launcher-bar{position:absolute;left:34px;right:34px;top:193px;height:28px;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600}
+.launcher-bar button{background:#ffffff12;border:1px solid #ffffff25;border-radius:15px;padding:5px 13px;color:inherit;font-size:11px;cursor:pointer}
+#desktop #app-grid{position:absolute!important;left:30px!important;right:30px!important;top:228px!important;bottom:122px!important;width:auto!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;display:block!important;overflow:hidden!important}
+#app-grid .app-page{position:absolute!important;inset:0!important;width:auto!important;height:auto!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;grid-template-rows:repeat(4,minmax(0,1fr))!important;gap:4px 16px!important}
+#app-grid .app-page:not(.active){display:none!important}
+#app-grid .app-page.active{display:grid!important;opacity:1!important;transform:none!important}
+#app-grid .app-tile{min-height:0!important;margin:0!important;padding:5px!important;opacity:1!important;transform:none!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:5px;animation:tabletIconIn .4s ease both!important}
+#app-grid .app-icon{width:58px!important;height:58px!important;border-radius:17px!important;flex:none}
+#app-grid .app-label{font-size:calc(12px * var(--rs-font-scale,1))!important;line-height:1.25!important;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#home-page-dots{position:absolute!important;bottom:99px!important;left:0!important;right:0!important;height:14px;justify-content:center;z-index:5;margin:0!important}
+#screen #dock{position:absolute!important;bottom:20px!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:max-content!important;max-width:94%;height:70px!important;display:flex!important;align-items:center;gap:15px!important;padding:9px 18px!important;margin:0!important;border-radius:24px!important;background:linear-gradient(145deg,#d3e8ff30,#d1c7ff18)!important;border:1px solid #ffffff45!important;box-shadow:0 12px 35px #0b143f40;backdrop-filter:blur(28px);z-index:45;transition:opacity .25s,translate .35s}
+#screen[data-locked="true"] #dock{opacity:0!important;visibility:hidden!important;pointer-events:none!important;translate:0 20px}
+#dock .app-tile{padding:0!important;min-height:0!important;width:52px!important;height:52px!important;position:relative;opacity:1!important;animation:none!important;transform:none!important}
+#dock .app-icon{width:50px!important;height:50px!important;border-radius:15px!important}
+#dock .app-label{display:none!important}
+#dock .app-tile.running::after{content:'';position:absolute;width:4px;height:4px;border-radius:50%;background:white;bottom:-7px;left:24px}
+.dock-system{height:48px;width:46px;flex:none;color:white;border:0;background:#ffffff12;border-radius:15px;font:28px 'Segoe UI';cursor:pointer}
+#screen #app-shell{padding:0!important;background:linear-gradient(140deg,#12233bec,#1c2046eb)!important;backdrop-filter:blur(28px)}
+#app-shell .app-header{position:absolute!important;left:0;right:0;top:40px;height:52px!important;min-height:0!important;margin:0!important;padding:0 24px!important;z-index:4;background:#ffffff06;border-bottom:1px solid #ffffff15}
+#app-title{font-size:17px!important}#app-subtitle{font-size:10px!important}
+#app-shell .nav-back{font-size:13px!important;gap:6px;padding:8px!important}
+#app-shell .icon-btn{width:34px;height:34px;font-size:20px!important}
+#screen #app-content{position:absolute!important;top:92px!important;bottom:102px!important;left:0!important;right:0!important;height:auto!important;width:auto!important;min-height:0!important;overflow:auto!important;padding:22px 26px!important;scroll-padding-top:12px;overscroll-behavior:contain;font-size:calc(14px * var(--rs-font-scale,1))!important}
+#app-content h2{font-size:24px!important}#app-content h3{font-size:15px!important}
+#app-content .setting-row,#app-content .secondary-btn,#app-content .primary-btn,#app-content .text-input{font-size:calc(13px * var(--rs-font-scale,1))!important}
+#app-content .setting-group{padding:17px!important;margin-bottom:18px!important;border-radius:20px!important;background:#ffffff07!important;border:1px solid #ffffff14!important}
+#app-content .setting-group header p{font-size:11px!important;line-height:1.5}
+#app-content .settings-workspace{display:grid!important;grid-template-columns:174px minmax(0,1fr)!important;gap:20px!important;width:100%!important;min-width:0}
+#app-content .settings-nav{position:sticky!important;top:0!important;align-self:start!important;padding:9px!important;border-radius:18px;max-height:460px;overflow-y:auto;min-width:0}
+#app-content .settings-nav-btn{width:100%;font-size:12px!important;min-height:34px!important;gap:10px!important;padding:8px 10px!important}
+#app-content .settings-nav-btn i{font-size:15px!important}
+#app-content .settings-sections{min-width:0!important}
+#app-content .settings-font-card{min-width:138px!important}#app-content .settings-font-card small{font-size:11px!important}
+#app-content .wallpaper-row,#app-content .settings-theme-row,#app-content .settings-font-row{max-width:100%;overscroll-behavior:contain}
+#screen .sheet:not(.open){visibility:hidden!important;pointer-events:none!important}
+#screen .sheet.open{visibility:visible!important;pointer-events:auto!important}
+#screen .sheet{top:44px!important;bottom:102px!important;width:350px!important;max-height:none!important;height:auto!important;overflow:auto!important;border-radius:24px!important;padding:22px!important;font-size:14px!important;background:#19243ef5!important;z-index:80!important}
+#screen .sheet-title strong{font-size:19px!important}#screen .control-tile{min-height:86px!important}#screen .control-tile b{font-size:13px!important}#screen .control-tile small{font-size:11px!important}
+#screen .tablet-library[hidden]{display:none!important}
+#screen .tablet-library{position:absolute;inset:54px 28px 105px;z-index:75;display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:28px;border:1px solid #ffffff35;background:linear-gradient(145deg,#152544f5,#30294cf5);backdrop-filter:blur(35px);box-shadow:0 25px 80px #0005;animation:tabletHomeReveal .25s ease both;overflow:auto}
+.tablet-library header{display:flex;align-items:center;justify-content:space-between;flex:none}.tablet-library header small{font-size:10px;letter-spacing:1.4px;opacity:.6}.tablet-library h2{font-size:25px;margin:4px 0 0}.tablet-library .text-input{height:42px;flex:none;font-size:14px}
+.library-apps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px 12px;padding:12px 0}
+.library-recent-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;padding:10px 0;border-bottom:1px solid #ffffff20}
+#library-recents h3{font-size:12px;margin:0;opacity:.7}
+.tablet-library .app-tile{opacity:1!important;transform:none!important;min-height:78px!important;animation:none!important}.tablet-library .app-icon{width:52px!important;height:52px!important}.tablet-library .app-label{font-size:12px!important}
+#screen .rs-emoji-panel{width:480px!important;bottom:108px!important;padding:14px!important;border-radius:22px!important;z-index:95}#screen .rs-emoji-grid{grid-template-columns:repeat(7,minmax(0,1fr))!important;max-height:240px!important;overflow:auto}#screen .rs-emoji{font-size:27px!important;height:46px!important}#screen .rs-emoji-tabs{flex-wrap:wrap!important}#screen .rs-emoji-tab{font-size:11px!important}
+#screen .rs-command-palette{width:560px!important;max-width:90%}#screen .rs-command-row strong{font-size:14px!important}#screen .rs-command-row small{font-size:11px!important}
+#tablet.device-entering{animation:tabletDeviceIn .55s cubic-bezier(.2,.8,.2,1) both!important}
+@keyframes tabletDeviceIn{from{opacity:.35;translate:0 70px}to{opacity:1;translate:0 0}}
+@keyframes tabletUnlock{from{transform:translateY(var(--swipe-y,0px));opacity:var(--swipe-opacity,1)}to{transform:translateY(-100%);opacity:0}}
+@keyframes tabletHomeReveal{from{opacity:.4;scale:.96}to{opacity:1;scale:1}}
+@keyframes tabletIconIn{from{opacity:.5;translate:0 10px}to{opacity:1;translate:0 0}}
+@keyframes tabletSwipeHint{0%,100%{box-shadow:0 0 24px #9878ff20}50%{box-shadow:0 0 38px #a6acff65}}
+#tablet.reduced-motion,#screen.reduced-motion *,#screen.reduced-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+@media(prefers-reduced-motion:reduce){#tablet,#screen *{animation:none!important;transition:none!important}}
+
+/* Override the old flex launcher contract with a bounded page canvas. */
+#screen #desktop.view.active > #app-grid.app-grid{position:absolute!important;top:228px!important;bottom:122px!important;left:30px!important;right:30px!important;height:auto!important;max-height:none!important;flex:none!important}
+#screen #desktop.view{padding:0!important}
+#screen #home-page-dots{display:flex!important;flex-direction:row!important;align-items:center!important;gap:9px!important;left:0!important;right:0!important;width:auto!important;top:auto!important;bottom:99px!important}
+#screen #lockscreen.view.active{justify-content:flex-start!important;padding:64px 28px 30px!important}
+#lockscreen .lock-card{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;width:430px!important}
+#lockscreen .lock-glance span{background:transparent!important;border-radius:0!important}
+
+#screen #home-page-dots{transform:none!important}
+#screen #app-grid .app-page .app-label{font-size:calc(13px * var(--rs-font-scale,1))!important;min-height:17px!important;line-height:1.25!important;display:block!important;white-space:nowrap!important}
+#screen #lockscreen .lock-glance span{border:0!important;border-right:1px solid #ffffff25!important;backdrop-filter:none!important;padding:0 12px!important}
+#screen #lockscreen .lock-glance span:last-child{border-right:0!important}
+
+#screen .font-style-card{flex-basis:156px!important;padding:14px!important}
+#screen .font-style-card>span{font-size:13px!important}
+#screen .font-style-card>small{font-size:10px!important}
+#screen .motion-style-card small{font-size:10px!important;white-space:normal!important;line-height:1.4!important}
+#screen .motion-style-card b{font-size:12px!important}
+#screen .theme-card{flex-basis:176px!important}
+#screen .theme-card span{font-size:12px!important}
+
+/* v0.8.8: deterministic launcher alignment. Every app occupies the same cell,
+   with a fixed icon plane and label plane; long labels cannot shift neighbors. */
+#screen #app-grid .app-page.active{place-items:stretch center!important;align-items:stretch!important;justify-items:stretch!important}
+#screen #app-grid .app-page .app-tile{width:100%!important;height:100%!important;min-width:0!important;min-height:0!important;padding:7px 4px 5px!important;display:grid!important;grid-template-rows:58px 34px!important;align-content:center!important;justify-items:center!important;align-items:start!important;gap:6px!important}
+#screen #app-grid .app-page .app-icon{width:58px!important;height:58px!important;min-width:58px!important;min-height:58px!important;align-self:start!important;justify-self:center!important;margin:0!important}
+#screen #app-grid .app-page .app-label{width:100%!important;height:34px!important;min-height:34px!important;max-width:128px!important;margin:0!important;padding:0 2px!important;display:flex!important;align-items:flex-start!important;justify-content:center!important;text-align:center!important;white-space:normal!important;overflow:hidden!important;text-overflow:ellipsis!important;font-size:calc(12px * var(--rs-font-scale,1))!important;line-height:16px!important}
+#screen .tablet-library .app-tile{display:grid!important;grid-template-rows:52px 32px!important;justify-items:center!important;align-items:start!important;gap:6px!important;height:96px!important;padding:4px 3px!important}
+#screen .tablet-library .app-label{height:32px!important;display:flex!important;align-items:flex-start!important;justify-content:center!important;text-align:center!important;white-space:normal!important;line-height:15px!important;overflow:hidden!important}
+
+/* v0.8.8: GTA-native live weather parity with RS Phone. */
+#screen .live-weather-scene{--weather-blend:0;--weather-rain:1;--weather-snow:1;position:absolute;inset:0;overflow:hidden;pointer-events:none;perspective:520px;transform-style:preserve-3d;z-index:0;opacity:.92;transition:background 1.6s ease,filter 1.6s ease;background:linear-gradient(180deg,#68d7ff 0%,#4ebff2 38%,#78d8e6 100%)}
+#screen .live-weather-scene[data-night="true"]{background:radial-gradient(circle at 72% 18%,rgba(159,190,255,.22),transparent 20%),linear-gradient(180deg,#081528,#102c4b 55%,#174257 100%)}
+#screen .live-weather-scene[data-weather="clouds"],#screen .live-weather-scene[data-weather="overcast"],#screen .live-weather-scene[data-weather="clearing"]{background:linear-gradient(180deg,#6b8299,#8ba0ae 48%,#a8b5ba)}
+#screen .live-weather-scene[data-weather="rain"],#screen .live-weather-scene[data-weather="storm"]{background:linear-gradient(180deg,#263648,#3f5365 52%,#536774)}
+#screen .live-weather-scene[data-weather="fog"]{background:linear-gradient(180deg,#89969e,#aeb8bb 55%,#c1c7c5)}
+#screen .live-weather-scene[data-weather="snow"],#screen .live-weather-scene[data-weather="blizzard"]{background:linear-gradient(180deg,#8aa7bd,#c4d6df 54%,#e4eef1)}
+#screen .weather-depth{position:absolute;display:block;pointer-events:none;will-change:transform,opacity}
+#screen .weather-sun{width:116px;height:116px;border-radius:50%;right:10%;top:10%;background:radial-gradient(circle,#fffbd7 0 18%,#ffe889 42%,rgba(255,205,62,.22) 66%,transparent 71%);filter:drop-shadow(0 0 24px rgba(255,226,112,.55));transform:translateZ(-22px);animation:rsTabletWeatherFloat 9s ease-in-out infinite}
+#screen .weather-moon{width:68px;height:68px;border-radius:50%;right:14%;top:12%;background:radial-gradient(circle at 35% 35%,#fff 0 18%,#dbe7ff 54%,#9eb6d7 100%);box-shadow:0 0 28px rgba(180,211,255,.34);opacity:0;transform:translateZ(-18px);animation:rsTabletWeatherFloat 11s ease-in-out infinite reverse}
+#screen .live-weather-scene[data-night="true"] .weather-sun{opacity:0}#screen .live-weather-scene[data-night="true"] .weather-moon{opacity:.9}
+#screen .weather-cloud{left:-18%;width:84%;height:25%;border-radius:50%;background:radial-gradient(ellipse at 18% 68%,rgba(255,255,255,.92) 0 20%,transparent 21%),radial-gradient(ellipse at 43% 54%,rgba(255,255,255,.88) 0 28%,transparent 29%),radial-gradient(ellipse at 70% 68%,rgba(255,255,255,.82) 0 22%,transparent 23%);filter:blur(.4px) drop-shadow(0 12px 12px rgba(20,38,58,.13));opacity:0}
+#screen .weather-cloud-back{top:11%;transform:translateZ(-60px) scale(1.28);animation:rsTabletCloudBack 20s linear infinite}
+#screen .weather-cloud-front{top:24%;transform:translateZ(22px) scale(.94);animation:rsTabletCloudFront 13s linear infinite}
+#screen .live-weather-scene[data-weather="clouds"] .weather-cloud,#screen .live-weather-scene[data-weather="overcast"] .weather-cloud,#screen .live-weather-scene[data-weather="clearing"] .weather-cloud{opacity:.72}
+#screen .live-weather-scene[data-weather="rain"] .weather-cloud,#screen .live-weather-scene[data-weather="storm"] .weather-cloud,#screen .live-weather-scene[data-weather="snow"] .weather-cloud,#screen .live-weather-scene[data-weather="blizzard"] .weather-cloud{opacity:.88;filter:brightness(.72) blur(.5px) drop-shadow(0 14px 13px rgba(10,21,35,.24))}
+#screen .weather-rain{inset:-28% -15%;opacity:0;transform:translateZ(36px) rotate(8deg);background:repeating-linear-gradient(104deg,transparent 0 17px,rgba(210,237,255,0) 17px 22px,rgba(210,237,255,.68) 23px 24px,transparent 25px 40px);background-size:88px 88px;animation:rsTabletRain .52s linear infinite}
+#screen .live-weather-scene[data-weather="rain"] .weather-rain{opacity:calc(.34 + (var(--weather-rain) * .44))}#screen .live-weather-scene[data-weather="storm"] .weather-rain{opacity:.92}
+#screen .weather-snow{inset:-20%;opacity:0;transform:translateZ(34px);background-image:radial-gradient(circle,rgba(255,255,255,.95) 0 2px,transparent 2.5px),radial-gradient(circle,rgba(255,255,255,.72) 0 1.4px,transparent 2px),radial-gradient(circle,rgba(255,255,255,.88) 0 1.8px,transparent 2.3px);background-size:39px 47px,57px 61px,73px 83px;background-position:0 0,19px 10px,41px 25px;animation:rsTabletSnow 6s linear infinite}
+#screen .live-weather-scene[data-weather="snow"] .weather-snow{opacity:.72}#screen .live-weather-scene[data-weather="blizzard"] .weather-snow{opacity:1;animation-duration:2.8s}
+#screen .weather-fog{inset:25% -30% 0;opacity:0;transform:translateZ(12px);background:repeating-linear-gradient(0deg,rgba(255,255,255,0) 0 20px,rgba(235,242,243,.26) 22px 42px,rgba(255,255,255,.04) 46px 70px);filter:blur(9px);animation:rsTabletFog 12s ease-in-out infinite alternate}
+#screen .live-weather-scene[data-weather="fog"] .weather-fog{opacity:.9}
+#screen .weather-lightning{inset:0;opacity:0;background:white;mix-blend-mode:screen}#screen .live-weather-scene[data-weather="storm"] .weather-lightning{animation:rsTabletLightning 5.6s steps(1,end) infinite}
+#screen #lockscreen>.tablet-lock-weather-scene{z-index:0!important;opacity:.42!important;mix-blend-mode:screen}
+#screen #lockscreen>.lock-glow,#screen #lockscreen>.lock-time,#screen #lockscreen>.lock-date,#screen #lockscreen>.lock-glance,#screen #lockscreen>.lock-card,#screen #lockscreen>.unlock-btn,#screen #lockscreen>.lock-hint{z-index:2}
+#screen .hero-widget{position:relative!important;overflow:hidden!important;isolation:isolate}
+#screen .hero-widget>.tablet-hero-weather-scene{z-index:0!important;opacity:.28!important;mix-blend-mode:screen}
+#screen .hero-widget>.hero-topline,#screen .hero-widget>.hero-time,#screen .hero-widget>.hero-location,#screen .hero-widget>.hero-row,#screen .hero-widget>.hero-system-row{position:relative;z-index:2;text-shadow:0 2px 10px rgba(0,0,0,.34)}
+#screen .tablet-weather-live{position:relative;min-height:290px;margin-bottom:14px;border-radius:26px;overflow:hidden;isolation:isolate;border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 48px rgba(0,0,0,.22)}
+#screen .tablet-weather-live>.weather-app-scene{z-index:0!important;opacity:.9!important}
+#screen .tablet-weather-copy{position:relative;z-index:2;min-height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+#screen .tablet-weather-copy>span{font-size:13px;font-weight:750;letter-spacing:.04em}#screen .tablet-weather-reading{display:flex;align-items:center;gap:18px;margin:5px 0 0}#screen .tablet-weather-reading i{font-style:normal;font-size:52px}#screen .tablet-weather-reading strong{font-size:76px;font-weight:250;letter-spacing:-.055em}#screen .tablet-weather-copy h3{font-size:25px!important;margin:0}#screen .tablet-weather-copy p{font-size:11px;margin:7px 0 0;opacity:.8;text-transform:uppercase;letter-spacing:.08em}
+#screen .weather-live-metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:0 0 15px}#screen .weather-live-metrics>div{display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)}#screen .weather-live-metrics span{font-size:8px;letter-spacing:.13em;color:var(--muted);font-weight:900}#screen .weather-live-metrics b{font-size:16px}
+@keyframes rsTabletWeatherFloat{50%{transform:translate3d(-8px,6px,-22px) scale(1.04)}}
+@keyframes rsTabletCloudBack{from{transform:translate3d(-12%,0,-60px) scale(1.28)}to{transform:translate3d(155%,4px,-60px) scale(1.28)}}
+@keyframes rsTabletCloudFront{from{transform:translate3d(-26%,0,22px) scale(.94)}to{transform:translate3d(165%,-3px,22px) scale(.94)}}
+@keyframes rsTabletRain{from{background-position:0 -90px}to{background-position:-32px 90px}}
+@keyframes rsTabletSnow{from{background-position:0 -120px,19px -90px,41px -150px}to{background-position:30px 120px,-12px 140px,70px 110px}}
+@keyframes rsTabletFog{from{transform:translate3d(-9%,0,12px)}to{transform:translate3d(9%,4px,12px)}}
+@keyframes rsTabletLightning{0%,7%,11%,100%{opacity:0}8%{opacity:.78}9%{opacity:.05}10%{opacity:.42}}
+#screen.reduced-motion .live-weather-scene *{animation:none!important}
+

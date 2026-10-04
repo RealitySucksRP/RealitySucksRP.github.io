@@ -1,0 +1,424 @@
+/* RS Tablet 0.8.2 — flagship polish layer.
+   Presentation only: no provider authority, money, permissions or gameplay
+   state is moved into NUI. Keep this file last so older app-specific rules can
+   remain intact while shared motion/typography/overflow behavior is consistent. */
+
+#screen{
+  --rs-fast:130ms;
+  --rs-ui:220ms;
+  --rs-page:340ms;
+  --rs-ease:cubic-bezier(.22,.76,.16,1);
+  --rs-ease-spring:cubic-bezier(.18,1.32,.26,1);
+  font-family:"Segoe UI Variable Text","Segoe UI",Arial,sans-serif;
+}
+#screen[data-motion-style="snappy"]{--rs-fast:85ms;--rs-ui:150ms;--rs-page:220ms;--rs-ease:cubic-bezier(.2,.78,.2,1)}
+#screen[data-motion-style="cinematic"]{--rs-fast:180ms;--rs-ui:300ms;--rs-page:480ms;--rs-ease:cubic-bezier(.18,.8,.16,1)}
+#screen[data-motion-style="spring"]{--rs-fast:135ms;--rs-ui:240ms;--rs-page:390ms;--rs-ease:var(--rs-ease-spring)}
+
+/* Typography packs use installed CEF/Windows faces only: no redistributed font files. */
+#screen[data-font-style="modern"]{font-family:"Segoe UI Variable Text","Segoe UI",sans-serif}
+#screen[data-font-style="normal"]{font-family:Arial,Helvetica,sans-serif}
+#screen[data-font-style="clean"]{font-family:"Segoe UI","Helvetica Neue",sans-serif}
+#screen[data-font-style="rounded"]{font-family:"Trebuchet MS","Segoe UI",sans-serif}
+#screen[data-font-style="compact"]{font-family:Tahoma,Verdana,sans-serif}
+#screen[data-font-style="tech"]{font-family:Bahnschrift,"Segoe UI",sans-serif}
+#screen[data-font-style="condensed"]{font-family:"Bahnschrift Condensed","Arial Narrow",sans-serif}
+#screen[data-font-style="executive"]{font-family:"Franklin Gothic Medium","Arial Narrow",sans-serif}
+#screen[data-font-style="editorial"]{font-family:Georgia,Cambria,serif}
+#screen[data-font-style="luxe"]{font-family:"Palatino Linotype","Book Antiqua",serif}
+#screen[data-font-style="terminal"]{font-family:Consolas,"Lucida Console",monospace}
+#screen[data-font-style="typewriter"]{font-family:"Courier New",monospace}
+#screen[data-font-style="arcade"]{font-family:"Lucida Console",Monaco,monospace}
+#screen[data-font-style="street"]{font-family:Impact,Haettenschweiler,"Arial Narrow",sans-serif}
+#screen[data-font-style="poster"]{font-family:"Arial Black",Impact,sans-serif}
+#screen[data-font-style="handwritten"]{font-family:"Segoe Print","Comic Sans MS",cursive}
+#screen[data-font-style="marker"]{font-family:"Comic Sans MS","Segoe Print",cursive}
+#screen[data-font-style="retro"]{font-family:"Courier New",Consolas,monospace}
+#screen[data-font-style="blueprint"]{font-family:"Bahnschrift Light","Arial Narrow",sans-serif;letter-spacing:.012em}
+#screen[data-font-style="cinema"]{font-family:"Times New Roman",Georgia,serif;letter-spacing:.018em}
+#screen[data-font-style="humanist"]{font-family:Calibri,"Segoe UI",sans-serif}
+#screen[data-font-style="classic"]{font-family:Garamond,Georgia,serif}
+#screen[data-font-style="hacker"]{font-family:Consolas,"Courier New",monospace;letter-spacing:.015em}
+#screen[data-font-style="comic"]{font-family:"Comic Sans MS","Segoe Print",cursive}
+#screen button,#screen input,#screen textarea,#screen select{font-family:inherit}
+
+/* Fit/overflow guard. Tablet cards often carry provider strings and player text. */
+#screen *,#screen *::before,#screen *::after{min-width:0}
+#screen .app-content{overflow-x:hidden;overscroll-behavior:contain;scrollbar-gutter:stable}
+#screen .app-title-wrap,#screen .app-title-wrap>div,#screen .grow,#screen .list-row>div,#screen .feed-card header>div,#screen .service-card header>div,#screen .vehicle-card header>div,#screen .property-card header>div{min-width:0}
+#screen .app-title-wrap strong,#screen .app-title-wrap span,#screen .app-label,#screen .list-row strong,#screen .list-row small,#screen .feed-card strong,#screen .feed-card small,#screen .service-card strong,#screen .service-card small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#screen .card p,#screen .feed-card p,#screen .notification p,#screen .service-card p,#screen .email-reader p,#screen .message-bubble p,#screen .thread-reply span,#screen .provider-unavailable p{overflow-wrap:anywhere;word-break:break-word}
+#screen .button-row{flex-wrap:wrap}
+#screen button{max-width:100%}
+#screen img,#screen video,#screen canvas{max-width:100%}
+#screen input,#screen textarea,#screen select{max-width:100%}
+#screen .app-hero{gap:14px;align-items:flex-start}
+#screen .app-hero>div:first-child{min-width:0;flex:1}
+#screen .app-hero h2{overflow-wrap:anywhere}
+#screen .app-header-actions{flex:0 0 auto}
+#screen .app-title-wrap{overflow:hidden}
+#screen .esc-hint{white-space:nowrap}
+
+/* Modern, low-noise interaction motion. No generic neon outlines. */
+#screen .status-pill,#screen .icon-btn,#screen .unlock-btn,#screen .control-tile,#screen .app-tile,#screen .wall-card,#screen .theme-card,#screen .font-style-card,#screen .motion-style-card,#screen .game-card,#screen .list-row,#screen .card,#screen .feed-card,#screen .gallery-card,#screen .service-card,#screen .vehicle-card,#screen .property-card,#screen .recon-card,#screen .primary-btn,#screen .secondary-btn,#screen .danger-btn{
+  transition:transform var(--rs-fast) var(--rs-ease),box-shadow var(--rs-ui) ease,background-color var(--rs-ui) ease,border-color var(--rs-ui) ease,filter var(--rs-ui) ease,opacity var(--rs-ui) ease;
+}
+@media (hover:hover) and (pointer:fine){
+  #screen .status-pill:hover,#screen .icon-btn:hover,#screen .unlock-btn:hover,#screen .control-tile:hover,#screen .wall-card:hover,#screen .theme-card:hover,#screen .font-style-card:hover,#screen .motion-style-card:hover,#screen .game-card:hover,#screen .list-row:hover,#screen .card:hover,#screen .feed-card:hover,#screen .gallery-card:hover,#screen .service-card:hover,#screen .vehicle-card:hover,#screen .property-card:hover,#screen .recon-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.16);box-shadow:0 14px 30px rgba(0,0,0,.19),inset 0 1px rgba(255,255,255,.055)}
+  #screen button:not(:disabled):hover{filter:brightness(1.075) saturate(1.035)}
+  #screen .app-tile:hover .app-icon{transform:translateY(-3px) scale(1.035)}
+  #screen .gallery-card:hover .gallery-media,#screen .mediahub-card:hover .phone-media{transform:scale(1.025)}
+}
+#screen button:not(:disabled):active,#screen .game-card:active,#screen .gallery-card:active,#screen .list-row:active{transform:scale(.985)!important;transition-duration:65ms!important}
+#screen .theme-app-art,#screen .gallery-media,#screen .phone-media{transition:transform var(--rs-ui) var(--rs-ease)}
+
+/* Full app lifecycle: open -> content settles -> close -> home springs back. */
+#app-shell.app-opening{animation:rsTabletAppOpen var(--rs-page) var(--rs-ease) both;transform-origin:50% 56%}
+#app-shell.app-opening .app-header{animation:rsTabletHeaderIn calc(var(--rs-page)*.78) var(--rs-ease) both}
+#app-shell.app-opening .app-content{animation:rsTabletContentIn var(--rs-page) var(--rs-ease) both}
+#app-shell.app-closing{display:block!important;animation:rsTabletAppClose 170ms cubic-bezier(.4,0,.8,.2) both;pointer-events:none}
+#desktop.home-return{animation:rsTabletHomeReturn var(--rs-page) var(--rs-ease) both}
+@keyframes rsTabletAppOpen{0%{opacity:0;transform:scale(.955) translateY(12px);filter:blur(5px)}55%{opacity:1}100%{opacity:1;transform:none;filter:none}}
+@keyframes rsTabletHeaderIn{0%{opacity:0;transform:translateY(-9px)}100%{opacity:1;transform:none}}
+@keyframes rsTabletContentIn{0%{opacity:0;transform:translateY(15px)}100%{opacity:1;transform:none}}
+@keyframes rsTabletAppClose{0%{opacity:1;transform:none}100%{opacity:0;transform:scale(.965) translateY(8px);filter:blur(3px)}}
+@keyframes rsTabletHomeReturn{0%{opacity:.2;transform:scale(.975)}100%{opacity:1;transform:none}}
+
+/* Settings: tablet gets a denser visual studio than the phones. */
+#screen .font-style-picker{display:flex;gap:9px;width:100%;overflow-x:auto;overflow-y:hidden;padding:2px 1px 9px;scroll-snap-type:x proximity;overscroll-behavior-inline:contain;scrollbar-width:none}
+#screen .font-style-picker::-webkit-scrollbar{display:none}
+#screen .font-style-card{flex:0 0 126px;min-height:88px;padding:11px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:linear-gradient(155deg,rgba(255,255,255,.065),rgba(255,255,255,.025));color:inherit;text-align:left;scroll-snap-align:start;overflow:hidden}
+#screen .font-style-card>b{display:block;font-family:inherit!important;font-size:25px;line-height:1;margin-bottom:9px}
+#screen .font-style-card>span{display:block;font-size:11px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#screen .font-style-card>small{display:block;margin-top:3px;font-size:8px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#screen .font-style-card.active,#screen .motion-style-card.active{border-color:color-mix(in srgb,var(--accent) 58%,rgba(255,255,255,.12));background:color-mix(in srgb,var(--accent) 11%,rgba(255,255,255,.04));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 20%,transparent)}
+#screen .font-style-card[data-font-style="modern"]{font-family:"Segoe UI Variable Text","Segoe UI",sans-serif}
+#screen .font-style-card[data-font-style="normal"]{font-family:Arial,Helvetica,sans-serif}
+#screen .font-style-card[data-font-style="clean"]{font-family:"Segoe UI","Helvetica Neue",sans-serif}
+#screen .font-style-card[data-font-style="rounded"]{font-family:"Trebuchet MS",sans-serif}
+#screen .font-style-card[data-font-style="compact"]{font-family:Tahoma,Verdana,sans-serif}
+#screen .font-style-card[data-font-style="tech"]{font-family:Bahnschrift,"Segoe UI",sans-serif}
+#screen .font-style-card[data-font-style="condensed"]{font-family:"Bahnschrift Condensed","Arial Narrow",sans-serif}
+#screen .font-style-card[data-font-style="executive"]{font-family:"Franklin Gothic Medium","Arial Narrow",sans-serif}
+#screen .font-style-card[data-font-style="editorial"]{font-family:Georgia,Cambria,serif}
+#screen .font-style-card[data-font-style="luxe"]{font-family:"Palatino Linotype","Book Antiqua",serif}
+#screen .font-style-card[data-font-style="terminal"]{font-family:Consolas,"Lucida Console",monospace}
+#screen .font-style-card[data-font-style="typewriter"]{font-family:"Courier New",monospace}
+#screen .font-style-card[data-font-style="arcade"]{font-family:"Lucida Console",Monaco,monospace}
+#screen .font-style-card[data-font-style="street"]{font-family:Impact,Haettenschweiler,"Arial Narrow",sans-serif}
+#screen .font-style-card[data-font-style="poster"]{font-family:"Arial Black",Impact,sans-serif}
+#screen .font-style-card[data-font-style="handwritten"]{font-family:"Segoe Print","Comic Sans MS",cursive}
+#screen .font-style-card[data-font-style="marker"]{font-family:"Comic Sans MS","Segoe Print",cursive}
+#screen .font-style-card[data-font-style="retro"]{font-family:"Courier New",Consolas,monospace}
+#screen .font-style-card[data-font-style="blueprint"]{font-family:"Bahnschrift Light","Arial Narrow",sans-serif}
+#screen .font-style-card[data-font-style="cinema"]{font-family:"Times New Roman",Georgia,serif}
+#screen .font-style-card[data-font-style="humanist"]{font-family:Calibri,"Segoe UI",sans-serif}
+#screen .font-style-card[data-font-style="classic"]{font-family:Garamond,Georgia,serif}
+#screen .font-style-card[data-font-style="hacker"]{font-family:Consolas,"Courier New",monospace}
+#screen .font-style-card[data-font-style="comic"]{font-family:"Comic Sans MS","Segoe Print",cursive}
+#screen .motion-style-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;width:100%}
+#screen .motion-style-card{display:flex;align-items:center;gap:10px;padding:10px;border-radius:15px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);color:inherit;text-align:left}
+#screen .motion-style-card>div{display:flex;flex-direction:column;min-width:0}
+#screen .motion-style-card b{font-size:10px}.motion-style-card small{font-size:8px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#screen .motion-demo{position:relative;flex:0 0 38px;height:28px;border-radius:9px;background:rgba(255,255,255,.05);overflow:hidden}
+#screen .motion-demo i{position:absolute;width:10px;height:10px;left:6px;top:9px;border-radius:4px;background:var(--accent);animation:motionPreview 1.45s var(--rs-ease) infinite alternate}
+@keyframes motionPreview{to{transform:translateX(17px) rotate(12deg)}}
+#screen .custom-wallpaper-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;width:100%;padding-top:5px}
+
+/* Arcade flagship surface. */
+#screen .flagship-arcade{grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+#screen .flagship-arcade .game-card{position:relative;min-height:145px;overflow:hidden;text-align:left;background:linear-gradient(145deg,rgba(34,48,70,.78),rgba(7,13,22,.92));box-shadow:inset 0 1px rgba(255,255,255,.055)}
+#screen .flagship-arcade .game-card::after{content:"";position:absolute;width:120px;height:120px;right:-42px;top:-50px;border-radius:50%;background:color-mix(in srgb,var(--accent) 10%,transparent);filter:blur(8px);pointer-events:none}
+#screen .flagship-arcade .game-glyph{font-size:31px;font-weight:900;letter-spacing:-.06em;min-height:38px;display:flex;align-items:center}
+#screen .flagship-arcade .game-card h3{margin:13px 0 5px;font-size:12px}
+#screen .flagship-arcade .game-card p{min-height:28px;margin:0;color:var(--muted);font-size:9px;line-height:1.45}
+#screen .flagship-arcade .game-card small{display:block;margin-top:10px;font-size:7px;letter-spacing:.12em;color:color-mix(in srgb,var(--accent) 74%,white 10%);font-weight:900}
+#screen .arcade-controls{display:flex;justify-content:center;gap:7px;margin:10px auto}
+#screen .arcade-controls button{width:42px;height:36px;border-radius:12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.055);font-weight:900}
+#screen .arcade-status{justify-content:center;margin-top:10px}
+#screen .arcade-history{max-width:540px;margin:16px auto}
+#screen #snake-canvas,#screen #lane-canvas{display:block;width:min(520px,100%);height:auto;margin:0 auto;border-radius:16px;border:1px solid rgba(255,255,255,.09);box-shadow:0 16px 38px rgba(0,0,0,.22)}
+#screen .grid-shift-board{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:min(390px,76vw);margin:4px auto;padding:10px;border-radius:20px;background:rgba(4,9,15,.7);border:1px solid rgba(255,255,255,.07)}
+#screen .grid-shift-cell{aspect-ratio:1;border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.055);font-size:20px;font-weight:900;transition:transform 120ms ease,background 180ms ease}
+#screen .grid-shift-cell.v2{background:rgba(90,168,255,.14)}#screen .grid-shift-cell.v4{background:rgba(88,201,255,.2)}#screen .grid-shift-cell.v8{background:rgba(91,226,175,.20)}#screen .grid-shift-cell.v16{background:rgba(255,196,97,.20)}#screen .grid-shift-cell.v32{background:rgba(255,145,95,.22)}#screen .grid-shift-cell.v64{background:rgba(255,94,109,.24)}#screen .grid-shift-cell.v128,#screen .grid-shift-cell.v256,#screen .grid-shift-cell.v512,#screen .grid-shift-cell.v1024,#screen .grid-shift-cell.v2048{background:color-mix(in srgb,var(--accent) 34%,rgba(255,255,255,.08));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 25%,transparent)}
+#screen .mine-board{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;width:min(430px,80vw);margin:6px auto;padding:8px;border-radius:18px;background:rgba(4,9,15,.68);border:1px solid rgba(255,255,255,.07)}
+#screen .mine-cell{aspect-ratio:1;border-radius:8px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.065);padding:0;font-size:13px;font-weight:900}
+#screen .mine-cell.revealed{background:rgba(255,255,255,.025);color:#a9e7ff}#screen .mine-cell.mine{background:rgba(255,94,109,.18);color:#ff7b88}
+#screen .pulse-pad{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;width:min(520px,84%);height:230px;margin:12px auto;border-radius:28px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(145deg,rgba(27,41,58,.88),rgba(7,13,21,.92));box-shadow:0 22px 54px rgba(0,0,0,.22)}
+#screen .pulse-pad b{font-size:34px;letter-spacing:.03em}#screen .pulse-pad span{font-size:10px;color:var(--muted);letter-spacing:.08em}
+#screen .pulse-pad.waiting{background:linear-gradient(145deg,rgba(92,68,25,.72),rgba(22,17,8,.92))}#screen .pulse-pad.live{background:linear-gradient(145deg,rgba(27,112,75,.82),rgba(7,29,20,.94));transform:scale(1.012)}#screen .pulse-pad.early{background:linear-gradient(145deg,rgba(117,37,49,.78),rgba(28,8,12,.94))}
+#screen .code-sprint{width:min(650px,100%);margin:16px auto;padding:18px;border-radius:22px;background:rgba(6,13,22,.72);border:1px solid rgba(255,255,255,.08)}
+#screen .code-target{padding:22px;margin-bottom:12px;text-align:center;border-radius:16px;background:#03080d;border:1px solid rgba(255,255,255,.07);font-family:Consolas,"Courier New",monospace!important;font-size:34px;font-weight:900;letter-spacing:.12em;color:#9ce7ff}
+#screen .code-input{text-align:center;font-family:Consolas,"Courier New",monospace!important;font-size:18px;letter-spacing:.12em;text-transform:uppercase}
+
+/* Emoji picker: follows whichever composer is focused. */
+#screen .rs-emoji-target{padding-right:44px!important}
+#screen .rs-emoji-trigger{position:absolute;z-index:92;width:32px;height:32px;min-width:32px;padding:0;border:0;border-radius:50%;display:grid;place-items:center;background:rgba(21,29,40,.86);backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 7px 20px rgba(0,0,0,.27),inset 0 0 0 1px rgba(255,255,255,.11);font-family:"Segoe UI Emoji","Noto Color Emoji",sans-serif!important;font-size:18px;opacity:0;pointer-events:none;transform:scale(.86);transition:opacity var(--rs-fast) ease,transform var(--rs-fast) var(--rs-ease)}
+#screen .rs-emoji-trigger.visible{opacity:1;pointer-events:auto;transform:scale(1)}
+#screen .rs-emoji-panel{position:absolute;left:24px;right:24px;bottom:24px;z-index:96;max-height:310px;display:grid;grid-template-rows:auto auto minmax(0,1fr);overflow:hidden;border-radius:24px;background:rgba(9,15,24,.96);border:1px solid rgba(255,255,255,.11);box-shadow:0 28px 70px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.05);backdrop-filter:blur(30px) saturate(1.25);transform:translateY(20px) scale(.985);opacity:0;pointer-events:none;transition:transform var(--rs-ui) var(--rs-ease),opacity var(--rs-fast) ease}
+#screen .rs-emoji-panel.open{transform:none;opacity:1;pointer-events:auto}
+#screen .rs-emoji-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 8px}.rs-emoji-head strong{font-size:12px}
+#screen .rs-emoji-close{width:28px;height:28px;min-width:28px;border:0;border-radius:50%;background:rgba(255,255,255,.07);padding:0}
+#screen .rs-emoji-tabs{display:flex;gap:5px;padding:0 12px 9px;overflow-x:auto;scrollbar-width:none}#screen .rs-emoji-tabs::-webkit-scrollbar{display:none}
+#screen .rs-emoji-tab{flex:0 0 auto;height:29px;padding:0 10px;border:0;border-radius:99px;background:rgba(255,255,255,.055);font-size:8px;font-weight:800}.rs-emoji-tab.active{background:color-mix(in srgb,var(--accent) 58%,rgba(255,255,255,.07))}
+#screen .rs-emoji-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;padding:4px 12px 14px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}#screen .rs-emoji-grid::-webkit-scrollbar{display:none}
+#screen .rs-emoji{aspect-ratio:1;width:100%;min-height:34px;padding:0;border:0;border-radius:10px;background:transparent;font-family:"Segoe UI Emoji","Noto Color Emoji",sans-serif!important;font-size:21px;line-height:1}
+@media (hover:hover) and (pointer:fine){#screen .rs-emoji:hover{background:rgba(255,255,255,.075);filter:none!important}}
+
+/* Command palette: app search + device quick actions. */
+#screen .rs-command-backdrop{position:absolute;inset:0;z-index:110;display:grid;place-items:start center;padding-top:74px;background:rgba(1,5,10,.28);backdrop-filter:blur(9px);opacity:0;pointer-events:none;transition:opacity var(--rs-fast) ease}
+#screen .rs-command-backdrop.open{opacity:1;pointer-events:auto}
+#screen .rs-command-palette{width:min(620px,84%);max-height:430px;display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden;border-radius:25px;background:rgba(10,17,27,.96);border:1px solid rgba(255,255,255,.12);box-shadow:0 34px 90px rgba(0,0,0,.52),inset 0 1px rgba(255,255,255,.055);transform:translateY(-12px) scale(.985);transition:transform var(--rs-ui) var(--rs-ease)}
+#screen .rs-command-backdrop.open .rs-command-palette{transform:none}
+#screen .rs-command-search-wrap{display:flex;align-items:center;gap:10px;padding:13px;border-bottom:1px solid rgba(255,255,255,.07)}
+#screen .rs-command-search-wrap>span{font-size:18px;color:var(--muted)}
+#screen .rs-command-search{flex:1;border:0!important;background:transparent!important;box-shadow:none!important;outline:none!important;padding:7px!important;font-size:14px}
+#screen .rs-command-key{font-size:8px;padding:5px 7px;border-radius:7px;background:rgba(255,255,255,.06);color:var(--muted)}
+#screen .rs-command-results{overflow:auto;padding:8px;scrollbar-width:thin}
+#screen .rs-command-row{width:100%;display:flex;align-items:center;gap:10px;padding:9px 10px;border:0;border-radius:13px;background:transparent;text-align:left}
+#screen .rs-command-row.active{background:rgba(255,255,255,.075)}
+#screen .rs-command-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.055);font-size:15px;font-weight:900;overflow:hidden}.rs-command-icon img{width:100%;height:100%;object-fit:contain}
+#screen .rs-command-row>div{display:flex;flex-direction:column;min-width:0}.rs-command-row strong{font-size:10px}.rs-command-row small{font-size:8px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#screen #status-center{cursor:pointer}
+
+/* Reduced motion wins over every new animation, plus the user's OS preference. */
+#screen.reduced-motion *,#screen.reduced-motion *::before,#screen.reduced-motion *::after{scroll-behavior:auto!important;animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}
+@media(prefers-reduced-motion:reduce){#screen *,#screen *::before,#screen *::after{scroll-behavior:auto!important;animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}}
+
+@media(max-width:1100px){#screen .flagship-arcade{grid-template-columns:repeat(3,minmax(0,1fr))}#screen .motion-style-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#screen .rs-emoji-grid{grid-template-columns:repeat(10,minmax(0,1fr))}}
+@media(max-width:900px){#screen .flagship-arcade{grid-template-columns:repeat(2,minmax(0,1fr))}#screen .rs-emoji-grid{grid-template-columns:repeat(8,minmax(0,1fr))}#screen .rs-command-backdrop{padding-top:55px}#screen .rs-command-palette{width:90%}}
+
+/* -------------------------------------------------------------------------
+   RS Tablet 0.8.2 flagship pass
+   Keeps the shipped art/provider/security architecture and upgrades the real
+   tablet surfaces rather than masking them with screenshot-only overlays.
+   ------------------------------------------------------------------------- */
+#screen{--rs-font-scale:1;--rs-operational:"Segoe UI Variable Text","Segoe UI",Arial,sans-serif}
+#screen[data-font-size="92"]{--rs-font-scale:.92}#screen[data-font-size="94"]{--rs-font-scale:.94}#screen[data-font-size="96"]{--rs-font-scale:.96}#screen[data-font-size="98"]{--rs-font-scale:.98}#screen[data-font-size="100"]{--rs-font-scale:1}#screen[data-font-size="102"]{--rs-font-scale:1.02}#screen[data-font-size="104"]{--rs-font-scale:1.04}#screen[data-font-size="106"]{--rs-font-scale:1.06}#screen[data-font-size="108"]{--rs-font-scale:1.08}
+
+/* One wallpaper plane. Status/header layers no longer create a visible seam. */
+#screen .wallpaper-layer{inset:0!important;background-position:center!important;background-size:cover!important}
+#screen #lockscreen,#screen #desktop{background:transparent!important}
+#screen #statusbar{background:linear-gradient(180deg,rgba(4,9,15,.36),rgba(4,9,15,.08) 70%,transparent)!important;border-bottom:0!important;box-shadow:none!important}
+#screen #desktop::before,#screen #desktop::after,#screen #lockscreen::before,#screen #lockscreen::after{border:0!important;box-shadow:none!important}
+
+/* Home is a command-center desktop, not a large phone grid. */
+#screen #desktop.view.active{padding:52px 30px 78px!important;gap:10px}
+#screen .desktop-grid{grid-template-columns:minmax(0,1.72fr) minmax(180px,.64fr) minmax(180px,.64fr);gap:12px}
+#screen .hero-widget{min-height:154px;padding:18px 22px;background:linear-gradient(120deg,rgba(9,18,29,.55),rgba(12,27,38,.28) 68%,rgba(255,255,255,.025));border-radius:28px;border:1px solid rgba(255,255,255,.11);box-shadow:0 18px 42px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.055);backdrop-filter:blur(16px) saturate(1.12)}
+#screen .hero-topline{display:flex;justify-content:space-between;align-items:center;gap:14px}
+#screen #hero-server{max-width:55%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--rs-operational);font-size:calc(10px * var(--rs-font-scale));font-weight:800;color:#d8e6f1}
+#screen .hero-time{font-size:calc(48px * var(--rs-font-scale));line-height:1.02;margin-top:3px}
+#screen .hero-location{font-family:var(--rs-operational);font-size:calc(13px * var(--rs-font-scale));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#screen .hero-row{font-family:var(--rs-operational);font-size:calc(10.5px * var(--rs-font-scale));margin-top:10px;flex-wrap:wrap}
+#screen .hero-system-row{display:flex;gap:8px 13px;flex-wrap:wrap;margin-top:10px;font-family:var(--rs-operational);font-size:calc(8.5px * var(--rs-font-scale));font-weight:800;letter-spacing:.08em;color:rgba(220,234,244,.75)}
+#screen .comms-widget,#screen .scanner-widget{border-radius:25px;background:linear-gradient(155deg,rgba(15,26,38,.56),rgba(8,17,27,.35));backdrop-filter:blur(15px);border-color:rgba(255,255,255,.095)}
+#screen .widget-frequency,#screen .scanner-readout{font-size:calc(28px * var(--rs-font-scale))}
+#screen .widget-label{font-family:var(--rs-operational);font-size:calc(10px * var(--rs-font-scale));line-height:1.35;white-space:normal!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+#screen .app-grid{min-height:0!important;flex:1 1 auto!important}
+#screen .app-page{grid-template-columns:repeat(10,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(74px,1fr))!important;gap:8px 10px!important;align-content:center}
+#screen .app-page .app-tile{min-height:78px!important;padding:4px 2px!important;gap:5px!important;overflow:visible;background:transparent!important;border:0!important}
+#screen .app-page .app-icon{width:58px!important;height:58px!important;border-radius:17px!important;transition:transform var(--rs-ui) var(--rs-ease),filter var(--rs-ui) ease!important}
+#screen .app-page .app-label{min-height:calc(25px * var(--rs-font-scale));font-family:var(--rs-operational);font-size:calc(10px * var(--rs-font-scale))!important;line-height:1.18!important;white-space:normal!important;text-align:center;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;text-shadow:0 2px 9px rgba(0,0,0,.7)}
+#screen .dock{padding:7px 11px!important;border-radius:25px!important;background:linear-gradient(180deg,rgba(19,29,41,.40),rgba(8,14,22,.52))!important;border:1px solid rgba(255,255,255,.10)!important;box-shadow:0 14px 42px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.06)!important;backdrop-filter:blur(20px) saturate(1.15)!important}
+#screen .dock .app-tile:hover{transform:none!important}#screen .dock .app-tile:hover .app-icon{transform:translateY(-3px) scale(1.055)}
+#screen .home-page-dots{margin-top:2px}
+
+/* Lock screen belongs to the same OS and scales for gameplay distance. */
+#screen .lock-time{font-size:calc(76px * var(--rs-font-scale));line-height:1;margin-top:8%;font-weight:300}
+#screen .lock-date{font-family:var(--rs-operational);font-size:calc(15px * var(--rs-font-scale))}
+#screen .lock-glance{position:relative;z-index:2;display:flex;justify-content:center;flex-wrap:wrap;gap:7px 9px;margin:11px auto 0;max-width:650px;font-family:var(--rs-operational)}
+#screen .lock-glance span{padding:6px 10px;border-radius:99px;background:rgba(8,15,24,.35);border:1px solid rgba(255,255,255,.09);backdrop-filter:blur(12px);font-size:calc(9px * var(--rs-font-scale));font-weight:700;color:rgba(235,244,250,.86)}
+#screen .lock-card{bottom:103px!important;width:min(70%,520px)!important;border-radius:22px!important;background:rgba(10,18,28,.43)!important}
+#screen .lock-card strong{font-size:calc(13px * var(--rs-font-scale))}.lock-card span{font-size:calc(10px * var(--rs-font-scale))!important}
+#screen .unlock-btn{font-size:calc(11px * var(--rs-font-scale));min-height:38px}
+
+/* Stable safe typography for operational surfaces. */
+#screen [data-app="sos"],#screen [data-app="drone"],#screen [data-app="recon"],#screen [data-app="cctv"],#screen [data-app="scanner"],#screen [data-app="vehiclelab"],#screen [data-app="buildertools"],#screen [data-app="admin"],#screen [data-app="devtools"],#screen [data-app="worldbuilder"]{font-family:var(--rs-operational)!important}
+#screen .primary-btn,#screen .secondary-btn,#screen .danger-btn,#screen .text-input,#screen select,#screen textarea{font-size:calc(10.5px * var(--rs-font-scale));min-height:35px}
+#screen .app-hero h2{font-size:calc(24px * var(--rs-font-scale));line-height:1.08}.app-hero p{font-size:calc(10.5px * var(--rs-font-scale));line-height:1.5;max-width:720px}.eyebrow{font-size:calc(9px * var(--rs-font-scale))}
+#screen .card h3,#screen .setting-group h3{font-size:calc(13px * var(--rs-font-scale))}#screen .card p,#screen .setting-group p{font-size:calc(10px * var(--rs-font-scale));line-height:1.48}
+#screen .list-row strong,#screen .feed-card strong,#screen .data-card b{font-size:calc(11px * var(--rs-font-scale))}#screen .list-row small,#screen .feed-card small,#screen .data-card small{font-size:calc(9px * var(--rs-font-scale));line-height:1.35}
+#screen .badge{font-size:calc(8px * var(--rs-font-scale));white-space:nowrap}
+#screen .section-label{font-size:calc(8.5px * var(--rs-font-scale));letter-spacing:.12em}
+#screen .app-content :is(.list-row,.feed-card,.data-card,.vehicle-card,.property-card,.service-card)>*{min-width:0}
+#screen .app-content :is(.list-row,.feed-card,.data-card,.vehicle-card,.property-card,.service-card) :is(strong,b,small,p,span){overflow-wrap:anywhere}
+#screen .feed-card p,#screen .data-card p,#screen .vehicle-card p,#screen .property-card p,#screen .service-card p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+
+/* Settings: left navigation + independently readable content workspace. */
+#screen .settings-workspace{display:grid;grid-template-columns:190px minmax(0,1fr);gap:14px;align-items:start}
+#screen .settings-nav{position:sticky;top:0;max-height:calc(100vh - 185px);overflow:auto;display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:20px;background:rgba(8,15,24,.45);border:1px solid rgba(255,255,255,.075);scrollbar-width:thin}
+#screen .settings-nav-btn{display:grid;grid-template-columns:31px 1fr;align-items:center;gap:8px;width:100%;padding:8px;border:0;border-radius:12px;background:transparent;color:inherit;text-align:left}
+#screen .settings-nav-btn i{width:31px;height:31px;display:grid;place-items:center;border-radius:9px;background:rgba(255,255,255,.055);font-style:normal;font-family:var(--rs-operational);font-size:11px;font-weight:900}
+#screen .settings-nav-btn span{font-family:var(--rs-operational);font-size:calc(10px * var(--rs-font-scale));font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#screen .settings-nav-btn.active{background:rgba(255,255,255,.075)}#screen .settings-nav-btn.active i{background:color-mix(in srgb,var(--accent) 25%,rgba(255,255,255,.06))}
+#screen .settings-sections{display:flex;flex-direction:column;gap:10px;min-height:0}
+#screen .settings-section{scroll-margin-top:6px;padding:15px;border-radius:20px;background:linear-gradient(145deg,rgba(14,23,34,.58),rgba(8,15,23,.38));border:1px solid rgba(255,255,255,.075)}
+#screen .settings-section>header{display:flex;align-items:flex-start;gap:11px;margin-bottom:11px}.settings-section>header h3{margin:0 0 3px}.settings-section>header p{margin:0;color:var(--muted)}
+#screen .settings-section-icon{flex:0 0 38px;height:38px;display:grid;place-items:center;border-radius:11px;background:rgba(255,255,255,.065);font-family:var(--rs-operational);font-size:13px;font-weight:900}
+#screen .appearance-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.appearance-summary>div{padding:9px;border-radius:12px;background:rgba(255,255,255,.035)}.appearance-summary span{display:block;font-size:8px;color:var(--muted)}.appearance-summary b{display:block;margin-top:2px;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#screen .settings-rail{overscroll-behavior-inline:contain;scroll-snap-type:x proximity;touch-action:pan-x}
+#screen .theme-grid.settings-rail,#screen .wall-grid.settings-rail{display:flex!important;overflow-x:auto!important;overflow-y:hidden!important;gap:9px!important;padding-bottom:8px!important;scrollbar-width:thin}
+#screen .theme-grid.settings-rail>*{flex:0 0 175px}.wall-grid.settings-rail>*{flex:0 0 190px}
+#screen .font-size-control{padding:12px;border-radius:15px;background:rgba(255,255,255,.035);font-family:var(--rs-operational)}
+#screen .font-size-control>div:first-child{display:flex;justify-content:space-between;gap:10px;font-size:11px}.font-size-control input{width:100%;margin:10px 0 3px}.font-size-ticks{display:flex;justify-content:space-between;color:var(--muted);font-size:8px}.font-size-control p{margin:9px 0 0}
+#screen .setting-row{gap:12px;min-height:42px}.setting-row>span{font-family:var(--rs-operational);font-size:calc(10px * var(--rs-font-scale))}.setting-row>b{font-size:calc(10px * var(--rs-font-scale));text-align:right;overflow-wrap:anywhere}.setting-row.stack{align-items:stretch;flex-direction:column}
+
+/* Emoji: tablet uses larger cells and fewer columns than the prior micro-grid. */
+#screen .rs-emoji-panel{left:8%;right:8%;bottom:38px;max-height:360px}
+#screen .rs-emoji-grid{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:7px;padding:6px 14px 16px}
+#screen .rs-emoji{min-height:42px;font-size:25px}
+#screen .rs-emoji-tab{font-size:calc(9px * var(--rs-font-scale));height:31px}
+
+/* Recon: radar command center with explicit degraded/lost states. */
+#screen .recon-command{display:grid;grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr);gap:14px;margin-bottom:14px;padding:14px;border-radius:24px;background:linear-gradient(135deg,rgba(9,39,43,.82),rgba(5,14,21,.92));border:1px solid rgba(92,221,211,.16);font-family:var(--rs-operational)}
+#screen .recon-scope{position:relative;aspect-ratio:1;max-height:310px;justify-self:center;width:min(100%,310px);border-radius:50%;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(89,231,213,.11),rgba(3,18,21,.96) 62%);border:1px solid rgba(101,231,219,.22);display:grid;place-items:center;box-shadow:inset 0 0 45px rgba(0,0,0,.45)}
+#screen .recon-scope>strong{font-size:calc(36px * var(--rs-font-scale));z-index:4}.recon-scope>span{position:absolute;top:61%;z-index:4;font-size:8px;letter-spacing:.16em;color:#84dace}
+#screen .recon-ring{position:absolute;border:1px solid rgba(98,226,210,.16);border-radius:50%;inset:17%}.recon-ring.r2{inset:31%}.recon-ring.r3{inset:43%}
+#screen .recon-cross{position:absolute;background:rgba(98,226,210,.10)}.recon-cross.h{height:1px;left:9%;right:9%}.recon-cross.v{width:1px;top:9%;bottom:9%}
+#screen .recon-sweep{position:absolute;inset:4%;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 82%,rgba(98,226,210,.17) 92%,rgba(98,226,210,.45) 99%,transparent);animation:reconSweep 3.8s linear infinite}@keyframes reconSweep{to{transform:rotate(360deg)}}
+#screen .recon-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:#6ae5d6;box-shadow:0 0 11px #6ae5d6;transform:translate(-50%,-50%)}
+#screen .recon-command-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-content:center}.recon-command-metrics>div{min-height:72px;padding:10px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055);display:flex;flex-direction:column;justify-content:flex-end}.recon-command-metrics span{font-size:8px;letter-spacing:.1em;color:#7fb6b3}.recon-command-metrics b{font-size:calc(19px * var(--rs-font-scale));margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#screen .recon-card{font-family:var(--rs-operational);border-left:3px solid rgba(89,225,208,.35)}
+
+/* CCTV is a security wall rather than another generic tactical list. */
+#screen .cctv-wall{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;font-family:var(--rs-operational)}
+#screen .cctv-wall .wide{grid-column:1/-1}.cctv-feed-card{display:grid;grid-template-columns:148px 1fr;min-height:126px;overflow:hidden;border-radius:18px;background:#071018;border:1px solid rgba(255,255,255,.075)}
+#screen .cctv-feed-preview{position:relative;min-height:126px;background:linear-gradient(145deg,#17242b,#050b10);display:grid;place-items:center;overflow:hidden}.cctv-feed-preview::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.018) 3px 4px)}.cctv-feed-preview span{position:relative;font-size:8px;letter-spacing:.14em;color:#8ea4ae}.cctv-feed-info{padding:11px;display:flex;flex-direction:column;gap:5px}.cctv-feed-info strong{font-size:12px}.cctv-feed-info small{font-size:9px;color:var(--muted)}.cctv-feed-info .button-row{margin-top:auto}
+
+/* Scanner gets amber field-instrument identity so it cannot be mistaken for Drone/Recon. */
+#screen [data-app="scanner"] .app-content{background:radial-gradient(circle at 82% 16%,rgba(244,178,80,.055),transparent 31%)}
+#screen [data-app="scanner"] .scanner-instructions{border-color:rgba(245,182,83,.18);background:linear-gradient(135deg,rgba(73,47,12,.34),rgba(13,18,22,.52))}
+#screen [data-app="scanner"] .scanner-instructions b{color:#ffc36f}.scanner-instructions kbd{color:#ffd99e}
+
+/* Vehicle Lab = telemetry, visually distinct from the Garage catalog. */
+#screen .vehicle-lab-shell{font-family:var(--rs-operational);display:grid;gap:10px}.vehicle-lab-empty{min-height:210px;display:grid;place-items:center;align-content:center;gap:7px;border:1px dashed rgba(121,196,255,.22);border-radius:22px;background:linear-gradient(145deg,rgba(8,24,38,.58),rgba(7,12,19,.35))}.vehicle-lab-empty b{font-size:18px;letter-spacing:.08em}.vehicle-lab-empty span{font-size:10px;color:var(--muted)}
+#screen .vehicle-lab-visual{display:grid;grid-template-columns:minmax(245px,.9fr) 1.1fr;gap:14px;padding:13px;border-radius:22px;background:linear-gradient(125deg,rgba(7,22,36,.88),rgba(13,19,28,.7));border:1px solid rgba(100,184,245,.13)}.vehicle-lab-photo{height:170px;border-radius:16px;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle,#203247,#07101a 68%);position:relative}.vehicle-lab-photo img{width:100%;height:100%;object-fit:contain}.vehicle-lab-photo>span{position:absolute;bottom:8px;left:9px;padding:4px 6px;border-radius:6px;background:rgba(0,0,0,.55);font-size:7px;letter-spacing:.12em}.vehicle-lab-photo:not(.fallback):has(img)>span{display:none}.vehicle-lab-identity{display:flex;flex-direction:column;justify-content:center;gap:5px}.vehicle-lab-identity h3{font-size:24px;margin:2px 0}.vehicle-lab-identity>strong{font-size:14px;letter-spacing:.12em}.vehicle-lab-identity small{font-size:9px;color:var(--muted)}
+#screen .vehicle-lab-metrics{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}.vehicle-lab-metrics>div{padding:10px;border-radius:13px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055)}.vehicle-lab-metrics span{display:block;font-size:7px;letter-spacing:.1em;color:var(--muted)}.vehicle-lab-metrics b{display:block;margin-top:4px;font-size:15px}.vehicle-lab-footer{display:flex;gap:8px 16px;flex-wrap:wrap;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.025);font-size:9px;color:var(--muted)}
+
+/* SOS: operational cards remain readable regardless of decorative font choice. */
+#screen .sos-operational-list{font-family:var(--rs-operational);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.sos-operational-card{display:flex;flex-direction:column;gap:8px;min-height:182px;padding:13px;border-radius:17px;border-left:3px solid #ff6678;background:linear-gradient(150deg,rgba(65,17,26,.27),rgba(12,18,26,.72))}.sos-operational-card header,.sos-operational-card footer{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.sos-operational-card p{margin:0;min-height:37px;font-size:calc(10px * var(--rs-font-scale));line-height:1.45;-webkit-line-clamp:3}.sos-location-line{padding:8px;border-radius:10px;background:rgba(255,255,255,.035)}.sos-location-line span{display:block;font-size:7px;letter-spacing:.11em;color:var(--muted)}.sos-location-line b{display:block;margin-top:3px;font-size:9px;overflow-wrap:anywhere}.sos-operational-card footer{margin-top:auto;align-items:flex-end}.sos-operational-card footer>div{display:flex;flex-wrap:wrap;gap:6px}.sos-operational-card .owner-cancel{min-width:126px}
+
+/* Gallery/media preserves aspect ratio and makes the large tablet worth using. */
+#screen .gallery-media,#screen .phone-media,#screen .media-viewer img,#screen .media-viewer video{object-fit:contain!important;background:#03070b}
+#screen .media-viewer{max-width:980px;margin:0 auto}.media-viewer .gallery-media,.media-viewer img,.media-viewer video{max-height:58vh;width:100%;height:auto}
+#screen .gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+
+/* App Store and power tools use tablet density, not phone-sized rows. */
+#screen [data-app="store"] .store-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.store-list .list-row{min-height:70px}
+#screen [data-app="buildertools"] .app-content,#screen [data-app="admin"] .app-content{font-family:var(--rs-operational)}
+#screen [data-app="buildertools"] .app-hero,#screen [data-app="admin"] .app-hero{position:sticky;top:-1px;z-index:3;background:linear-gradient(180deg,rgba(8,14,22,.98),rgba(8,14,22,.90),transparent);padding-bottom:11px}
+
+/* Arcade additions + cleanup-safe canvases. */
+#screen #breakout-canvas,#screen #pong-canvas,#screen #asteroid-canvas{display:block;width:min(700px,100%);height:auto;margin:0 auto;border-radius:18px;border:1px solid rgba(255,255,255,.085);box-shadow:0 16px 38px rgba(0,0,0,.22)}
+#screen .reaction-grid{width:min(430px,78vw);margin:12px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.reaction-grid button{aspect-ratio:1;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.045);font-size:18px;font-weight:900;transition:transform 90ms ease,background 100ms ease}.reaction-grid button.active{background:#65d9b3;color:#06130f;transform:scale(1.04);box-shadow:0 0 0 5px rgba(101,217,179,.1)}
+
+/* Keep hidden/idle surfaces cheap. */
+#screen .view:not(.active) *{animation-play-state:paused!important}
+#screen .view:not(.active) video{visibility:hidden}
+
+@media(max-width:1120px){
+ #screen .app-page{grid-template-columns:repeat(5,minmax(0,1fr))!important;grid-template-rows:repeat(4,minmax(64px,1fr))!important;gap:5px 11px!important}
+ #screen .app-page .app-icon{width:52px!important;height:52px!important}.app-page .app-label{font-size:calc(9px * var(--rs-font-scale))!important}
+ #screen .settings-workspace{grid-template-columns:158px minmax(0,1fr)}#screen .appearance-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #screen .vehicle-lab-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+ #screen .recon-command{grid-template-columns:240px minmax(0,1fr)}
+ #screen .rs-emoji-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+}
+@media(max-width:900px){
+ #screen #desktop.view.active{padding:48px 20px 70px!important}.desktop-grid{grid-template-columns:1.45fr .78fr .78fr}.hero-time{font-size:calc(38px * var(--rs-font-scale))}
+ #screen .settings-workspace{grid-template-columns:1fr}.settings-nav{position:static;max-height:none;display:flex;flex-direction:row;overflow-x:auto}.settings-nav-btn{flex:0 0 132px!important}.settings-sections{min-width:0}
+ #screen .recon-command{grid-template-columns:1fr}.recon-scope{width:230px}.recon-command-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+ #screen .cctv-wall,#screen .sos-operational-list{grid-template-columns:1fr}.vehicle-lab-visual{grid-template-columns:1fr}.vehicle-lab-photo{height:150px}
+ #screen .gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ #screen .rs-emoji-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+}
+
+/* Final readability sweep over legacy micro-labels that still carry useful data. */
+#screen .data-kv span,#screen .conversation-row small,#screen .email-row small,#screen .email-row time,#screen .feed-card header small,#screen .transaction-row small,#screen .vehicle-card small,#screen .property-card small,#screen .vehicle-stats span,#screen .mediahub-card footer,#screen .stats-grid small,#screen .service-card small,#screen .map-hud span,#screen .map-nearby-row small,#screen .note-row small{font-size:calc(9px * var(--rs-font-scale))!important}
+#screen .message-bubble small,#screen .message-bubble time,#screen .attachment-chip,#screen .feed-media-chip,#screen .map-pin>b{font-size:calc(8.5px * var(--rs-font-scale))!important}
+#screen .vehicle-actions button,#screen .map-category-row button{font-size:calc(9px * var(--rs-font-scale))!important}
+#screen .lock-glance b,#screen .lock-glance small{display:block}.lock-glance b{font-size:calc(10px * var(--rs-font-scale));line-height:1.1}.lock-glance small{margin-top:2px;font-size:calc(7.5px * var(--rs-font-scale));color:rgba(221,233,242,.56);text-transform:uppercase;letter-spacing:.08em}
+
+/* Drone has its own teal instrumentation language; values remain provider-owned. */
+#screen [data-app="drone"] .app-content{background:radial-gradient(circle at 84% 5%,rgba(65,210,187,.065),transparent 28%)}
+#screen [data-app="drone"] .drone-hero{position:relative;overflow:hidden;min-height:170px;padding:20px 22px;border-radius:24px;background:linear-gradient(125deg,rgba(6,50,49,.80),rgba(5,17,25,.93) 60%,rgba(11,35,43,.86));border:1px solid rgba(95,232,209,.17);box-shadow:inset 0 1px rgba(255,255,255,.045)}
+#screen [data-app="drone"] .drone-hero::after{content:"READY / LIVE LINK";position:absolute;right:18px;top:15px;font-size:8px;letter-spacing:.13em;color:#7ce4d2;font-weight:900;opacity:.75}
+#screen [data-app="drone"] .drone-hero h3{font-size:calc(25px * var(--rs-font-scale));margin:7px 0 5px}.drone-hero p{max-width:560px;font-size:calc(10px * var(--rs-font-scale));line-height:1.5}
+#screen [data-app="drone"] #drone-fleets .list-row{min-height:57px;border-left:2px solid rgba(96,225,204,.28);background:linear-gradient(90deg,rgba(23,76,70,.12),rgba(10,17,25,.58))}
+
+/* Stats uses a real tablet dashboard instead of tiny metrics in empty space. */
+#screen .stats-command{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(0,1.2fr);gap:10px;margin:12px 0;font-family:var(--rs-operational)}
+#screen .stats-primary{min-height:180px;padding:20px;border-radius:22px;background:linear-gradient(145deg,rgba(28,56,86,.76),rgba(8,17,27,.90));border:1px solid rgba(116,186,255,.13);display:flex;flex-direction:column;justify-content:flex-end}.stats-primary>span{font-size:9px;letter-spacing:.13em;color:#90b4d2}.stats-primary>strong{font-size:calc(58px * var(--rs-font-scale));line-height:.98;margin:7px 0}.stats-primary>small{font-size:calc(9px * var(--rs-font-scale));color:var(--muted)}
+#screen .stats-mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.stats-mini>div{padding:14px;border-radius:17px;background:rgba(9,18,28,.70);border:1px solid rgba(255,255,255,.065);display:flex;flex-direction:column;justify-content:flex-end}.stats-mini span{font-size:8px;letter-spacing:.1em;color:var(--muted)}.stats-mini b{font-size:calc(22px * var(--rs-font-scale));margin-top:4px}
+#screen .tablet-stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.tablet-stats-grid>div{min-height:84px;justify-content:flex-end}.tablet-stats-grid span{font-size:calc(9px * var(--rs-font-scale))!important}.tablet-stats-grid strong{font-size:calc(20px * var(--rs-font-scale))}
+@media(max-width:900px){#screen .stats-command{grid-template-columns:1fr}.tablet-stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* -------------------------------------------------------------------------
+   v0.8.3 shared-feed + Fleeca banking pass.
+   ------------------------------------------------------------------------- */
+#screen .gallery-grid{
+  grid-auto-rows:auto!important;
+  align-content:start;
+  gap:10px!important;
+}
+#screen .gallery-card{
+  min-width:0;
+  aspect-ratio:1.24/1!important;
+  isolation:isolate;
+}
+#screen .gallery-card .gallery-media{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+#screen .gallery-card>span,#screen .gallery-card>.gallery-check{z-index:2}
+#screen .feed-card footer{flex-wrap:wrap;align-items:center}
+
+#screen .tablet-bank-card{
+  position:relative;
+  overflow:hidden;
+  min-height:235px;
+  margin:0 0 12px;
+  padding:25px 28px 22px;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+  box-shadow:0 26px 65px rgba(0,0,0,.26),inset 0 1px rgba(255,255,255,.2);
+}
+#screen .tablet-bank-sheen{position:absolute;inset:-80px auto auto 48%;width:42%;height:420px;transform:rotate(22deg);background:linear-gradient(110deg,transparent,rgba(255,255,255,.17),transparent);pointer-events:none}
+#screen .tablet-bank-card header,#screen .tablet-bank-card footer,#screen .tablet-bank-card-mid,#screen .tablet-bank-number{position:relative;z-index:1}
+#screen .tablet-bank-card header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+#screen .tablet-bank-card header strong{font-size:15px;letter-spacing:.17em}
+#screen .tablet-bank-card header span{font-size:10px;font-weight:900;letter-spacing:.18em;opacity:.8}
+#screen .tablet-bank-card-mid{display:flex;align-items:center;justify-content:space-between;margin:32px 0 23px}
+#screen .tablet-bank-card-mid>b{font-size:28px;opacity:.85}
+#screen .tablet-bank-chip{display:block;width:54px;height:39px;border-radius:9px;background:linear-gradient(135deg,#f0d98c,#aa7e36);box-shadow:inset 0 1px rgba(255,255,255,.35)}
+#screen .tablet-bank-number{font:700 24px/1.1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:3px;white-space:nowrap}
+#screen .tablet-bank-card footer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;margin-top:29px;align-items:end}
+#screen .tablet-bank-card footer>div{min-width:0}
+#screen .tablet-bank-card footer small{display:block;margin-bottom:5px;font-size:9px;letter-spacing:.15em;opacity:.72}
+#screen .tablet-bank-card footer strong{display:block;max-width:100%;font-size:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#screen .tablet-bank-theme-row{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+#screen .tablet-bank-theme.active{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.25)}
+#screen .bank-card-fleeca{background:linear-gradient(135deg,#4dc8ff 0%,#75e7da 42%,#507fff 100%)}
+#screen .bank-card-midnight{background:linear-gradient(135deg,#111827 0%,#27344f 50%,#070b12 100%)}
+#screen .bank-card-rose{background:linear-gradient(135deg,#ff8eaa 0%,#f0547b 43%,#8d37a1 100%)}
+#screen .bank-card-emerald{background:linear-gradient(135deg,#0c7869 0%,#30cf95 46%,#155f78 100%)}
+#screen .tablet-bank-balances{grid-template-columns:2fr 1fr 1fr!important}
+#screen .tablet-bank-balances>div{min-width:0}
+#screen .tablet-bank-balances strong{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#screen .tablet-bank-balances .bank-primary-balance strong{font-size:30px}
+@media(max-width:900px){
+  #screen .tablet-bank-number{font-size:18px;letter-spacing:2px}
+  #screen .tablet-bank-card{min-height:210px;padding:22px}
+  #screen .tablet-bank-balances{grid-template-columns:1fr!important}
+}
+
+/* Lock view must leave the navigation stack after unlocking. */
+#screen #lockscreen.view:not(.active){display:none!important}
+#screen #lockscreen.view.active{display:flex!important;justify-content:flex-start;padding:54px 22px 36px}
+#screen #lockscreen .unlock-btn{position:absolute;bottom:56px;left:50%;transform:translateX(-50%)}
