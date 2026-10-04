@@ -1,0 +1,10 @@
+
+html,body{background:#e4eaf0!important;background-image:radial-gradient(ellipse at 50% 30%,#f9fcff,#d3dfe9)!important}
+#stage{top:36px!important}body.preview-feed-active #stage{visibility:hidden!important;pointer-events:none!important}
+.preview-toolbar{position:fixed;top:0;left:0;right:0;z-index:99999;min-height:36px;padding:7px 18px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#122233;color:#c1d7e9;font:10px/1.2 'Segoe UI',sans-serif;letter-spacing:.08em}
+.preview-toolbar>div{display:flex;gap:6px}.preview-toolbar button,#preview-feed button{border:1px solid #8099ad55;border-radius:6px;background:#28435a;color:white;font:12px/1.2 'Segoe UI',sans-serif;padding:5px 10px;cursor:pointer}.preview-toolbar [hidden],#preview-feed[hidden]{display:none!important}
+#preview-feed{position:fixed;inset:36px 0 0;z-index:100000;overflow:hidden;background:#0b1924;color:white;font:14px 'Segoe UI',sans-serif}
+#preview-feed .preview-feed-scene{position:absolute;inset:-35%;background:linear-gradient(#07162188,#07162188),url('img/map.webp') center/cover;transform:translateX(var(--feed-pan,0px)) scale(var(--feed-zoom,1));transition:transform 160ms ease;filter:saturate(.7)}
+#preview-feed header,#preview-feed footer{position:absolute;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px;background:#091b28d9}
+#preview-feed header{top:0}#preview-feed footer{bottom:0}#preview-feed h2{font-size:18px;margin:6px 0}#preview-feed small{color:#8dd7ff;font-size:10px;letter-spacing:.14em}.preview-feed-crosshair{position:absolute;left:50%;top:50%;width:60px;height:60px;border:1px solid #bce9e077;box-shadow:0 0 0 1px #071b16}
+@media(max-width:560px){.preview-toolbar>span{display:none}.preview-toolbar{justify-content:center}#preview-feed footer{font-size:10px;flex-wrap:wrap}#preview-feed header{padding:12px}#preview-feed h2{font-size:14px}}

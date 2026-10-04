@@ -1,0 +1,61 @@
+/* Native Chromium scrolling; app motion uses only opacity and transforms. */
+#screen{--rs-ease:cubic-bezier(.22,.75,.2,1)}
+#app-shell{transform-origin:var(--app-origin,50% 56%)!important}
+@keyframes rsTabletAppOpen{from{opacity:0;transform:scale(.965) translateY(9px)}to{opacity:1;transform:none}}
+@keyframes rsTabletAppClose{from{opacity:1;transform:none}to{opacity:0;transform:scale(.975) translateY(6px)}}
+#screen .toast{animation:tabletNoticeIn 220ms var(--rs-ease) both;overflow-wrap:anywhere;border-left:3px solid var(--accent);background:linear-gradient(140deg,#1c304bf5,#101a2cf5)}
+#screen .toast-stack{top:98px;right:18px;width:340px;max-width:calc(100% - 36px);max-height:calc(100% - 200px);overflow:hidden}
+#screen .toast p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;line-height:1.5}
+#screen .toast:nth-child(n+4){display:none}
+@keyframes tabletNoticeIn{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:none}}
+#screen .app-content{scrollbar-width:thin;scrollbar-color:#a5c5dc55 transparent;overscroll-behavior-y:contain;overflow-x:hidden;scrollbar-gutter:stable}
+#screen .app-content::-webkit-scrollbar,#screen .settings-nav::-webkit-scrollbar{width:6px;height:6px}
+#screen .app-content::-webkit-scrollbar-thumb,#screen .settings-nav::-webkit-scrollbar-thumb{background:#a5c5dc55;border-radius:8px}
+#screen .app-content::-webkit-scrollbar-track{background:transparent}
+#screen .app-hero{gap:18px;flex-wrap:wrap;align-items:center}
+#screen .app-hero>div{min-width:0;flex:1 1 240px}
+#screen .card,#screen .grow,#screen .form-row>*{min-width:0}
+#screen .form-row{flex-wrap:wrap;gap:10px}
+#screen .form-row .text-input{flex:1 1 160px}
+#screen .card p,#screen .list-row strong,#screen .list-row small{overflow-wrap:anywhere}
+#screen button:focus-visible,#screen input:focus-visible,#screen select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#screen .settings-workspace{gap:20px!important;grid-template-columns:180px minmax(0,1fr)!important}
+#screen .settings-nav{background:linear-gradient(160deg,#182b40e8,#121b2ce8)!important;border:1px solid #c1e5ff19!important;padding:10px!important}
+#screen .settings-nav-btn{border-radius:12px!important;min-height:42px!important;transition:background-color 150ms ease,color 150ms ease!important}
+#screen .settings-nav-btn span{font-size:12px!important;white-space:normal!important;line-height:1.3}
+#screen .settings-nav-btn.active{background:color-mix(in srgb,var(--accent) 16%,transparent)!important;box-shadow:inset 3px 0 var(--accent)}
+#screen .settings-nav-btn.active i{color:var(--accent);background:transparent!important}
+#screen .settings-sections{gap:20px!important}
+#screen .settings-section{padding:22px!important;background:linear-gradient(150deg,#20354aab,#111c30de)!important;border:1px solid #d5ecff1a!important;border-radius:22px!important;box-shadow:inset 0 1px #ffffff06}
+#screen .settings-section>header{gap:14px;margin-bottom:20px;align-items:center}
+#screen .settings-section>header h3{font-size:19px;margin-bottom:5px;letter-spacing:-.025em}
+#screen .settings-section>header p{font-size:12px;line-height:1.6;max-width:50em}
+#screen .settings-section-icon{width:42px;height:42px;flex-basis:42px;border:1px solid #c7e8ff1c;background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent);font-size:18px}
+#screen .setting-row{min-height:52px!important;padding:10px 0;gap:16px!important;flex-wrap:wrap}
+#screen .setting-row>span,#screen .setting-row>b{font-size:12px!important}
+#screen .setting-row .text-input{max-width:100%;min-width:0}
+#screen .appearance-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#screen .appearance-summary>div{padding:14px;background:#ffffff06;border:1px solid #ffffff0a;border-radius:14px}
+#screen .appearance-summary span{font-size:11px;letter-spacing:.02em}
+#screen .appearance-summary b{font-size:13px;white-space:normal;line-height:1.5;margin-top:5px}
+#screen .tablet-frame-style-card{background:linear-gradient(145deg,#ffffff08,#ffffff03)!important;border:1px solid #c4dcff22!important;border-radius:16px!important;transition:border-color 160ms ease,background-color 160ms ease!important;transform:none!important}
+#screen .tablet-frame-style-card.active{border-color:var(--accent)!important;background:color-mix(in srgb,var(--accent) 9%,#111b2d)!important;box-shadow:0 0 0 1px var(--accent)!important}
+#screen .tablet-frame-color-chip.active{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent)!important}
+#screen .settings-rail{scroll-behavior:auto;touch-action:pan-x}
+#screen .app-loading{padding:24px;display:grid;gap:16px}
+#screen .app-loading i{display:block;height:90px;background:#c6e5ff0c;border:1px solid #ffffff09;border-radius:18px;animation:tabletLoading 1.2s ease-in-out infinite alternate}
+#screen .app-loading i:first-child{height:30px;width:45%}
+#screen .app-loading i:last-child{height:180px;animation-delay:.15s}
+@keyframes tabletLoading{to{opacity:.4}}
+#screen.reduced-motion .app-loading i{animation:none}
+#screen .rs-emoji-panel{max-height:380px;bottom:106px;left:24px;right:24px}
+#screen .rs-emoji-tabs{overflow-x:auto;flex-wrap:nowrap;flex:0 0 auto;scrollbar-width:thin}
+#screen .rs-emoji-tabs button{flex:0 0 auto}
+#screen .rs-emoji-grid.gif-mode{grid-template-columns:repeat(4,minmax(0,1fr))}
+#screen .tablet-gif-library{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+#screen .tablet-gif-card{display:flex;flex-direction:column;width:100%;min-width:0;padding:9px;border-radius:14px;border:1px solid #ffffff20;background:#ffffff08;text-align:left;gap:8px}
+#screen .tablet-gif-card img{width:100%;height:110px;object-fit:contain;border-radius:8px;background:#080f1d}
+#screen .tablet-gif-card span{font-size:12px;overflow-wrap:anywhere}
+#screen .tablet-gif-entry{display:grid;gap:8px;min-width:0}
+@media(prefers-reduced-motion:reduce){#screen .app-loading i{animation:none}}
+@media(max-width:700px){#screen .settings-workspace{grid-template-columns:145px minmax(0,1fr)!important}#screen .settings-section{padding:16px!important}}
