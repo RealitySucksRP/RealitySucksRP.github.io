@@ -1,1 +1,15 @@
 .demo-badge{position:fixed;left:14px;bottom:12px;z-index:100000;display:flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid rgba(67,206,241,.45);border-radius:7px;background:rgba(5,14,20,.88);box-shadow:0 10px 30px rgba(0,0,0,.35);color:#a7ddea;font:700 11px/1.2 Inter,Segoe UI,sans-serif;letter-spacing:.04em;pointer-events:none}.demo-badge b{color:#42d1f6}.demo-native-note{position:fixed;left:50%;bottom:14px;z-index:100001;transform:translateX(-50%);max-width:min(700px,80vw);padding:9px 13px;border:1px solid #365466;border-radius:7px;background:rgba(5,14,20,.94);color:#c4d5de;font:600 12px/1.35 Inter,Segoe UI,sans-serif;box-shadow:0 14px 35px rgba(0,0,0,.35)}.demo-native-note strong{color:#7bdff8}
+
+/* GitHub Pages has no GTA/FiveM world behind the transparent NUI.
+   Give the browser demo a neutral world-view surface so the real overlay
+   is legible without inventing a fake gameplay screenshot. */
+html,body{background:#111719!important}
+body.simple{background:
+radial-gradient(circle at 50% 42%,rgba(39,58,64,.38),transparent 42%),
+linear-gradient(180deg,#151c20 0%,#0e1418 100%)!important}
+.world-workspace{background:
+linear-gradient(rgba(255,255,255,.018),rgba(255,255,255,.018)),
+repeating-linear-gradient(0deg,transparent 0 31px,rgba(216,229,232,.025) 31px 32px),
+repeating-linear-gradient(90deg,transparent 0 31px,rgba(216,229,232,.025) 31px 32px);
+border:1px solid rgba(238,232,218,.08)}
+.world-workspace:after{content:"BROWSER PREVIEW · THE LIVE FIVEM WORLD IS VISIBLE HERE IN GAME";position:absolute;left:50%;bottom:18px;transform:translateX(-50%);color:rgba(222,231,232,.38);font:700 8px/1 Inter,Segoe UI,sans-serif;letter-spacing:.14em;white-space:nowrap}
