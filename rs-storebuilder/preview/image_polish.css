@@ -1,0 +1,256 @@
+/* RS StoreBuilder 0.7.1 — supplied-image polish.
+   Visual-only layer: no layout dimensions, DOM structure, callbacks, or builder behavior changed. */
+
+/* Main editor chrome */
+.topbar.panel {
+    background-image:
+        linear-gradient(90deg, rgba(13,17,18,.98) 0%, rgba(15,19,20,.92) 48%, rgba(17,14,15,.96) 100%),
+        var(--rs-menu-image, none) !important;
+    background-size: auto, cover !important;
+    background-position: center, center 42% !important;
+    background-repeat: no-repeat !important;
+}
+.catalog.panel {
+    background-image:
+        linear-gradient(180deg, rgba(10,14,15,.92), rgba(10,14,15,.97)),
+        none !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+.inspector.panel {
+    background-image:
+        linear-gradient(180deg, rgba(10,14,15,.93), rgba(10,14,15,.98)),
+        none !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+.hierarchy.panel {
+    background-image:
+        linear-gradient(90deg, rgba(10,14,15,.94), rgba(10,14,15,.98)),
+        none !important;
+    background-size: cover !important;
+    background-position: center 62% !important;
+}
+
+.catalog .panel-title,
+.inspector .panel-title,
+.hierarchy .panel-title {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: rgba(12,16,17,.94) !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,.85);
+}
+.catalog .panel-title::before,
+.inspector .panel-title::before,
+.hierarchy .panel-title::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-position: center;
+    background-size: cover;
+    opacity: .34;
+    filter: saturate(.88) contrast(1.08);
+}
+.catalog .panel-title::after,
+.inspector .panel-title::after,
+.hierarchy .panel-title::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(9,12,13,.94), rgba(9,12,13,.74) 58%, rgba(9,12,13,.92));
+}
+.catalog .panel-title::before { background-image: none; background-position:center 48%; }
+.inspector .panel-title::before { background-image: none; }
+.hierarchy .panel-title::before { background-image: none; background-position:center 58%; }
+
+.coordinate-dock {
+    background-image:
+        linear-gradient(110deg, rgba(10,14,15,.95), rgba(12,16,17,.88)),
+        none !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+.catalog-preview-editor,
+.precision-position,
+.gizmo-bar {
+    background-image:
+        linear-gradient(rgba(9,13,14,.94), rgba(9,13,14,.94)),
+        none !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+/* Utility dialogs */
+#projectDialog .dialog-card > header {
+    background-image:
+        linear-gradient(90deg, rgba(12,16,17,.96), rgba(12,16,17,.82), rgba(15,12,12,.94)),
+        none !important;
+    background-size: cover !important;
+    background-position: center 54% !important;
+}
+#blueprintDialog .dialog-card > header {
+    background-image:
+        linear-gradient(90deg, rgba(12,16,17,.96), rgba(12,16,17,.82), rgba(15,12,12,.94)),
+        none !important;
+    background-size: cover !important;
+    background-position: center 56% !important;
+}
+#diagnosticsDialog .dialog-card > header {
+    background-image:
+        linear-gradient(90deg, rgba(12,16,17,.97), rgba(12,16,17,.84), rgba(15,12,12,.95)),
+        none !important;
+    background-size: cover !important;
+    background-position: center 44% !important;
+}
+#projectDialog .project-row,
+#blueprintDialog .blueprint-row,
+.shop-row {
+    background-image:
+        linear-gradient(90deg, rgba(9,13,14,.96), rgba(9,13,14,.92)),
+        none !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+#projectDialog .project-row:hover,
+#blueprintDialog .blueprint-row:hover,
+.shop-row:hover {
+    background-image:
+        linear-gradient(90deg, rgba(13,17,17,.89), rgba(17,16,13,.88)),
+        none !important;
+}
+
+/* Merchant Studio */
+.site-builder-head {
+    background-image:
+        linear-gradient(90deg, rgba(18,23,23,.97) 0%, rgba(18,23,23,.89) 60%, rgba(24,17,17,.96) 100%),
+        none !important;
+    background-size: cover !important;
+    background-position: center 48% !important;
+    background-repeat: no-repeat !important;
+}
+.site-builder-steps {
+    background-image:
+        linear-gradient(180deg, rgba(12,16,16,.97), rgba(12,16,16,.94)),
+        none !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+.site-builder-steps button {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    text-shadow: 0 1px 3px rgba(0,0,0,.88);
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+.site-builder-steps button::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:linear-gradient(90deg,rgba(11,15,16,.92),rgba(11,15,16,.78) 72%,rgba(11,15,16,.90));
+    transition: background .16s ease;
+}
+.site-builder-steps button:nth-of-type(1){background-image:none !important}
+.site-builder-steps button:nth-of-type(2){background-image:none !important}
+.site-builder-steps button:nth-of-type(3){background-image:none !important}
+.site-builder-steps button:nth-of-type(4){background-image:none !important}
+.site-builder-steps button:nth-of-type(5){background-image:none !important}
+.site-builder-steps button:nth-of-type(6){background-image:none !important}
+.site-builder-steps button:nth-of-type(7){background-image:none !important}
+.site-builder-steps button.active::after {
+    background:linear-gradient(90deg,rgba(74,24,21,.76),rgba(15,18,18,.72) 68%,rgba(11,15,16,.86));
+}
+.site-builder-steps button:hover::after {
+    background:linear-gradient(90deg,rgba(18,22,22,.82),rgba(11,15,16,.70) 70%,rgba(11,15,16,.86));
+}
+.site-builder-steps button > * { position:relative; z-index:1; }
+
+.site-step-panel::before {
+    opacity:.22 !important;
+    filter:grayscale(.12) saturate(.88) contrast(1.08) !important;
+}
+.site-step-panel::after {
+    background:linear-gradient(90deg,rgba(14,18,18,.985),rgba(14,18,18,.87) 58%,rgba(14,18,18,.94)) !important;
+}
+.site-step-panel[data-site-panel="test"]::before { background-image:none !important; }
+.site-step-panel[data-site-panel="publish"]::before { background-image:none !important; }
+
+.site-live-preview > header {
+    background-image:
+        linear-gradient(90deg,rgba(16,21,21,.96),rgba(16,21,21,.86)),
+        none !important;
+    background-size:cover !important;
+    background-position:center 52% !important;
+}
+.site-live-preview > footer {
+    background-image:
+        linear-gradient(90deg,rgba(16,21,21,.97),rgba(16,21,21,.90)),
+        none !important;
+    background-size:cover !important;
+    background-position:center !important;
+}
+.site-product-editor {
+    background-image:
+        linear-gradient(rgba(12,16,16,.91),rgba(12,16,16,.95)),
+        none !important;
+    background-size:cover !important;
+    background-position:center !important;
+}
+.site-advanced {
+    background-image:
+        linear-gradient(rgba(12,16,16,.94),rgba(12,16,16,.96)),
+        none !important;
+    background-size:cover !important;
+    background-position:center !important;
+}
+.inventory-picker {
+    background-image:
+        linear-gradient(rgba(11,15,16,.96),rgba(11,15,16,.96)),
+        none !important;
+    background-size:cover !important;
+    background-position:center !important;
+}
+
+/* Product image editor */
+.product-image-editor-card > header {
+    background-image:
+        linear-gradient(90deg,rgba(15,20,21,.96),rgba(14,18,19,.84),rgba(26,17,18,.94)),
+        none !important;
+    background-size:cover !important;
+    background-position:center !important;
+}
+.product-image-stage {
+    background-image:
+        linear-gradient(145deg,rgba(17,22,23,.94),rgba(8,14,16,.96)),
+        none !important;
+    background-size:cover !important;
+    background-position:center !important;
+}
+
+/* Customer storefront + management */
+.storefront-topline {
+    background-image:
+        linear-gradient(90deg,rgba(8,18,24,.96),rgba(8,16,20,.90) 58%,rgba(24,10,14,.95)),
+        none !important;
+    background-size:cover !important;
+    background-position:center 52% !important;
+}
+.storefront-cart {
+    background-image:
+        linear-gradient(rgba(7,18,28,.95),rgba(7,18,28,.97)),
+        none !important;
+    background-size:cover !important;
+    background-position:center !important;
+}
+.storefront-boss > header {
+    background-image:
+        linear-gradient(90deg,rgba(7,15,20,.94),rgba(7,15,20,.88)),
+        none !important;
+    background-size:cover !important;
+    background-position:center !important;
+}
