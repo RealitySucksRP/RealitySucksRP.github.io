@@ -50,22 +50,104 @@ The Tebex store is the main home for current RealitySucksRP releases, package de
 
 **Enhanced:** https://reality-sucks-rp-webstore.tebex.io/category/enhanced
 
-## Free and Open-Source Releases
+## Free Scripts and Community Releases
 
-Some RealitySucksRP projects are released publicly on GitHub so server owners can use them, learn from them and customize them.
+All 10 current [Tebex Free Scripts](https://reality-sucks-rp-webstore.tebex.io/category/free-scripts) listings are below. Browse [the website catalog](https://realitysucksrp.github.io/#open-source) for the full screenshot galleries. Source access, dependencies and licenses vary by resource; check its listing.
 
-Current public projects include:
+### RS 90s Beeper
 
-- RS Bridge
-- RS Punk Inventory
-- RS Zombie Inventory
-- ox_inventory RealitySucksRP Miami Edition
-- Reality Sucks Tuner Chip
-- RealitySucks HUD
-- RS GTA Progressbar
-- QB-Core server.cfg beginner guide
-- RS StreetDice
-- RS Outcomes
+<a href="https://reality-sucks-rp-webstore.tebex.io/package/7738385"><img src="images/free-scripts/rs-90sbeeper-1.webp" width="640" alt="RS 90s Beeper"></a>
+
+Bring 90s pager culture to your server. Send numeric or text pages to players, jobs, departments and gangs, then let the callback become the RP. Persistent inboxes, pager identities, batteries, signal and integration exports keep the network connected.
+
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7738385) · [YouTube preview](https://youtu.be/GohA449FBdM?si=WSziL5N0f5f8qL8b)
+
+### RS HUDLife — Animated HUD
+
+<a href="https://reality-sucks-rp-webstore.tebex.io/package/7738377"><img src="images/free-scripts/rs-hudlife-1.webp" width="640" alt="RS HUDLife — Animated HUD"></a>
+
+Make getting into a vehicle part of the experience. HUDLife combines 921 vehicle artwork images, 10 speedometer styles, cinematic startup animations and custom sounds with player status, money and NOS displays. Players can personalize the HUD through saved F9 settings.
+
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7738377) · [GitHub source](https://github.com/RealitySucksRP/RealitySucks-HUD) · [YouTube preview](https://youtu.be/Qo-D0QyAktE?si=4PsVCghqGk1oWjxU)
+
+### RS AI DOC — Zombie EMS Rescue
+
+<a href="https://reality-sucks-rp-webstore.tebex.io/package/7737475"><img src="images/free-scripts/rs-ai-doc-1.webp" width="640" alt="RS AI DOC — Zombie EMS Rescue"></a>
+
+No EMS on duty? Dr. Graves answers the call. This voiced zombie medic drives an ambulance to injured players, examines them and performs CPR. Medical animations, emergency response and an undead personality bring a memorable rescue service to survival and city RP.
+
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7737475) · [YouTube preview](https://youtu.be/DhZvbTEIA8Y)
+
+### RS Radio — Modern Walkie Talkie
+
+<a href="https://reality-sucks-rp-webstore.tebex.io/package/7706219"><img src="images/free-scripts/rs-radio-1.webp" width="640" alt="RS Radio — Modern Walkie Talkie"></a>
+
+Keep emergency services, gangs, businesses and civilian groups talking. RS Radio pairs an interactive handheld interface with pma-voice, restricted channels, live unit rosters and GPS emergency alerts. Persistent profiles, rechargeable batteries and RF jammers add more ways to build communication RP.
+
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7706219) · [YouTube preview](https://www.youtube.com/watch?v=KuSvMqt7jnw)
+
+### RSGTA Modern Progressbar
+
+<a href="https://reality-sucks-rp-webstore.tebex.io/package/7667590"><img src="images/free-scripts/rsgta-progressbar-1.webp" width="640" alt="RSGTA Modern Progressbar"></a>
+
+Give everyday actions a modern field-terminal display. This framework-independent progress provider supports single and multi-stage actions, animations, scenarios, attached props and cancellation. Use its QBCore, Qbox, ESX or direct-export paths to fit your existing resources.
+
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7667590) · [GitHub source](https://github.com/RealitySucksRP/rsgta-progressbar) · [YouTube preview](https://www.youtube.com/watch?v=fnyxDDbBaKQ)
+
+### ox_inventory — Miami Edition
+
+<a href="https://reality-sucks-rp-webstore.tebex.io/package/7657131"><img src="images/free-scripts/miami-inventory-1.webp" width="640" alt="ox_inventory — Miami Edition"></a>
+
+Give ox_inventory a Miami identity with custom character artwork, atmospheric backgrounds and larger readable slots. Detailed item metadata, weapon attachment inspection, durability and cleaner secondary containers sit on the ox_inventory foundation, with modern Qbox setups in mind.
+
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7657131) · [GitHub source](https://github.com/RealitySucksRP/ox_inventory-Reworked-Miami-Edition)
+
+### RS Visual Director
+
+<a href="https://reality-sucks-rp-webstore.tebex.io/package/7556700"><img src="images/free-scripts/rs-visualdirector-1.webp" width="640" alt="RS Visual Director"></a>
+
+Direct the mood of your world from an in-game phone. Authorized staff can choose from 12 cinematic looks, adjust their strength, compare against Original GTA and synchronize the result for connected players. Smooth fades, optional effects and developer exports support events and custom scenes.
+
+The current listing asks owners not to use this on FiveM Enhanced during its early testing period.
+
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7556700)
+
+### RS Zombie Inventory
+
+<a href="https://reality-sucks-rp-webstore.tebex.io/package/7506318"><img src="images/free-scripts/zombie-inventory-1.webp" width="640" alt="RS Zombie Inventory"></a>
+
+Build your inventory around the apocalypse. This QBCore edition brings zombie artwork and survival presentation together with physical cash, ground loot, weapon attachments, vehicle storage and item transfers. Customize the menu to match your survivor world.
+
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7506318) · [GitHub source](https://github.com/RealitySucksRP/qb-inventory-Zombie-Menu-UI) · [YouTube preview](https://youtu.be/HrOj98U_89w?si=DWQiC69TE38P6d6D)
+
+### RS Punk Inventory
+
+<a href="https://reality-sucks-rp-webstore.tebex.io/package/7449247"><img src="images/free-scripts/punk-inventory-1.webp" width="640" alt="RS Punk Inventory"></a>
+
+Put your server identity inside the inventory. Neon artwork and custom branding pair with physical cash, HUD synchronization, weapons, floor drops, vehicle storage and player transfers. Server-authoritative updates and drop reconciliation help keep the menu connected to actual inventory state.
+
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7449247) · [GitHub source](https://github.com/RealitySucksRP/qb-inventory-reworked-images-in-menu)
+
+### RS Tuner Chip — Drift Controller
+
+<a href="https://reality-sucks-rp-webstore.tebex.io/package/7391814"><img src="images/free-scripts/rs-tunerchip-1.webp" width="640" alt="RS Tuner Chip — Drift Controller"></a>
+
+Install a tuner chip, pick a profile and send it sideways. Eight drift profiles apply controlled adjustments to each vehicle’s stock handling, with a dedicated controller and an option to restore the original setup. Vehicle-bound installation and mechanic exports connect the chip to your RP.
+
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7391814) · [GitHub source](https://github.com/RealitySucksRP/RealitySucks-TunerChip) · [YouTube preview](https://youtu.be/2VgFQiGvuLA?si=WnuSrLr1up_bH3ds)
+
+### More Free Community Projects
+
+<img src="images/free-scripts/rs-bridge.webp" width="480" alt="RS Bridge">
+
+- [RS Bridge](https://github.com/RealitySucksRP/rs_bridge) — Universal framework and provider compatibility layer for supported FiveM resources. [Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7628375)
+<img src="images/free-scripts/rs-streetdice.webp" width="480" alt="RS StreetDice">
+
+- [RS StreetDice](https://github.com/RealitySucksRP/rs-streetdice-street-craps) — Street-craps RP with a Bank NPC, visible dice, crowd reactions and server-authoritative rounds. Fictional in-game currency only.
+<img src="images/free-scripts/rs-outcomes.webp" width="480" alt="RS Outcomes">
+
+- [RS Outcomes](https://github.com/RealitySucksRP/rs-outcomebets) — NPC prediction arena for community events, with live performers, reactions and crowd moments. RP entertainment only; follow the repository’s usage rules.
+- [QB-Core Server.cfg Guide](https://github.com/RealitySucksRP/QB-Core-server.cfg) — A free starting point for new server owners: server branding, database configuration, resource load order and setup guidance.
 
 GitHub is for source, documentation and community releases. **Tebex is the storefront.**
 
