@@ -1,0 +1,279 @@
+{
+  "checkedOn": "2026-10-14",
+  "category": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
+  "resources": [
+    {
+      "slug": "rs-90sbeeper",
+      "title": "RS 90s Beeper",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7738385",
+      "category": "Communication",
+      "description": "Bring 90s pager culture to your server. Send numeric or text pages to players, jobs, departments and gangs, then let the callback become the RP. Persistent inboxes, pager identities, batteries, signal and integration exports keep the network connected.",
+      "features": [
+        "Persistent inbox and pager number",
+        "Battery, signal and queued pages",
+        "Qbox / QBCore / ESX / Standalone"
+      ],
+      "source": null,
+      "video": "https://youtu.be/GohA449FBdM?si=WSziL5N0f5f8qL8b",
+      "images": [
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/61e1307a9ab723af0486276b7748b51ab857174c.png",
+          "path": "images/free-scripts/rs-90sbeeper-1.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/f0f64b25975ebbdc6b88a9986eb05aaf19d01f93.png",
+          "path": "images/free-scripts/rs-90sbeeper-2.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/16352e984f64f3eccd6b6678675bd8190218e798.png",
+          "path": "images/free-scripts/rs-90sbeeper-3.webp"
+        }
+      ]
+    },
+    {
+      "slug": "rs-hudlife",
+      "title": "RS HUDLife — Animated HUD",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7738377",
+      "category": "HUD + Vehicles",
+      "description": "Make getting into a vehicle part of the experience. HUDLife combines 921 vehicle artwork images, 10 speedometer styles, cinematic startup animations and custom sounds with player status, money and NOS displays. Players can personalize the HUD through saved F9 settings.",
+      "features": [
+        "921 vehicle images / 10 speedometers",
+        "Vehicle boot sequence and NOS display",
+        "Qbox / QBCore / ESX / Standalone"
+      ],
+      "source": "https://github.com/RealitySucksRP/RealitySucks-HUD",
+      "video": "https://youtu.be/Qo-D0QyAktE?si=4PsVCghqGk1oWjxU",
+      "images": [
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/1c18978d3d7014a52d43ce68bb66ed8a58af17bf.png",
+          "path": "images/free-scripts/rs-hudlife-1.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/28bbaf397313698b8fcad5f346a723cd313cb750.png",
+          "path": "images/free-scripts/rs-hudlife-2.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/c26bd31674cdcf71d08ffc2095ee10ae03b021ba.png",
+          "path": "images/free-scripts/rs-hudlife-3.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/7e06d54cdc6e4b7e275014d403dcedc5eda3b655.png",
+          "path": "images/free-scripts/rs-hudlife-4.webp"
+        }
+      ]
+    },
+    {
+      "slug": "rs-ai-doc",
+      "title": "RS AI DOC — Zombie EMS Rescue",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7737475",
+      "category": "Medical + Survival",
+      "description": "No EMS on duty? Dr. Graves answers the call. This voiced zombie medic drives an ambulance to injured players, examines them and performs CPR. Medical animations, emergency response and an undead personality bring a memorable rescue service to survival and city RP.",
+      "features": [
+        "AI ambulance response",
+        "Injury examination and CPR",
+        "Voiced zombie doctor"
+      ],
+      "source": null,
+      "video": "https://youtu.be/DhZvbTEIA8Y",
+      "images": [
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/33265767ce2c58e554d4f65a27bf0512089454cf.png",
+          "path": "images/free-scripts/rs-ai-doc-1.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/cca820c1711e873450ee8aa78d67c61a6a3e6fd1.png",
+          "path": "images/free-scripts/rs-ai-doc-2.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/907e71ebcca63c72645b9960432ed6dc78d302d2.png",
+          "path": "images/free-scripts/rs-ai-doc-3.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/e0b83490e496edb07ab0fd585b26f05157ddda77.png",
+          "path": "images/free-scripts/rs-ai-doc-4.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/30720d12f16297730b8653620c8f82759cbae07f.png",
+          "path": "images/free-scripts/rs-ai-doc-5.webp"
+        }
+      ]
+    },
+    {
+      "slug": "rs-radio",
+      "title": "RS Radio — Modern Walkie Talkie",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7706219",
+      "category": "Communication",
+      "description": "Keep emergency services, gangs, businesses and civilian groups talking. RS Radio pairs an interactive handheld interface with pma-voice, restricted channels, live unit rosters and GPS emergency alerts. Persistent profiles, rechargeable batteries and RF jammers add more ways to build communication RP.",
+      "features": [
+        "Public and restricted channels",
+        "Live roster and emergency SOS",
+        "Requires pma-voice"
+      ],
+      "source": null,
+      "video": "https://www.youtube.com/watch?v=KuSvMqt7jnw",
+      "images": [
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/d38d4613acbf48ac462b9273eba398186b857ef3.png",
+          "path": "images/free-scripts/rs-radio-1.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/271aa361a7f5c5773c021660615fa168b4d65466.png",
+          "path": "images/free-scripts/rs-radio-2.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/ead8d3b526246cc241e2ac872f1dcf0dacaba643.png",
+          "path": "images/free-scripts/rs-radio-3.webp"
+        }
+      ]
+    },
+    {
+      "slug": "rsgta-progressbar",
+      "title": "RSGTA Modern Progressbar",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7667590",
+      "category": "UI + Developer Tools",
+      "description": "Give everyday actions a modern field-terminal display. This framework-independent progress provider supports single and multi-stage actions, animations, scenarios, attached props and cancellation. Use its QBCore, Qbox, ESX or direct-export paths to fit your existing resources.",
+      "features": [
+        "Single and multi-stage actions",
+        "Animations, props and cancellation",
+        "Qbox / QBCore / ESX / Standalone"
+      ],
+      "source": "https://github.com/RealitySucksRP/rsgta-progressbar",
+      "video": "https://www.youtube.com/watch?v=fnyxDDbBaKQ",
+      "images": [
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/ccfa0cee16704c5ca3b952c29dd2afa09d18f3e0.png",
+          "path": "images/free-scripts/rsgta-progressbar-1.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/ecbccb43c92728bad72628dffa558b9f694ea015.png",
+          "path": "images/free-scripts/rsgta-progressbar-2.webp"
+        }
+      ]
+    },
+    {
+      "slug": "miami-inventory",
+      "title": "ox_inventory — Miami Edition",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7657131",
+      "category": "Inventory",
+      "description": "Give ox_inventory a Miami identity with custom character artwork, atmospheric backgrounds and larger readable slots. Detailed item metadata, weapon attachment inspection, durability and cleaner secondary containers sit on the ox_inventory foundation, with modern Qbox setups in mind.",
+      "features": [
+        "Custom artwork and readable slots",
+        "Metadata and attachment inspection",
+        "ox_inventory / Qbox"
+      ],
+      "source": "https://github.com/RealitySucksRP/ox_inventory-Reworked-Miami-Edition",
+      "video": null,
+      "images": [
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/a3132a725cd6baf6968e7c7bd95f716771c1f9ff.png",
+          "path": "images/free-scripts/miami-inventory-1.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/d4ce474a6003e8bec4cacc3fbf1e4201b8e797e4.jpg",
+          "path": "images/free-scripts/miami-inventory-2.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/512c71539ff6d997e89cb90fb293f46184572c80.png",
+          "path": "images/free-scripts/miami-inventory-3.webp"
+        }
+      ]
+    },
+    {
+      "slug": "rs-visualdirector",
+      "title": "RS Visual Director",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7556700",
+      "category": "World + Cinematics",
+      "description": "Direct the mood of your world from an in-game phone. Authorized staff can choose from 12 cinematic looks, adjust their strength, compare against Original GTA and synchronize the result for connected players. Smooth fades, optional effects and developer exports support events and custom scenes.",
+      "features": [
+        "12 world moods and strength controls",
+        "ACE-protected global controls",
+        "Standalone / open source"
+      ],
+      "source": null,
+      "video": null,
+      "images": [
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/cc1af244c7dc1be751abad56dd4a022212b46970.png",
+          "path": "images/free-scripts/rs-visualdirector-1.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/4bbfa6cc9ef2e042820d11bb18853e33fd53ca1c.png",
+          "path": "images/free-scripts/rs-visualdirector-2.webp"
+        }
+      ],
+      "compatibilityNote": "The current listing asks owners not to use this on FiveM Enhanced during its early testing period."
+    },
+    {
+      "slug": "zombie-inventory",
+      "title": "RS Zombie Inventory",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7506318",
+      "category": "Inventory + Survival",
+      "description": "Build your inventory around the apocalypse. This QBCore edition brings zombie artwork and survival presentation together with physical cash, ground loot, weapon attachments, vehicle storage and item transfers. Customize the menu to match your survivor world.",
+      "features": [
+        "Apocalypse inventory artwork",
+        "Cash as an inventory item",
+        "QBCore inventory edition"
+      ],
+      "source": "https://github.com/RealitySucksRP/qb-inventory-Zombie-Menu-UI",
+      "video": "https://youtu.be/HrOj98U_89w?si=DWQiC69TE38P6d6D",
+      "images": [
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/410e2d9a7aea2b98edfa1aff09367d492607d0ea.png",
+          "path": "images/free-scripts/zombie-inventory-1.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/bea64c4d6555016926ec2d1c3633f3122083ae14.png",
+          "path": "images/free-scripts/zombie-inventory-2.webp"
+        }
+      ]
+    },
+    {
+      "slug": "punk-inventory",
+      "title": "RS Punk Inventory",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7449247",
+      "category": "Inventory",
+      "description": "Put your server identity inside the inventory. Neon artwork and custom branding pair with physical cash, HUD synchronization, weapons, floor drops, vehicle storage and player transfers. Server-authoritative updates and drop reconciliation help keep the menu connected to actual inventory state.",
+      "features": [
+        "Custom menu artwork and branding",
+        "Physical cash and HUD synchronization",
+        "QBCore inventory edition"
+      ],
+      "source": "https://github.com/RealitySucksRP/qb-inventory-reworked-images-in-menu",
+      "video": null,
+      "images": [
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/04e183328bc48f4387978cd5fab9f47c48154279.png",
+          "path": "images/free-scripts/punk-inventory-1.webp"
+        }
+      ]
+    },
+    {
+      "slug": "rs-tunerchip",
+      "title": "RS Tuner Chip — Drift Controller",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7391814",
+      "category": "Vehicles + Tuning",
+      "description": "Install a tuner chip, pick a profile and send it sideways. Eight drift profiles apply controlled adjustments to each vehicle’s stock handling, with a dedicated controller and an option to restore the original setup. Vehicle-bound installation and mechanic exports connect the chip to your RP.",
+      "features": [
+        "8 drift profiles",
+        "Vehicle-bound chip and stock handling restore",
+        "OneSync / ox_lib / supported framework"
+      ],
+      "source": "https://github.com/RealitySucksRP/RealitySucks-TunerChip",
+      "video": "https://youtu.be/2VgFQiGvuLA?si=WnuSrLr1up_bH3ds",
+      "images": [
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/828d529183e5283a42ce8386dd3a4d4c5762a9f4.png",
+          "path": "images/free-scripts/rs-tunerchip-1.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/897c7f43e6536ae2c857fac609656b9a93ef22cc.png",
+          "path": "images/free-scripts/rs-tunerchip-2.webp"
+        },
+        {
+          "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/e410029cdc92b147a9e926a6812577eb6bafc64a.jpg",
+          "path": "images/free-scripts/rs-tunerchip-3.webp"
+        }
+      ]
+    }
+  ]
+}

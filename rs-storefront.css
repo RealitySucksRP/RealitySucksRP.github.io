@@ -723,6 +723,39 @@ footer small { display: block; max-width: 960px; margin: 0 auto; color: var(--mu
   color: var(--cyan);
   opacity: 1;
 }
+/* Free resource catalog: keep original listing artwork fully visible. */
+.free-script-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.free-script-card { padding: 0; overflow: hidden; min-width: 0; }
+.free-cover { display: block; aspect-ratio: 16 / 9; background: #050611; border-bottom: 1px solid var(--line); }
+.free-cover img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.free-card-body { padding: 24px; display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.free-card-body .resource-meta { align-items: flex-start; }
+.free-card-body .version { text-align: right; line-height: 1.4; }
+.free-card-body h3 { font-size: 32px; line-height: 1.05; overflow-wrap: anywhere; }
+.free-features { padding-left: 19px; margin: 14px 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.free-features li { margin: 4px 0; }
+.free-features li::marker { color: var(--cyan); }
+.free-card-body .card-actions, .free-community-grid .card-actions { display: flex; flex-wrap: wrap; gap: 14px 20px; }
+.free-card-body .card-actions a { line-height: 1.6; }
+.free-gallery { margin-top: 12px; }
+.free-gallery summary, .free-existing-links summary { cursor: pointer; color: var(--cyan); font-size: 13px; font-weight: 700; padding: 10px 0; }
+.free-gallery > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.free-gallery a { display: block; aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #050611; }
+.free-gallery img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.free-card-body .compatibility-note { padding: 10px 12px; border-left: 2px solid var(--orange); background: rgba(255,122,24,.06); font-size: 12px; }
+.free-more-heading { margin: 40px 0 20px; font-size: 36px; }
+.free-community-art .free-cover { margin: -23px -23px 23px; }
+.free-existing-links { margin-top: 25px; }
+.free-existing-links p { color: var(--muted); font-size: 13px; line-height: 1.7; }
+.free-existing-links a { color: var(--cyan); }
+.free-catalog a:focus-visible, .free-catalog summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
+@media (max-width: 980px) {
+  .free-script-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .free-script-grid { grid-template-columns: minmax(0, 1fr); }
+  .free-card-body { padding: 20px; }
+}
 @media (max-width: 760px) {
   .priority-packages { padding: 24px 14px 30px; }
   .priority-packages .price { font-size: 40px; }
