@@ -724,6 +724,7 @@ footer small { display: block; max-width: 960px; margin: 0 auto; color: var(--mu
   opacity: 1;
 }
 /* Free resource catalog: keep original listing artwork fully visible. */
+.free-catalog, .free-script-card { scroll-margin-top: 110px; }
 .free-script-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .free-script-card { padding: 0; overflow: hidden; min-width: 0; }
 .free-cover { display: block; aspect-ratio: 16 / 9; background: #050611; border-bottom: 1px solid var(--line); }
