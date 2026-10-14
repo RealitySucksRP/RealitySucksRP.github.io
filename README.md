@@ -60,7 +60,7 @@ All 10 current [Tebex Free Scripts](https://reality-sucks-rp-webstore.tebex.io/c
 
 Bring 90s pager culture to your server. Send numeric or text pages to players, jobs, departments and gangs, then let the callback become the RP. Persistent inboxes, pager identities, batteries, signal and integration exports keep the network connected.
 
-[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7738385) · [YouTube preview](https://youtu.be/GohA449FBdM?si=WSziL5N0f5f8qL8b)
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7738385) · [GitHub source](https://github.com/RealitySucksRP/rs-90sbeeper) · [YouTube preview](https://youtu.be/GohA449FBdM?si=WSziL5N0f5f8qL8b)
 
 ### RS HUDLife — Animated HUD
 
@@ -68,7 +68,7 @@ Bring 90s pager culture to your server. Send numeric or text pages to players, j
 
 Make getting into a vehicle part of the experience. HUDLife combines 921 vehicle artwork images, 10 speedometer styles, cinematic startup animations and custom sounds with player status, money and NOS displays. Players can personalize the HUD through saved F9 settings.
 
-[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7738377) · [GitHub source](https://github.com/RealitySucksRP/RealitySucks-HUD) · [YouTube preview](https://youtu.be/Qo-D0QyAktE?si=4PsVCghqGk1oWjxU)
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7738377) · [GitHub source](https://github.com/RealitySucksRP/rs-lilhudlife) · [YouTube preview](https://youtu.be/Qo-D0QyAktE?si=4PsVCghqGk1oWjxU)
 
 ### RS AI DOC — Zombie EMS Rescue
 
@@ -76,7 +76,7 @@ Make getting into a vehicle part of the experience. HUDLife combines 921 vehicle
 
 No EMS on duty? Dr. Graves answers the call. This voiced zombie medic drives an ambulance to injured players, examines them and performs CPR. Medical animations, emergency response and an undead personality bring a memorable rescue service to survival and city RP.
 
-[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7737475) · [YouTube preview](https://youtu.be/DhZvbTEIA8Y)
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7737475) · [GitHub source](https://github.com/RealitySucksRP/rs-aidoc) · [YouTube preview](https://youtu.be/DhZvbTEIA8Y)
 
 ### RS Radio — Modern Walkie Talkie
 
@@ -84,7 +84,7 @@ No EMS on duty? Dr. Graves answers the call. This voiced zombie medic drives an 
 
 Keep emergency services, gangs, businesses and civilian groups talking. RS Radio pairs an interactive handheld interface with pma-voice, restricted channels, live unit rosters and GPS emergency alerts. Persistent profiles, rechargeable batteries and RF jammers add more ways to build communication RP.
 
-[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7706219) · [YouTube preview](https://www.youtube.com/watch?v=KuSvMqt7jnw)
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7706219) · [GitHub source](https://github.com/RealitySucksRP/rs-radio) · [YouTube preview](https://www.youtube.com/watch?v=KuSvMqt7jnw)
 
 ### RSGTA Modern Progressbar
 
@@ -110,7 +110,7 @@ Direct the mood of your world from an in-game phone. Authorized staff can choose
 
 The current listing asks owners not to use this on FiveM Enhanced during its early testing period.
 
-[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7556700)
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7556700) · [GitHub source](https://github.com/RealitySucksRP/rs-visualdirector)
 
 ### RS Zombie Inventory
 
@@ -148,6 +148,8 @@ Install a tuner chip, pick a profile and send it sideways. Eight drift profiles 
 
 - [RS Outcomes](https://github.com/RealitySucksRP/rs-outcomebets) — NPC prediction arena for community events, with live performers, reactions and crowd moments. RP entertainment only; follow the repository’s usage rules.
 - [QB-Core Server.cfg Guide](https://github.com/RealitySucksRP/QB-Core-server.cfg) — A free starting point for new server owners: server branding, database configuration, resource load order and setup guidance.
+
+- [RealitySucks Lightweight HUD](https://github.com/RealitySucksRP/RealitySucks-HUD) — The earlier QBCore player-information HUD, maintained separately from RS HUDLife.
 
 GitHub is for source, documentation and community releases. **Tebex is the storefront.**
 

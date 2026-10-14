@@ -13,7 +13,7 @@
         "Battery, signal and queued pages",
         "Qbox / QBCore / ESX / Standalone"
       ],
-      "source": null,
+      "source": "https://github.com/RealitySucksRP/rs-90sbeeper",
       "video": "https://youtu.be/GohA449FBdM?si=WSziL5N0f5f8qL8b",
       "images": [
         {
@@ -41,7 +41,7 @@
         "Vehicle boot sequence and NOS display",
         "Qbox / QBCore / ESX / Standalone"
       ],
-      "source": "https://github.com/RealitySucksRP/RealitySucks-HUD",
+      "source": "https://github.com/RealitySucksRP/rs-lilhudlife",
       "video": "https://youtu.be/Qo-D0QyAktE?si=4PsVCghqGk1oWjxU",
       "images": [
         {
@@ -73,7 +73,7 @@
         "Injury examination and CPR",
         "Voiced zombie doctor"
       ],
-      "source": null,
+      "source": "https://github.com/RealitySucksRP/rs-aidoc",
       "video": "https://youtu.be/DhZvbTEIA8Y",
       "images": [
         {
@@ -109,7 +109,7 @@
         "Live roster and emergency SOS",
         "Requires pma-voice"
       ],
-      "source": null,
+      "source": "https://github.com/RealitySucksRP/rs-radio",
       "video": "https://www.youtube.com/watch?v=KuSvMqt7jnw",
       "images": [
         {
@@ -189,7 +189,7 @@
         "ACE-protected global controls",
         "Standalone / open source"
       ],
-      "source": null,
+      "source": "https://github.com/RealitySucksRP/rs-visualdirector",
       "video": null,
       "images": [
         {
