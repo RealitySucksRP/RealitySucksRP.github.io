@@ -52,7 +52,7 @@ The Tebex store is the main home for current RealitySucksRP releases, package de
 
 ## Free Scripts and Community Releases
 
-All 10 current [Tebex Free Scripts](https://reality-sucks-rp-webstore.tebex.io/category/free-scripts) listings are below. Browse [the website catalog](https://realitysucksrp.github.io/#open-source) for the full screenshot galleries. Source access, dependencies and licenses vary by resource; check its listing.
+My 10 [Tebex Free Scripts](https://reality-sucks-rp-webstore.tebex.io/category/free-scripts) listings and RS Admin Menu are below. Browse [the website catalog](https://realitysucksrp.github.io/#open-source) for the full screenshot galleries. Source access, dependencies and licenses vary by resource; check its listing.
 
 ### RS 90s Beeper
 
@@ -106,11 +106,11 @@ Give ox_inventory a Miami identity with custom character artwork, atmospheric ba
 
 <a href="https://reality-sucks-rp-webstore.tebex.io/package/7556700"><img src="images/free-scripts/rs-visualdirector-1.webp" width="640" alt="RS Visual Director"></a>
 
-Direct the mood of your world from an in-game phone. Authorized staff can choose from 12 cinematic looks, adjust their strength, compare against Original GTA and synchronize the result for connected players. Smooth fades, optional effects and developer exports support events and custom scenes.
+Direct the atmosphere from a movable phone or widescreen Director Studio. Choose from 12 moods, preview a look locally, capture real gameplay galleries and save private Live Moments with their look and intensity. Apply a look globally when the scene is ready.
 
-The current listing asks owners not to use this on FiveM Enhanced during its early testing period.
+Supplied v2.9.0 test ZIP: Config.RequireAce = false lets every player change the global look. Enable ACE checks before public-server use.
 
-[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7556700) · [GitHub source](https://github.com/RealitySucksRP/rs-visualdirector)
+[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7556700) · [GitHub source](https://github.com/RealitySucksRP/rs-visualdirector) · [Download v2.9.0 ZIP](https://github.com/RealitySucksRP/rs-visualdirector/releases/latest/download/rs-visualdirector.zip)
 
 ### RS Zombie Inventory
 
@@ -135,6 +135,16 @@ Put your server identity inside the inventory. Neon artwork and custom branding 
 Install a tuner chip, pick a profile and send it sideways. Eight drift profiles apply controlled adjustments to each vehicle’s stock handling, with a dedicated controller and an option to restore the original setup. Vehicle-bound installation and mechanic exports connect the chip to your RP.
 
 [Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7391814) · [GitHub source](https://github.com/RealitySucksRP/RealitySucks-TunerChip) · [YouTube preview](https://youtu.be/2VgFQiGvuLA?si=WnuSrLr1up_bH3ds)
+
+### RS Admin Menu v0.14.2
+
+<a href="https://github.com/RealitySucksRP/rs-adminmenu"><img src="images/free-scripts/rs-adminmenu-1.webp" width="640" alt="RS Admin Menu — bundled interface concept artwork"></a>
+
+Give your staff a control center for players, moderation, reports, vehicles and world controls. Manage staff groups, logs, themes and quick actions, with optional RS Pathways for onboarding and role certification. Configure access and provider integrations for your server.
+
+Bundled interface concept artwork is shown above. Preserve live `data/` when upgrading; the full ZIP includes empty first-install stores.
+
+[GitHub source](https://github.com/RealitySucksRP/rs-adminmenu) · [Download original ZIP](https://github.com/RealitySucksRP/rs-adminmenu/releases/latest/download/rs-adminmenu.zip)
 
 ### More Free Community Projects
 
