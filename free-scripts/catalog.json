@@ -280,10 +280,9 @@
     {
       "slug": "rs-adminmenu",
       "title": "RS Admin Menu",
-      "version": "0.14.2",
       "tebex": null,
       "category": "Administration",
-      "description": "Give your staff a control center for players, moderation, reports, vehicles and world controls. Manage staff groups, logs, themes and quick actions, with optional RS Pathways for onboarding and role certification. Configure access and provider integrations for your server.",
+      "description": "Run your staff tools from one FiveM command center. Manage players, reports, moderation, staff groups, vehicles and world controls. Customize the interface with themes and widgets, and use optional Pathways for onboarding and role certification. Included provider adapters connect the menu with your server.",
       "features": [
         "Player management, moderation and reports",
         "Staff groups, world tools and themes",
