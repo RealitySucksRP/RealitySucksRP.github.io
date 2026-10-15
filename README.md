@@ -136,11 +136,11 @@ Install a tuner chip, pick a profile and send it sideways. Eight drift profiles 
 
 [Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7391814) · [GitHub source](https://github.com/RealitySucksRP/RealitySucks-TunerChip) · [YouTube preview](https://youtu.be/2VgFQiGvuLA?si=WnuSrLr1up_bH3ds)
 
-### RS Admin Menu v0.14.2
+### RS Admin Menu
 
 <a href="https://github.com/RealitySucksRP/rs-adminmenu"><img src="images/free-scripts/rs-adminmenu-1.webp" width="640" alt="RS Admin Menu — bundled interface concept artwork"></a>
 
-Give your staff a control center for players, moderation, reports, vehicles and world controls. Manage staff groups, logs, themes and quick actions, with optional RS Pathways for onboarding and role certification. Configure access and provider integrations for your server.
+Run your staff tools from one FiveM command center. Manage players, reports, moderation, staff groups, vehicles and world controls. Customize the interface with themes and widgets, and use optional Pathways for onboarding and role certification. Included provider adapters connect the menu with your server.
 
 Bundled interface concept artwork is shown above. Preserve live `data/` when upgrading; the full ZIP includes empty first-install stores.
 
