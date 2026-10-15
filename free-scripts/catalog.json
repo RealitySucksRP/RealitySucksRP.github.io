@@ -1,5 +1,5 @@
 {
-  "checkedOn": "2026-10-14",
+  "checkedOn": "2026-10-15",
   "category": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
   "resources": [
     {
@@ -183,11 +183,11 @@
       "title": "RS Visual Director",
       "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7556700",
       "category": "World + Cinematics",
-      "description": "Direct the mood of your world from an in-game phone. Authorized staff can choose from 12 cinematic looks, adjust their strength, compare against Original GTA and synchronize the result for connected players. Smooth fades, optional effects and developer exports support events and custom scenes.",
+      "description": "Direct the atmosphere from a movable phone or widescreen Director Studio. Choose from 12 moods, preview a look locally, capture real gameplay galleries and save private Live Moments with their look and intensity. Apply a look globally when the scene is ready.",
       "features": [
-        "12 world moods and strength controls",
-        "ACE-protected global controls",
-        "Standalone / open source"
+        "12 moods / phone and Director Studio",
+        "Local previews and private Live Moments",
+        "Optional screenshot-basic for real captures"
       ],
       "source": "https://github.com/RealitySucksRP/rs-visualdirector",
       "video": null,
@@ -201,7 +201,9 @@
           "path": "images/free-scripts/rs-visualdirector-2.webp"
         }
       ],
-      "compatibilityNote": "The current listing asks owners not to use this on FiveM Enhanced during its early testing period."
+      "compatibilityNote": "Supplied v2.9.0 test ZIP: Config.RequireAce = false lets every player change the global look. Enable ACE checks before public-server use.",
+      "version": "2.9.0",
+      "download": "https://github.com/RealitySucksRP/rs-visualdirector/releases/latest/download/rs-visualdirector.zip"
     },
     {
       "slug": "zombie-inventory",
@@ -274,6 +276,45 @@
           "path": "images/free-scripts/rs-tunerchip-3.webp"
         }
       ]
+    },
+    {
+      "slug": "rs-adminmenu",
+      "title": "RS Admin Menu",
+      "version": "0.14.2",
+      "tebex": null,
+      "category": "Administration",
+      "description": "Give your staff a control center for players, moderation, reports, vehicles and world controls. Manage staff groups, logs, themes and quick actions, with optional RS Pathways for onboarding and role certification. Configure access and provider integrations for your server.",
+      "features": [
+        "Player management, moderation and reports",
+        "Staff groups, world tools and themes",
+        "Optional Pathways onboarding"
+      ],
+      "source": "https://github.com/RealitySucksRP/rs-adminmenu",
+      "download": "https://github.com/RealitySucksRP/rs-adminmenu/releases/latest/download/rs-adminmenu.zip",
+      "video": null,
+      "images": [
+        {
+          "source": "https://raw.githubusercontent.com/RealitySucksRP/rs-adminmenu/main/web/assets/concepts/command-center.png",
+          "path": "images/free-scripts/rs-adminmenu-1.webp"
+        },
+        {
+          "source": "https://raw.githubusercontent.com/RealitySucksRP/rs-adminmenu/main/web/assets/concepts/players.png",
+          "path": "images/free-scripts/rs-adminmenu-2.webp"
+        },
+        {
+          "source": "https://raw.githubusercontent.com/RealitySucksRP/rs-adminmenu/main/web/assets/concepts/assets-library.png",
+          "path": "images/free-scripts/rs-adminmenu-3.webp"
+        },
+        {
+          "source": "https://raw.githubusercontent.com/RealitySucksRP/rs-adminmenu/main/web/assets/concepts/world-control.png",
+          "path": "images/free-scripts/rs-adminmenu-4.webp"
+        },
+        {
+          "source": "https://raw.githubusercontent.com/RealitySucksRP/rs-adminmenu/main/web/assets/concepts/theme-builder.png",
+          "path": "images/free-scripts/rs-adminmenu-5.webp"
+        }
+      ],
+      "artworkLabel": "Bundled interface concept artwork"
     }
   ]
 }
