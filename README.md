@@ -82,9 +82,9 @@ No EMS on duty? Dr. Graves answers the call. This voiced zombie medic drives an 
 
 <a href="https://reality-sucks-rp-webstore.tebex.io/package/7706219"><img src="images/free-scripts/rs-radio-1.webp" width="640" alt="RS Radio — Modern Walkie Talkie"></a>
 
-Keep emergency services, gangs, businesses and civilian groups talking. RS Radio pairs an interactive handheld interface with pma-voice, restricted channels, live unit rosters and GPS emergency alerts. Persistent profiles, rechargeable batteries and RF jammers add more ways to build communication RP.
+Keep emergency services, gangs, businesses and civilian groups talking. RS Radio pairs an interactive handheld interface with native Enhanced voice or Legacy pma-voice, restricted channels, live unit rosters and GPS emergency alerts. Persistent profiles, rechargeable batteries and RF jammers add more ways to build communication RP.
 
-[Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7706219) · [GitHub source](https://github.com/RealitySucksRP/rs-radio) · [YouTube preview](https://www.youtube.com/watch?v=KuSvMqt7jnw)
+[Try live preview](https://realitysucksrp.github.io/rs-radio/) · [Get free on Tebex](https://reality-sucks-rp-webstore.tebex.io/package/7706219) · [GitHub source](https://github.com/RealitySucksRP/rs-radio) · [YouTube preview](https://www.youtube.com/watch?v=KuSvMqt7jnw)
 
 ### RSGTA Modern Progressbar
 

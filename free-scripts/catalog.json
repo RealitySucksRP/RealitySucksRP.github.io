@@ -103,13 +103,14 @@
       "title": "RS Radio — Modern Walkie Talkie",
       "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7706219",
       "category": "Communication",
-      "description": "Keep emergency services, gangs, businesses and civilian groups talking. RS Radio pairs an interactive handheld interface with pma-voice, restricted channels, live unit rosters and GPS emergency alerts. Persistent profiles, rechargeable batteries and RF jammers add more ways to build communication RP.",
+      "description": "Keep emergency services, gangs, businesses and civilian groups talking. RS Radio pairs an interactive handheld interface with native Enhanced voice or Legacy pma-voice, restricted channels, live unit rosters and GPS emergency alerts. Persistent profiles, rechargeable batteries and RF jammers add more ways to build communication RP.",
       "features": [
         "Public and restricted channels",
         "Live roster and emergency SOS",
-        "Requires pma-voice"
+        "Enhanced native / Legacy pma-voice"
       ],
       "source": "https://github.com/RealitySucksRP/rs-radio",
+      "preview": "https://realitysucksrp.github.io/rs-radio/",
       "video": "https://www.youtube.com/watch?v=KuSvMqt7jnw",
       "images": [
         {
