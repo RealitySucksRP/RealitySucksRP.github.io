@@ -5,7 +5,7 @@
     {
       "slug": "rs-90sbeeper",
       "title": "RS 90s Beeper",
-      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7738385",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "Communication",
       "description": "Bring 90s pager culture to your server. Send numeric or text pages to players, jobs, departments and gangs, then let the callback become the RP. Persistent inboxes, pager identities, batteries, signal and integration exports keep the network connected.",
       "features": [
@@ -33,7 +33,7 @@
     {
       "slug": "rs-hudlife",
       "title": "RS HUDLife — Animated HUD",
-      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7738377",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "HUD + Vehicles",
       "description": "Make getting into a vehicle part of the experience. HUDLife combines 921 vehicle artwork images, 10 speedometer styles, cinematic startup animations and custom sounds with player status, money and NOS displays. Players can personalize the HUD through saved F9 settings.",
       "features": [
@@ -65,7 +65,7 @@
     {
       "slug": "rs-ai-doc",
       "title": "RS AI DOC — Zombie EMS Rescue",
-      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7737475",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "Medical + Survival",
       "description": "No EMS on duty? Dr. Graves answers the call. This voiced zombie medic drives an ambulance to injured players, examines them and performs CPR. Medical animations, emergency response and an undead personality bring a memorable rescue service to survival and city RP.",
       "features": [
@@ -101,7 +101,7 @@
     {
       "slug": "rs-radio",
       "title": "RS Radio — Modern Walkie Talkie",
-      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7706219",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "Communication",
       "description": "Keep emergency services, gangs, businesses and civilian groups talking. RS Radio pairs an interactive handheld interface with native Enhanced voice or Legacy pma-voice, restricted channels, live unit rosters and GPS emergency alerts. Persistent profiles, rechargeable batteries and RF jammers add more ways to build communication RP.",
       "features": [
@@ -130,7 +130,7 @@
     {
       "slug": "rsgta-progressbar",
       "title": "RSGTA Modern Progressbar",
-      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7667590",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "UI + Developer Tools",
       "description": "Give everyday actions a modern field-terminal display. This framework-independent progress provider supports single and multi-stage actions, animations, scenarios, attached props and cancellation. Use its QBCore, Qbox, ESX or direct-export paths to fit your existing resources.",
       "features": [
@@ -154,7 +154,7 @@
     {
       "slug": "miami-inventory",
       "title": "ox_inventory — Miami Edition",
-      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7657131",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "Inventory",
       "description": "Give ox_inventory a Miami identity with custom character artwork, atmospheric backgrounds and larger readable slots. Detailed item metadata, weapon attachment inspection, durability and cleaner secondary containers sit on the ox_inventory foundation, with modern Qbox setups in mind.",
       "features": [
@@ -182,7 +182,7 @@
     {
       "slug": "rs-visualdirector",
       "title": "RS Visual Director",
-      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7556700",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "World + Cinematics",
       "description": "Direct the atmosphere from a movable phone or widescreen Director Studio. Choose from 12 moods, preview a look locally, capture real gameplay galleries and save private Live Moments with their look and intensity. Apply a look globally when the scene is ready.",
       "features": [
@@ -209,7 +209,7 @@
     {
       "slug": "zombie-inventory",
       "title": "RS Zombie Inventory",
-      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7506318",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "Inventory + Survival",
       "description": "Build your inventory around the apocalypse. This QBCore edition brings zombie artwork and survival presentation together with physical cash, ground loot, weapon attachments, vehicle storage and item transfers. Customize the menu to match your survivor world.",
       "features": [
@@ -233,7 +233,7 @@
     {
       "slug": "punk-inventory",
       "title": "RS Punk Inventory",
-      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7449247",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "Inventory",
       "description": "Put your server identity inside the inventory. Neon artwork and custom branding pair with physical cash, HUD synchronization, weapons, floor drops, vehicle storage and player transfers. Server-authoritative updates and drop reconciliation help keep the menu connected to actual inventory state.",
       "features": [
@@ -253,7 +253,7 @@
     {
       "slug": "rs-tunerchip",
       "title": "RS Tuner Chip — Drift Controller",
-      "tebex": "https://reality-sucks-rp-webstore.tebex.io/package/7391814",
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "Vehicles + Tuning",
       "description": "Install a tuner chip, pick a profile and send it sideways. Eight drift profiles apply controlled adjustments to each vehicle’s stock handling, with a dedicated controller and an option to restore the original setup. Vehicle-bound installation and mechanic exports connect the chip to your RP.",
       "features": [
