@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Try RS Radio: an interactive city radio with channels, unit status, SOS, personal settings and RF control.">
+  <meta name="theme-color" content="#080e15">
+  <title>RS Radio · Interactive Preview · RealitySucksRP</title>
+  <link rel="stylesheet" href="showcase.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="../"><span class="rs-mark">RS</span><span>REALITYSUCKSRP<small>FIVEM RESOURCES</small></span></a>
+    <a class="back-link" href="../#free-rs-radio">Back to the collection <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow"><span class="live-dot"></span> RS RADIO / CITY COMMUNICATIONS</p><h1>Your city.<br>One frequency.</h1></div>
+      <div class="intro-copy"><p>A familiar handset. A connected city. Explore the actual RS Radio interface, from public frequencies to emergency response.</p><div class="tags"><span>CHANNELS</span><span>UNIT STATUS</span><span>SOS + GPS</span><span>RF CONTROL</span></div></div>
+    </section>
+    <section class="experience" aria-label="Interactive RS Radio">
+      <aside class="control-panel">
+        <div class="panel-title"><span class="eyebrow">TAKE THE CONTROLS</span><span class="serial">RS / 01</span></div>
+        <h2>Find your channel.</h2>
+        <p class="panel-copy">Click the radio itself, or use these controls to explore. Switch to screen view for a closer look.</p>
+        <label class="field">SAMPLE OPERATOR<select id="operator"><option value="police">Police / command</option><option value="ems">EMS / medic</option><option value="public">Civilian / public</option><option value="services">City services</option></select></label>
+        <label class="field">RADIO PAGE<select id="page"><option value="home">Home</option><option value="channels">Channels</option><option value="units">Units</option><option value="distress">SOS board</option><option value="settings">Settings + RF control</option></select></label>
+        <div class="field"><span>PREVIEW VIEW</span><div class="segmented" role="group" aria-label="Preview view"><button id="handset-view" aria-pressed="true">Handset</button><button id="screen-view" aria-pressed="false">Screen view</button></div></div>
+        <div class="action-grid">
+          <button id="power">Power off</button><button id="reopen">Reopen radio</button>
+          <button id="sos" class="danger">Send SOS</button><button id="incoming">Incoming call</button>
+          <button id="battery">Recharge battery</button><button id="overlay">Show overlay</button>
+        </div>
+        <button id="ptt" class="ptt"><span class="ptt-dot"></span><span>Hold to transmit<small>Try the talking indicator</small></span><span class="ptt-key">PTT</span></button>
+        <div class="readout"><div><small>FREQUENCY</small><strong id="frequency">101</strong></div><div><small>BATTERY</small><strong id="battery-label">78%</strong></div><div><small>SIGNAL</small><strong id="signal">RX</strong></div></div>
+        <div class="activity"><p class="eyebrow">ON THE AIR</p><p id="status" role="status" aria-live="polite">Loading the handset…</p></div>
+        <div class="simulation-note"><span>BROWSER DEMO</span><p>Sample operators and calls. Voice, GPS and RF actions are simulated; nothing connects to a game server.</p></div>
+      </aside>
+      <div class="stage">
+        <div class="stage-top"><span><i class="live-dot"></i> RS RADIO</span><span id="view-label">HANDSET VIEW</span></div>
+        <iframe id="radio-preview" src="preview/index.html" title="Interactive RS Radio city handset" allow="autoplay"></iframe>
+        <div class="stage-bottom"><span>CLICK TABS · SCROLL THE DISPLAY · TRY THE HARDWARE BUTTONS</span><span>CITY NETWORK / SAMPLE DATA</span></div>
+      </div>
+    </section>
+    <section class="features" aria-label="Explore RS Radio">
+      <article><span class="feature-number">01 / CONNECT</span><h3>Every team has a place.</h3><p>Public and restricted frequencies, quick tuning, favorites and a live unit roster. Change the sample operator to explore different access.</p></article>
+      <article><span class="feature-number">02 / RESPOND</span><h3>Keep the response moving.</h3><p>Unit condition, medical readouts and distress signals with a GPS action. Open the SOS board and try an incoming call.</p></article>
+      <article><span class="feature-number">03 / MAKE IT YOURS</span><h3>Set up your handset.</h3><p>Adjust layout, volume, deafen and the optional player overlay. Police command can also explore the sample jammer controls.</p></article>
+    </section>
+    <section class="get-radio"><div><p class="eyebrow">RS RADIO · MODERN WALKIE TALKIE</p><h2>Bring it to your server.</h2></div><div class="download-links"><a class="primary-link" href="https://reality-sucks-rp-webstore.tebex.io/package/7706219" target="_blank" rel="noopener noreferrer">Get RS Radio free ↗</a><a href="https://github.com/RealitySucksRP/rs-radio" target="_blank" rel="noopener noreferrer">View source</a></div></section>
+  </main>
+  <footer><span>RealitySucksRP / RS Radio</span><a href="../">Explore the ecosystem ↗</a></footer>
+  <script src="showcase.js"></script>
+</body>
+</html>
