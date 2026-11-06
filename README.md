@@ -52,7 +52,7 @@ The Tebex store is the main home for current RealitySucksRP releases, package de
 
 ## Free Scripts and Community Releases
 
-My 10 [Tebex Free Scripts](https://reality-sucks-rp-webstore.tebex.io/category/free-scripts) listings and RS Admin Menu are below. Browse [the website catalog](https://realitysucksrp.github.io/#open-source) for the full screenshot galleries. Source access, dependencies and licenses vary by resource; check its listing.
+Browse the [Free Scripts Store](https://reality-sucks-rp-webstore.tebex.io/category/free-scripts) and the free community projects below. Browse [the website catalog](https://realitysucksrp.github.io/#open-source) for the full screenshot galleries. Source access, dependencies and licenses vary by resource; check its listing.
 
 ### RS 90s Beeper
 
@@ -142,11 +142,24 @@ Install a tuner chip, pick a profile and send it sideways. Eight drift profiles 
 
 Run your staff tools from one FiveM command center. Manage players, reports, moderation, staff groups, vehicles and world controls. Customize the interface with themes and widgets, and use optional Pathways for onboarding and role certification. Included provider adapters connect the menu with your server.
 
-Bundled interface concept artwork is shown above. Preserve live `data/` when upgrading; the full ZIP includes empty first-install stores.
+Bundled interface concept artwork is shown above. Back up and preserve your live data and settings when upgrading.
 
 [GitHub source](https://github.com/RealitySucksRP/rs-adminmenu) · [Download original ZIP](https://github.com/RealitySucksRP/rs-adminmenu/releases/latest/download/rs-adminmenu.zip)
 
+### RS Seatbelt
+
+<a href="https://github.com/RealitySucksRP/rs-seatbelt"><img src="images/free-scripts/rs-seatbelt-hero.webp" width="640" alt="RS Seatbelt artwork"></a>
+
+A FiveM seatbelt and harness with live strap alignment, player presets, and server-wide defaults. Derived from Qbox-project/qbx_seatbelt.
+
+[GitHub source](https://github.com/RealitySucksRP/rs-seatbelt) · [Download ZIP](https://github.com/RealitySucksRP/rs-seatbelt/releases/latest/download/rs-seatbelt.zip) · [Free Scripts Store](https://reality-sucks-rp-webstore.tebex.io/category/free-scripts)
+
 ### More Free Community Projects
+
+- [RS Thrusters](https://github.com/RealitySucksRP/rs-thrusters) — Configurable directional thrusters for FiveM cars, with hover and flight assistance, aerial stunts, synchronized exhaust, and keyboard or controller input. [Download ZIP](https://github.com/RealitySucksRP/rs-thrusters/releases/latest/download/rs-thrusters.zip).
+- [ox_target Remastered](https://github.com/RealitySucksRP/ox_target-Remastered) — A custom FiveM targeting interface with a themed reticle and action list. Based on Overextended ox_target with the original MIT license retained. [Download ZIP](https://github.com/RealitySucksRP/ox_target-Remastered/releases/latest/download/ox_target.zip).
+- [RS Blood Progressbar](https://github.com/RealitySucksRP/rsblood-progressbar) — A horror-themed FiveM progress bar with four built-in themes, staged actions, and adapters for Qbox, QBCore, ESX, ox-style calls, and standalone resources. [Download ZIP](https://github.com/RealitySucksRP/rsblood-progressbar/releases/latest/download/rsblood-progressbar.zip).
+- [RSGTA Progressbar Classic](https://github.com/RealitySucksRP/rsgta-progressbar-classic) — The classic GTA-style FiveM progress bar with stock and customizable branded layouts. Includes animations, props, and QBCore support. Engine by keep-progressbar. [Download ZIP](https://github.com/RealitySucksRP/rsgta-progressbar-classic/releases/latest/download/rsgta-progressbar.zip).
 
 <img src="images/free-scripts/rs-bridge.webp" width="480" alt="RS Bridge">
 

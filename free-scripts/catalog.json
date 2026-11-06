@@ -1,5 +1,5 @@
 {
-  "checkedOn": "2026-10-15",
+  "checkedOn": "2026-11-06",
   "category": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
   "resources": [
     {
@@ -35,10 +35,10 @@
       "title": "RS HUDLife — Animated HUD",
       "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts",
       "category": "HUD + Vehicles",
-      "description": "Make getting into a vehicle part of the experience. HUDLife combines 921 vehicle artwork images, 10 speedometer styles, cinematic startup animations and custom sounds with player status, money and NOS displays. Players can personalize the HUD through saved F9 settings.",
+      "description": "Choose from ten speedometer layouts, see vehicle condition, and customize your HUD for player status, money, voice, and weapon ammunition. Includes 921 vehicle images and saved layouts.",
       "features": [
         "921 vehicle images / 10 speedometers",
-        "Vehicle boot sequence and NOS display",
+        "Vehicle condition and customizable weapon HUD",
         "Qbox / QBCore / ESX / Standalone"
       ],
       "source": "https://github.com/RealitySucksRP/rs-lilhudlife",
@@ -60,7 +60,8 @@
           "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/7e06d54cdc6e4b7e275014d403dcedc5eda3b655.png",
           "path": "images/free-scripts/rs-hudlife-4.webp"
         }
-      ]
+      ],
+      "download": "https://github.com/RealitySucksRP/rs-lilhudlife/releases/latest/download/rs-lilhudlife.zip"
     },
     {
       "slug": "rs-ai-doc",
@@ -96,7 +97,8 @@
           "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/30720d12f16297730b8653620c8f82759cbae07f.png",
           "path": "images/free-scripts/rs-ai-doc-5.webp"
         }
-      ]
+      ],
+      "download": "https://github.com/RealitySucksRP/rs-aidoc/releases/latest/download/rs-aidoc.zip"
     },
     {
       "slug": "rs-radio",
@@ -125,7 +127,8 @@
           "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/ead8d3b526246cc241e2ac872f1dcf0dacaba643.png",
           "path": "images/free-scripts/rs-radio-3.webp"
         }
-      ]
+      ],
+      "download": "https://github.com/RealitySucksRP/rs-radio/releases/latest/download/rs-radio.zip"
     },
     {
       "slug": "rsgta-progressbar",
@@ -276,7 +279,8 @@
           "source": "https://dunb17ur4ymx4.cloudfront.net/packages/images/e410029cdc92b147a9e926a6812577eb6bafc64a.jpg",
           "path": "images/free-scripts/rs-tunerchip-3.webp"
         }
-      ]
+      ],
+      "download": "https://github.com/RealitySucksRP/RealitySucks-TunerChip/releases/latest/download/rs-tunerchip.zip"
     },
     {
       "slug": "rs-adminmenu",
@@ -315,6 +319,86 @@
         }
       ],
       "artworkLabel": "Bundled interface concept artwork"
+    },
+    {
+      "slug": "rs-seatbelt",
+      "title": "RS Seatbelt",
+      "category": "Vehicles",
+      "description": "A FiveM seatbelt and harness with live strap alignment, player presets, and server-wide defaults. Derived from Qbox-project/qbx_seatbelt.",
+      "features": [
+        "Visible seatbelt and harness",
+        "Live prop and animation editor",
+        "Personal presets and server defaults"
+      ],
+      "source": "https://github.com/RealitySucksRP/rs-seatbelt",
+      "download": "https://github.com/RealitySucksRP/rs-seatbelt/releases/latest/download/rs-seatbelt.zip",
+      "images": [
+        {
+          "source": "https://raw.githubusercontent.com/RealitySucksRP/rs-seatbelt/main/docs/images/hero.jpg",
+          "path": "images/free-scripts/rs-seatbelt-hero.webp"
+        },
+        {
+          "source": "https://raw.githubusercontent.com/RealitySucksRP/rs-seatbelt/main/docs/images/gizmo-action.jpg",
+          "path": "images/free-scripts/rs-seatbelt-gizmo-action.webp"
+        }
+      ],
+      "tebex": "https://reality-sucks-rp-webstore.tebex.io/category/free-scripts"
+    },
+    {
+      "slug": "rs-thrusters",
+      "title": "RS Thrusters",
+      "category": "Vehicles",
+      "description": "Configurable directional thrusters for FiveM cars, with hover and flight assistance, aerial stunts, synchronized exhaust, and keyboard or controller input.",
+      "features": [
+        "Directional propulsion and hover",
+        "Flight assistance and stunt controls",
+        "Keyboard and controller input"
+      ],
+      "source": "https://github.com/RealitySucksRP/rs-thrusters",
+      "download": "https://github.com/RealitySucksRP/rs-thrusters/releases/latest/download/rs-thrusters.zip",
+      "images": []
+    },
+    {
+      "slug": "ox_target-remastered",
+      "title": "ox_target Remastered",
+      "category": "Interaction",
+      "description": "A custom FiveM targeting interface with a themed reticle and action list. Based on Overextended ox_target with the original MIT license retained.",
+      "features": [
+        "Themed reticle and actions",
+        "Stable option refresh",
+        "Original Overextended license"
+      ],
+      "source": "https://github.com/RealitySucksRP/ox_target-Remastered",
+      "download": "https://github.com/RealitySucksRP/ox_target-Remastered/releases/latest/download/ox_target.zip",
+      "images": []
+    },
+    {
+      "slug": "rsblood-progressbar",
+      "title": "RS Blood Progressbar",
+      "category": "Interface",
+      "description": "A horror-themed FiveM progress bar with four built-in themes, staged actions, and adapters for Qbox, QBCore, ESX, ox-style calls, and standalone resources.",
+      "features": [
+        "Four horror themes",
+        "Multi-stage progress actions",
+        "Framework and standalone adapters"
+      ],
+      "source": "https://github.com/RealitySucksRP/rsblood-progressbar",
+      "download": "https://github.com/RealitySucksRP/rsblood-progressbar/releases/latest/download/rsblood-progressbar.zip",
+      "images": []
+    },
+    {
+      "slug": "rsgta-progressbar-classic",
+      "title": "RSGTA Progressbar Classic",
+      "category": "Interface",
+      "description": "The classic GTA-style FiveM progress bar with stock and customizable branded layouts. Includes animations, props, and QBCore support. Engine by keep-progressbar.",
+      "features": [
+        "Stock and branded GTA styles",
+        "Animation and prop support",
+        "Separate from Field Terminal Progressbar"
+      ],
+      "source": "https://github.com/RealitySucksRP/rsgta-progressbar-classic",
+      "download": "https://github.com/RealitySucksRP/rsgta-progressbar-classic/releases/latest/download/rsgta-progressbar.zip",
+      "images": []
     }
   ]
 }
