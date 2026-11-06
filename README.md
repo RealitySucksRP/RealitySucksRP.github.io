@@ -36,9 +36,9 @@ I build complete FiveM server setups using tested RealitySucksRP systems and con
 
 | Package | Price | Support |
 |---|---:|---|
-| QBCore Shell | **$500** | 30 days Discord support |
-| Zombie Server | **$700** | 30 days Discord support |
-| Full RP Server | **$850** | 30 days Discord support |
+| QBCore Shell | **$150** | 30 days Discord support |
+| Zombie Server | **$250** | 30 days Discord support |
+| Full RP Server | **$300** | 30 days Discord support |
 
 **Discuss a server build:** https://discord.gg/e9V3rPHySx
 
